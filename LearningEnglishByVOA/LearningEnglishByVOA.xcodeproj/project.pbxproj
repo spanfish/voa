@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC5E82E41EBF222A008F0BD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5E82E31EBF222A008F0BD7 /* main.m */; };
+		BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5E82E61EBF222A008F0BD7 /* AppDelegate.m */; };
+		BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5E82E91EBF222A008F0BD7 /* ViewController.m */; };
+		BC5E82ED1EBF222A008F0BD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5E82EB1EBF222A008F0BD7 /* Main.storyboard */; };
+		BC5E82EF1EBF222A008F0BD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5E82EE1EBF222A008F0BD7 /* Assets.xcassets */; };
+		BC5E82F21EBF222A008F0BD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5E82F01EBF222A008F0BD7 /* LaunchScreen.storyboard */; };
+		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
+		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
+		C35F9332C01B8B8FE69AC4F2 /* Pods_LearningEnglishByVOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearningEnglishByVOA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29EEE41FEEF47F3805E0052A /* Pods-LearningEnglishByVOA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningEnglishByVOA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA.debug.xcconfig"; sourceTree = "<group>"; };
+		BC5E82DF1EBF222A008F0BD7 /* LearningEnglishByVOA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningEnglishByVOA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC5E82E31EBF222A008F0BD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BC5E82E51EBF222A008F0BD7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BC5E82E61EBF222A008F0BD7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BC5E82E81EBF222A008F0BD7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BC5E82E91EBF222A008F0BD7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BC5E82EC1EBF222A008F0BD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BC5E82EE1EBF222A008F0BD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC5E82F11EBF222A008F0BD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC5E82F31EBF222A008F0BD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveCHMTLParser.framework; sourceTree = "<group>"; };
+		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningEnglishByVOA.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC5E82DC1EBF222A008F0BD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */,
+				BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */,
+				C35F9332C01B8B8FE69AC4F2 /* Pods_LearningEnglishByVOA.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F259C57D6BAD69ADFFE8DA2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29EEE41FEEF47F3805E0052A /* Pods-LearningEnglishByVOA.debug.xcconfig */,
+				DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC5E82D61EBF222A008F0BD7 = {
+			isa = PBXGroup;
+			children = (
+				BC5E82E11EBF222A008F0BD7 /* LearningEnglishByVOA */,
+				BC5E82E01EBF222A008F0BD7 /* Products */,
+				6F259C57D6BAD69ADFFE8DA2 /* Pods */,
+				D9B46EAF30DB5DE4CCD328BC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BC5E82E01EBF222A008F0BD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC5E82DF1EBF222A008F0BD7 /* LearningEnglishByVOA.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC5E82E11EBF222A008F0BD7 /* LearningEnglishByVOA */ = {
+			isa = PBXGroup;
+			children = (
+				BC5E82E51EBF222A008F0BD7 /* AppDelegate.h */,
+				BC5E82E61EBF222A008F0BD7 /* AppDelegate.m */,
+				BC5E82E81EBF222A008F0BD7 /* ViewController.h */,
+				BC5E82E91EBF222A008F0BD7 /* ViewController.m */,
+				BC5E82EB1EBF222A008F0BD7 /* Main.storyboard */,
+				BC5E82EE1EBF222A008F0BD7 /* Assets.xcassets */,
+				BC5E82F01EBF222A008F0BD7 /* LaunchScreen.storyboard */,
+				BC5E82F31EBF222A008F0BD7 /* Info.plist */,
+				BC5E82E21EBF222A008F0BD7 /* Supporting Files */,
+			);
+			path = LearningEnglishByVOA;
+			sourceTree = "<group>";
+		};
+		BC5E82E21EBF222A008F0BD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC5E82E31EBF222A008F0BD7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D9B46EAF30DB5DE4CCD328BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCC243021EBF47E400B947BE /* libxml2.tbd */,
+				BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */,
+				15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC5E82DE1EBF222A008F0BD7 /* LearningEnglishByVOA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC5E82F61EBF222A008F0BD7 /* Build configuration list for PBXNativeTarget "LearningEnglishByVOA" */;
+			buildPhases = (
+				94F8EFB333C491E82707F932 /* [CP] Check Pods Manifest.lock */,
+				BC5E82DB1EBF222A008F0BD7 /* Sources */,
+				BC5E82DC1EBF222A008F0BD7 /* Frameworks */,
+				BC5E82DD1EBF222A008F0BD7 /* Resources */,
+				6E66CED58A7D8569473C4699 /* [CP] Embed Pods Frameworks */,
+				E91CA833F143403C9D255EA7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LearningEnglishByVOA;
+			productName = LearningEnglishByVOA;
+			productReference = BC5E82DF1EBF222A008F0BD7 /* LearningEnglishByVOA.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC5E82D71EBF222A008F0BD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Xiangwei Wang";
+				TargetAttributes = {
+					BC5E82DE1EBF222A008F0BD7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = S78RUL88S5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BC5E82DA1EBF222A008F0BD7 /* Build configuration list for PBXProject "LearningEnglishByVOA" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC5E82D61EBF222A008F0BD7;
+			productRefGroup = BC5E82E01EBF222A008F0BD7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC5E82DE1EBF222A008F0BD7 /* LearningEnglishByVOA */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC5E82DD1EBF222A008F0BD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC5E82F21EBF222A008F0BD7 /* LaunchScreen.storyboard in Resources */,
+				BC5E82EF1EBF222A008F0BD7 /* Assets.xcassets in Resources */,
+				BC5E82ED1EBF222A008F0BD7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E66CED58A7D8569473C4699 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94F8EFB333C491E82707F932 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E91CA833F143403C9D255EA7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC5E82DB1EBF222A008F0BD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */,
+				BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */,
+				BC5E82E41EBF222A008F0BD7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BC5E82EB1EBF222A008F0BD7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC5E82EC1EBF222A008F0BD7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BC5E82F01EBF222A008F0BD7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC5E82F11EBF222A008F0BD7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC5E82F41EBF222A008F0BD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC5E82F51EBF222A008F0BD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC5E82F71EBF222A008F0BD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29EEE41FEEF47F3805E0052A /* Pods-LearningEnglishByVOA.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = S78RUL88S5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = LearningEnglishByVOA/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiang.LearningEnglishByVOA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BC5E82F81EBF222A008F0BD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = S78RUL88S5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = LearningEnglishByVOA/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiang.LearningEnglishByVOA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC5E82DA1EBF222A008F0BD7 /* Build configuration list for PBXProject "LearningEnglishByVOA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC5E82F41EBF222A008F0BD7 /* Debug */,
+				BC5E82F51EBF222A008F0BD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC5E82F61EBF222A008F0BD7 /* Build configuration list for PBXNativeTarget "LearningEnglishByVOA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC5E82F71EBF222A008F0BD7 /* Debug */,
+				BC5E82F81EBF222A008F0BD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC5E82D71EBF222A008F0BD7 /* Project object */;
+}
