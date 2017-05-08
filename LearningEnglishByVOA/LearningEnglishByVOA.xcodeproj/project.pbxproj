@@ -13,6 +13,9 @@
 		BC5E82ED1EBF222A008F0BD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5E82EB1EBF222A008F0BD7 /* Main.storyboard */; };
 		BC5E82EF1EBF222A008F0BD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5E82EE1EBF222A008F0BD7 /* Assets.xcassets */; };
 		BC5E82F21EBF222A008F0BD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5E82F01EBF222A008F0BD7 /* LaunchScreen.storyboard */; };
+		BC74DC1F1EC03C45009C4EF1 /* PlayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC74DC1E1EC03C45009C4EF1 /* PlayItem.m */; };
+		BC74DC221EC03CB7009C4EF1 /* TrackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC74DC211EC03CB7009C4EF1 /* TrackItem.m */; };
+		BC74DC241EC03DA1009C4EF1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC74DC231EC03DA1009C4EF1 /* MediaPlayer.framework */; };
 		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
 		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
 		C35F9332C01B8B8FE69AC4F2 /* Pods_LearningEnglishByVOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */; };
@@ -31,6 +34,11 @@
 		BC5E82EE1EBF222A008F0BD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC5E82F11EBF222A008F0BD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC5E82F31EBF222A008F0BD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC74DC1D1EC03C45009C4EF1 /* PlayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayItem.h; sourceTree = "<group>"; };
+		BC74DC1E1EC03C45009C4EF1 /* PlayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayItem.m; sourceTree = "<group>"; };
+		BC74DC201EC03CB7009C4EF1 /* TrackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackItem.h; sourceTree = "<group>"; };
+		BC74DC211EC03CB7009C4EF1 /* TrackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackItem.m; sourceTree = "<group>"; };
+		BC74DC231EC03DA1009C4EF1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveCHMTLParser.framework; sourceTree = "<group>"; };
 		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningEnglishByVOA.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA.release.xcconfig"; sourceTree = "<group>"; };
@@ -41,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC74DC241EC03DA1009C4EF1 /* MediaPlayer.framework in Frameworks */,
 				BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */,
 				BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */,
 				C35F9332C01B8B8FE69AC4F2 /* Pods_LearningEnglishByVOA.framework in Frameworks */,
@@ -80,6 +89,7 @@
 		BC5E82E11EBF222A008F0BD7 /* LearningEnglishByVOA */ = {
 			isa = PBXGroup;
 			children = (
+				BC74DC1C1EC03C2B009C4EF1 /* Video */,
 				BC5E82E51EBF222A008F0BD7 /* AppDelegate.h */,
 				BC5E82E61EBF222A008F0BD7 /* AppDelegate.m */,
 				BC5E82E81EBF222A008F0BD7 /* ViewController.h */,
@@ -101,9 +111,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BC74DC1C1EC03C2B009C4EF1 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				BC74DC1D1EC03C45009C4EF1 /* PlayItem.h */,
+				BC74DC1E1EC03C45009C4EF1 /* PlayItem.m */,
+				BC74DC201EC03CB7009C4EF1 /* TrackItem.h */,
+				BC74DC211EC03CB7009C4EF1 /* TrackItem.m */,
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
 		D9B46EAF30DB5DE4CCD328BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC74DC231EC03DA1009C4EF1 /* MediaPlayer.framework */,
 				BCC243021EBF47E400B947BE /* libxml2.tbd */,
 				BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */,
 				15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */,
@@ -209,7 +231,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E91CA833F143403C9D255EA7 /* [CP] Copy Pods Resources */ = {
@@ -236,6 +258,8 @@
 			files = (
 				BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */,
 				BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */,
+				BC74DC1F1EC03C45009C4EF1 /* PlayItem.m in Sources */,
+				BC74DC221EC03CB7009C4EF1 /* TrackItem.m in Sources */,
 				BC5E82E41EBF222A008F0BD7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

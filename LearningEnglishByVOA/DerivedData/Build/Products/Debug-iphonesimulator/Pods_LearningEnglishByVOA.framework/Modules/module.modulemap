@@ -1,0 +1,6 @@
+framework module Pods_LearningEnglishByVOA {
+  umbrella header "Pods-LearningEnglishByVOA-umbrella.h"
+
+  export *
+  module * { export * }
+}
