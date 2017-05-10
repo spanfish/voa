@@ -60,7 +60,7 @@
 		</dict>
 		<key>Frameworks/AFNetworking.framework/AFNetworking</key>
 		<data>
-		gx1FN/Z3rw1yXhQeSVkAP418JKU=
+		vPxyNY68H2pRd3qQGO7Qgup5HVk=
 		</data>
 		<key>Frameworks/AFNetworking.framework/Info.plist</key>
 		<data>
@@ -70,13 +70,25 @@
 		<data>
 		PQtFN2Zutag7Z73fUaim8dBiTGA=
 		</data>
+		<key>Frameworks/JSONKit.framework/Info.plist</key>
+		<data>
+		RaXotF0lmW4EG2XX6oek8sxfLso=
+		</data>
+		<key>Frameworks/JSONKit.framework/JSONKit</key>
+		<data>
+		iqqxK2InetSUBbva+dzQKe5Qws8=
+		</data>
+		<key>Frameworks/JSONKit.framework/_CodeSignature/CodeResources</key>
+		<data>
+		fECF2L+44t2hOHhcLdXxSeAkVgk=
+		</data>
 		<key>Frameworks/MBProgressHUD.framework/Info.plist</key>
 		<data>
 		+M12B/YN+QTVlm8PnfGEiu5Shy4=
 		</data>
 		<key>Frameworks/MBProgressHUD.framework/MBProgressHUD</key>
 		<data>
-		S4wS4CkWn8IH4G1T3wmfdGou5Ik=
+		BFOz2axGEtnjAd3LWwF/j/tXA6s=
 		</data>
 		<key>Frameworks/MBProgressHUD.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -191,11 +203,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gx1FN/Z3rw1yXhQeSVkAP418JKU=
+			vPxyNY68H2pRd3qQGO7Qgup5HVk=
 			</data>
 			<key>hash2</key>
 			<data>
-			clHCPKH4TuGC5jN1M0Or2HddKsIsYeCXMjkDRqJvl2M=
+			EwbP4Ar+WVORhRG8ixJQZNoOCXltQ+D2xsurno5TmJE=
 			</data>
 		</dict>
 		<key>Frameworks/AFNetworking.framework/Info.plist</key>
@@ -220,6 +232,39 @@
 			BLr0iSKBo4LHFdXzCc6r/CaCQigMN9Nlfv4d+Kv4alE=
 			</data>
 		</dict>
+		<key>Frameworks/JSONKit.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			RaXotF0lmW4EG2XX6oek8sxfLso=
+			</data>
+			<key>hash2</key>
+			<data>
+			MrbEF0VQp8o4Vl+t8Km060CZo83R113CBBrE45owZEc=
+			</data>
+		</dict>
+		<key>Frameworks/JSONKit.framework/JSONKit</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			iqqxK2InetSUBbva+dzQKe5Qws8=
+			</data>
+			<key>hash2</key>
+			<data>
+			ih0c777MDVpO7OGi1qQe46xmDRiVMk7Iw0xzUCaY6/I=
+			</data>
+		</dict>
+		<key>Frameworks/JSONKit.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			fECF2L+44t2hOHhcLdXxSeAkVgk=
+			</data>
+			<key>hash2</key>
+			<data>
+			MSnpgHQmzwKj5YvoFS/qTxaIUYoAQsAVKZ3fQhhnoLA=
+			</data>
+		</dict>
 		<key>Frameworks/MBProgressHUD.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
@@ -235,11 +280,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			S4wS4CkWn8IH4G1T3wmfdGou5Ik=
+			BFOz2axGEtnjAd3LWwF/j/tXA6s=
 			</data>
 			<key>hash2</key>
 			<data>
-			Hrh1Uj9a7bXFnDdIWprc9Rb9ojrBziPR6/lNeg+9p50=
+			YqiVyxzbsotNrJW4JjEBW9otDyVnwupvZMcdVCE4TTg=
 			</data>
 		</dict>
 		<key>Frameworks/MBProgressHUD.framework/_CodeSignature/CodeResources</key>

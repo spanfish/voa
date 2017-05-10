@@ -62,4 +62,16 @@
                         main_thread(block(nil, error));
                     }];
 }
+
+-(void) downloadVideoFile:(NSString *) videoURL completion:(DataCompletionBlock)block {
+    [self.sessionManager GET:videoURL
+                  parameters:nil
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
+                        
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         main_thread(block(responseObject, nil));
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         main_thread(block(nil, error));
+                     }];
+}
 @end

@@ -121,6 +121,38 @@
     },
     {
       'type': 'directory',
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "JSONKit-Swift.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Headers/JSONKit-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "JSONKit-umbrella.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Target Support Files/JSONKit/JSONKit-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "JSONKit.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/JSONKit/JSONKit.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphoneos/JSONKit.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
       'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework/Headers",
       'contents': [
         {

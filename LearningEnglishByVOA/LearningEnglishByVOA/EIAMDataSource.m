@@ -10,6 +10,7 @@
 #import "PageUtil.h"
 #import <ObjectiveCHMTLParser/HTMLNode.h>
 #import <ObjectiveCHMTLParser/HTMLParser.h>
+#import <JSONKit/JSONKit.h>
 
 #import "PlayItem.h"
 
@@ -82,7 +83,49 @@
                 
                 [_items addObject:playItem];
             }
+        }//end of for
+        if([_items count] > 0) {
+            [self downloadPlayItem:nil];
         }
     }
+}
+
+-(void) loadPlayItemTracks:(PlayItem *) item {
+    [[PageUtil sharedInstance] loadPage:[NSString stringWithFormat:@"http://learningenglish.voanews.com%@", item.videoURL]
+                             completion:^(NSString * _Nullable content, NSError * _Nullable error) {
+                                 if(content != nil) {
+                                     NSError *error = nil;
+                                     HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&error];
+                                     if(error) {
+                                         //
+                                         return;
+                                     }
+                                     HTMLNode *body = [parser body];
+                                     HTMLNode *videoNode = [body findChildTag:@"video"];
+                                     if(videoNode) {
+                                         NSString *src = [videoNode getAttributeNamed:@"src"];
+                                         NSString *dataType = [videoNode getAttributeNamed:@"data-type"];
+                                         NSString *dataInfo = [videoNode getAttributeNamed:@"data-info"];
+                                         
+                                         NSString *dataSources = [videoNode getAttributeNamed:@"data-sources"];
+                                         //[dataSources objectf]
+                                         //[JSONDecoder obj]
+                                     }
+                                 }
+                                 
+                             }];
+}
+
+-(void) downloadPlayItem:(PlayItem *) item {
+    //
+    [[PageUtil sharedInstance] downloadVideoFile:@"https://av.voanews.com/Videoroot/Pangeavideo/2016/10/f/f4/f494cf01-c26c-4025-9fee-11e234d181be.mp4"
+                                      completion:^(NSData * _Nullable content, NSError * _Nullable error) {
+                                          if(content != nil) {
+                                              NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+                                              if(!error) {
+                                                  [content writeToFile:[path stringByAppendingPathComponent:@"f494cf01-c26c-4025-9fee-11e234d181be.mp4"] atomically:YES];
+                                              }
+                                          }
+                                      }];
 }
 @end

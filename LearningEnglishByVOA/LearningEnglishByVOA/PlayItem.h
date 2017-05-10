@@ -11,6 +11,7 @@
 @class TrackItem;
 @interface PlayItem : NSObject
 
+@property(nonatomic, strong) NSString *uuid;
 @property(nonatomic, strong) NSString *videoTitle;
 @property(nonatomic, strong) NSString *thumbURL;
 @property(nonatomic, strong) NSString *videoURL;

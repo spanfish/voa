@@ -9,4 +9,5 @@ target 'LearningEnglishByVOA' do
   # Pods for LearningEnglishByVOA
   pod 'AFNetworking', '~> 3.0'
   pod 'MBProgressHUD'
+  pod 'JSONKit'
 end
