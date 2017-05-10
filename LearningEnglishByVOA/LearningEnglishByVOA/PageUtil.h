@@ -16,5 +16,5 @@ typedef void (^_Nullable DataCompletionBlock)(NSData *_Nullable content, NSError
 +(instancetype) sharedInstance;
 
 -(void) loadPage:(NSString *) pageURL completion:(CompletionBlock) block;
--(void) downloadVideoFile:(NSString *) videoURL completion:(DataCompletionBlock)block;
+-(void) downloadData:(NSString *) videoURL completion:(DataCompletionBlock)block;
 @end

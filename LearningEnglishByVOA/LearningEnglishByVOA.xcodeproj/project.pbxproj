@@ -23,6 +23,7 @@
 		BCBA55891EC30CD400E4A728 /* EIAMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55881EC30CD400E4A728 /* EIAMCollectionViewCell.m */; };
 		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
 		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
+		BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC318EF1EC349EB0035DA2F /* PathUtil.m */; };
 		C35F9332C01B8B8FE69AC4F2 /* Pods_LearningEnglishByVOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,8 @@
 		BCBA55881EC30CD400E4A728 /* EIAMCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIAMCollectionViewCell.m; sourceTree = "<group>"; };
 		BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveCHMTLParser.framework; sourceTree = "<group>"; };
 		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		BCC318EE1EC349EB0035DA2F /* PathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtil.h; sourceTree = "<group>"; };
+		BCC318EF1EC349EB0035DA2F /* PathUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtil.m; sourceTree = "<group>"; };
 		DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningEnglishByVOA.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +172,8 @@
 			children = (
 				BCBA557F1EC2EFE800E4A728 /* PageUtil.h */,
 				BCBA55801EC2EFE800E4A728 /* PageUtil.m */,
+				BCC318EE1EC349EB0035DA2F /* PathUtil.h */,
+				BCC318EF1EC349EB0035DA2F /* PathUtil.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				BC74DC221EC03CB7009C4EF1 /* TrackItem.m in Sources */,
 				BCBA557D1EC2EE7700E4A728 /* EIAMCollectionViewController.m in Sources */,
 				BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */,
+				BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */,
 				BC5E82E41EBF222A008F0BD7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +450,7 @@
 				);
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = LearningEnglishByVOA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiang.LearningEnglishByVOA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -462,6 +469,7 @@
 				);
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = LearningEnglishByVOA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiang.LearningEnglishByVOA;
 				PRODUCT_NAME = "$(TARGET_NAME)";

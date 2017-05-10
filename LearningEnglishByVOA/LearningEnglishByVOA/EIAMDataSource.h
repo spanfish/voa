@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PageUtil.h"
+#import "PlayItem.h"
+#import "TrackItem.h"
+#import "PathUtil.h"
 
 @protocol EIAMDataSourceDelegate<NSObject>
 
@@ -16,6 +20,7 @@
 @interface EIAMDataSource : NSObject
 
 @property(nonatomic, weak) id<EIAMDataSourceDelegate> delegate;
-@property(nonatomic, strong, readonly) NSArray *videoArray;
+@property(nonatomic, readonly) NSArray *videoArray;
 -(void) loadPage;
+-(void) downloadPlayItemThumb:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath;
 @end

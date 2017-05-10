@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PathUtil.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+    if(![fileManager fileExistsAtPath:englishInAMinitueCacheDir]) {
+        [fileManager createDirectoryAtPath:englishInAMinitueCacheDir
+               withIntermediateDirectories:NO
+                                attributes:nil
+                                     error:nil];
+    }
     return YES;
 }
 

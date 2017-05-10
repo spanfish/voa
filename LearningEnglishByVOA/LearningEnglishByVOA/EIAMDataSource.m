@@ -7,13 +7,12 @@
 //
 
 #import "EIAMDataSource.h"
-#import "PageUtil.h"
+
 #import <ObjectiveCHMTLParser/HTMLNode.h>
 #import <ObjectiveCHMTLParser/HTMLParser.h>
 #import <JSONKit/JSONKit.h>
 
-#import "PlayItem.h"
-#import "TrackItem.h"
+
 
 @interface EIAMDataSource() {
     NSMutableArray<PlayItem *> *_items;
@@ -86,6 +85,9 @@
                 
                 if(titleNode) {
                     playItem.videoTitle = [titleNode contents];
+                    if([playItem.videoTitle hasPrefix:@"English in a Minute: "]) {
+                        playItem.videoTitle = [playItem.videoTitle substringFromIndex:[@"English in a Minute: " length]];
+                    }
                 }
                 
                 [_items addObject:playItem];
@@ -147,9 +149,20 @@
                              }];
 }
 
+-(void) downloadPlayItemThumb:(PlayItem *) item {
+    [[PageUtil sharedInstance] downloadData:item.thumbURL
+                                 completion:^(NSData * _Nullable content, NSError * _Nullable error) {
+                                     NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+                                     NSString *fileName = [item.thumbURL lastPathComponent];
+                                     if(!error && content) {
+                                         [content writeToFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName] atomically:YES];
+                                     }
+                                 }];
+}
+
 -(void) downloadPlayItem:(PlayItem *) item {
     //
-    [[PageUtil sharedInstance] downloadVideoFile:@"https://av.voanews.com/Videoroot/Pangeavideo/2016/10/f/f4/f494cf01-c26c-4025-9fee-11e234d181be.mp4"
+    [[PageUtil sharedInstance] downloadData:@"https://av.voanews.com/Videoroot/Pangeavideo/2016/10/f/f4/f494cf01-c26c-4025-9fee-11e234d181be.mp4"
                                       completion:^(NSData * _Nullable content, NSError * _Nullable error) {
                                           if(content != nil) {
                                               NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
@@ -159,4 +172,5 @@
                                           }
                                       }];
 }
+
 @end

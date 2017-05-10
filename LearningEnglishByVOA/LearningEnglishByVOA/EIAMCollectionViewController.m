@@ -71,9 +71,16 @@ static NSString * const reuseIdentifier = @"Cell";
     // Configure the cell
     cell.titleLabel.text = item.videoTitle;
     cell.dateLabel.text = item.publishDate;
+    
+    NSLog(@"thumbURL:%@", item.thumbURL);
+    [self loadThumbnail:item.thumbURL forIndexPath:indexPath];
+    
     return cell;
 }
 
+-(void) loadThumbnail:(NSString *) thumbURL forIndexPath:(NSIndexPath *) indexPath {
+    
+}
 #pragma mark <UICollectionViewDelegate>
 
 /*

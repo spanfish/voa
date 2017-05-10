@@ -63,7 +63,7 @@
                     }];
 }
 
--(void) downloadVideoFile:(NSString *) videoURL completion:(DataCompletionBlock)block {
+-(void) downloadData:(NSString *) videoURL completion:(DataCompletionBlock)block {
     [self.sessionManager GET:videoURL
                   parameters:nil
                     progress:^(NSProgress * _Nonnull downloadProgress) {
