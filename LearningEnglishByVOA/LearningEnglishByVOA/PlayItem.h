@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class TrackItem;
-@interface PlayItem : NSObject
+@interface PlayItem : NSObject {
+    NSMutableArray<TrackItem*> *_allTracks;
+}
 
 @property(nonatomic, strong) NSString *uuid;
 @property(nonatomic, strong) NSString *videoTitle;
 @property(nonatomic, strong) NSString *thumbURL;
 @property(nonatomic, strong) NSString *videoURL;
 @property(nonatomic, strong) NSString *publishDate;
-@property(nonatomic, strong) NSArray<TrackItem*> *tracks;
+@property(nonatomic, strong, readonly) NSArray<TrackItem*> *tracks;
+
+-(void) addTrack:(TrackItem *) track;
 @end

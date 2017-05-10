@@ -13,6 +13,7 @@
 #import <JSONKit/JSONKit.h>
 
 #import "PlayItem.h"
+#import "TrackItem.h"
 
 @interface EIAMDataSource() {
     NSMutableArray<PlayItem *> *_items;
@@ -28,6 +29,7 @@
     }
     return self;
 }
+
 -(void) loadPage {
     [[PageUtil sharedInstance] loadPage:@"http://learningenglish.voanews.com/z/3619"
                              completion:^(NSString * _Nullable content, NSError * _Nullable error) {
@@ -85,11 +87,14 @@
             }
         }//end of for
         if([_items count] > 0) {
-            [self downloadPlayItem:nil];
+            [self loadPlayItemTracks:[_items firstObject]];
         }
     }
 }
 
+/*
+ <a class="btn link-showMore btn-anim" data-ajax="true" data-ajax-method="GET" data-ajax-mode="after" data-ajax-update="#items" data-ajax-url="/z/3619?p=2" href="/z/3619?p=2">Load more</a>
+*/
 -(void) loadPlayItemTracks:(PlayItem *) item {
     [[PageUtil sharedInstance] loadPage:[NSString stringWithFormat:@"http://learningenglish.voanews.com%@", item.videoURL]
                              completion:^(NSString * _Nullable content, NSError * _Nullable error) {
@@ -107,9 +112,27 @@
                                          NSString *dataType = [videoNode getAttributeNamed:@"data-type"];
                                          NSString *dataInfo = [videoNode getAttributeNamed:@"data-info"];
                                          
+                                         TrackItem *track = [[TrackItem alloc] init];
+                                         track.dataSrc = src;
+                                         track.dataType = dataType;
+                                         track.dataInfo = dataInfo;
+                                         [item addTrack:track];
+                                         
                                          NSString *dataSources = [videoNode getAttributeNamed:@"data-sources"];
-                                         //[dataSources objectf]
+                                         id json = [dataSources objectFromJSONString];
                                          //[JSONDecoder obj]
+                                         if(json) {
+                                             NSArray *tracks = json;
+                                             for(NSDictionary *dict in tracks) {
+                                                 TrackItem *track = [[TrackItem alloc] init];
+                                                 track.dataSrc = [dict objectForKey:@"Src"];
+                                                 track.dataType = [dict objectForKey:@"Type"];
+                                                 track.dataInfo = [dict objectForKey:@"DataInfo"];
+                                                 [item addTrack:track];
+                                             }
+                                             
+                                             NSLog(@"");
+                                         }
                                      }
                                  }
                                  

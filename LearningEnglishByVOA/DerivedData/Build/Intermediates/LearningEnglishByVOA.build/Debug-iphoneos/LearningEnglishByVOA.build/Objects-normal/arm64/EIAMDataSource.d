@@ -29,4 +29,5 @@ dependencies: \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Modules/module.modulemap \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Headers/JSONKit.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Headers/JSONKit-umbrella.h \
-  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PlayItem.h
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PlayItem.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/TrackItem.h

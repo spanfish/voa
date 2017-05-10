@@ -26,7 +26,7 @@
                   moduleName = "LearningEnglishByVOA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.m"
-                  timestampString = "516095163.384766"
+                  timestampString = "516097465.746701"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -41,7 +41,7 @@
                   moduleName = "LearningEnglishByVOA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.m"
-                  timestampString = "516095163.386379"
+                  timestampString = "516097465.748746"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -56,7 +56,7 @@
                   moduleName = "LearningEnglishByVOA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.m"
-                  timestampString = "516095163.388598"
+                  timestampString = "516097465.750048"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -71,7 +71,7 @@
                   moduleName = "LearningEnglishByVOA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.m"
-                  timestampString = "516095163.390826"
+                  timestampString = "516097465.75137"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -104,7 +104,7 @@
                   moduleName = "LearningEnglishByVOA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.m"
-                  timestampString = "516095163.394211"
+                  timestampString = "516097465.755729"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -119,7 +119,7 @@
                   moduleName = "LearningEnglishByVOA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.m"
-                  timestampString = "516095163.395907"
+                  timestampString = "516097465.757154"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -134,7 +134,7 @@
                   moduleName = "LearningEnglishByVOA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.m"
-                  timestampString = "516095163.397347"
+                  timestampString = "516097465.758497"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -149,7 +149,7 @@
                   moduleName = "LearningEnglishByVOA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.m"
-                  timestampString = "516095163.399378"
+                  timestampString = "516097465.759621"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -157,22 +157,6 @@
                   offsetFromSymbolStart = "64">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LearningEnglishByVOA/EIAMDataSource.m"
-            timestampString = "516095982.835535"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "-loadPlayItemTracks:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
