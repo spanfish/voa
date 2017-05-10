@@ -16,10 +16,28 @@
 		BC74DC1F1EC03C45009C4EF1 /* PlayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC74DC1E1EC03C45009C4EF1 /* PlayItem.m */; };
 		BC74DC221EC03CB7009C4EF1 /* TrackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC74DC211EC03CB7009C4EF1 /* TrackItem.m */; };
 		BC74DC241EC03DA1009C4EF1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC74DC231EC03DA1009C4EF1 /* MediaPlayer.framework */; };
+		BCBA557D1EC2EE7700E4A728 /* EIAMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA557C1EC2EE7700E4A728 /* EIAMCollectionViewController.m */; };
+		BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55801EC2EFE800E4A728 /* PageUtil.m */; };
+		BCBA55841EC2F2F600E4A728 /* EIAMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */; };
+		BCBA55861EC2F73D00E4A728 /* ObjectiveCHMTLParser.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
 		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
 		C35F9332C01B8B8FE69AC4F2 /* Pods_LearningEnglishByVOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BCBA55851EC2F73400E4A728 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BCBA55861EC2F73D00E4A728 /* ObjectiveCHMTLParser.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearningEnglishByVOA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +57,12 @@
 		BC74DC201EC03CB7009C4EF1 /* TrackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackItem.h; sourceTree = "<group>"; };
 		BC74DC211EC03CB7009C4EF1 /* TrackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackItem.m; sourceTree = "<group>"; };
 		BC74DC231EC03DA1009C4EF1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		BCBA557B1EC2EE7700E4A728 /* EIAMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIAMCollectionViewController.h; sourceTree = "<group>"; };
+		BCBA557C1EC2EE7700E4A728 /* EIAMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIAMCollectionViewController.m; sourceTree = "<group>"; };
+		BCBA557F1EC2EFE800E4A728 /* PageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageUtil.h; sourceTree = "<group>"; };
+		BCBA55801EC2EFE800E4A728 /* PageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageUtil.m; sourceTree = "<group>"; };
+		BCBA55821EC2F2F600E4A728 /* EIAMDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIAMDataSource.h; sourceTree = "<group>"; };
+		BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIAMDataSource.m; sourceTree = "<group>"; };
 		BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveCHMTLParser.framework; sourceTree = "<group>"; };
 		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningEnglishByVOA.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +113,8 @@
 		BC5E82E11EBF222A008F0BD7 /* LearningEnglishByVOA */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA557E1EC2EFA500E4A728 /* Common */,
+				BCBA557A1EC2EE5000E4A728 /* EnglishInAMinute */,
 				BC74DC1C1EC03C2B009C4EF1 /* Video */,
 				BC5E82E51EBF222A008F0BD7 /* AppDelegate.h */,
 				BC5E82E61EBF222A008F0BD7 /* AppDelegate.m */,
@@ -122,6 +148,26 @@
 			name = Video;
 			sourceTree = "<group>";
 		};
+		BCBA557A1EC2EE5000E4A728 /* EnglishInAMinute */ = {
+			isa = PBXGroup;
+			children = (
+				BCBA557B1EC2EE7700E4A728 /* EIAMCollectionViewController.h */,
+				BCBA557C1EC2EE7700E4A728 /* EIAMCollectionViewController.m */,
+				BCBA55821EC2F2F600E4A728 /* EIAMDataSource.h */,
+				BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */,
+			);
+			name = EnglishInAMinute;
+			sourceTree = "<group>";
+		};
+		BCBA557E1EC2EFA500E4A728 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BCBA557F1EC2EFE800E4A728 /* PageUtil.h */,
+				BCBA55801EC2EFE800E4A728 /* PageUtil.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		D9B46EAF30DB5DE4CCD328BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +192,7 @@
 				BC5E82DD1EBF222A008F0BD7 /* Resources */,
 				6E66CED58A7D8569473C4699 /* [CP] Embed Pods Frameworks */,
 				E91CA833F143403C9D255EA7 /* [CP] Copy Pods Resources */,
+				BCBA55851EC2F73400E4A728 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,8 +305,11 @@
 			files = (
 				BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */,
 				BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */,
+				BCBA55841EC2F2F600E4A728 /* EIAMDataSource.m in Sources */,
 				BC74DC1F1EC03C45009C4EF1 /* PlayItem.m in Sources */,
 				BC74DC221EC03CB7009C4EF1 /* TrackItem.m in Sources */,
+				BCBA557D1EC2EE7700E4A728 /* EIAMCollectionViewController.m in Sources */,
+				BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */,
 				BC5E82E41EBF222A008F0BD7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

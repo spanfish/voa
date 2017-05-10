@@ -35,7 +35,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WuGULLFu7RLC+ZOzAiQtD9Ro+PU=
+			VZwkXwFDseUIoOsVgGtEXk2PJjg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -53,38 +53,38 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ucNdsaYPuH/MrucMJHxLHohZK94=
+			mtzFLRZTTI2usnfYepGcZQascUI=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>Frameworks/AFNetworking.framework/AFNetworking</key>
 		<data>
-		jt4I2HB01EJ173mPguxrNoRelz8=
+		uePbIRPBKKrwSor9RT5kAgPxdI0=
 		</data>
 		<key>Frameworks/AFNetworking.framework/Info.plist</key>
 		<data>
-		0AoviNsHz1n8gQ4LD3QnyOynLFs=
+		yxZ5M1NVGCdQW/JA4+QaXMDmvIY=
 		</data>
 		<key>Frameworks/AFNetworking.framework/_CodeSignature/CodeResources</key>
 		<data>
-		gyMPIuC5EoZvZ15pm5QEKXpvpTc=
+		QDQlFXS260HehfOVOxKDZGPNi90=
 		</data>
 		<key>Frameworks/MBProgressHUD.framework/Info.plist</key>
 		<data>
-		i9qLFUf1Jpnew4pI7OrYY/QBVmI=
+		qbFGfYCcFKTffysTcJSEEzG/40o=
 		</data>
 		<key>Frameworks/MBProgressHUD.framework/MBProgressHUD</key>
 		<data>
-		9phRAKaWo3EH8iCZZnbNUAXRHpc=
+		+bhhv8w4tYT3/Js0sP0wNi7Q8Gc=
 		</data>
 		<key>Frameworks/MBProgressHUD.framework/_CodeSignature/CodeResources</key>
 		<data>
-		ywOE96DzJm6lM5Fd58Q8qx3WdDs=
+		sSM0sAFu1UiN4N9J7ZUqTjJWVoU=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		i+cBUtlcRjpN5R8WSVRE2PTMesY=
+		dDP9N+VyMQ+P0qjvRUIAPwRgqrw=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -136,11 +136,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WuGULLFu7RLC+ZOzAiQtD9Ro+PU=
+			VZwkXwFDseUIoOsVgGtEXk2PJjg=
 			</data>
 			<key>hash2</key>
 			<data>
-			JUtKL9AGawQTVRHg236T5WIqSpCQeqy5WnAPXq3vFfI=
+			3T2W5zzrFjWQ6f5A3xH2pl1xrlpShqgaAnvyuezjCR8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -162,11 +162,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ucNdsaYPuH/MrucMJHxLHohZK94=
+			mtzFLRZTTI2usnfYepGcZQascUI=
 			</data>
 			<key>hash2</key>
 			<data>
-			lBkHVQ5g82CYJgwRc6KOs7Up7QdYW/a3tdkuSC836Ms=
+			Z3nqKE9ajjduP726FyKo+99hC+YUXgDuf5UMasfL2vc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -175,66 +175,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jt4I2HB01EJ173mPguxrNoRelz8=
+			uePbIRPBKKrwSor9RT5kAgPxdI0=
 			</data>
 			<key>hash2</key>
 			<data>
-			2ChzrsHT1uW5/D888eC7NW9gp6rqqGOshdvy7oC8BNM=
+			O9OSvogjktuLYJlXlcWLA5cq9vGy5qX3GJXycwNqEus=
 			</data>
 		</dict>
 		<key>Frameworks/AFNetworking.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0AoviNsHz1n8gQ4LD3QnyOynLFs=
+			yxZ5M1NVGCdQW/JA4+QaXMDmvIY=
 			</data>
 			<key>hash2</key>
 			<data>
-			U7KrirQU553xy5WLad2cvv7cK9t080DLtHo2RL8HZSU=
+			Mv2HG4XQfGWa4o+aQfmBkwhID6Zzm4DLfztFgTjaieU=
 			</data>
 		</dict>
 		<key>Frameworks/AFNetworking.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gyMPIuC5EoZvZ15pm5QEKXpvpTc=
+			QDQlFXS260HehfOVOxKDZGPNi90=
 			</data>
 			<key>hash2</key>
 			<data>
-			5NFPrQz7QgzRC3l/eO/ej6rsfE7BSG5oJxP/+hmVw+4=
+			4e6tjYgKNSiwjVZ6WqFUFOSqzLGjP1R6vfNPHj8y86I=
 			</data>
 		</dict>
 		<key>Frameworks/MBProgressHUD.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			i9qLFUf1Jpnew4pI7OrYY/QBVmI=
+			qbFGfYCcFKTffysTcJSEEzG/40o=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZNk5kWq3OehMcmazl4oWzuw11bb5eQC2rvC9yGz4DO0=
+			qxfYY1qIUHtUYRzmbRtkAZ7as162dKmgkDt3uX9uVTk=
 			</data>
 		</dict>
 		<key>Frameworks/MBProgressHUD.framework/MBProgressHUD</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9phRAKaWo3EH8iCZZnbNUAXRHpc=
+			+bhhv8w4tYT3/Js0sP0wNi7Q8Gc=
 			</data>
 			<key>hash2</key>
 			<data>
-			SZDyhaLjorsE9oc1jRNgpz3fyXYvdqiiXHIRaVePI3w=
+			f/l8QuRzjZUlHtm5tVlnqOPqTvS0WEvcntorJx6AC+E=
 			</data>
 		</dict>
 		<key>Frameworks/MBProgressHUD.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ywOE96DzJm6lM5Fd58Q8qx3WdDs=
+			sSM0sAFu1UiN4N9J7ZUqTjJWVoU=
 			</data>
 			<key>hash2</key>
 			<data>
-			wvx/hHP448MouRGgyKiZqf71+iv06SKpHjexZ/dhZJk=
+			7AJV9wWXpQlvAAKrlnkui11jbm8ODzV41b3YSgNGEqM=
 			</data>
 		</dict>
 	</dict>

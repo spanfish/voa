@@ -12,6 +12,8 @@
 @interface PlayItem : NSObject
 
 @property(nonatomic, strong) NSString *videoTitle;
+@property(nonatomic, strong) NSString *thumbURL;
+@property(nonatomic, strong) NSString *videoURL;
 @property(nonatomic, strong) NSString *publishDate;
 @property(nonatomic, strong) NSArray<TrackItem*> *tracks;
 @end
