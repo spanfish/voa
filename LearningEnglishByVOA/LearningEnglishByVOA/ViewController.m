@@ -8,13 +8,12 @@
 
 #import "ViewController.h"
 #import <ObjectiveCHMTLParser/Objective-C-HMTL-Parser.h>
-#import "EIAMDataSource.h"
 
 //http://learningenglish.voanews.com/z/3619
 //English in a Minute: Wires Crossed
 
 @interface ViewController () {
-    EIAMDataSource *dataSource;
+    
 }
 @end
 
@@ -24,8 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    dataSource = [[EIAMDataSource alloc] init];
-    [dataSource loadPage];
+    
 }
 
 

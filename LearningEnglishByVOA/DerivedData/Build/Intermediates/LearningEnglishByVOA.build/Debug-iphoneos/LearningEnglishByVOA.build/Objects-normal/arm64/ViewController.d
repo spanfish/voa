@@ -25,5 +25,4 @@ dependencies: \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/include/libxml2/libxml/SAX2.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/include/libxml2/libxml/xmlmemory.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/include/libxml2/libxml/threads.h \
-  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/ObjectiveCHMTLParser.framework/Headers/HTMLParser.h \
-  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/EIAMDataSource.h
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/ObjectiveCHMTLParser.framework/Headers/HTMLParser.h

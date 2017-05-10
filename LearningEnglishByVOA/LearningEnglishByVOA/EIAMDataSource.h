@@ -10,12 +10,12 @@
 
 @protocol EIAMDataSourceDelegate<NSObject>
 
--(void) pageLoadedWithError:(NSError * _Nullable) error;
+-(void) pageLoaded:(BOOL) hasMore withError:(NSError * _Nullable) error;
 @end
 
 @interface EIAMDataSource : NSObject
 
 @property(nonatomic, weak) id<EIAMDataSourceDelegate> delegate;
-
+@property(nonatomic, strong, readonly) NSArray *videoArray;
 -(void) loadPage;
 @end

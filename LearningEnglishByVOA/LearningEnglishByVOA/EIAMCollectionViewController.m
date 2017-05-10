@@ -7,9 +7,13 @@
 //
 
 #import "EIAMCollectionViewController.h"
+#import "EIAMDataSource.h"
+#import "EIAMCollectionViewCell.h"
+#import "PlayItem.h"
 
-@interface EIAMCollectionViewController ()
-
+@interface EIAMCollectionViewController () {
+    EIAMDataSource *dataSource;
+}
 @end
 
 @implementation EIAMCollectionViewController
@@ -23,8 +27,10 @@ static NSString * const reuseIdentifier = @"Cell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
+    //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    dataSource = [[EIAMDataSource alloc] init];
+    dataSource.delegate = self;
+    [dataSource loadPage];
     // Do any additional setup after loading the view.
 }
 
@@ -33,6 +39,9 @@ static NSString * const reuseIdentifier = @"Cell";
     // Dispose of any resources that can be recreated.
 }
 
+-(void) pageLoaded:(BOOL) hasMore withError:(NSError * _Nullable) error {
+    [self.collectionView reloadData];
+}
 /*
 #pragma mark - Navigation
 
@@ -47,20 +56,21 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of items
-    return 0;
+    return [dataSource.videoArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
+    EIAMCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    PlayItem *item = [dataSource.videoArray objectAtIndex:indexPath.row];
     // Configure the cell
-    
+    cell.titleLabel.text = item.videoTitle;
+    cell.dateLabel.text = item.publishDate;
     return cell;
 }
 

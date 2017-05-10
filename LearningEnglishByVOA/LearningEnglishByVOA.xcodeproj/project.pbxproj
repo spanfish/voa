@@ -20,6 +20,7 @@
 		BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55801EC2EFE800E4A728 /* PageUtil.m */; };
 		BCBA55841EC2F2F600E4A728 /* EIAMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */; };
 		BCBA55861EC2F73D00E4A728 /* ObjectiveCHMTLParser.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BCBA55891EC30CD400E4A728 /* EIAMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55881EC30CD400E4A728 /* EIAMCollectionViewCell.m */; };
 		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
 		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
 		C35F9332C01B8B8FE69AC4F2 /* Pods_LearningEnglishByVOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */; };
@@ -63,6 +64,8 @@
 		BCBA55801EC2EFE800E4A728 /* PageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageUtil.m; sourceTree = "<group>"; };
 		BCBA55821EC2F2F600E4A728 /* EIAMDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIAMDataSource.h; sourceTree = "<group>"; };
 		BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIAMDataSource.m; sourceTree = "<group>"; };
+		BCBA55871EC30CD400E4A728 /* EIAMCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIAMCollectionViewCell.h; sourceTree = "<group>"; };
+		BCBA55881EC30CD400E4A728 /* EIAMCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIAMCollectionViewCell.m; sourceTree = "<group>"; };
 		BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveCHMTLParser.framework; sourceTree = "<group>"; };
 		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningEnglishByVOA.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				BCBA557C1EC2EE7700E4A728 /* EIAMCollectionViewController.m */,
 				BCBA55821EC2F2F600E4A728 /* EIAMDataSource.h */,
 				BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */,
+				BCBA55871EC30CD400E4A728 /* EIAMCollectionViewCell.h */,
+				BCBA55881EC30CD400E4A728 /* EIAMCollectionViewCell.m */,
 			);
 			name = EnglishInAMinute;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */,
+				BCBA55891EC30CD400E4A728 /* EIAMCollectionViewCell.m in Sources */,
 				BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */,
 				BCBA55841EC2F2F600E4A728 /* EIAMDataSource.m in Sources */,
 				BC74DC1F1EC03C45009C4EF1 /* PlayItem.m in Sources */,

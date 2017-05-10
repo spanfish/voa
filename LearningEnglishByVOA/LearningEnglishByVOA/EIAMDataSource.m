@@ -30,24 +30,29 @@
     return self;
 }
 
+-(NSArray *) videoArray {
+    return _items;
+}
+
 -(void) loadPage {
     [[PageUtil sharedInstance] loadPage:@"http://learningenglish.voanews.com/z/3619"
                              completion:^(NSString * _Nullable content, NSError * _Nullable error) {
+                                 BOOL hasMore = NO;
                                  if(content != nil) {
-                                     [self parsePage:content];
+                                     hasMore = [self parsePage:content];
                                  }
-                                 if([self.delegate respondsToSelector:@selector(pageLoadedWithError:)]) {
-                                     [self.delegate pageLoadedWithError:error];
+                                 if([self.delegate respondsToSelector:@selector(pageLoaded:withError:)]) {
+                                     [self.delegate pageLoaded:hasMore withError:error];
                                  }
                              }];
 }
 
--(void) parsePage:(NSString *) pageContent {
+-(BOOL) parsePage:(NSString *) pageContent {
     NSError *error = nil;
     HTMLParser *parser = [[HTMLParser alloc] initWithString:pageContent error:&error];
     if(error) {
         //
-        return;
+        return NO;
     }
     HTMLNode *body = [parser body];
     HTMLNode *itemsNode = [body findChildWithAttribute:@"id" matchingName:@"items" allowPartial:NO];
@@ -90,6 +95,9 @@
             [self loadPlayItemTracks:[_items firstObject]];
         }
     }
+    
+    HTMLNode *moreNode = [body findChildWithAttribute:@"class" matchingName:@"link-showMore" allowPartial:YES];
+    return moreNode != nil;
 }
 
 /*
