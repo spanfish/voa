@@ -136,4 +136,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 */
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return YES;
+}
 @end

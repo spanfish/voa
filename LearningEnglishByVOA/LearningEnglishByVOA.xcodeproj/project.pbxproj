@@ -25,6 +25,10 @@
 		BCBA55901EC4000800E4A728 /* more-button.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBA558D1EC4000800E4A728 /* more-button.png */; };
 		BCBA55911EC4000800E4A728 /* more-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBA558E1EC4000800E4A728 /* more-button@2x.png */; };
 		BCBA55921EC4000800E4A728 /* more-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBA558F1EC4000800E4A728 /* more-button@3x.png */; };
+		BCBA55951EC4030100E4A728 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55941EC4030100E4A728 /* MenuTableViewController.m */; };
+		BCBA55971EC4041F00E4A728 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBA55961EC4041F00E4A728 /* AVKit.framework */; };
+		BCBA55991EC404A000E4A728 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBA55981EC404A000E4A728 /* AVFoundation.framework */; };
+		BCBA559C1EC4057E00E4A728 /* SlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA559B1EC4057E00E4A728 /* SlideViewController.m */; };
 		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
 		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
 		BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC318EF1EC349EB0035DA2F /* PathUtil.m */; };
@@ -76,6 +80,12 @@
 		BCBA558D1EC4000800E4A728 /* more-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-button.png"; sourceTree = "<group>"; };
 		BCBA558E1EC4000800E4A728 /* more-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-button@2x.png"; sourceTree = "<group>"; };
 		BCBA558F1EC4000800E4A728 /* more-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-button@3x.png"; sourceTree = "<group>"; };
+		BCBA55931EC4030100E4A728 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
+		BCBA55941EC4030100E4A728 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
+		BCBA55961EC4041F00E4A728 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		BCBA55981EC404A000E4A728 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BCBA559A1EC4057E00E4A728 /* SlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideViewController.h; sourceTree = "<group>"; };
+		BCBA559B1EC4057E00E4A728 /* SlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideViewController.m; sourceTree = "<group>"; };
 		BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveCHMTLParser.framework; sourceTree = "<group>"; };
 		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		BCC318EE1EC349EB0035DA2F /* PathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtil.h; sourceTree = "<group>"; };
@@ -88,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBA55991EC404A000E4A728 /* AVFoundation.framework in Frameworks */,
+				BCBA55971EC4041F00E4A728 /* AVKit.framework in Frameworks */,
 				BC74DC241EC03DA1009C4EF1 /* MediaPlayer.framework in Frameworks */,
 				BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */,
 				BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */,
@@ -135,6 +147,8 @@
 				BC5E82E61EBF222A008F0BD7 /* AppDelegate.m */,
 				BC5E82E81EBF222A008F0BD7 /* ViewController.h */,
 				BC5E82E91EBF222A008F0BD7 /* ViewController.m */,
+				BCBA55931EC4030100E4A728 /* MenuTableViewController.h */,
+				BCBA55941EC4030100E4A728 /* MenuTableViewController.m */,
 				BC5E82EB1EBF222A008F0BD7 /* Main.storyboard */,
 				BC5E82EE1EBF222A008F0BD7 /* Assets.xcassets */,
 				BC5E82F01EBF222A008F0BD7 /* LaunchScreen.storyboard */,
@@ -188,6 +202,8 @@
 				BCC318EE1EC349EB0035DA2F /* PathUtil.h */,
 				BCC318EF1EC349EB0035DA2F /* PathUtil.m */,
 				BCBA558A1EC3ED2F00E4A728 /* Common.h */,
+				BCBA559A1EC4057E00E4A728 /* SlideViewController.h */,
+				BCBA559B1EC4057E00E4A728 /* SlideViewController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -195,6 +211,8 @@
 		D9B46EAF30DB5DE4CCD328BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA55981EC404A000E4A728 /* AVFoundation.framework */,
+				BCBA55961EC4041F00E4A728 /* AVKit.framework */,
 				BC74DC231EC03DA1009C4EF1 /* MediaPlayer.framework */,
 				BCC243021EBF47E400B947BE /* libxml2.tbd */,
 				BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */,
@@ -339,8 +357,10 @@
 				BC74DC221EC03CB7009C4EF1 /* TrackItem.m in Sources */,
 				BCBA557D1EC2EE7700E4A728 /* EIAMCollectionViewController.m in Sources */,
 				BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */,
+				BCBA559C1EC4057E00E4A728 /* SlideViewController.m in Sources */,
 				BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */,
 				BC5E82E41EBF222A008F0BD7 /* main.m in Sources */,
+				BCBA55951EC4030100E4A728 /* MenuTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

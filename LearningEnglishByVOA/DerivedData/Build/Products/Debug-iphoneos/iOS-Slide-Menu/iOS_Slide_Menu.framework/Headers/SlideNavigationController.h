@@ -75,4 +75,5 @@ extern NSString  *const SlideNavigationControllerDidReveal;
 - (void)toggleRightMenu;
 - (BOOL)isMenuOpen;
 
+- (void)setup;
 @end

@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "PathUtil.h"
+#import <iOS_Slide_Menu/SlideNavigationController.h>
+#import "MenuTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +28,9 @@
                                 attributes:nil
                                      error:nil];
     }
+    
+    MenuTableViewController *leftMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Menu"];
+    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     return YES;
 }
 
