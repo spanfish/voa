@@ -8,7 +8,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0bUCnmVMdGLdf9g8bmtCNgrTRtU=
+			290jV+q11801YxKZc0lvZSFQ+10=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -26,7 +26,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6JymYnk/CrBA/uouLCPpf1L0zCY=
+			TtDFW+KCMAILvXu0RdtnS6WvaRE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -35,7 +35,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			OCzVvY/pETcY1vrY8SwDTEwfowE=
+			Z00NHiIX7WtnFeLP5lv0bjtSqWU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -44,7 +44,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6usbY7gKYBpxMD4pt9OX5DzOtdY=
+			frIuGpft0eXinEEEFVOX5j4fFgA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -62,7 +62,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zKciapTF5t/EO25UHJiS008m4r8=
+			OlCoXk9y36fZEoM6rg+K3ecLB6o=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -71,14 +71,14 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YYVv2qKKTbzGBRhZW2xTOIoSK2s=
+			+o7fJz8cmxtOM0e07g+ch0TY22o=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>Frameworks/AFNetworking.framework/AFNetworking</key>
 		<data>
-		/sgVcuAixswK7vAyz13wGCbVPIY=
+		htgK2XUrjXyAZ+xXP6UDUDqJLhg=
 		</data>
 		<key>Frameworks/AFNetworking.framework/Info.plist</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>Frameworks/JSONKit.framework/JSONKit</key>
 		<data>
-		Rc6E3D3PnrBxynLHXvp1Nhu+kkY=
+		72itCHcPzwJ1tfvIsN+kXpJlEs4=
 		</data>
 		<key>Frameworks/JSONKit.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -106,7 +106,7 @@
 		</data>
 		<key>Frameworks/MBProgressHUD.framework/MBProgressHUD</key>
 		<data>
-		h09wzb9uaR6yhPRKZfnI6VuVbVo=
+		709e6SQ4CYAfCjQZstq/IZrYZH0=
 		</data>
 		<key>Frameworks/MBProgressHUD.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -124,9 +124,29 @@
 		<data>
 		FwL9R6hPWoJRpeCHowTGNYNhOnk=
 		</data>
+		<key>Frameworks/iOS_Slide_Menu.framework/Info.plist</key>
+		<data>
+		y3j+YOOeEJnfCxru0KXqrYQ7670=
+		</data>
+		<key>Frameworks/iOS_Slide_Menu.framework/_CodeSignature/CodeResources</key>
+		<data>
+		xlu9v3UEr/0v1218c1djBzfKd6w=
+		</data>
+		<key>Frameworks/iOS_Slide_Menu.framework/iOS_Slide_Menu</key>
+		<data>
+		YoNjSIHFFVpSQbOfqiJKGrgQS8U=
+		</data>
+		<key>Frameworks/iOS_Slide_Menu.framework/menu-button.png</key>
+		<data>
+		HDC4px3wGToOEYALk69hN6k2k3Y=
+		</data>
+		<key>Frameworks/iOS_Slide_Menu.framework/menu-button@2x.png</key>
+		<data>
+		1VRYBXiucrGq60Ga0a3675yzs1w=
+		</data>
 		<key>Info.plist</key>
 		<data>
-		NpnU92gUwj/I1ZfxgjJSOS1Y3sk=
+		YDbIVwIkIHllGWVA09fL+Z8N5GA=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -136,6 +156,22 @@
 		<data>
 		XDsS9ZixUoWtBYx3eFlu4zcU5V4=
 		</data>
+		<key>more-button.png</key>
+		<data>
+		QCPUC5mQPruj91WX9tUbxqVThrQ=
+		</data>
+		<key>more-button@2x.png</key>
+		<data>
+		TR9D8uc36jBPEsuvS6w5IOY1kLw=
+		</data>
+		<key>more-button@3x.png</key>
+		<data>
+		S1LUUIFor0DiZnVV8G9pT2Bcqpg=
+		</data>
+		<key>more-with-three-dots-button.svg</key>
+		<data>
+		HWK+XSUBx7X0x0i66a/EcrVuOUk=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -143,11 +179,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0bUCnmVMdGLdf9g8bmtCNgrTRtU=
+			290jV+q11801YxKZc0lvZSFQ+10=
 			</data>
 			<key>hash2</key>
 			<data>
-			wuxHCtpQnhb82T4Euhs0Vs2uYMNOI719Um8N2m8FsW0=
+			DOuL7e03/cT1lAA9zCI6c6Wo2c0wO1rAzgyMBFaPWgU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -169,11 +205,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6JymYnk/CrBA/uouLCPpf1L0zCY=
+			TtDFW+KCMAILvXu0RdtnS6WvaRE=
 			</data>
 			<key>hash2</key>
 			<data>
-			mTUJdd0reljHNH2cGP2R5kwae9H+GL14/8vTZhwTet8=
+			gAjKfJquCSjNicA90SlkeyapsG9eoATD0Yvz0UH7npM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -182,11 +218,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			OCzVvY/pETcY1vrY8SwDTEwfowE=
+			Z00NHiIX7WtnFeLP5lv0bjtSqWU=
 			</data>
 			<key>hash2</key>
 			<data>
-			H6P4NqI00Aspjr94GZU6SGw/lY5o/OzVC+ahrrWY/5U=
+			moNoe8v0tFru45nuuBdx37Ek/tA13oCcMBg1mfvoKNY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -195,11 +231,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6usbY7gKYBpxMD4pt9OX5DzOtdY=
+			frIuGpft0eXinEEEFVOX5j4fFgA=
 			</data>
 			<key>hash2</key>
 			<data>
-			B8LsmXi0XaRr/oMQjKAI97xVVXx2vua3NNyx15T537E=
+			Op6Y68T0xg+zxB55ztNRutxTmVMsrQA0EXIyDJLdnzc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -221,11 +257,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zKciapTF5t/EO25UHJiS008m4r8=
+			OlCoXk9y36fZEoM6rg+K3ecLB6o=
 			</data>
 			<key>hash2</key>
 			<data>
-			VwvhVaHBubBKlSq4Jyae/4cPSkEPFMU1GdDy7uGI74o=
+			inVjWhdrx9Bz0UGnSr/qmwZEWEeoBBjWyBM2TAPMA50=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -234,11 +270,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YYVv2qKKTbzGBRhZW2xTOIoSK2s=
+			+o7fJz8cmxtOM0e07g+ch0TY22o=
 			</data>
 			<key>hash2</key>
 			<data>
-			ymhMe7omFI8ZzvG81E47PwLteFOr4OVVpWAwRmkiRNc=
+			j9dxsskcPQwzGhPsHk8fEPG8IF0Tl+yM3NnFsLFbfAM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -247,11 +283,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/sgVcuAixswK7vAyz13wGCbVPIY=
+			htgK2XUrjXyAZ+xXP6UDUDqJLhg=
 			</data>
 			<key>hash2</key>
 			<data>
-			4AUXqOMNEkKGGfmM3wY1hkQmvYnwBxTxnYBeqkyZysU=
+			WgmH+faO5D3uiKh+BjOpqUYEv8nVpqHMLbHmygZUfso=
 			</data>
 		</dict>
 		<key>Frameworks/AFNetworking.framework/Info.plist</key>
@@ -291,11 +327,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Rc6E3D3PnrBxynLHXvp1Nhu+kkY=
+			72itCHcPzwJ1tfvIsN+kXpJlEs4=
 			</data>
 			<key>hash2</key>
 			<data>
-			zzgh60xKxocqP3F8YLLtQyv1tVY+lZMX/tnGbNyqIDQ=
+			yxOXGNpD0O6Pda/tlXnwjzM97T/iN9EamuLbfBTEP1U=
 			</data>
 		</dict>
 		<key>Frameworks/JSONKit.framework/_CodeSignature/CodeResources</key>
@@ -324,11 +360,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			h09wzb9uaR6yhPRKZfnI6VuVbVo=
+			709e6SQ4CYAfCjQZstq/IZrYZH0=
 			</data>
 			<key>hash2</key>
 			<data>
-			5BbPwS51yQKJjmVN3/B1psLEY+hzemjn1CWl9GxLN/I=
+			y/pfRHNEP56owEHs84/iUJ3V2fFqxTxA9WNor1Af1xc=
 			</data>
 		</dict>
 		<key>Frameworks/MBProgressHUD.framework/_CodeSignature/CodeResources</key>
@@ -375,6 +411,61 @@
 			3oKJV91QcFG1wEqJJ+C1T5t4G9YMqAIqtA+8gB5LXkY=
 			</data>
 		</dict>
+		<key>Frameworks/iOS_Slide_Menu.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			y3j+YOOeEJnfCxru0KXqrYQ7670=
+			</data>
+			<key>hash2</key>
+			<data>
+			sBw+KphfjWV2ldbOmPHM+JjJ5LTJRLy2hMwWTevGYPs=
+			</data>
+		</dict>
+		<key>Frameworks/iOS_Slide_Menu.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xlu9v3UEr/0v1218c1djBzfKd6w=
+			</data>
+			<key>hash2</key>
+			<data>
+			98QeHjnMXXJBhdei1qXHP71HhycSL9u1m1mCx0vffHk=
+			</data>
+		</dict>
+		<key>Frameworks/iOS_Slide_Menu.framework/iOS_Slide_Menu</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YoNjSIHFFVpSQbOfqiJKGrgQS8U=
+			</data>
+			<key>hash2</key>
+			<data>
+			W99YWZX7YxcAaaPbgiXzbA60Iyf/6uJe3gTtrmnUAyU=
+			</data>
+		</dict>
+		<key>Frameworks/iOS_Slide_Menu.framework/menu-button.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HDC4px3wGToOEYALk69hN6k2k3Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			loBJ/dGzTOrsFRzASnvIKLMBZGC4FxhVW/lzqLC7tlA=
+			</data>
+		</dict>
+		<key>Frameworks/iOS_Slide_Menu.framework/menu-button@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1VRYBXiucrGq60Ga0a3675yzs1w=
+			</data>
+			<key>hash2</key>
+			<data>
+			nwwe+D9QbwmXkRT5xW3RgGddk+ktcCj48PBBXegujGM=
+			</data>
+		</dict>
 		<key>embedded.mobileprovision</key>
 		<dict>
 			<key>hash</key>
@@ -384,6 +475,50 @@
 			<key>hash2</key>
 			<data>
 			/qicQCpNjNjg/lGGZdW2JNOzHizyqWTZ5ndhic8A60E=
+			</data>
+		</dict>
+		<key>more-button.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QCPUC5mQPruj91WX9tUbxqVThrQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			kfg9PN/dP4p6P50bVun/wU5/mHaasF/URVZLchLPK5w=
+			</data>
+		</dict>
+		<key>more-button@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TR9D8uc36jBPEsuvS6w5IOY1kLw=
+			</data>
+			<key>hash2</key>
+			<data>
+			nGvTIrelHgK29llvjNQC+fN+K3+Vqq+c++shRChMaEM=
+			</data>
+		</dict>
+		<key>more-button@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			S1LUUIFor0DiZnVV8G9pT2Bcqpg=
+			</data>
+			<key>hash2</key>
+			<data>
+			dYKEM2Dh26LQQVCRxrPHUQZRWpT+FVb2aBajucTlAQ8=
+			</data>
+		</dict>
+		<key>more-with-three-dots-button.svg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HWK+XSUBx7X0x0i66a/EcrVuOUk=
+			</data>
+			<key>hash2</key>
+			<data>
+			tGfGLEjiCJuZYqhvQSN8J60ycoAWoDHXW4xAGWpoZpg=
 			</data>
 		</dict>
 	</dict>

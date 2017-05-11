@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "EIAMDataSource.h"
 //English In A Minute
-@interface EIAMCollectionViewController : UICollectionViewController
+@interface EIAMCollectionViewController : UICollectionViewController<EIAMDataSourceDelegate>
 
 @end

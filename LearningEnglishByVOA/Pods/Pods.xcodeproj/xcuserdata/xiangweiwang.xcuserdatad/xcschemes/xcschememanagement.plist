@@ -24,15 +24,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>iOS-Slide-Menu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1B26EA1398B54E6F9FA8FD3DA24D05EF</key>
+		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
+		<key>1FC05A97B62F5782F1899780B94C5353</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>33ED8DF1063B1A8855365C68EFCBCF35</key>
 		<dict>
 			<key>primary</key>
 			<true/>

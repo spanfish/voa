@@ -7,7 +7,7 @@
 //
 
 #import "EIAMCollectionViewController.h"
-#import "EIAMDataSource.h"
+
 #import "EIAMCollectionViewCell.h"
 #import "PlayItem.h"
 
@@ -39,8 +39,21 @@ static NSString * const reuseIdentifier = @"Cell";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark <EIAMDataSourceDelegate>
 -(void) pageLoaded:(BOOL) hasMore withError:(NSError * _Nullable) error {
     [self.collectionView reloadData];
+}
+
+-(void) thumbnailDidDownloadForPlayItem:(PlayItem *) item atIndexPath:(NSIndexPath *) indexPath withError:(NSError *) error {
+    //[self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    EIAMCollectionViewCell *cell = (EIAMCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    //if(item == [dataSource.videoArray objectAtIndex:indexPath.row]) {
+    NSString *thumbPath = [PathUtil englishInAMinutePath];
+    NSString *fileName = [thumbPath stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
+    if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
+        cell.thumbImageView.image = [UIImage imageWithContentsOfFile:fileName];
+    }
+    //}
 }
 /*
 #pragma mark - Navigation
@@ -55,31 +68,42 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return [dataSource.videoArray count];
+    return [dataSource.videoArray count] + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     EIAMCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    if(indexPath.row == [dataSource.videoArray count]) {
+        cell.titleLabel.text = @"";
+        cell.dateLabel.text = @"";
+        cell.thumbImageView.image = [UIImage imageNamed:@"more-button"];
+        return cell;
+    }
+    
     PlayItem *item = [dataSource.videoArray objectAtIndex:indexPath.row];
     // Configure the cell
     cell.titleLabel.text = item.videoTitle;
     cell.dateLabel.text = item.publishDate;
     
     NSLog(@"thumbURL:%@", item.thumbURL);
-    [self loadThumbnail:item.thumbURL forIndexPath:indexPath];
-    
+    NSString *thumbPath = [PathUtil englishInAMinutePath];
+    NSString *fileName = [thumbPath stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
+    if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
+        cell.thumbImageView.image = [UIImage imageWithContentsOfFile:fileName];
+    } else {
+        [self loadThumbnail:item forIndexPath:indexPath];
+    }
     return cell;
 }
 
--(void) loadThumbnail:(NSString *) thumbURL forIndexPath:(NSIndexPath *) indexPath {
-    
+-(void) loadThumbnail:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath {
+    [dataSource downloadPlayItemThumb:item forIndexPath:indexPath];
 }
 #pragma mark <UICollectionViewDelegate>
 

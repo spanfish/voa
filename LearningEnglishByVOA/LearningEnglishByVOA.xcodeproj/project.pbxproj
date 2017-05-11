@@ -21,6 +21,10 @@
 		BCBA55841EC2F2F600E4A728 /* EIAMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */; };
 		BCBA55861EC2F73D00E4A728 /* ObjectiveCHMTLParser.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCBA55891EC30CD400E4A728 /* EIAMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55881EC30CD400E4A728 /* EIAMCollectionViewCell.m */; };
+		BCBA558C1EC3FF5700E4A728 /* more-with-three-dots-button.svg in Resources */ = {isa = PBXBuildFile; fileRef = BCBA558B1EC3FF5700E4A728 /* more-with-three-dots-button.svg */; };
+		BCBA55901EC4000800E4A728 /* more-button.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBA558D1EC4000800E4A728 /* more-button.png */; };
+		BCBA55911EC4000800E4A728 /* more-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBA558E1EC4000800E4A728 /* more-button@2x.png */; };
+		BCBA55921EC4000800E4A728 /* more-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBA558F1EC4000800E4A728 /* more-button@3x.png */; };
 		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
 		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
 		BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC318EF1EC349EB0035DA2F /* PathUtil.m */; };
@@ -67,6 +71,11 @@
 		BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIAMDataSource.m; sourceTree = "<group>"; };
 		BCBA55871EC30CD400E4A728 /* EIAMCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIAMCollectionViewCell.h; sourceTree = "<group>"; };
 		BCBA55881EC30CD400E4A728 /* EIAMCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIAMCollectionViewCell.m; sourceTree = "<group>"; };
+		BCBA558A1EC3ED2F00E4A728 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		BCBA558B1EC3FF5700E4A728 /* more-with-three-dots-button.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "more-with-three-dots-button.svg"; sourceTree = "<group>"; };
+		BCBA558D1EC4000800E4A728 /* more-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-button.png"; sourceTree = "<group>"; };
+		BCBA558E1EC4000800E4A728 /* more-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-button@2x.png"; sourceTree = "<group>"; };
+		BCBA558F1EC4000800E4A728 /* more-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-button@3x.png"; sourceTree = "<group>"; };
 		BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveCHMTLParser.framework; sourceTree = "<group>"; };
 		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		BCC318EE1EC349EB0035DA2F /* PathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtil.h; sourceTree = "<group>"; };
@@ -138,6 +147,10 @@
 		BC5E82E21EBF222A008F0BD7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA558B1EC3FF5700E4A728 /* more-with-three-dots-button.svg */,
+				BCBA558D1EC4000800E4A728 /* more-button.png */,
+				BCBA558E1EC4000800E4A728 /* more-button@2x.png */,
+				BCBA558F1EC4000800E4A728 /* more-button@3x.png */,
 				BC5E82E31EBF222A008F0BD7 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -174,6 +187,7 @@
 				BCBA55801EC2EFE800E4A728 /* PageUtil.m */,
 				BCC318EE1EC349EB0035DA2F /* PathUtil.h */,
 				BCC318EF1EC349EB0035DA2F /* PathUtil.m */,
+				BCBA558A1EC3ED2F00E4A728 /* Common.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -253,7 +267,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC5E82F21EBF222A008F0BD7 /* LaunchScreen.storyboard in Resources */,
+				BCBA55911EC4000800E4A728 /* more-button@2x.png in Resources */,
 				BC5E82EF1EBF222A008F0BD7 /* Assets.xcassets in Resources */,
+				BCBA55901EC4000800E4A728 /* more-button.png in Resources */,
+				BCBA55921EC4000800E4A728 /* more-button@3x.png in Resources */,
+				BCBA558C1EC3FF5700E4A728 /* more-with-three-dots-button.svg in Resources */,
 				BC5E82ED1EBF222A008F0BD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

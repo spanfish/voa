@@ -12,7 +12,7 @@
 #import <ObjectiveCHMTLParser/HTMLParser.h>
 #import <JSONKit/JSONKit.h>
 
-
+#import "Common.h"
 
 @interface EIAMDataSource() {
     NSMutableArray<PlayItem *> *_items;
@@ -56,6 +56,8 @@
     HTMLNode *body = [parser body];
     HTMLNode *itemsNode = [body findChildWithAttribute:@"id" matchingName:@"items" allowPartial:NO];
     if(itemsNode) {
+        NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"_w[0-9]{2,5}_" options:0 error:&error];
+        
         for(HTMLNode *item in [itemsNode findChildrenWithAttribute:@"class" matchingName:@"media-block with-date width-img size-3" allowPartial:YES]) {
             //URL
             HTMLNode *urlNode = [item findChildWithAttribute:@"class" matchingName:@"img-wrap" allowPartial:NO];
@@ -77,6 +79,11 @@
                 
                 if(thumbNode) {
                     playItem.thumbURL = [thumbNode getAttributeNamed:@"src"];
+
+                    NSTextCheckingResult *match = [regexp firstMatchInString:playItem.thumbURL options:0 range:NSMakeRange(0, playItem.thumbURL.length)];
+                    if(match.numberOfRanges > 0 && match.range.location != NSNotFound) {
+                        playItem.thumbURL = [playItem.thumbURL stringByReplacingCharactersInRange:match.range withString:@"_w408_"];
+                    }
                 }
                 
                 if(dateNode) {
@@ -149,13 +156,16 @@
                              }];
 }
 
--(void) downloadPlayItemThumb:(PlayItem *) item {
+-(void) downloadPlayItemThumb:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath {
     [[PageUtil sharedInstance] downloadData:item.thumbURL
                                  completion:^(NSData * _Nullable content, NSError * _Nullable error) {
                                      NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
                                      NSString *fileName = [item.thumbURL lastPathComponent];
                                      if(!error && content) {
                                          [content writeToFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName] atomically:YES];
+                                     }
+                                     if([self.delegate respondsToSelector:@selector(thumbnailDidDownloadForPlayItem:atIndexPath:withError:)]) {
+                                         main_thread([self.delegate thumbnailDidDownloadForPlayItem:item atIndexPath:indexPath withError:error]);
                                      }
                                  }];
 }

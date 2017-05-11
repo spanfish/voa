@@ -9,18 +9,12 @@
 #import "PageUtil.h"
 #import <AFNetworking/AFNetworking.h>
 
-#define main_thread(x) if([[NSThread currentThread] isMainThread]) {\
-                           (x);\
-                       } else {\
-                           dispatch_async(dispatch_get_main_queue(), ^{\
-                               (x);\
-                           });\
-                       }
+#import "Common.h"
 
 @interface PageUtil()
 
 @property(nonatomic, strong) AFHTTPSessionManager *sessionManager;
-@property(nonatomic, copy) CompletionBlock completionBlock;
+//@property(nonatomic, copy) CompletionBlock completionBlock;
 @end
 
 @implementation PageUtil
@@ -34,12 +28,12 @@
         
         AFHTTPResponseSerializer *serializer = [AFHTTPResponseSerializer serializer];
         [serializer setAcceptableContentTypes:[NSSet setWithObjects:@"text/html",
-                                               @"application/pdf",
                                                @"video/mp4",
-                                               @"audio/mpeg",
-                                               @"application/x-pdf", nil]];
+                                               @"image/jpeg",
+                                               @"image/png",
+                                               @"audio/mpeg", nil]];
         [util.sessionManager setResponseSerializer:serializer];
-        [[util.sessionManager requestSerializer] setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36"
+        [[util.sessionManager requestSerializer] setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30"
                                        forHTTPHeaderField:@"User-Agent"];
         
     });
@@ -48,7 +42,7 @@
 
 -(void) loadPage:(NSString *) pageURL completion:(CompletionBlock)block {
     NSAssert(pageURL != nil, @"page is nil");
-    self.completionBlock = block;
+    //self.completionBlock = block;
 
     [self.sessionManager GET:pageURL
                   parameters:nil

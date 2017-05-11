@@ -14,7 +14,8 @@
 
 @protocol EIAMDataSourceDelegate<NSObject>
 
--(void) pageLoaded:(BOOL) hasMore withError:(NSError * _Nullable) error;
+-(void) pageLoaded:(BOOL) hasMore withError:(NSError *) error;
+-(void) thumbnailDidDownloadForPlayItem:(PlayItem *) item atIndexPath:(NSIndexPath *) indexPath withError:(NSError *) error;
 @end
 
 @interface EIAMDataSource : NSObject
@@ -22,5 +23,6 @@
 @property(nonatomic, weak) id<EIAMDataSourceDelegate> delegate;
 @property(nonatomic, readonly) NSArray *videoArray;
 -(void) loadPage;
+//Download thumbnail for video item.
 -(void) downloadPlayItemThumb:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath;
 @end
