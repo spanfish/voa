@@ -1,6 +1,7 @@
 dependencies: \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.m \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/Common.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Modules/module.modulemap \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Headers/UIProgressView+AFNetworking.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Headers/UIWebView+AFNetworking.h \
@@ -20,5 +21,4 @@ dependencies: \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Headers/AFURLResponseSerialization.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Headers/AFURLRequestSerialization.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Headers/AFNetworking.h \
-  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Headers/AFNetworking-umbrella.h \
-  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/Common.h
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Headers/AFNetworking-umbrella.h

@@ -2,6 +2,7 @@ dependencies: \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/EIAMDataSource.m \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/EIAMDataSource.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/Common.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PlayItem.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/TrackItem.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PathUtil.h \
@@ -31,5 +32,4 @@ dependencies: \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/ObjectiveCHMTLParser.framework/Headers/HTMLParser.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Modules/module.modulemap \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Headers/JSONKit.h \
-  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Headers/JSONKit-umbrella.h \
-  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/Common.h
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Headers/JSONKit-umbrella.h

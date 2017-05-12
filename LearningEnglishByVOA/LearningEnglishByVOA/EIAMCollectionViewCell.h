@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EIAMCollectionViewCell : UICollectionViewCell
+@interface EIAMCollectionViewCell : UICollectionViewCell<UIGestureRecognizerDelegate>
 
 @property(nonatomic, weak) IBOutlet UIImageView *thumbImageView;
 @property(nonatomic, weak) IBOutlet UILabel *dateLabel;

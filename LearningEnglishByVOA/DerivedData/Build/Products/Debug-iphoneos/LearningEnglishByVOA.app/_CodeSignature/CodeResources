@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AppleIncRootCertificate.cer</key>
+		<data>
+		YR5bZixZOgj/WNFK4iRS0ZjfbGA=
+		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
@@ -35,7 +39,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			v8OKTjmLVWgGIOb8vHUm9rv4gAg=
+			jSftyxmwVaW3jLIf7jDwoHSARz0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -44,7 +48,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rv36M61RBwxueoQ4K5wtFS9afos=
+			46ezYGk9oHPpDtPs3eX4+09urVA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -53,7 +57,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gQ+SbN3TeJ/Fln5FdUwhjqtbM4c=
+			azKcoVA/D8qsWjlSSUMo+3T2lXo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -62,7 +66,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jOD3+FmpwkdKQIui/527Ft0ltr0=
+			X15ni+dZ1p4ZbkZahySg3WHV2Is=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -71,7 +75,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			y8VxSt4tQ9Na5TiyVgx2vF2qj58=
+			T00oONUa2Zem7qhrCATKatyzFps=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -80,7 +84,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4DaowDhuBGgWKCLo0PePOqHKLqo=
+			H24gfJaMeo8bWxa9kak4Jb4OWtY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -89,14 +93,14 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zTa9hXB8bSemRJt64HYccUsSYKw=
+			yz2J1jZCrH3BvHZwBOolFZCXpRk=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>Frameworks/AFNetworking.framework/AFNetworking</key>
 		<data>
-		n7K5KSRCJOLvTkHA8Gws8MJ3dV0=
+		FXebjhsxkgNOfgAcPAuUMOP2o9o=
 		</data>
 		<key>Frameworks/AFNetworking.framework/Info.plist</key>
 		<data>
@@ -112,7 +116,7 @@
 		</data>
 		<key>Frameworks/JSONKit.framework/JSONKit</key>
 		<data>
-		dHaZMHYFu1DF/H9EJQYS1P4F5iw=
+		Ow6E7FEZ5TG0kXtqW2Tch1Y49Hs=
 		</data>
 		<key>Frameworks/JSONKit.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -124,7 +128,7 @@
 		</data>
 		<key>Frameworks/MBProgressHUD.framework/MBProgressHUD</key>
 		<data>
-		Jk6+ggC1dbQxr9Q0xHK1jHz1GGw=
+		HXFJgMy3P/OVmtWNQSx0nCZXpyo=
 		</data>
 		<key>Frameworks/MBProgressHUD.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -136,11 +140,11 @@
 		</data>
 		<key>Frameworks/Masonry.framework/Masonry</key>
 		<data>
-		7ECy3ZepiwdmYreoFvPC9x9RF+o=
+		vKUyWl7q5CMIejeQf7+B9j99Rdw=
 		</data>
 		<key>Frameworks/Masonry.framework/_CodeSignature/CodeResources</key>
 		<data>
-		Azi93+A/EWbt3AAqhsGMZ20MoGc=
+		Hn0mXHTf2EhIXCujQs2/mzN+wLk=
 		</data>
 		<key>Frameworks/ObjectiveCHMTLParser.framework/Info.plist</key>
 		<data>
@@ -148,7 +152,7 @@
 		</data>
 		<key>Frameworks/ObjectiveCHMTLParser.framework/ObjectiveCHMTLParser</key>
 		<data>
-		XmR/4oXmgtt0ZTr4YU0r/GdbO3I=
+		cL5kjQmDpQKynifjUVP0PImgK+o=
 		</data>
 		<key>Frameworks/ObjectiveCHMTLParser.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -160,11 +164,32 @@
 		</data>
 		<key>Frameworks/Realm.framework/Realm</key>
 		<data>
-		6KO7hpE9vSUyIqSrLYsY7Kt9JKo=
+		s2ZxFhzasEVhNL+t+t1U66sEIdk=
 		</data>
 		<key>Frameworks/Realm.framework/_CodeSignature/CodeResources</key>
 		<data>
 		KwjlRoVR4Wml0RQM1UWuYAEOls8=
+		</data>
+		<key>Frameworks/SAMKeychain.framework/Info.plist</key>
+		<data>
+		7UYpgKrKMdjEQRYHIyBks15mRn0=
+		</data>
+		<key>Frameworks/SAMKeychain.framework/SAMKeychain</key>
+		<data>
+		ktCsdS39D52pE6QXSfHpAkMqDmQ=
+		</data>
+		<key>Frameworks/SAMKeychain.framework/SAMKeychain.bundle/en.lproj/SAMKeychain.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			LlihTO/vSkU4IatcWawJIL8z1Pc=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/SAMKeychain.framework/_CodeSignature/CodeResources</key>
+		<data>
+		UIA8GLl4188vxD1Nlp+JxMVqg9w=
 		</data>
 		<key>Frameworks/iOS_Slide_Menu.framework/Info.plist</key>
 		<data>
@@ -176,7 +201,7 @@
 		</data>
 		<key>Frameworks/iOS_Slide_Menu.framework/iOS_Slide_Menu</key>
 		<data>
-		6IGBq+HHcJeAhNZQcce4y1miRT4=
+		eQAXaETyH5TixQIcHBFrQfCozbg=
 		</data>
 		<key>Frameworks/iOS_Slide_Menu.framework/menu-button.png</key>
 		<data>
@@ -194,9 +219,25 @@
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
 		</data>
+		<key>download-from-cloud.png</key>
+		<data>
+		wN43V4WZCWyZDcNm2i53NfVN65I=
+		</data>
+		<key>download-from-cloud.svg</key>
+		<data>
+		3JWqww29YZhAECyKbsOnMoxkibo=
+		</data>
+		<key>download-from-cloud@2x.png</key>
+		<data>
+		BG7v6nYaRL7MDOqYlnqpfgGi/fM=
+		</data>
+		<key>download-from-cloud@3x.png</key>
+		<data>
+		ClN+zIPCcnKdf4oDO0HklAW2HT8=
+		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		XDsS9ZixUoWtBYx3eFlu4zcU5V4=
+		qcph1W2zI8QZ64CWhGrSDk3QhdQ=
 		</data>
 		<key>more-button.png</key>
 		<data>
@@ -214,9 +255,36 @@
 		<data>
 		HWK+XSUBx7X0x0i66a/EcrVuOUk=
 		</data>
+		<key>play.png</key>
+		<data>
+		TSgl4LCwqARa9URn06YGZZF2Gvg=
+		</data>
+		<key>play@2x.png</key>
+		<data>
+		K6Wud0oS/FYsoAR+flXka+CvJuk=
+		</data>
+		<key>play@3x.png</key>
+		<data>
+		qKRCHWYO7TVmnxbmsSd8Ubgoa0A=
+		</data>
+		<key>youtube.svg</key>
+		<data>
+		+zLn+v8MrdPvAWPjl7CtkAPiSVY=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AppleIncRootCertificate.cer</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YR5bZixZOgj/WNFK4iRS0ZjfbGA=
+			</data>
+			<key>hash2</key>
+			<data>
+			sLFzDsvH/0UFFCxJ8Slebtpryu1+LGjFvpG1oRAB8CQ=
+			</data>
+		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
@@ -260,11 +328,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			v8OKTjmLVWgGIOb8vHUm9rv4gAg=
+			jSftyxmwVaW3jLIf7jDwoHSARz0=
 			</data>
 			<key>hash2</key>
 			<data>
-			wzGJDH+/UWr71EVPvgYPqhb84NgtDdehbR9K8lCF52E=
+			gtKcoazsnpLbKRSVA3UileWLRiy9+wwrd3xvDMsXF98=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -273,11 +341,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rv36M61RBwxueoQ4K5wtFS9afos=
+			46ezYGk9oHPpDtPs3eX4+09urVA=
 			</data>
 			<key>hash2</key>
 			<data>
-			NPGtlQdFhiCtg9z2Ux23YGmYFnyxEYEOpY9fHbnrZ/Y=
+			3SDdFzkihGsxbGibETTa0AwhNvUzovBvU/T9qmfZWRQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -286,11 +354,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gQ+SbN3TeJ/Fln5FdUwhjqtbM4c=
+			azKcoVA/D8qsWjlSSUMo+3T2lXo=
 			</data>
 			<key>hash2</key>
 			<data>
-			NW+Xu3RXXLiMkMvT9iiDHk6YXQwg7Q69RrG5HnT07DM=
+			RH8qPpJwaVk/l55aUzKeJ4e9vTfJCKrc2tKSQo/axf0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -299,11 +367,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jOD3+FmpwkdKQIui/527Ft0ltr0=
+			X15ni+dZ1p4ZbkZahySg3WHV2Is=
 			</data>
 			<key>hash2</key>
 			<data>
-			yuUvanhB+ZuDj/2B1kM2pQo+VRuQjkP0DksabhCt/WE=
+			ewAyinNT82Mx/iEV3vLX6lG3Zh47R5D35V+YcwNkGGQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -312,11 +380,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			y8VxSt4tQ9Na5TiyVgx2vF2qj58=
+			T00oONUa2Zem7qhrCATKatyzFps=
 			</data>
 			<key>hash2</key>
 			<data>
-			AaFuJmtdx2nQtklOyi+5R4SWbz5aj2MZQV/dB/hmuXo=
+			z4kBHjo5huN0oU8FMF+bpMpiLI85blhhjS6+3HKH8C4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -325,11 +393,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4DaowDhuBGgWKCLo0PePOqHKLqo=
+			H24gfJaMeo8bWxa9kak4Jb4OWtY=
 			</data>
 			<key>hash2</key>
 			<data>
-			tSEsCoO0S1To8pH3cp2vygkUDI40QtSbHg+UGVScW9M=
+			vczA2Jladv79oU7PJ3lHjGAN0J0UpJyArSwVg10lKrA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -338,11 +406,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zTa9hXB8bSemRJt64HYccUsSYKw=
+			yz2J1jZCrH3BvHZwBOolFZCXpRk=
 			</data>
 			<key>hash2</key>
 			<data>
-			zgd2OKsk0Xv76T296IGagj6l1ufh1TuSA7cc6BepIkk=
+			U8EuYPJSjnNPJVLjeZlIIi3oJa7cvT18xsYQuSfgBmU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -351,11 +419,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			n7K5KSRCJOLvTkHA8Gws8MJ3dV0=
+			FXebjhsxkgNOfgAcPAuUMOP2o9o=
 			</data>
 			<key>hash2</key>
 			<data>
-			V995V3cU2p6FU9XfD8lxDAUWSfvn8DogAEy7CwPm+ec=
+			mWFGthIa9fGxYkJkvvynF7BJAUuz9jTv+cAzJTOWL6M=
 			</data>
 		</dict>
 		<key>Frameworks/AFNetworking.framework/Info.plist</key>
@@ -395,11 +463,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			dHaZMHYFu1DF/H9EJQYS1P4F5iw=
+			Ow6E7FEZ5TG0kXtqW2Tch1Y49Hs=
 			</data>
 			<key>hash2</key>
 			<data>
-			5U9vdrMEHraXrb5B9KC3ltDjwRik6Kkczv51wGbWg/M=
+			7kabD+IxlWVrWxOI3MExr9g64Ce+0x6MYmjgeJGwLjA=
 			</data>
 		</dict>
 		<key>Frameworks/JSONKit.framework/_CodeSignature/CodeResources</key>
@@ -428,11 +496,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Jk6+ggC1dbQxr9Q0xHK1jHz1GGw=
+			HXFJgMy3P/OVmtWNQSx0nCZXpyo=
 			</data>
 			<key>hash2</key>
 			<data>
-			X075UcceOY6iV9dKmS5A++B2sM3AcswoZBmNGSaRLiQ=
+			QECJKu58DW+9IJoK8G0cMca4Ug5UFiUlUDGCr4eN7ts=
 			</data>
 		</dict>
 		<key>Frameworks/MBProgressHUD.framework/_CodeSignature/CodeResources</key>
@@ -461,22 +529,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7ECy3ZepiwdmYreoFvPC9x9RF+o=
+			vKUyWl7q5CMIejeQf7+B9j99Rdw=
 			</data>
 			<key>hash2</key>
 			<data>
-			FbBiziWgy5SiU6PmbgG3nFjW1JwsL81xLr3/I/0wAxA=
+			NrLkpi7c1/o+L1JrMpWHf1oja01p+pVbHmHE9OFc2Jo=
 			</data>
 		</dict>
 		<key>Frameworks/Masonry.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Azi93+A/EWbt3AAqhsGMZ20MoGc=
+			Hn0mXHTf2EhIXCujQs2/mzN+wLk=
 			</data>
 			<key>hash2</key>
 			<data>
-			RyFlbJ7sOf8VRQa7LQXdtHGENg3p812BbORuWU234mA=
+			YB78JsX0SyD14SLYIxs7eIqkja6haYhoWcB7yiLS/t8=
 			</data>
 		</dict>
 		<key>Frameworks/ObjectiveCHMTLParser.framework/Info.plist</key>
@@ -494,11 +562,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XmR/4oXmgtt0ZTr4YU0r/GdbO3I=
+			cL5kjQmDpQKynifjUVP0PImgK+o=
 			</data>
 			<key>hash2</key>
 			<data>
-			jT5xu+C44Vk6cnXbMzAmHJSX04iZDt/W1zOsYegADa8=
+			Hu5JYYU2WjCZl8k4LMURNOICvKvHIsvjpxtoiCn/Bd8=
 			</data>
 		</dict>
 		<key>Frameworks/ObjectiveCHMTLParser.framework/_CodeSignature/CodeResources</key>
@@ -527,11 +595,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6KO7hpE9vSUyIqSrLYsY7Kt9JKo=
+			s2ZxFhzasEVhNL+t+t1U66sEIdk=
 			</data>
 			<key>hash2</key>
 			<data>
-			Yhxiu7DAc/gHKVLGYKxkQSfa9fEjnjaDyAo8otSUjc8=
+			4XiLWi1PEuxFovYO54Q1g/G5d1bYvS5Gg7v/qkJaHiw=
 			</data>
 		</dict>
 		<key>Frameworks/Realm.framework/_CodeSignature/CodeResources</key>
@@ -543,6 +611,52 @@
 			<key>hash2</key>
 			<data>
 			ioycLWVG5rt9tWP1UuNdG9FEljMbAzqwL/HV+dmSGBw=
+			</data>
+		</dict>
+		<key>Frameworks/SAMKeychain.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7UYpgKrKMdjEQRYHIyBks15mRn0=
+			</data>
+			<key>hash2</key>
+			<data>
+			J5bXV5uLrMzCU3+69bA+Nwpcecs9qlulrUGnCxY6hsU=
+			</data>
+		</dict>
+		<key>Frameworks/SAMKeychain.framework/SAMKeychain</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ktCsdS39D52pE6QXSfHpAkMqDmQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			pETYLKeMBBnovO1bXHlQgNHQqenocOxwdr4l7yr1KBc=
+			</data>
+		</dict>
+		<key>Frameworks/SAMKeychain.framework/SAMKeychain.bundle/en.lproj/SAMKeychain.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			LlihTO/vSkU4IatcWawJIL8z1Pc=
+			</data>
+			<key>hash2</key>
+			<data>
+			SO23YR2zpjwSvKBtZP5bzkFnodS9j56NVtmrtL7iy0A=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/SAMKeychain.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UIA8GLl4188vxD1Nlp+JxMVqg9w=
+			</data>
+			<key>hash2</key>
+			<data>
+			XXCp3niRjAk9mqG5nxr7sleMASE7ic35gOldPZRDaLQ=
 			</data>
 		</dict>
 		<key>Frameworks/iOS_Slide_Menu.framework/Info.plist</key>
@@ -571,11 +685,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6IGBq+HHcJeAhNZQcce4y1miRT4=
+			eQAXaETyH5TixQIcHBFrQfCozbg=
 			</data>
 			<key>hash2</key>
 			<data>
-			WxRPgAQI08hNoYls07jqmO/dJH1ir/YUttK/HqCkLGk=
+			7JdRm6NamRIRVA+K0o31omT3cPMHHfnXfMM545cGUlc=
 			</data>
 		</dict>
 		<key>Frameworks/iOS_Slide_Menu.framework/menu-button.png</key>
@@ -600,15 +714,59 @@
 			nwwe+D9QbwmXkRT5xW3RgGddk+ktcCj48PBBXegujGM=
 			</data>
 		</dict>
+		<key>download-from-cloud.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wN43V4WZCWyZDcNm2i53NfVN65I=
+			</data>
+			<key>hash2</key>
+			<data>
+			rh5c0EhnScsdHcb8d2kIUbixNwsuM3XaZh3KDZ6HVBs=
+			</data>
+		</dict>
+		<key>download-from-cloud.svg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3JWqww29YZhAECyKbsOnMoxkibo=
+			</data>
+			<key>hash2</key>
+			<data>
+			lxwJ6sD3DeDSWWuiJKomj7IJ5sBdtVhQzlX1tUQkSPw=
+			</data>
+		</dict>
+		<key>download-from-cloud@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BG7v6nYaRL7MDOqYlnqpfgGi/fM=
+			</data>
+			<key>hash2</key>
+			<data>
+			yGx/QFgbe1Jg7KgOYTbIfkCvlEYlV8Z28+cy44XwnH8=
+			</data>
+		</dict>
+		<key>download-from-cloud@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ClN+zIPCcnKdf4oDO0HklAW2HT8=
+			</data>
+			<key>hash2</key>
+			<data>
+			z+ubw7P/wuDFUebipsDa2v0I0hUNmdoqDHm9sQbaBQw=
+			</data>
+		</dict>
 		<key>embedded.mobileprovision</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XDsS9ZixUoWtBYx3eFlu4zcU5V4=
+			qcph1W2zI8QZ64CWhGrSDk3QhdQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			/qicQCpNjNjg/lGGZdW2JNOzHizyqWTZ5ndhic8A60E=
+			I8yLcLwB9vlTWLuyNH/6SKLpHFiCGHUWMQbjE4NXgE8=
 			</data>
 		</dict>
 		<key>more-button.png</key>
@@ -653,6 +811,50 @@
 			<key>hash2</key>
 			<data>
 			tGfGLEjiCJuZYqhvQSN8J60ycoAWoDHXW4xAGWpoZpg=
+			</data>
+		</dict>
+		<key>play.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TSgl4LCwqARa9URn06YGZZF2Gvg=
+			</data>
+			<key>hash2</key>
+			<data>
+			pPx/KCSgLQVNprbi6wQGxI5g+l61JNEq/tIzhGuNmwU=
+			</data>
+		</dict>
+		<key>play@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			K6Wud0oS/FYsoAR+flXka+CvJuk=
+			</data>
+			<key>hash2</key>
+			<data>
+			7uzWWNqXFM+eDeHXwEEar2DP23yLrthpRmAfUQ1N+gM=
+			</data>
+		</dict>
+		<key>play@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			qKRCHWYO7TVmnxbmsSd8Ubgoa0A=
+			</data>
+			<key>hash2</key>
+			<data>
+			9NXA4UZvRx5uDiAUaoTU28QsS4nTBiTCR4hU0/W4d1o=
+			</data>
+		</dict>
+		<key>youtube.svg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+zLn+v8MrdPvAWPjl7CtkAPiSVY=
+			</data>
+			<key>hash2</key>
+			<data>
+			PG/or4pTL68PrBXbAFAiCN2abdkZ8BuQH24ss5wP/Oo=
 			</data>
 		</dict>
 	</dict>

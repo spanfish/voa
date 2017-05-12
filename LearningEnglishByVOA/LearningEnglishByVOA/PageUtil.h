@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef void (^_Nullable CompletionBlock)(NSString *_Nullable content, NSError *_Nullable error);
-typedef void (^_Nullable DataCompletionBlock)(NSData *_Nullable content, NSError *_Nullable error);
+#import "Common.h"
 
 @interface PageUtil : NSObject
 
-+(instancetype) sharedInstance;
++(instancetype _Nonnull) sharedInstance;
 
--(void) loadPage:(NSString *) pageURL completion:(CompletionBlock) block;
--(void) downloadData:(NSString *) videoURL completion:(DataCompletionBlock)block;
+-(void) loadPage:(NSString * _Nonnull) pageURL completion:(CompletionBlock) block;
+-(void) downloadData:(NSString *_Nonnull) videoURL completion:(DataCompletionBlock)block;
 @end

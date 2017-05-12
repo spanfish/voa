@@ -22,4 +22,20 @@
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     return path;
 }
+
++(NSString *) BASE_URL {
+    return @"http://learningenglish.voanews.com";
+}
+
++(NSString *) urlAppendToBase:(NSString *) url {
+    if(url) {
+        if([url hasPrefix:@"http://"] || [url hasPrefix:@"https://"]) {
+            return url;
+        } else {
+            return [[PathUtil BASE_URL] stringByAppendingString:url];
+        }
+    } else {
+        return [PathUtil BASE_URL];
+    }
+}
 @end

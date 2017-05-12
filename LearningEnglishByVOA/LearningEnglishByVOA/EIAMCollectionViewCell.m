@@ -9,5 +9,4 @@
 #import "EIAMCollectionViewCell.h"
 
 @implementation EIAMCollectionViewCell
-
 @end

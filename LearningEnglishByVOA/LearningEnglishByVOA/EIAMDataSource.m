@@ -100,9 +100,10 @@
                 [_items addObject:playItem];
             }
         }//end of for
-        if([_items count] > 0) {
-            [self loadPlayItemTracks:[_items firstObject]];
-        }
+        
+//        if([_items count] > 0) {
+//            [self loadPlayItemTracks:[_items firstObject]];
+//        }
     }
     
     HTMLNode *moreNode = [body findChildWithAttribute:@"class" matchingName:@"link-showMore" allowPartial:YES];

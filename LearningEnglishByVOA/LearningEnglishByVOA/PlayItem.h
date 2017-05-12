@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Common.h"
 
 @class TrackItem;
 @interface PlayItem : NSObject {
@@ -19,6 +20,8 @@
 @property(nonatomic, strong) NSString *videoURL;
 @property(nonatomic, strong) NSString *publishDate;
 @property(nonatomic, strong, readonly) NSArray<TrackItem*> *tracks;
+@property(nonatomic, assign, readonly, getter=hasFetchedTracksURL) BOOL fetchedTracksURL;
 
 -(void) addTrack:(TrackItem *) track;
+-(void) fetchTracksURLwithComplete:(CompletionBlock) completion;
 @end

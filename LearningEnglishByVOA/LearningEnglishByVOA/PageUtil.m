@@ -51,21 +51,22 @@
                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                         NSString *htmlString = [[NSString alloc] initWithData:responseObject
                                                                      encoding:NSUTF8StringEncoding];
-                        main_thread(block(htmlString, nil));
+                        block(htmlString, nil);
                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                        main_thread(block(nil, error));
+                        block(nil, error);
                     }];
 }
 
 -(void) downloadData:(NSString *) videoURL completion:(DataCompletionBlock)block {
+    NSLog(@"fetch video:%@", videoURL);
     [self.sessionManager GET:videoURL
                   parameters:nil
                     progress:^(NSProgress * _Nonnull downloadProgress) {
                         
                     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                         main_thread(block(responseObject, nil));
+                         block(responseObject, nil);
                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                         main_thread(block(nil, error));
+                         block(nil, error);
                      }];
 }
 @end

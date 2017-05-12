@@ -9,6 +9,10 @@
 #ifndef Common_h
 #define Common_h
 
+typedef void (^_Nullable CompletionBlock)(NSString *_Nullable content, NSError *_Nullable error);
+typedef void (^_Nullable DataCompletionBlock)(NSData *_Nullable content, NSError *_Nullable error);
+
+
 #define main_thread(x) if([[NSThread currentThread] isMainThread]) {\
 (x);\
 } else {\

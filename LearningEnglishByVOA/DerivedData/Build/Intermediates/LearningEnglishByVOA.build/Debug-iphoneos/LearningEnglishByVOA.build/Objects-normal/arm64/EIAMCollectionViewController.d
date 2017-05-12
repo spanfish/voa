@@ -12,6 +12,7 @@ dependencies: \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers/iOS-Slide-Menu-umbrella.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/EIAMDataSource.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PageUtil.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/Common.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PlayItem.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/TrackItem.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PathUtil.h \

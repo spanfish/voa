@@ -10,6 +10,7 @@
 
 #import "EIAMCollectionViewCell.h"
 #import "PlayItem.h"
+#import "TrackItem.h"
 
 @interface EIAMCollectionViewController () {
     EIAMDataSource *dataSource;
@@ -135,8 +136,60 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.row < [dataSource.videoArray count]) {
+        PlayItem *item = [dataSource.videoArray objectAtIndex:indexPath.row];
+        NSLog(@"%@", item);
+
+    }
+}
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
     return YES;
+}
+
+-(IBAction)downloadButtonTouched:(id) sender {
+    //NSLog(@"recognizer:%@ view:%@", recognizer, recognizer.view);
+    UIView *view = sender;
+    while(view != nil) {
+        if([view isKindOfClass:[UICollectionViewCell class]]) {
+            break;
+        }
+        view = [view superview];
+    }
+    
+    NSLog(@"view:%@", view);
+    if(view != nil) {
+        UICollectionViewCell *cell = (UICollectionViewCell*) view;
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+        
+        if(indexPath.row < [dataSource.videoArray count]) {
+            PlayItem *item = [dataSource.videoArray objectAtIndex:indexPath.row];
+            NSLog(@"%@", item);
+#if DEBUG
+            for(TrackItem *track in item.tracks) {
+                NSLog(@"track:%@", track);
+            }
+#endif
+            if(!item.hasFetchedTracksURL) {
+                [item fetchTracksURLwithComplete:^(NSString * _Nullable content, NSError * _Nullable error) {
+                    if(error) {
+                        
+                    } else {
+                        TrackItem *track = [item.tracks lastObject];
+                        if(track && !track.hasDownloaded) {
+                            [track fetchTrackWithComplete:^(NSData * _Nullable content, NSError * _Nullable error) {
+                                if(error) {
+                                    
+                                } else {
+                                    
+                                }
+                            }];
+                        }
+                    }
+                }];
+            }
+        }
+    }
 }
 @end

@@ -12,4 +12,7 @@
 
 +(NSString *) englishInAMinutePath;
 +(NSString *) documentDir;
+
++(NSString *) BASE_URL;
++(NSString *) urlAppendToBase:(NSString *) url;
 @end

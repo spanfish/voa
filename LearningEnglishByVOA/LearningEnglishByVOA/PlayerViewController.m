@@ -25,8 +25,8 @@
     _player = [AVPlayer playerWithURL:videoURL];
     _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
     _playerLayer.frame = self.view.bounds;
-    [self.view.layer addSublayer:_playerLayer];
-    [_player play];
+    //[self.view.layer addSublayer:_playerLayer];
+    //[_player play];
 }
 
 -(void) viewDidLayoutSubviews {
