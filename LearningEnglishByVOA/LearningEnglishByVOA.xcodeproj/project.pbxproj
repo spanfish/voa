@@ -34,6 +34,7 @@
 		BCBA55A71EC53E8C00E4A728 /* IAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55A41EC53E8C00E4A728 /* IAPManager.m */; };
 		BCBA55A81EC53E8C00E4A728 /* VerifyStoreReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55A61EC53E8C00E4A728 /* VerifyStoreReceipt.m */; };
 		BCBA55AA1EC53EB400E4A728 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBA55A91EC53EB400E4A728 /* StoreKit.framework */; };
+		BCBA55AE1EC543DF00E4A728 /* RealmDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55AD1EC543DF00E4A728 /* RealmDatabase.m */; };
 		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
 		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
 		BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC318EF1EC349EB0035DA2F /* PathUtil.m */; };
@@ -99,6 +100,9 @@
 		BCBA55A51EC53E8C00E4A728 /* VerifyStoreReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyStoreReceipt.h; sourceTree = "<group>"; };
 		BCBA55A61EC53E8C00E4A728 /* VerifyStoreReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyStoreReceipt.m; sourceTree = "<group>"; };
 		BCBA55A91EC53EB400E4A728 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		BCBA55AB1EC5436800E4A728 /* LearningEnglishByVOA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LearningEnglishByVOA.entitlements; sourceTree = "<group>"; };
+		BCBA55AC1EC543DF00E4A728 /* RealmDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealmDatabase.h; sourceTree = "<group>"; };
+		BCBA55AD1EC543DF00E4A728 /* RealmDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealmDatabase.m; sourceTree = "<group>"; };
 		BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveCHMTLParser.framework; sourceTree = "<group>"; };
 		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		BCC318EE1EC349EB0035DA2F /* PathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtil.h; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 		BC5E82E11EBF222A008F0BD7 /* LearningEnglishByVOA */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA55AB1EC5436800E4A728 /* LearningEnglishByVOA.entitlements */,
 				BCBA55A01EC53E6600E4A728 /* IAP */,
 				BCBA557E1EC2EFA500E4A728 /* Common */,
 				BCBA557A1EC2EE5000E4A728 /* EnglishInAMinute */,
@@ -221,6 +226,8 @@
 				BCBA558A1EC3ED2F00E4A728 /* Common.h */,
 				BCBA559A1EC4057E00E4A728 /* SlideViewController.h */,
 				BCBA559B1EC4057E00E4A728 /* SlideViewController.m */,
+				BCBA55AC1EC543DF00E4A728 /* RealmDatabase.h */,
+				BCBA55AD1EC543DF00E4A728 /* RealmDatabase.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -286,8 +293,13 @@
 				TargetAttributes = {
 					BC5E82DE1EBF222A008F0BD7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 982N7Y74SW;
+						DevelopmentTeam = XAU86MSXBP;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -380,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBA55AE1EC543DF00E4A728 /* RealmDatabase.m in Sources */,
 				BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */,
 				BCBA55891EC30CD400E4A728 /* EIAMCollectionViewCell.m in Sources */,
 				BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */,
@@ -515,8 +528,9 @@
 			baseConfigurationReference = 29EEE41FEEF47F3805E0052A /* Pods-LearningEnglishByVOA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LearningEnglishByVOA/LearningEnglishByVOA.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 982N7Y74SW;
+				DEVELOPMENT_TEAM = XAU86MSXBP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -535,8 +549,9 @@
 			baseConfigurationReference = DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LearningEnglishByVOA/LearningEnglishByVOA.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 982N7Y74SW;
+				DEVELOPMENT_TEAM = XAU86MSXBP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>982N7Y74SW.com.xiang.LearningEnglishByVOA</string>
+	<string>XAU86MSXBP.com.xiang.LearningEnglishByVOA</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>982N7Y74SW.com.xiang.LearningEnglishByVOA</string>
+		<string>XAU86MSXBP.com.xiang.LearningEnglishByVOA</string>
 	</array>
 </dict>
 </plist>

@@ -10,6 +10,8 @@
 #import "PathUtil.h"
 #import <iOS_Slide_Menu/SlideNavigationController.h>
 #import "MenuTableViewController.h"
+#import "IAPManager.h"
+#import "RealmDatabase.h"
 
 @interface AppDelegate ()
 
@@ -31,6 +33,11 @@
     
     MenuTableViewController *leftMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Menu"];
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
+    
+    //call intensionaly to insure there is a instance of IAPManager
+    [[IAPManager sharedInstance] loadPurchasedProducts];
+    
+    [RealmDatabase setup];
     return YES;
 }
 

@@ -17,4 +17,9 @@
     
     return englishInAMinitueCacheDir;
 }
+
++(NSString *) documentDir {
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    return path;
+}
 @end

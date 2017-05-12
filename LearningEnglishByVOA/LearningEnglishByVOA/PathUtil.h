@@ -11,4 +11,5 @@
 @interface PathUtil : NSObject
 
 +(NSString *) englishInAMinutePath;
++(NSString *) documentDir;
 @end
