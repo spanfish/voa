@@ -160,7 +160,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     NSLog(@"view:%@", view);
     if(view != nil) {
-        UICollectionViewCell *cell = (UICollectionViewCell*) view;
+        EIAMCollectionViewCell *cell = (EIAMCollectionViewCell*) view;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
         
         if(indexPath.row < [dataSource.videoArray count]) {
@@ -180,9 +180,9 @@ static NSString * const reuseIdentifier = @"Cell";
                         if(track && !track.hasDownloaded) {
                             [track fetchTrackWithComplete:^(NSData * _Nullable content, NSError * _Nullable error) {
                                 if(error) {
-                                    
+                                    NSLog(@"error:%@", error);
                                 } else {
-                                    
+                                    main_thread(cell.downloadButton.hidden = YES);
                                 }
                             }];
                         }

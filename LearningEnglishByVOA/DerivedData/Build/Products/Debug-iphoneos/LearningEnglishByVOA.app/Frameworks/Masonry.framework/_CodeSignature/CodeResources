@@ -8,25 +8,9 @@
 		<data>
 		RmFFb/9GapqhVosaArPScZsNY/Y=
 		</data>
-		<key>Masonry.cstemp</key>
-		<data>
-		yGfie/LKviUYkWDSurlZNJJ+SsM=
-		</data>
 	</dict>
 	<key>files2</key>
-	<dict>
-		<key>Masonry.cstemp</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			yGfie/LKviUYkWDSurlZNJJ+SsM=
-			</data>
-			<key>hash2</key>
-			<data>
-			80qmBwFs0PJV4kFt7rGpusj/ewj6ZHAMH98uv0VQUvA=
-			</data>
-		</dict>
-	</dict>
+	<dict/>
 	<key>rules</key>
 	<dict>
 		<key>^</key>

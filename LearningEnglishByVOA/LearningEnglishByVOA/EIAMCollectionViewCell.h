@@ -13,4 +13,5 @@
 @property(nonatomic, weak) IBOutlet UIImageView *thumbImageView;
 @property(nonatomic, weak) IBOutlet UILabel *dateLabel;
 @property(nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property(nonatomic, weak) IBOutlet UIButton *downloadButton;
 @end

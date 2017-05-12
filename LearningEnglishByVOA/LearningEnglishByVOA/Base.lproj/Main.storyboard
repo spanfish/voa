@@ -126,6 +126,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="dateLabel" destination="Q2E-AN-pyX" id="66A-Zh-I5W"/>
+                                    <outlet property="downloadButton" destination="nBs-z4-71M" id="zl2-VC-zuv"/>
                                     <outlet property="thumbImageView" destination="wtI-6P-bBB" id="jhq-kj-5ne"/>
                                     <outlet property="titleLabel" destination="pMq-Ph-WxD" id="ze0-DZ-HAA"/>
                                 </connections>

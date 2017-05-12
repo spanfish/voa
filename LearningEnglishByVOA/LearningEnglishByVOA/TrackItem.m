@@ -25,14 +25,19 @@
 }
 
 -(void) fetchTrackWithComplete:(DataCompletionBlock) completion {
+    NSString *fileName = [self.dataSrc lastPathComponent];
+    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+    fileName = [englishInAMinitueCacheDir stringByAppendingPathComponent:fileName];
+    
     [[PageUtil sharedInstance] downloadData:[PathUtil urlAppendToBase:self.dataSrc]
+                                     toFile:fileName
                                  completion:^(NSData * _Nullable content, NSError * _Nullable error) {
                                      if(error) {
                                          completion(nil, error);
                                      } else if(content != nil) {
-                                         NSString *fileName = [self.dataSrc lastPathComponent];
-                                         NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
-                                         [content writeToFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName] atomically:YES];
+                                         //NSString *fileName = [self.dataSrc lastPathComponent];
+                                         //NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+                                         //[content writeToFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName] atomically:YES];
                                          completion(nil, nil);
                                      }
                                  }];

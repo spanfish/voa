@@ -158,30 +158,20 @@
 }
 
 -(void) downloadPlayItemThumb:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath {
+    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+    NSString *fileName = [item.thumbURL lastPathComponent];
+    
     [[PageUtil sharedInstance] downloadData:item.thumbURL
+                                     toFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName]
                                  completion:^(NSData * _Nullable content, NSError * _Nullable error) {
-                                     NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
-                                     NSString *fileName = [item.thumbURL lastPathComponent];
-                                     if(!error && content) {
-                                         [content writeToFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName] atomically:YES];
-                                     }
+                                     //NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+                                     //NSString *fileName = [item.thumbURL lastPathComponent];
+//                                     if(!error && content) {
+//                                         [content writeToFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName] atomically:YES];
+//                                     }
                                      if([self.delegate respondsToSelector:@selector(thumbnailDidDownloadForPlayItem:atIndexPath:withError:)]) {
                                          main_thread([self.delegate thumbnailDidDownloadForPlayItem:item atIndexPath:indexPath withError:error]);
                                      }
                                  }];
 }
-
--(void) downloadPlayItem:(PlayItem *) item {
-    //
-    [[PageUtil sharedInstance] downloadData:@"https://av.voanews.com/Videoroot/Pangeavideo/2016/10/f/f4/f494cf01-c26c-4025-9fee-11e234d181be.mp4"
-                                      completion:^(NSData * _Nullable content, NSError * _Nullable error) {
-                                          if(content != nil) {
-                                              NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-                                              if(!error) {
-                                                  [content writeToFile:[path stringByAppendingPathComponent:@"f494cf01-c26c-4025-9fee-11e234d181be.mp4"] atomically:YES];
-                                              }
-                                          }
-                                      }];
-}
-
 @end
