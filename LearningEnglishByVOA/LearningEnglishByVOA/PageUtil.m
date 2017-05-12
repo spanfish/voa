@@ -14,7 +14,6 @@
 @interface PageUtil()
 
 @property(nonatomic, strong) AFHTTPSessionManager *sessionManager;
-//@property(nonatomic, copy) CompletionBlock completionBlock;
 @end
 
 @implementation PageUtil
@@ -75,21 +74,5 @@
         block(nil, error);
     }];
     [downloadTask resume];
-//    self.sessionManager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-//    
-//    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-//    
-//} completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-//    
-//}];
-//    [self.sessionManager GET:videoURL
-//                  parameters:nil
-//                    progress:^(NSProgress * _Nonnull downloadProgress) {
-//                        
-//                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//                         block(responseObject, nil);
-//                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//                         block(nil, error);
-//                     }];
 }
 @end
