@@ -7,9 +7,13 @@
 //
 
 #import "SlideViewController.h"
-#import <AVFoundation/AVFoundation.h>
 
-@interface SlideViewController ()
+#import "PlayerViewController.h"
+#import <Masonry/Masonry.h>
+
+@interface SlideViewController () {
+    PlayerViewController *_playerViewController;
+}
 
 @end
 
@@ -37,11 +41,20 @@
 - (void)setup {
     [super setup];
     
-    NSURL *videoURL = [NSURL URLWithString:@"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
-    AVPlayer *player = [AVPlayer playerWithURL:videoURL];
-    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-    playerLayer.frame = self.view.bounds;
-    [self.view.layer addSublayer:playerLayer];
+    _playerViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Player"];
+    [self.view addSubview:_playerViewController.view];
+    
+    [_playerViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(_playerViewController.view.superview).offset(0);
+        make.bottom.equalTo(_playerViewController.view.superview).offset(0);
+        make.width.mas_equalTo(300);
+        make.height.mas_equalTo(300);
+    }];
+//    NSURL *videoURL = [NSURL URLWithString:@"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
+//    AVPlayer *player = [AVPlayer playerWithURL:videoURL];
+//    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+//    playerLayer.frame = self.view.bounds;
+//    [self.view.layer addSublayer:playerLayer];
     //[player play];
 }
 @end

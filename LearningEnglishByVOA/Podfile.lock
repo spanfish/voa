@@ -16,20 +16,34 @@ PODS:
     - AFNetworking/NSURLSession
   - iOS-Slide-Menu (1.5)
   - JSONKit (1.4)
+  - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
+  - OpenSSL (1.0.210)
+  - Realm (2.7.0):
+    - Realm/Headers (= 2.7.0)
+  - Realm/Headers (2.7.0)
+  - SAMKeychain (1.5.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - iOS-Slide-Menu
   - JSONKit
+  - Masonry
   - MBProgressHUD
+  - OpenSSL (~> 1.0)
+  - Realm
+  - SAMKeychain
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   iOS-Slide-Menu: 40b0cbd8916c42afc755f0869793cd09e7a32102
   JSONKit: 5b69e804ea54d99293eed0fd2ce596c5703fefb0
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  OpenSSL: 246ffb948e9d56466727fd318134af35f5aa764e
+  Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
+  SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
 
-PODFILE CHECKSUM: 0bafcc8b86e1514c5e855c0bdfbd66b1600f8fd3
+PODFILE CHECKSUM: 676fa9994411a26d9ceb594327acce273b0f783c
 
 COCOAPODS: 1.0.1

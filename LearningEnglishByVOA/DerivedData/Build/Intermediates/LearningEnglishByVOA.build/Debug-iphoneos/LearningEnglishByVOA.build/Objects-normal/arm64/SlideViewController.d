@@ -9,4 +9,22 @@ dependencies: \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers/SlideNavigationContorllerAnimatorFade.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers/SlideNavigationContorllerAnimator.h \
   /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers/SlideNavigationController.h \
-  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers/iOS-Slide-Menu-umbrella.h
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers/iOS-Slide-Menu-umbrella.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/PlayerViewController.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Modules/module.modulemap \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/NSLayoutConstraint+MASDebugAdditions.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/MASViewConstraint.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/NSArray+MASShorthandAdditions.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/NSArray+MASAdditions.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/ViewController+MASAdditions.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/View+MASShorthandAdditions.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/MASViewAttribute.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/View+MASAdditions.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/Masonry.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/MASLayoutConstraint.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/MASConstraintMaker.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/MASConstraint+Private.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/MASUtilities.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/MASConstraint.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/MASCompositeConstraint.h \
+  /Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Masonry/Masonry.framework/Headers/Masonry-umbrella.h

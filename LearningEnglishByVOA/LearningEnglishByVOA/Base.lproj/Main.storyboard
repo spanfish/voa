@@ -195,6 +195,26 @@
             </objects>
             <point key="canvasLocation" x="33" y="1378"/>
         </scene>
+        <!--Player View Controller-->
+        <scene sceneID="QA6-gC-UUb">
+            <objects>
+                <viewController storyboardIdentifier="Player" id="dyI-3m-zDp" customClass="PlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3TZ-Ma-CSw"/>
+                        <viewControllerLayoutGuide type="bottom" id="sEC-De-2Qr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WCl-gk-zIk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qf6-yu-Hgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="25" y="2064"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="PuF-ZW-vrh"/>

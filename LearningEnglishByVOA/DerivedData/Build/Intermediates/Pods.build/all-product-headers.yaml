@@ -4,7 +4,7 @@
   'roots': [
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Headers",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework/Headers",
       'contents': [
         {
           'type': 'file',
@@ -34,7 +34,7 @@
         {
           'type': 'file',
           'name': "AFNetworking-Swift.h",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Headers/AFNetworking-Swift.h"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework/Headers/AFNetworking-Swift.h"
         },
         {
           'type': 'file',
@@ -110,23 +110,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework/Modules",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphoneos/AFNetworking.build/module.modulemap"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphonesimulator/AFNetworking.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Headers",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/JSONKit/JSONKit.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "JSONKit-Swift.h",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Headers/JSONKit-Swift.h"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/JSONKit/JSONKit.framework/Headers/JSONKit-Swift.h"
         },
         {
           'type': 'file',
@@ -142,23 +142,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/JSONKit/JSONKit.framework/Modules",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/JSONKit/JSONKit.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphoneos/JSONKit.build/module.modulemap"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphonesimulator/JSONKit.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework/Headers",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/MBProgressHUD/MBProgressHUD.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "MBProgressHUD-Swift.h",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework/Headers/MBProgressHUD-Swift.h"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/MBProgressHUD/MBProgressHUD.framework/Headers/MBProgressHUD-Swift.h"
         },
         {
           'type': 'file',
@@ -174,18 +174,120 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework/Modules",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/MBProgressHUD/MBProgressHUD.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphoneos/MBProgressHUD.build/module.modulemap"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphonesimulator/MBProgressHUD.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Pods_LearningEnglishByVOA.framework/Headers",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/Masonry/Masonry.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "MASCompositeConstraint.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/MASCompositeConstraint.h"
+        },
+        {
+          'type': 'file',
+          'name': "MASConstraint+Private.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/MASConstraint+Private.h"
+        },
+        {
+          'type': 'file',
+          'name': "MASConstraint.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/MASConstraint.h"
+        },
+        {
+          'type': 'file',
+          'name': "MASConstraintMaker.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/MASConstraintMaker.h"
+        },
+        {
+          'type': 'file',
+          'name': "MASLayoutConstraint.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/MASLayoutConstraint.h"
+        },
+        {
+          'type': 'file',
+          'name': "MASUtilities.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/MASUtilities.h"
+        },
+        {
+          'type': 'file',
+          'name': "MASViewAttribute.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/MASViewAttribute.h"
+        },
+        {
+          'type': 'file',
+          'name': "MASViewConstraint.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/MASViewConstraint.h"
+        },
+        {
+          'type': 'file',
+          'name': "Masonry-Swift.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/Masonry/Masonry.framework/Headers/Masonry-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "Masonry-umbrella.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Target Support Files/Masonry/Masonry-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "Masonry.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/Masonry.h"
+        },
+        {
+          'type': 'file',
+          'name': "NSArray+MASAdditions.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/NSArray+MASAdditions.h"
+        },
+        {
+          'type': 'file',
+          'name': "NSArray+MASShorthandAdditions.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/NSArray+MASShorthandAdditions.h"
+        },
+        {
+          'type': 'file',
+          'name': "NSLayoutConstraint+MASDebugAdditions.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/NSLayoutConstraint+MASDebugAdditions.h"
+        },
+        {
+          'type': 'file',
+          'name': "View+MASAdditions.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/View+MASAdditions.h"
+        },
+        {
+          'type': 'file',
+          'name': "View+MASShorthandAdditions.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/View+MASShorthandAdditions.h"
+        },
+        {
+          'type': 'file',
+          'name': "ViewController+MASAdditions.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Masonry/Masonry/ViewController+MASAdditions.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/Masonry/Masonry.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphonesimulator/Masonry.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/Pods_LearningEnglishByVOA.framework/Headers",
       'contents': [
         {
           'type': 'file',
@@ -195,24 +297,83 @@
         {
           'type': 'file',
           'name': "Pods_LearningEnglishByVOA-Swift.h",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Pods_LearningEnglishByVOA.framework/Headers/Pods_LearningEnglishByVOA-Swift.h"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/Pods_LearningEnglishByVOA.framework/Headers/Pods_LearningEnglishByVOA-Swift.h"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/Pods_LearningEnglishByVOA.framework/Modules",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/Pods_LearningEnglishByVOA.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphoneos/Pods-LearningEnglishByVOA.build/module.modulemap"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-LearningEnglishByVOA.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/Realm/Realm.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Realm-Swift.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/Realm/Realm.framework/Headers/Realm-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/Realm/Realm.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphonesimulator/Realm.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/SAMKeychain/SAMKeychain.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "SAMKeychain-Swift.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/SAMKeychain/SAMKeychain.framework/Headers/SAMKeychain-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "SAMKeychain-umbrella.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/Target Support Files/SAMKeychain/SAMKeychain-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "SAMKeychain.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/SAMKeychain/Sources/SAMKeychain.h"
+        },
+        {
+          'type': 'file',
+          'name': "SAMKeychainQuery.h",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/Pods/SAMKeychain/Sources/SAMKeychainQuery.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/SAMKeychain/SAMKeychain.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphonesimulator/SAMKeychain.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers",
       'contents': [
         {
           'type': 'file',
@@ -257,18 +418,18 @@
         {
           'type': 'file',
           'name': "iOS_Slide_Menu-Swift.h",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers/iOS_Slide_Menu-Swift.h"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/iOS-Slide-Menu/iOS_Slide_Menu.framework/Headers/iOS_Slide_Menu-Swift.h"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphoneos/iOS-Slide-Menu/iOS_Slide_Menu.framework/Modules",
+      'name': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Products/Debug-iphonesimulator/iOS-Slide-Menu/iOS_Slide_Menu.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphoneos/iOS-Slide-Menu.build/module.modulemap"
+          'external-contents': "/Users/xiangweiwang/Work/voa/LearningEnglishByVOA/DerivedData/Build/Intermediates/Pods.build/Debug-iphonesimulator/iOS-Slide-Menu.build/module.modulemap"
         }
       ]
     }

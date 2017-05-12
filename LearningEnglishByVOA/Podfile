@@ -11,4 +11,8 @@ target 'LearningEnglishByVOA' do
   pod 'MBProgressHUD'
   pod 'JSONKit'
   pod 'iOS-Slide-Menu'
+  pod 'Realm'
+  pod 'Masonry'
+  pod 'OpenSSL', '~> 1.0'
+  pod 'SAMKeychain'
 end

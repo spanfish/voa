@@ -29,6 +29,11 @@
 		BCBA55971EC4041F00E4A728 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBA55961EC4041F00E4A728 /* AVKit.framework */; };
 		BCBA55991EC404A000E4A728 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBA55981EC404A000E4A728 /* AVFoundation.framework */; };
 		BCBA559C1EC4057E00E4A728 /* SlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA559B1EC4057E00E4A728 /* SlideViewController.m */; };
+		BCBA559F1EC539FD00E4A728 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA559E1EC539FD00E4A728 /* PlayerViewController.m */; };
+		BCBA55A21EC53E7800E4A728 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = BCBA55A11EC53E7800E4A728 /* AppleIncRootCertificate.cer */; };
+		BCBA55A71EC53E8C00E4A728 /* IAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55A41EC53E8C00E4A728 /* IAPManager.m */; };
+		BCBA55A81EC53E8C00E4A728 /* VerifyStoreReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55A61EC53E8C00E4A728 /* VerifyStoreReceipt.m */; };
+		BCBA55AA1EC53EB400E4A728 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBA55A91EC53EB400E4A728 /* StoreKit.framework */; };
 		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
 		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
 		BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC318EF1EC349EB0035DA2F /* PathUtil.m */; };
@@ -86,6 +91,14 @@
 		BCBA55981EC404A000E4A728 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BCBA559A1EC4057E00E4A728 /* SlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideViewController.h; sourceTree = "<group>"; };
 		BCBA559B1EC4057E00E4A728 /* SlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideViewController.m; sourceTree = "<group>"; };
+		BCBA559D1EC539FD00E4A728 /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		BCBA559E1EC539FD00E4A728 /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		BCBA55A11EC53E7800E4A728 /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
+		BCBA55A31EC53E8C00E4A728 /* IAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPManager.h; sourceTree = "<group>"; };
+		BCBA55A41EC53E8C00E4A728 /* IAPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPManager.m; sourceTree = "<group>"; };
+		BCBA55A51EC53E8C00E4A728 /* VerifyStoreReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyStoreReceipt.h; sourceTree = "<group>"; };
+		BCBA55A61EC53E8C00E4A728 /* VerifyStoreReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyStoreReceipt.m; sourceTree = "<group>"; };
+		BCBA55A91EC53EB400E4A728 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveCHMTLParser.framework; sourceTree = "<group>"; };
 		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		BCC318EE1EC349EB0035DA2F /* PathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtil.h; sourceTree = "<group>"; };
@@ -98,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBA55AA1EC53EB400E4A728 /* StoreKit.framework in Frameworks */,
 				BCBA55991EC404A000E4A728 /* AVFoundation.framework in Frameworks */,
 				BCBA55971EC4041F00E4A728 /* AVKit.framework in Frameworks */,
 				BC74DC241EC03DA1009C4EF1 /* MediaPlayer.framework in Frameworks */,
@@ -140,6 +154,7 @@
 		BC5E82E11EBF222A008F0BD7 /* LearningEnglishByVOA */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA55A01EC53E6600E4A728 /* IAP */,
 				BCBA557E1EC2EFA500E4A728 /* Common */,
 				BCBA557A1EC2EE5000E4A728 /* EnglishInAMinute */,
 				BC74DC1C1EC03C2B009C4EF1 /* Video */,
@@ -190,6 +205,8 @@
 				BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */,
 				BCBA55871EC30CD400E4A728 /* EIAMCollectionViewCell.h */,
 				BCBA55881EC30CD400E4A728 /* EIAMCollectionViewCell.m */,
+				BCBA559D1EC539FD00E4A728 /* PlayerViewController.h */,
+				BCBA559E1EC539FD00E4A728 /* PlayerViewController.m */,
 			);
 			name = EnglishInAMinute;
 			sourceTree = "<group>";
@@ -208,9 +225,22 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		BCBA55A01EC53E6600E4A728 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				BCBA55A11EC53E7800E4A728 /* AppleIncRootCertificate.cer */,
+				BCBA55A31EC53E8C00E4A728 /* IAPManager.h */,
+				BCBA55A41EC53E8C00E4A728 /* IAPManager.m */,
+				BCBA55A51EC53E8C00E4A728 /* VerifyStoreReceipt.h */,
+				BCBA55A61EC53E8C00E4A728 /* VerifyStoreReceipt.m */,
+			);
+			name = IAP;
+			sourceTree = "<group>";
+		};
 		D9B46EAF30DB5DE4CCD328BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA55A91EC53EB400E4A728 /* StoreKit.framework */,
 				BCBA55981EC404A000E4A728 /* AVFoundation.framework */,
 				BCBA55961EC4041F00E4A728 /* AVKit.framework */,
 				BC74DC231EC03DA1009C4EF1 /* MediaPlayer.framework */,
@@ -256,7 +286,7 @@
 				TargetAttributes = {
 					BC5E82DE1EBF222A008F0BD7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = S78RUL88S5;
+						DevelopmentTeam = 982N7Y74SW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -290,6 +320,7 @@
 				BCBA55901EC4000800E4A728 /* more-button.png in Resources */,
 				BCBA55921EC4000800E4A728 /* more-button@3x.png in Resources */,
 				BCBA558C1EC3FF5700E4A728 /* more-with-three-dots-button.svg in Resources */,
+				BCBA55A21EC53E7800E4A728 /* AppleIncRootCertificate.cer in Resources */,
 				BC5E82ED1EBF222A008F0BD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,11 +384,14 @@
 				BCBA55891EC30CD400E4A728 /* EIAMCollectionViewCell.m in Sources */,
 				BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */,
 				BCBA55841EC2F2F600E4A728 /* EIAMDataSource.m in Sources */,
+				BCBA55A71EC53E8C00E4A728 /* IAPManager.m in Sources */,
 				BC74DC1F1EC03C45009C4EF1 /* PlayItem.m in Sources */,
+				BCBA559F1EC539FD00E4A728 /* PlayerViewController.m in Sources */,
 				BC74DC221EC03CB7009C4EF1 /* TrackItem.m in Sources */,
 				BCBA557D1EC2EE7700E4A728 /* EIAMCollectionViewController.m in Sources */,
 				BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */,
 				BCBA559C1EC4057E00E4A728 /* SlideViewController.m in Sources */,
+				BCBA55A81EC53E8C00E4A728 /* VerifyStoreReceipt.m in Sources */,
 				BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */,
 				BC5E82E41EBF222A008F0BD7 /* main.m in Sources */,
 				BCBA55951EC4030100E4A728 /* MenuTableViewController.m in Sources */,
@@ -481,14 +515,15 @@
 			baseConfigurationReference = 29EEE41FEEF47F3805E0052A /* Pods-LearningEnglishByVOA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S78RUL88S5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 982N7Y74SW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = LearningEnglishByVOA/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiang.LearningEnglishByVOA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -500,14 +535,15 @@
 			baseConfigurationReference = DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S78RUL88S5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 982N7Y74SW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = LearningEnglishByVOA/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiang.LearningEnglishByVOA;
 				PRODUCT_NAME = "$(TARGET_NAME)";

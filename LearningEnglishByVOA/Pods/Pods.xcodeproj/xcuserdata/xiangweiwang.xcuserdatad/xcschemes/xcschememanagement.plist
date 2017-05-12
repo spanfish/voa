@@ -19,7 +19,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Masonry.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LearningEnglishByVOA.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SAMKeychain.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,17 +52,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1FC05A97B62F5782F1899780B94C5353</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>33ED8DF1063B1A8855365C68EFCBCF35</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>57F36CDD513E2D2D53C06E3CA4E3287F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8B595FB3B64BF0BF72F9C743D2C39955</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A9A83F63385AA43314397B8DD375464B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D473F4327E1EB20E65F171C7A818A663</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D88F2BD9C769ECD5E7B890CB01B25C78</key>
 		<dict>
 			<key>primary</key>
 			<true/>
