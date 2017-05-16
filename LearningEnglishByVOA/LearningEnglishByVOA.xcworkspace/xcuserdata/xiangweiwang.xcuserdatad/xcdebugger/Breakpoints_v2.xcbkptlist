@@ -9,78 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LearningEnglishByVOA/TrackItem.m"
-            timestampString = "516265381.788488"
+            filePath = "LearningEnglishByVOA/PlayItem.m"
+            timestampString = "516466943.228106"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-fetchTrackWithComplete:"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-hasFetchedTracksURL"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LearningEnglishByVOA/TrackItem.m"
-            timestampString = "516265381.788488"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "-fetchTrackWithComplete:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LearningEnglishByVOA/EIAMCollectionViewController.m"
-            timestampString = "516264642.724002"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "-downloadButtonTouched:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__54-[EIAMCollectionViewController downloadButtonTouched:]_block_invoke"
-                  moduleName = "LearningEnglishByVOA"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/EIAMCollectionViewController.m"
-                  timestampString = "516265918.253897"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "244">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__54-[EIAMCollectionViewController downloadButtonTouched:]_block_invoke_2"
-                  moduleName = "LearningEnglishByVOA"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xiangweiwang/Work/voa/LearningEnglishByVOA/LearningEnglishByVOA/EIAMCollectionViewController.m"
-                  timestampString = "516265918.255748"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "182"
-                  endingLineNumber = "182"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

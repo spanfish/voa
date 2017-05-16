@@ -14,15 +14,23 @@
 
 @protocol EIAMDataSourceDelegate<NSObject>
 
+-(void) videoDownloaded:(TrackItem *) trackItem;
+-(void) playItemFound:(PlayItem *) playItem;
 -(void) pageLoaded:(BOOL) hasMore withError:(NSError *) error;
 -(void) thumbnailDidDownloadForPlayItem:(PlayItem *) item atIndexPath:(NSIndexPath *) indexPath withError:(NSError *) error;
+-(void) downloadProgress:(NSUInteger) downloadedBytes inTotal:(NSUInteger) totalBytes;
 @end
 
 @interface EIAMDataSource : NSObject
 
 @property(nonatomic, weak) id<EIAMDataSourceDelegate> delegate;
-@property(nonatomic, readonly) NSArray *videoArray;
+@property(nonatomic, strong) RLMResults<PlayItem *> *playItems;
 -(void) loadPage;
 //Download thumbnail for video item.
 -(void) downloadPlayItemThumb:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath;
+-(void) downloadTrack:(TrackItem *) item;
+
+-(void) fetchTracksURLforPlayItem:(PlayItem *) playItem withComplete:(CompletionBlock) completion;
+
+-(void) saveTracks:(NSArray *) array forPlayItem:(PlayItem *) playItem;
 @end

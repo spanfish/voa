@@ -15,7 +15,6 @@
 #import "Common.h"
 
 @interface EIAMDataSource() {
-    NSMutableArray<PlayItem *> *_items;
 }
 @end
 
@@ -24,34 +23,31 @@
 -(instancetype) init {
     self = [super init];
     if(self) {
-        _items = [NSMutableArray array];
+        _playItems = [[PlayItem allObjects] sortedResultsUsingKeyPath:@"sortedDate" ascending:NO];
+#if DEBUG
+        for (PlayItem *item in _playItems) {
+            NSLog(@"playItem:%@", item);
+        }
+#endif
     }
     return self;
 }
-
--(NSArray *) videoArray {
-    return _items;
-}
-
+//取得一页动画列表
 -(void) loadPage {
     [[PageUtil sharedInstance] loadPage:@"http://learningenglish.voanews.com/z/3619"
                              completion:^(NSString * _Nullable content, NSError * _Nullable error) {
-                                 BOOL hasMore = NO;
-                                 if(content != nil) {
-                                     hasMore = [self parsePage:content];
-                                 }
-                                 if([self.delegate respondsToSelector:@selector(pageLoaded:withError:)]) {
-                                     [self.delegate pageLoaded:hasMore withError:error];
-                                 }
+                                 global_queue([self parsePage:content]);
                              }];
 }
-
--(BOOL) parsePage:(NSString *) pageContent {
+//解析HTML
+-(void) parsePage:(NSString *) pageContent {
     NSError *error = nil;
     HTMLParser *parser = [[HTMLParser alloc] initWithString:pageContent error:&error];
     if(error) {
-        //
-        return NO;
+        if([self.delegate respondsToSelector:@selector(pageLoaded:withError:)]) {
+            [self.delegate pageLoaded:NO withError:error];
+        }
+        return;
     }
     HTMLNode *body = [parser body];
     HTMLNode *itemsNode = [body findChildWithAttribute:@"id" matchingName:@"items" allowPartial:NO];
@@ -96,33 +92,80 @@
                         playItem.videoTitle = [playItem.videoTitle substringFromIndex:[@"English in a Minute: " length]];
                     }
                 }
-                
-                [_items addObject:playItem];
+                if([self.delegate respondsToSelector:@selector(playItemFound:)]) {
+                    main_queue([self notifyUI:playItem]);
+                }
             }
         }//end of for
-        
-//        if([_items count] > 0) {
-//            [self loadPlayItemTracks:[_items firstObject]];
-//        }
     }
     
     HTMLNode *moreNode = [body findChildWithAttribute:@"class" matchingName:@"link-showMore" allowPartial:YES];
-    return moreNode != nil;
+    if([self.delegate respondsToSelector:@selector(pageLoaded:withError:)]) {
+        [self.delegate pageLoaded:moreNode != nil withError:error];
+    }
 }
-
+//存储到DB，并更新UI
+-(void) notifyUI:(PlayItem*) playItem {
+    if([PlayItem objectForPrimaryKey:playItem.videoTitle] == nil) {
+        //May 13, 2017
+        NSArray *tmp = [playItem.publishDate componentsSeparatedByString:@","];
+        if([tmp count] == 2) {
+            NSString *year = [tmp objectAtIndex:1];
+            tmp = [[tmp objectAtIndex:0] componentsSeparatedByString:@" "];
+            if([tmp count] == 2) {
+                NSInteger day = [[tmp objectAtIndex:1] integerValue];
+                NSString * month = 0;
+                if([@"Jan" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"01";
+                } else if([@"Feb" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"02";
+                } else if([@"Mar" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"03";
+                } else if([@"Apr" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"04";
+                } else if([@"May" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"05";
+                } else if([@"Jun" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"06";
+                } else if([@"Jul" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"07";
+                } else if([@"Aug" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"08";
+                } else if([@"Sep" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"09";
+                } else if([@"Oct" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"10";
+                } else if([@"Nov" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"11";
+                } else if([@"Dec" isEqualToString:[tmp objectAtIndex:0]]) {
+                    month = @"12";
+                }
+                
+                playItem.sortedDate = [NSString stringWithFormat:@"%@-%@-%02ld", year, month, (long)day];
+            }
+        }
+        [[RLMRealm defaultRealm] beginWriteTransaction];
+        [[RLMRealm defaultRealm] addOrUpdateObject:playItem];
+        [[RLMRealm defaultRealm] commitWriteTransaction];
+        
+        [self.delegate playItemFound:playItem];
+    }
+}
 /*
  <a class="btn link-showMore btn-anim" data-ajax="true" data-ajax-method="GET" data-ajax-mode="after" data-ajax-update="#items" data-ajax-url="/z/3619?p=2" href="/z/3619?p=2">Load more</a>
 */
--(void) loadPlayItemTracks:(PlayItem *) item {
-    [[PageUtil sharedInstance] loadPage:[NSString stringWithFormat:@"http://learningenglish.voanews.com%@", item.videoURL]
+-(void) fetchTracksURLforPlayItem:(PlayItem *) playItem withComplete:(CompletionBlock) completion {
+    [[PageUtil sharedInstance] loadPage:[PathUtil urlAppendToBase:playItem.videoURL]
                              completion:^(NSString * _Nullable content, NSError * _Nullable error) {
                                  if(content != nil) {
                                      NSError *error = nil;
                                      HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&error];
                                      if(error) {
-                                         //
+                                         completion(nil, error);
                                          return;
                                      }
+                                     
+                                     NSMutableArray *array = [NSMutableArray arrayWithCapacity:3];
                                      HTMLNode *body = [parser body];
                                      HTMLNode *videoNode = [body findChildTag:@"video"];
                                      if(videoNode) {
@@ -134,11 +177,12 @@
                                          track.dataSrc = src;
                                          track.dataType = dataType;
                                          track.dataInfo = dataInfo;
-                                         [item addTrack:track];
+                                         
+                                         [array addObject:track];
                                          
                                          NSString *dataSources = [videoNode getAttributeNamed:@"data-sources"];
                                          id json = [dataSources objectFromJSONString];
-                                         //[JSONDecoder obj]
+
                                          if(json) {
                                              NSArray *tracks = json;
                                              for(NSDictionary *dict in tracks) {
@@ -146,15 +190,35 @@
                                                  track.dataSrc = [dict objectForKey:@"Src"];
                                                  track.dataType = [dict objectForKey:@"Type"];
                                                  track.dataInfo = [dict objectForKey:@"DataInfo"];
-                                                 [item addTrack:track];
+                                                 [array addObject:track];
                                              }
                                              
                                              NSLog(@"");
                                          }
                                      }
+                                     [array sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                                         TrackItem *track1 = obj1;
+                                         TrackItem *track2 = obj2;
+                                         return [track1.dataInfo compare:track2.dataInfo];
+                                     }];
+                                     completion(array, nil);
+                                 } else {
+                                     completion(nil, nil);
                                  }
-                                 
                              }];
+}
+
+-(void) downloadTrack:(TrackItem *) item {
+    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+    NSString *fileName = [item.dataSrc lastPathComponent];
+    [[PageUtil sharedInstance] downloadData:item.dataSrc
+                                     toFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName]
+                                   progress:^(int64_t totalBytes, int64_t downloadedBytes) {
+                                       [self.delegate downloadProgress:downloadedBytes inTotal:totalBytes];
+                                   }
+                                 completion:^(NSData * _Nullable content, NSError * _Nullable error) {
+                                     main_queue([self.delegate videoDownloaded:item]);
+                                 }];
 }
 
 -(void) downloadPlayItemThumb:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath {
@@ -164,14 +228,22 @@
     [[PageUtil sharedInstance] downloadData:item.thumbURL
                                      toFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName]
                                  completion:^(NSData * _Nullable content, NSError * _Nullable error) {
-                                     //NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
-                                     //NSString *fileName = [item.thumbURL lastPathComponent];
-//                                     if(!error && content) {
-//                                         [content writeToFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName] atomically:YES];
-//                                     }
                                      if([self.delegate respondsToSelector:@selector(thumbnailDidDownloadForPlayItem:atIndexPath:withError:)]) {
-                                         main_thread([self.delegate thumbnailDidDownloadForPlayItem:item atIndexPath:indexPath withError:error]);
+                                         main_queue([self.delegate thumbnailDidDownloadForPlayItem:item atIndexPath:indexPath withError:error]);
                                      }
                                  }];
+}
+
+-(void) saveTracks:(NSArray *) array forPlayItem:(PlayItem *) playItem {
+    main_queue([self internalSaveTracks:array forPlayItem:playItem]);
+}
+
+-(void) internalSaveTracks:(NSArray *) array forPlayItem:(PlayItem *) playItem {
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    for (TrackItem *track in array) {
+        [playItem.tracks addObject:track];
+    }
+    [[RLMRealm defaultRealm] addOrUpdateObject:playItem];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 @end

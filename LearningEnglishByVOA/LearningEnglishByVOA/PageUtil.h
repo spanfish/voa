@@ -14,5 +14,9 @@
 +(instancetype _Nonnull) sharedInstance;
 
 -(void) loadPage:(NSString * _Nonnull) pageURL completion:(CompletionBlock) block;
--(void) downloadData:(NSString *_Nonnull) videoURL toFile:(NSString *) filePath completion:(DataCompletionBlock)block;
+-(void) downloadData:(NSString *_Nonnull) videoURL toFile:(NSString * _Nonnull) filePath completion:(DataCompletionBlock)block;
+-(void) downloadData:(NSString *_Nonnull) videoURL
+              toFile:(NSString * _Nonnull) filePath
+            progress:(DataDownloadProgressBlock) progress
+          completion:(DataCompletionBlock)block;
 @end

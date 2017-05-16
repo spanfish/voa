@@ -14,6 +14,17 @@
 #import <JSONKit/JSONKit.h>
 
 @implementation TrackItem
++ (NSString *)primaryKey {
+    return @"dataSrc";
+}
+
++ (NSArray *)indexedProperties {
+    return @[@"dataInfo"];
+}
+
++ (NSArray *)ignoredProperties {
+    return @[@"downloaded"];
+}
 
 -(BOOL) hasDownloaded {
     NSString *path = [PathUtil englishInAMinutePath];
@@ -44,7 +55,7 @@
 }
 
 -(NSString *) description {
-    return [NSMutableString stringWithFormat: @"dataType:%@\ndataInfo:%@\ndataSrc:%@",
+    return [NSMutableString stringWithFormat: @"%@\ndataInfo:%@\ndataSrc:%@",
                              _dataType,
                              _dataInfo,
                              _dataSrc];

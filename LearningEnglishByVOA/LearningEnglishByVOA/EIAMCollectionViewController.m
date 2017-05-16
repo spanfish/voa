@@ -24,15 +24,30 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-    //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    self.title = @"Learn English in a Minute";
+
     dataSource = [[EIAMDataSource alloc] init];
     dataSource.delegate = self;
+    //取得动画列表
     [dataSource loadPage];
-    // Do any additional setup after loading the view.
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showMenu:)];
+}
+
+-(void) showMenu:(id) sender {
+
+    if([[SlideNavigationController sharedInstance] isMenuOpen]) {
+        [[SlideNavigationController sharedInstance] closeMenuWithCompletion:nil];
+    } else {
+        [[SlideNavigationController sharedInstance] openMenu:MenuLeft
+                                              withCompletion:^{
+                                                  
+                                              }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,20 +56,26 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark <EIAMDataSourceDelegate>
+-(void) playItemFound:(PlayItem *) playItem {
+    //找到一部动画
+    [self.collectionView reloadData];
+}
+
 -(void) pageLoaded:(BOOL) hasMore withError:(NSError * _Nullable) error {
+    main_queue([self reloadView]);
+}
+
+-(void) reloadView {
     [self.collectionView reloadData];
 }
 
 -(void) thumbnailDidDownloadForPlayItem:(PlayItem *) item atIndexPath:(NSIndexPath *) indexPath withError:(NSError *) error {
-    //[self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
     EIAMCollectionViewCell *cell = (EIAMCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    //if(item == [dataSource.videoArray objectAtIndex:indexPath.row]) {
     NSString *thumbPath = [PathUtil englishInAMinutePath];
     NSString *fileName = [thumbPath stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
     if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
         cell.thumbImageView.image = [UIImage imageWithContentsOfFile:fileName];
     }
-    //}
 }
 /*
 #pragma mark - Navigation
@@ -74,35 +95,78 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [dataSource.videoArray count] + 1;
+    return [dataSource.playItems count] + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     EIAMCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    if(indexPath.row == [dataSource.videoArray count]) {
+    if(indexPath.row == [dataSource.playItems count]) {
         cell.titleLabel.text = @"";
         cell.dateLabel.text = @"";
         cell.thumbImageView.image = [UIImage imageNamed:@"more-button"];
         return cell;
     }
     
-    PlayItem *item = [dataSource.videoArray objectAtIndex:indexPath.row];
+    PlayItem *item = [dataSource.playItems objectAtIndex:indexPath.row];
     // Configure the cell
     cell.titleLabel.text = item.videoTitle;
     cell.dateLabel.text = item.publishDate;
-    
-    NSLog(@"thumbURL:%@", item.thumbURL);
-    NSString *thumbPath = [PathUtil englishInAMinutePath];
-    NSString *fileName = [thumbPath stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
+#if DEBUG
+    NSMutableString *desc = [NSMutableString stringWithFormat: @"%@\nthumbURL:%@\nvideoURL:%@\ndate:%@\ntracks:%ld",
+                             item.videoTitle,
+                             item.thumbURL,
+                             item.videoURL,
+                             item.publishDate,
+                             (long)[item.tracks count]];
+    NSLog(@"PlayItem:%@", desc);
+
+#endif
+    NSString *path = [PathUtil englishInAMinutePath];
+    NSString *fileName = [path stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
     if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
         cell.thumbImageView.image = [UIImage imageWithContentsOfFile:fileName];
     } else {
         [self loadThumbnail:item forIndexPath:indexPath];
     }
+
+    for(NSInteger i = [item.tracks count] - 1; i >= 0; i--) {
+        TrackItem *track = [item.tracks objectAtIndex:i];
+        NSString *filePath = [path stringByAppendingPathComponent:[track.dataSrc lastPathComponent]];
+        if([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+            cell.sizeLabel.hidden = NO;
+            cell.downloadButton.hidden = YES;
+            
+            unsigned long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil] fileSize];
+            if(fileSize/1024/1024 > 1) {
+                cell.sizeLabel.text = [NSString stringWithFormat:@"%.1f M", (float)fileSize/1024/1024];
+            } else if(fileSize/1024 > 1) {
+                cell.sizeLabel.text = [NSString stringWithFormat:@"%.1f KB", (float)fileSize/1024];
+            } else {
+                cell.sizeLabel.text = [NSString stringWithFormat:@"%lld B", fileSize];
+            }
+            break;
+        } else {
+            //cell.sizeLabel.hidden = YES;
+            cell.sizeLabel.text = @"";
+            cell.downloadButton.hidden = NO;
+        }
+    }
+    
+    [cell.downloadIndicator setBackgroundColor:[UIColor whiteColor]];
+    [cell.downloadIndicator setFillColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
+    [cell.downloadIndicator setStrokeColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
+    [cell.downloadIndicator setClosedIndicatorBackgroundStrokeColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
+    cell.downloadIndicator.radiusPercent = 0.45;
+    [cell.downloadIndicator loadIndicator];
+    
+    cell.delegate = self;
+    cell.playItem = item;
+    
     return cell;
 }
 
+//下载动画的thumbnail
 -(void) loadThumbnail:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath {
     [dataSource downloadPlayItemThumb:item forIndexPath:indexPath];
 }
@@ -137,8 +201,8 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row < [dataSource.videoArray count]) {
-        PlayItem *item = [dataSource.videoArray objectAtIndex:indexPath.row];
+    if(indexPath.row < [dataSource.playItems count]) {
+        PlayItem *item = [dataSource.playItems objectAtIndex:indexPath.row];
         NSLog(@"%@", item);
 
     }
@@ -148,48 +212,56 @@ static NSString * const reuseIdentifier = @"Cell";
     return YES;
 }
 
--(IBAction)downloadButtonTouched:(id) sender {
-    //NSLog(@"recognizer:%@ view:%@", recognizer, recognizer.view);
-    UIView *view = sender;
-    while(view != nil) {
-        if([view isKindOfClass:[UICollectionViewCell class]]) {
+
+#pragma mark - EIAMCollectionViewCellDelegate
+//播放动画
+-(void) playTouchedWithItem:(PlayItem *)playItem {
+    NSString *path = [PathUtil englishInAMinutePath];
+    
+    TrackItem *playTrack = nil;
+    
+    for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
+        TrackItem *track = [playItem.tracks objectAtIndex:i];
+        NSLog(@"track:%@\ndataInfo:%@\ndataSrc:%@",
+              track.dataType,
+              track.dataInfo,
+              track.dataSrc);
+        NSString *fileName = [track.dataSrc lastPathComponent];
+        if([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:fileName] isDirectory:NULL]) {
+            playTrack = track;
             break;
         }
-        view = [view superview];
     }
-    
-    NSLog(@"view:%@", view);
-    if(view != nil) {
-        EIAMCollectionViewCell *cell = (EIAMCollectionViewCell*) view;
-        NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-        
-        if(indexPath.row < [dataSource.videoArray count]) {
-            PlayItem *item = [dataSource.videoArray objectAtIndex:indexPath.row];
-            NSLog(@"%@", item);
-#if DEBUG
-            for(TrackItem *track in item.tracks) {
-                NSLog(@"track:%@", track);
-            }
-#endif
-            if(!item.hasFetchedTracksURL) {
-                [item fetchTracksURLwithComplete:^(NSString * _Nullable content, NSError * _Nullable error) {
-                    if(error) {
-                        
-                    } else {
-                        TrackItem *track = [item.tracks lastObject];
-                        if(track && !track.hasDownloaded) {
-                            [track fetchTrackWithComplete:^(NSData * _Nullable content, NSError * _Nullable error) {
-                                if(error) {
-                                    NSLog(@"error:%@", error);
-                                } else {
-                                    main_thread(cell.downloadButton.hidden = YES);
-                                }
-                            }];
-                        }
-                    }
-                }];
-            }
+    if(playTrack != nil) {
+        NSLog(@"play video");
+    } else {
+        if([playItem.tracks count] == 0) {
+            //download tracks
+            [self downloadTrackURLsWithItem:playItem];
+        } else {
+            //download video for the track
+            playTrack = [playItem.tracks lastObject];
+            [dataSource downloadTrack:playTrack];
         }
     }
+}
+
+-(void) downloadTrackURLsWithItem:(PlayItem *)playItem {
+    if([playItem.tracks count] == 0) {
+        [dataSource fetchTracksURLforPlayItem:playItem withComplete:^(id  _Nullable content, NSError * _Nullable error) {
+            NSArray *tracks = content;
+            if(tracks) {
+                [dataSource saveTracks:tracks forPlayItem:playItem];
+            }
+        }];
+    }
+}
+
+-(void) downloadProgress:(NSUInteger) downloadedBytes inTotal:(NSUInteger) totalBytes {
+    
+}
+
+-(void) videoDownloaded:(TrackItem *) trackItem {
+    NSLog(@"videoDownloaded");
 }
 @end

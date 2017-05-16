@@ -18,27 +18,39 @@
 -(instancetype) init {
     self = [super init];
     if(self) {
-        _allTracks = [NSMutableArray array];
     }
     return self;
 }
 
++ (NSString *)primaryKey {
+    return @"videoTitle";
+}
+
++ (NSArray *)indexedProperties {
+    return @[@"index"];
+}
+
++ (NSArray *)ignoredProperties {
+    return @[@"fetchedTracksURL"];
+}
+
+/*
 -(void) addTrack:(TrackItem *) track {
     [_allTracks addObject:track];
     [_allTracks sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         TrackItem *item1 = obj1;
         TrackItem *item2 = obj2;
         
-        return [item1.dataType compare:item2.dataType];
+        return [item2.dataInfo compare:item1.dataInfo];
     }];
 }
 
 -(NSArray<TrackItem*> *) tracks {
     return _allTracks;
 }
-
+*/
 -(BOOL)hasFetchedTracksURL {
-    return [_allTracks count] > 0;
+    return [_tracks count] > 0;
 }
 
 -(void) fetchTracksURLwithComplete:(CompletionBlock) completion {
@@ -62,7 +74,7 @@
                                          track.dataSrc = src;
                                          track.dataType = dataType;
                                          track.dataInfo = dataInfo;
-                                         [self addTrack:track];
+                                         [self.tracks addObject:track];
                                          
                                          NSString *dataSources = [videoNode getAttributeNamed:@"data-sources"];
                                          id json = [dataSources objectFromJSONString];
@@ -74,7 +86,7 @@
                                                  track.dataSrc = [dict objectForKey:@"Src"];
                                                  track.dataType = [dict objectForKey:@"Type"];
                                                  track.dataInfo = [dict objectForKey:@"DataInfo"];
-                                                 [self addTrack:track];
+                                                 [self.tracks addObject:track];
                                              }
                                              
                                              NSLog(@"");
@@ -88,15 +100,13 @@
 }
 
 -(NSString *) description {
-    NSMutableString *desc = [NSMutableString stringWithFormat: @"videoTitle:%@\nthumbURL:%@\nvideoURL:%@\ndate:%@",
+    NSMutableString *desc = [NSMutableString stringWithFormat: @"%@\nthumbURL:%@\nvideoURL:%@\ndate:%@\ntracks:%ld",
             _videoTitle,
             _thumbURL,
             _videoURL,
-            _publishDate];
-    for(TrackItem *track in _allTracks) {
-        [desc appendString:@"\n"];
-        [desc appendString: [track description]];
-    }
+            _publishDate,
+                             (long)[_tracks count]];
+
     return desc;
 }
 @end

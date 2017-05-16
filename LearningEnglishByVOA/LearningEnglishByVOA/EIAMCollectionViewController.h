@@ -10,7 +10,9 @@
 #import <iOS_Slide_Menu/SlideNavigationController.h>
 
 #import "EIAMDataSource.h"
+#import "EIAMCollectionViewCell.h"
+
 //English In A Minute
-@interface EIAMCollectionViewController : UICollectionViewController<EIAMDataSourceDelegate, SlideNavigationControllerDelegate>
+@interface EIAMCollectionViewController : UICollectionViewController<EIAMDataSourceDelegate, EIAMCollectionViewCellDelegate, SlideNavigationControllerDelegate>
 
 @end

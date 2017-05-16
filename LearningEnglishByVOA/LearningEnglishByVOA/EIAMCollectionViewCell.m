@@ -9,4 +9,12 @@
 #import "EIAMCollectionViewCell.h"
 
 @implementation EIAMCollectionViewCell
+
+-(IBAction)playButtonTouched:(id)sender {
+    [self.delegate playTouchedWithItem: self.playItem];
+}
+
+-(IBAction)downloadButtonTouched:(id)sender {
+    [self.delegate downloadTouchedWithItem: self.playItem];
+}
 @end

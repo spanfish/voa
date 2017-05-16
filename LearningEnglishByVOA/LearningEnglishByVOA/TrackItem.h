@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
+#import <Realm/Realm.h>
 
-@interface TrackItem : NSObject
+@interface TrackItem : RLMObject
 @property(nonatomic, strong) NSString *dataType;//video/mp4
 @property(nonatomic, strong) NSString *dataInfo;//270p,360p,720p
 @property(nonatomic, strong) NSString *dataSrc;//URL
@@ -18,3 +19,5 @@
 
 -(void) fetchTrackWithComplete:(DataCompletionBlock) completion;
 @end
+
+RLM_ARRAY_TYPE(TrackItem)

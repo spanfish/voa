@@ -8,20 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
+#import <Realm/Realm.h>
+#import "TrackItem.h"
 
-@class TrackItem;
-@interface PlayItem : NSObject {
-    NSMutableArray<TrackItem*> *_allTracks;
+@interface PlayItem : RLMObject {
 }
 
-@property(nonatomic, strong) NSString *uuid;
 @property(nonatomic, strong) NSString *videoTitle;
 @property(nonatomic, strong) NSString *thumbURL;
 @property(nonatomic, strong) NSString *videoURL;
 @property(nonatomic, strong) NSString *publishDate;
-@property(nonatomic, strong, readonly) NSArray<TrackItem*> *tracks;
+@property(nonatomic, strong) NSString *sortedDate;
 @property(nonatomic, assign, readonly, getter=hasFetchedTracksURL) BOOL fetchedTracksURL;
 
--(void) addTrack:(TrackItem *) track;
+@property RLMArray<TrackItem *><TrackItem> *tracks;
+
 -(void) fetchTracksURLwithComplete:(CompletionBlock) completion;
+
 @end

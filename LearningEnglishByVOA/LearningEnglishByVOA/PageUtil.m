@@ -37,11 +37,6 @@
 
 -(void) loadPage:(NSString *) pageURL completion:(CompletionBlock)block {
     NSAssert(pageURL != nil, @"page is nil");
-    //self.completionBlock = block;
-//    AFHTTPResponseSerializer *serializer = [AFHTTPResponseSerializer serializer];
-//    [serializer setAcceptableContentTypes:[NSSet setWithObjects:@"text/html", nil]];
-//    [self.sessionManager setResponseSerializer:serializer];
-    
     [self.sessionManager GET:pageURL
                   parameters:nil
                     progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -56,17 +51,20 @@
 }
 
 -(void) downloadData:(NSString *) videoURL toFile:(NSString *) filePath completion:(DataCompletionBlock)block {
+    [self downloadData:videoURL toFile:filePath progress:nil completion:block];
+}
+
+-(void) downloadData:(NSString *_Nonnull) videoURL
+              toFile:(NSString * _Nonnull) filePath
+            progress:(DataDownloadProgressBlock) progress
+          completion:(DataCompletionBlock)block {
     NSLog(@"fetch video:%@", videoURL);
-//    AFHTTPResponseSerializer *serializer = [AFCompoundResponseSerializer serializer];
-//    [serializer setAcceptableContentTypes:[NSSet setWithObjects:@"video/mp4",
-//                                           @"image/jpeg",
-//                                           @"image/png",
-//                                           @"audio/mpeg", @"application/octet-stream", nil]];
-//    [self.sessionManager setResponseSerializer:serializer];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:videoURL]];
     NSURLSessionDownloadTask *downloadTask = [self.sessionManager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"totalUnitCount:%lld, completedUnitCount:%lld", downloadProgress.totalUnitCount, downloadProgress.completedUnitCount);
+        if(progress) {
+            main_queue(progress(downloadProgress.totalUnitCount, downloadProgress.completedUnitCount));
+        }
     } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         NSLog(@"targetPath:%@", targetPath);
         return [NSURL fileURLWithPath:filePath];

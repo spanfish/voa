@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC22018C1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg in Resources */ = {isa = PBXBuildFile; fileRef = BC22018B1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg */; };
+		BC22018F1EC71157000BE79B /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC22018D1EC71157000BE79B /* menu@2x.png */; };
+		BC2201901EC71157000BE79B /* menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC22018E1EC71157000BE79B /* menu@3x.png */; };
+		BC2201921EC7115E000BE79B /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2201911EC7115E000BE79B /* menu.png */; };
 		BC5E82E41EBF222A008F0BD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5E82E31EBF222A008F0BD7 /* main.m */; };
 		BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5E82E61EBF222A008F0BD7 /* AppDelegate.m */; };
 		BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5E82E91EBF222A008F0BD7 /* ViewController.m */; };
@@ -16,6 +20,8 @@
 		BC74DC1F1EC03C45009C4EF1 /* PlayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC74DC1E1EC03C45009C4EF1 /* PlayItem.m */; };
 		BC74DC221EC03CB7009C4EF1 /* TrackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC74DC211EC03CB7009C4EF1 /* TrackItem.m */; };
 		BC74DC241EC03DA1009C4EF1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC74DC231EC03DA1009C4EF1 /* MediaPlayer.framework */; };
+		BC8A47891EC9916B00AD5E95 /* RMDisplayLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8A47861EC9916B00AD5E95 /* RMDisplayLabel.m */; };
+		BC8A478A1EC9916B00AD5E95 /* RMDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8A47881EC9916B00AD5E95 /* RMDownloadIndicator.m */; };
 		BCBA557D1EC2EE7700E4A728 /* EIAMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA557C1EC2EE7700E4A728 /* EIAMCollectionViewController.m */; };
 		BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55801EC2EFE800E4A728 /* PageUtil.m */; };
 		BCBA55841EC2F2F600E4A728 /* EIAMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */; };
@@ -66,6 +72,10 @@
 /* Begin PBXFileReference section */
 		15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearningEnglishByVOA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29EEE41FEEF47F3805E0052A /* Pods-LearningEnglishByVOA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningEnglishByVOA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA.debug.xcconfig"; sourceTree = "<group>"; };
+		BC22018B1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "menu-three-horizontal-lines-symbol.svg"; sourceTree = "<group>"; };
+		BC22018D1EC71157000BE79B /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		BC22018E1EC71157000BE79B /* menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@3x.png"; sourceTree = "<group>"; };
+		BC2201911EC7115E000BE79B /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		BC5E82DF1EBF222A008F0BD7 /* LearningEnglishByVOA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningEnglishByVOA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5E82E31EBF222A008F0BD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC5E82E51EBF222A008F0BD7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +91,10 @@
 		BC74DC201EC03CB7009C4EF1 /* TrackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackItem.h; sourceTree = "<group>"; };
 		BC74DC211EC03CB7009C4EF1 /* TrackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackItem.m; sourceTree = "<group>"; };
 		BC74DC231EC03DA1009C4EF1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		BC8A47851EC9916B00AD5E95 /* RMDisplayLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDisplayLabel.h; sourceTree = "<group>"; };
+		BC8A47861EC9916B00AD5E95 /* RMDisplayLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDisplayLabel.m; sourceTree = "<group>"; };
+		BC8A47871EC9916B00AD5E95 /* RMDownloadIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDownloadIndicator.h; sourceTree = "<group>"; };
+		BC8A47881EC9916B00AD5E95 /* RMDownloadIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDownloadIndicator.m; sourceTree = "<group>"; };
 		BCBA557B1EC2EE7700E4A728 /* EIAMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIAMCollectionViewController.h; sourceTree = "<group>"; };
 		BCBA557C1EC2EE7700E4A728 /* EIAMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIAMCollectionViewController.m; sourceTree = "<group>"; };
 		BCBA557F1EC2EFE800E4A728 /* PageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageUtil.h; sourceTree = "<group>"; };
@@ -174,6 +188,8 @@
 		BC5E82E11EBF222A008F0BD7 /* LearningEnglishByVOA */ = {
 			isa = PBXGroup;
 			children = (
+				BC8A47841EC9915D00AD5E95 /* Third-Part */,
+				BCFD9E2C1EC8538500E23E74 /* ViewControllers */,
 				BCBA55AB1EC5436800E4A728 /* LearningEnglishByVOA.entitlements */,
 				BCBA55A01EC53E6600E4A728 /* IAP */,
 				BCBA557E1EC2EFA500E4A728 /* Common */,
@@ -181,10 +197,6 @@
 				BC74DC1C1EC03C2B009C4EF1 /* Video */,
 				BC5E82E51EBF222A008F0BD7 /* AppDelegate.h */,
 				BC5E82E61EBF222A008F0BD7 /* AppDelegate.m */,
-				BC5E82E81EBF222A008F0BD7 /* ViewController.h */,
-				BC5E82E91EBF222A008F0BD7 /* ViewController.m */,
-				BCBA55931EC4030100E4A728 /* MenuTableViewController.h */,
-				BCBA55941EC4030100E4A728 /* MenuTableViewController.m */,
 				BC5E82EB1EBF222A008F0BD7 /* Main.storyboard */,
 				BC5E82EE1EBF222A008F0BD7 /* Assets.xcassets */,
 				BC5E82F01EBF222A008F0BD7 /* LaunchScreen.storyboard */,
@@ -197,6 +209,7 @@
 		BC5E82E21EBF222A008F0BD7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BC22018B1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg */,
 				BCBA558B1EC3FF5700E4A728 /* more-with-three-dots-button.svg */,
 				BCBA558D1EC4000800E4A728 /* more-button.png */,
 				BCBA558E1EC4000800E4A728 /* more-button@2x.png */,
@@ -209,6 +222,9 @@
 				BCBA55B91EC581C300E4A728 /* download-from-cloud.png */,
 				BCBA55BA1EC581C300E4A728 /* download-from-cloud@2x.png */,
 				BCBA55BB1EC581C300E4A728 /* download-from-cloud@3x.png */,
+				BC2201911EC7115E000BE79B /* menu.png */,
+				BC22018D1EC71157000BE79B /* menu@2x.png */,
+				BC22018E1EC71157000BE79B /* menu@3x.png */,
 				BC5E82E31EBF222A008F0BD7 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -225,11 +241,20 @@
 			name = Video;
 			sourceTree = "<group>";
 		};
+		BC8A47841EC9915D00AD5E95 /* Third-Part */ = {
+			isa = PBXGroup;
+			children = (
+				BC8A47851EC9916B00AD5E95 /* RMDisplayLabel.h */,
+				BC8A47861EC9916B00AD5E95 /* RMDisplayLabel.m */,
+				BC8A47871EC9916B00AD5E95 /* RMDownloadIndicator.h */,
+				BC8A47881EC9916B00AD5E95 /* RMDownloadIndicator.m */,
+			);
+			name = "Third-Part";
+			sourceTree = "<group>";
+		};
 		BCBA557A1EC2EE5000E4A728 /* EnglishInAMinute */ = {
 			isa = PBXGroup;
 			children = (
-				BCBA557B1EC2EE7700E4A728 /* EIAMCollectionViewController.h */,
-				BCBA557C1EC2EE7700E4A728 /* EIAMCollectionViewController.m */,
 				BCBA55821EC2F2F600E4A728 /* EIAMDataSource.h */,
 				BCBA55831EC2F2F600E4A728 /* EIAMDataSource.m */,
 				BCBA55871EC30CD400E4A728 /* EIAMCollectionViewCell.h */,
@@ -266,6 +291,19 @@
 				BCBA55A61EC53E8C00E4A728 /* VerifyStoreReceipt.m */,
 			);
 			name = IAP;
+			sourceTree = "<group>";
+		};
+		BCFD9E2C1EC8538500E23E74 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BC5E82E81EBF222A008F0BD7 /* ViewController.h */,
+				BC5E82E91EBF222A008F0BD7 /* ViewController.m */,
+				BCBA55931EC4030100E4A728 /* MenuTableViewController.h */,
+				BCBA55941EC4030100E4A728 /* MenuTableViewController.m */,
+				BCBA557B1EC2EE7700E4A728 /* EIAMCollectionViewController.h */,
+				BCBA557C1EC2EE7700E4A728 /* EIAMCollectionViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		D9B46EAF30DB5DE4CCD328BC /* Frameworks */ = {
@@ -353,6 +391,9 @@
 				BC5E82F21EBF222A008F0BD7 /* LaunchScreen.storyboard in Resources */,
 				BCBA55B41EC5785000E4A728 /* play.png in Resources */,
 				BCBA55911EC4000800E4A728 /* more-button@2x.png in Resources */,
+				BC22018C1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg in Resources */,
+				BC22018F1EC71157000BE79B /* menu@2x.png in Resources */,
+				BC2201921EC7115E000BE79B /* menu.png in Resources */,
 				BC5E82EF1EBF222A008F0BD7 /* Assets.xcassets in Resources */,
 				BCBA55901EC4000800E4A728 /* more-button.png in Resources */,
 				BCBA55BE1EC581C300E4A728 /* download-from-cloud@3x.png in Resources */,
@@ -362,6 +403,7 @@
 				BCBA55B51EC5785000E4A728 /* play@2x.png in Resources */,
 				BCBA55BC1EC581C300E4A728 /* download-from-cloud.png in Resources */,
 				BCBA55B81EC5816000E4A728 /* download-from-cloud.svg in Resources */,
+				BC2201901EC71157000BE79B /* menu@3x.png in Resources */,
 				BCBA55A21EC53E7800E4A728 /* AppleIncRootCertificate.cer in Resources */,
 				BC5E82ED1EBF222A008F0BD7 /* Main.storyboard in Resources */,
 				BCBA55BD1EC581C300E4A728 /* download-from-cloud@2x.png in Resources */,
@@ -399,7 +441,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E91CA833F143403C9D255EA7 /* [CP] Copy Pods Resources */ = {
@@ -436,10 +478,12 @@
 				BCBA557D1EC2EE7700E4A728 /* EIAMCollectionViewController.m in Sources */,
 				BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */,
 				BCBA559C1EC4057E00E4A728 /* SlideViewController.m in Sources */,
+				BC8A478A1EC9916B00AD5E95 /* RMDownloadIndicator.m in Sources */,
 				BCBA55A81EC53E8C00E4A728 /* VerifyStoreReceipt.m in Sources */,
 				BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */,
 				BC5E82E41EBF222A008F0BD7 /* main.m in Sources */,
 				BCBA55951EC4030100E4A728 /* MenuTableViewController.m in Sources */,
+				BC8A47891EC9916B00AD5E95 /* RMDisplayLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
