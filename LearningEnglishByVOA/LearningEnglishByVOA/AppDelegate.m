@@ -31,8 +31,8 @@
                                      error:nil];
     }
     
-    MenuTableViewController *leftMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Menu"];
-    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
+//    MenuTableViewController *leftMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Menu"];
+//    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     
     //call intensionaly to insure there is a instance of IAPManager
     [[IAPManager sharedInstance] loadPurchasedProducts];

@@ -7,6 +7,7 @@
 //
 
 #import "EIAMCollectionViewController.h"
+#import "SWRevealViewController.h"
 
 @interface EIAMCollectionViewController () {
     EIAMDataSource *dataSource;
@@ -24,7 +25,13 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     self.title = @"Learn English in a Minute";
-
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if(revealViewController ) {
+        //[self.sidebarButton setTarget: self.revealViewController];
+        //[self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
     dataSource = [[EIAMDataSource alloc] init];
     dataSource.delegate = self;
 

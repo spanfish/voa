@@ -40,7 +40,8 @@
 */
 - (void)setup {
     [super setup];
-    self.portraitSlideOffset = 100;
+    self.portraitSlideOffset = 60;
+    self.panGestureSideOffset = 50;
     
     _playerViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Player"];
     [self.view addSubview:_playerViewController.view];
