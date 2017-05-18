@@ -40,6 +40,7 @@
 */
 - (void)setup {
     [super setup];
+    self.portraitSlideOffset = 100;
     
     _playerViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Player"];
     [self.view addSubview:_playerViewController.view];

@@ -11,6 +11,8 @@
 
 #import "EIAMDataSource.h"
 #import "EIAMCollectionViewCell.h"
+#import "PlayItem.h"
+#import "TrackItem.h"
 
 //English In A Minute
 @interface EIAMCollectionViewController : UICollectionViewController<EIAMDataSourceDelegate, EIAMCollectionViewCellDelegate, SlideNavigationControllerDelegate>

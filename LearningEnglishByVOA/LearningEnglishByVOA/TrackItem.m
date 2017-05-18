@@ -35,23 +35,20 @@
     return NO;
 }
 
--(void) fetchTrackWithComplete:(DataCompletionBlock) completion {
-    NSString *fileName = [self.dataSrc lastPathComponent];
+-(NSURLSessionDownloadTask *) fetchTrackWithProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion {
     NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
-    fileName = [englishInAMinitueCacheDir stringByAppendingPathComponent:fileName];
-    
-    [[PageUtil sharedInstance] downloadData:[PathUtil urlAppendToBase:self.dataSrc]
-                                     toFile:fileName
+    NSString *fileName = [self.dataSrc lastPathComponent];
+    return [[VideoUtil sharedInstance] fetchVideo:self.dataSrc
+                                     toFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName]
+                                   progress:^(int64_t totalBytes, int64_t downloadedBytes) {
+                                       if(progress) {
+                                           main_queue(progress(totalBytes, downloadedBytes));
+                                       }
+                                   }
                                  completion:^(NSData * _Nullable content, NSError * _Nullable error) {
-                                     if(error) {
-                                         completion(nil, error);
-                                     } else if(content != nil) {
-                                         //NSString *fileName = [self.dataSrc lastPathComponent];
-                                         //NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
-                                         //[content writeToFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName] atomically:YES];
-                                         completion(nil, nil);
-                                     }
+                                     completion(nil, error);
                                  }];
+    
 }
 
 -(NSString *) description {

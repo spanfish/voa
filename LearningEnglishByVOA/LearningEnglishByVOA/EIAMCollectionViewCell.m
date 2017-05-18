@@ -11,10 +11,10 @@
 @implementation EIAMCollectionViewCell
 
 -(IBAction)playButtonTouched:(id)sender {
-    [self.delegate playTouchedWithItem: self.playItem];
+    [self.delegate playTouchedWithItem: self];
 }
 
 -(IBAction)downloadButtonTouched:(id)sender {
-    [self.delegate downloadTouchedWithItem: self.playItem];
+    [self.delegate downloadTouchedWithItem: self];
 }
 @end

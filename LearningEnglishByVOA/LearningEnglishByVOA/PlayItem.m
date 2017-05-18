@@ -53,8 +53,8 @@
     return [_tracks count] > 0;
 }
 
--(void) fetchTracksURLwithComplete:(CompletionBlock) completion {
-    [[PageUtil sharedInstance] loadPage:[PathUtil urlAppendToBase:self.videoURL]
+-(NSURLSessionDataTask *) fetchTracksURLwithComplete:(CompletionBlock) completion {
+    return [[PageUtil sharedInstance] loadPage:[PathUtil urlAppendToBase:self.videoURL]
                              completion:^(NSString * _Nullable content, NSError * _Nullable error) {
                                  if(content != nil) {
                                      NSError *error = nil;
@@ -63,6 +63,8 @@
                                          completion(nil, error);
                                          return;
                                      }
+                                     
+                                     NSMutableArray *array = [NSMutableArray arrayWithCapacity:3];
                                      HTMLNode *body = [parser body];
                                      HTMLNode *videoNode = [body findChildTag:@"video"];
                                      if(videoNode) {
@@ -74,11 +76,12 @@
                                          track.dataSrc = src;
                                          track.dataType = dataType;
                                          track.dataInfo = dataInfo;
-                                         [self.tracks addObject:track];
+                                         
+                                         [array addObject:track];
                                          
                                          NSString *dataSources = [videoNode getAttributeNamed:@"data-sources"];
                                          id json = [dataSources objectFromJSONString];
-                                         //[JSONDecoder obj]
+                                         
                                          if(json) {
                                              NSArray *tracks = json;
                                              for(NSDictionary *dict in tracks) {
@@ -86,17 +89,38 @@
                                                  track.dataSrc = [dict objectForKey:@"Src"];
                                                  track.dataType = [dict objectForKey:@"Type"];
                                                  track.dataInfo = [dict objectForKey:@"DataInfo"];
-                                                 [self.tracks addObject:track];
+                                                 [array addObject:track];
                                              }
-                                             
-                                             NSLog(@"");
                                          }
                                      }
+                                     [array sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                                         TrackItem *track1 = obj1;
+                                         TrackItem *track2 = obj2;
+                                         return [track1.dataInfo compare:track2.dataInfo];
+                                     }];
                                      
+                                     [[RLMRealm defaultRealm] beginWriteTransaction];
+                                     for (TrackItem *track in array) {
+                                         [self.tracks addObject:track];
+                                     }
+                                     [[RLMRealm defaultRealm] addOrUpdateObject:self];
+                                     [[RLMRealm defaultRealm] commitWriteTransaction];
+                                     
+                                     completion(array, nil);
+                                 } else {
                                      completion(nil, nil);
                                  }
-                                 
                              }];
+}
+
+-(NSURLSessionDownloadTask*) fetchThumbnailWithCompletion:(CompletionBlock)completion {
+    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+    NSString *fileName = [self.thumbURL lastPathComponent];
+    return [[ImageUtil sharedInstance] fetchImage:self.thumbURL
+                                    toFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName]
+                                  progress:nil
+                                completion:^(NSData * _Nullable content, NSError * _Nullable error) {completion(nil, error);
+                                  }];
 }
 
 -(NSString *) description {

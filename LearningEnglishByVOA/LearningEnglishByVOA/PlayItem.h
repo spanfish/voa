@@ -23,6 +23,6 @@
 
 @property RLMArray<TrackItem *><TrackItem> *tracks;
 
--(void) fetchTracksURLwithComplete:(CompletionBlock) completion;
-
+-(NSURLSessionDataTask *) fetchTracksURLwithComplete:(CompletionBlock) completion;
+-(NSURLSessionDownloadTask*) fetchThumbnailWithCompletion:(CompletionBlock) completion;
 @end

@@ -24,11 +24,6 @@
     self = [super init];
     if(self) {
         _playItems = [[PlayItem allObjects] sortedResultsUsingKeyPath:@"sortedDate" ascending:NO];
-#if DEBUG
-        for (PlayItem *item in _playItems) {
-            NSLog(@"playItem:%@", item);
-        }
-#endif
     }
     return self;
 }
@@ -36,7 +31,8 @@
 -(void) loadPage {
     [[PageUtil sharedInstance] loadPage:@"http://learningenglish.voanews.com/z/3619"
                              completion:^(NSString * _Nullable content, NSError * _Nullable error) {
-                                 global_queue([self parsePage:content]);
+                                 NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
+                                 [self parsePage:content];
                              }];
 }
 //解析HTML
@@ -92,9 +88,7 @@
                         playItem.videoTitle = [playItem.videoTitle substringFromIndex:[@"English in a Minute: " length]];
                     }
                 }
-                if([self.delegate respondsToSelector:@selector(playItemFound:)]) {
-                    main_queue([self notifyUI:playItem]);
-                }
+                [self notifyUI:playItem];
             }
         }//end of for
     }
@@ -104,7 +98,7 @@
         [self.delegate pageLoaded:moreNode != nil withError:error];
     }
 }
-//存储到DB，并更新UI
+//找到一部动画，存储到DB后更新UI
 -(void) notifyUI:(PlayItem*) playItem {
     if([PlayItem objectForPrimaryKey:playItem.videoTitle] == nil) {
         //May 13, 2017
@@ -148,102 +142,7 @@
         [[RLMRealm defaultRealm] addOrUpdateObject:playItem];
         [[RLMRealm defaultRealm] commitWriteTransaction];
         
-        [self.delegate playItemFound:playItem];
+        //[self.delegate playItemFound:playItem];
     }
-}
-/*
- <a class="btn link-showMore btn-anim" data-ajax="true" data-ajax-method="GET" data-ajax-mode="after" data-ajax-update="#items" data-ajax-url="/z/3619?p=2" href="/z/3619?p=2">Load more</a>
-*/
--(void) fetchTracksURLforPlayItem:(PlayItem *) playItem withComplete:(CompletionBlock) completion {
-    [[PageUtil sharedInstance] loadPage:[PathUtil urlAppendToBase:playItem.videoURL]
-                             completion:^(NSString * _Nullable content, NSError * _Nullable error) {
-                                 if(content != nil) {
-                                     NSError *error = nil;
-                                     HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&error];
-                                     if(error) {
-                                         completion(nil, error);
-                                         return;
-                                     }
-                                     
-                                     NSMutableArray *array = [NSMutableArray arrayWithCapacity:3];
-                                     HTMLNode *body = [parser body];
-                                     HTMLNode *videoNode = [body findChildTag:@"video"];
-                                     if(videoNode) {
-                                         NSString *src = [videoNode getAttributeNamed:@"src"];
-                                         NSString *dataType = [videoNode getAttributeNamed:@"data-type"];
-                                         NSString *dataInfo = [videoNode getAttributeNamed:@"data-info"];
-                                         
-                                         TrackItem *track = [[TrackItem alloc] init];
-                                         track.dataSrc = src;
-                                         track.dataType = dataType;
-                                         track.dataInfo = dataInfo;
-                                         
-                                         [array addObject:track];
-                                         
-                                         NSString *dataSources = [videoNode getAttributeNamed:@"data-sources"];
-                                         id json = [dataSources objectFromJSONString];
-
-                                         if(json) {
-                                             NSArray *tracks = json;
-                                             for(NSDictionary *dict in tracks) {
-                                                 TrackItem *track = [[TrackItem alloc] init];
-                                                 track.dataSrc = [dict objectForKey:@"Src"];
-                                                 track.dataType = [dict objectForKey:@"Type"];
-                                                 track.dataInfo = [dict objectForKey:@"DataInfo"];
-                                                 [array addObject:track];
-                                             }
-                                             
-                                             NSLog(@"");
-                                         }
-                                     }
-                                     [array sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                                         TrackItem *track1 = obj1;
-                                         TrackItem *track2 = obj2;
-                                         return [track1.dataInfo compare:track2.dataInfo];
-                                     }];
-                                     completion(array, nil);
-                                 } else {
-                                     completion(nil, nil);
-                                 }
-                             }];
-}
-
--(void) downloadTrack:(TrackItem *) item {
-    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
-    NSString *fileName = [item.dataSrc lastPathComponent];
-    [[PageUtil sharedInstance] downloadData:item.dataSrc
-                                     toFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName]
-                                   progress:^(int64_t totalBytes, int64_t downloadedBytes) {
-                                       [self.delegate downloadProgress:downloadedBytes inTotal:totalBytes];
-                                   }
-                                 completion:^(NSData * _Nullable content, NSError * _Nullable error) {
-                                     main_queue([self.delegate videoDownloaded:item]);
-                                 }];
-}
-
--(void) downloadPlayItemThumb:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath {
-    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
-    NSString *fileName = [item.thumbURL lastPathComponent];
-    
-    [[PageUtil sharedInstance] downloadData:item.thumbURL
-                                     toFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName]
-                                 completion:^(NSData * _Nullable content, NSError * _Nullable error) {
-                                     if([self.delegate respondsToSelector:@selector(thumbnailDidDownloadForPlayItem:atIndexPath:withError:)]) {
-                                         main_queue([self.delegate thumbnailDidDownloadForPlayItem:item atIndexPath:indexPath withError:error]);
-                                     }
-                                 }];
-}
-
--(void) saveTracks:(NSArray *) array forPlayItem:(PlayItem *) playItem {
-    main_queue([self internalSaveTracks:array forPlayItem:playItem]);
-}
-
--(void) internalSaveTracks:(NSArray *) array forPlayItem:(PlayItem *) playItem {
-    [[RLMRealm defaultRealm] beginWriteTransaction];
-    for (TrackItem *track in array) {
-        [playItem.tracks addObject:track];
-    }
-    [[RLMRealm defaultRealm] addOrUpdateObject:playItem];
-    [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 @end

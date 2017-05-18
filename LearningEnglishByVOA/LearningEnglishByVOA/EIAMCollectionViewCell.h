@@ -12,8 +12,8 @@
 
 @protocol EIAMCollectionViewCellDelegate <NSObject>
 
--(void) downloadTouchedWithItem:(PlayItem *)playItem;
--(void) playTouchedWithItem:(PlayItem *)playItem;
+-(void) downloadTouchedWithItem:(UICollectionViewCell *)cell;
+-(void) playTouchedWithItem:(UICollectionViewCell *)cell;
 @end
 
 @interface EIAMCollectionViewCell : UICollectionViewCell<UIGestureRecognizerDelegate>
@@ -25,5 +25,5 @@
 @property(nonatomic, weak) IBOutlet UIButton *downloadButton;
 @property(nonatomic, weak) IBOutlet RMDownloadIndicator *downloadIndicator;
 @property(nonatomic, weak) id<EIAMCollectionViewCellDelegate> delegate;
-@property(nonatomic, strong) PlayItem *playItem;
+//@property(nonatomic, strong) PlayItem *playItem;
 @end

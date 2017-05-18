@@ -10,14 +10,17 @@
 #import "Common.h"
 #import <Realm/Realm.h>
 
-@interface TrackItem : RLMObject
+@interface TrackItem : RLMObject<NSURLConnectionDelegate> {
+//    DataDownloadProgressBlock _progress;
+//    CompletionBlock _completion;
+}
 @property(nonatomic, strong) NSString *dataType;//video/mp4
 @property(nonatomic, strong) NSString *dataInfo;//270p,360p,720p
 @property(nonatomic, strong) NSString *dataSrc;//URL
 
 @property(nonatomic, assign, readonly, getter=hasDownloaded) BOOL downloaded;
 
--(void) fetchTrackWithComplete:(DataCompletionBlock) completion;
+-(NSURLSessionDownloadTask *) fetchTrackWithProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion;
 @end
 
 RLM_ARRAY_TYPE(TrackItem)
