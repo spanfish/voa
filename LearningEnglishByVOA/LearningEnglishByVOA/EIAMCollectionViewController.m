@@ -29,6 +29,8 @@ static NSString * const reuseIdentifier = @"Cell";
     if(revealViewController ) {
         //[self.sidebarButton setTarget: self.revealViewController];
         //[self.sidebarButton setAction: @selector( revealToggle: )];
+        
+        //http://www.appcoda.com/ios-programming-sidebar-navigation-menu/
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
