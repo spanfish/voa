@@ -1,4 +1,4 @@
-
 *.xcactivitylog
-DerivedData/**
+DerivedData/
 *.xcindexdb-wal
+xcuserdata/
