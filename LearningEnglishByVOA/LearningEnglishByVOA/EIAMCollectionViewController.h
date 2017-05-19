@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <iOS_Slide_Menu/SlideNavigationController.h>
 
 #import "EIAMDataSource.h"
 #import "EIAMCollectionViewCell.h"
@@ -15,6 +14,6 @@
 #import "TrackItem.h"
 
 //English In A Minute
-@interface EIAMCollectionViewController : UICollectionViewController<EIAMDataSourceDelegate, EIAMCollectionViewCellDelegate, SlideNavigationControllerDelegate>
+@interface EIAMCollectionViewController : UICollectionViewController<EIAMDataSourceDelegate, EIAMCollectionViewCellDelegate, UICollectionViewDelegateFlowLayout>
 
 @end

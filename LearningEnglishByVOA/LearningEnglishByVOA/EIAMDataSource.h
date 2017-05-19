@@ -14,7 +14,7 @@
 
 @protocol EIAMDataSourceDelegate<NSObject>
 
--(void) pageLoaded:(BOOL) hasMore withError:(NSError *) error;
+-(void) pageLoaded:(NSString *) moreURL withError:(NSError *) error;
 
 @end
 
@@ -22,6 +22,6 @@
 
 @property(nonatomic, weak) id<EIAMDataSourceDelegate> delegate;
 @property(nonatomic, strong) RLMResults<PlayItem *> *playItems;
--(void) loadPage;
+-(void) loadPage:(NSString *) moreURL;
 
 @end

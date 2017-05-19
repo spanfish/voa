@@ -28,8 +28,9 @@
     return self;
 }
 //取得一页动画列表
--(void) loadPage {
-    [[PageUtil sharedInstance] loadPage:@"http://learningenglish.voanews.com/z/3619"
+-(void) loadPage:(NSString *) moreURL {
+    //@"http://learningenglish.voanews.com/z/3619"
+    [[PageUtil sharedInstance] loadPage:[PathUtil urlAppendToBase: moreURL.length > 0 ? moreURL : @"/z/3619"]
                              completion:^(NSString * _Nullable content, NSError * _Nullable error) {
                                  NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
                                  [self parsePage:content];
@@ -41,7 +42,7 @@
     HTMLParser *parser = [[HTMLParser alloc] initWithString:pageContent error:&error];
     if(error) {
         if([self.delegate respondsToSelector:@selector(pageLoaded:withError:)]) {
-            [self.delegate pageLoaded:NO withError:error];
+            [self.delegate pageLoaded:nil withError:error];
         }
         return;
     }
@@ -95,7 +96,7 @@
     
     HTMLNode *moreNode = [body findChildWithAttribute:@"class" matchingName:@"link-showMore" allowPartial:YES];
     if([self.delegate respondsToSelector:@selector(pageLoaded:withError:)]) {
-        [self.delegate pageLoaded:moreNode != nil withError:error];
+        [self.delegate pageLoaded:[moreNode getAttributeNamed:@"data-ajax-url"] withError:error];
     }
 }
 //找到一部动画，存储到DB后更新UI

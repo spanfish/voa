@@ -8,12 +8,16 @@
 
 #import "EIAMCollectionViewController.h"
 #import "SWRevealViewController.h"
+#import "MoreCollectionViewCell.h"
 
 @interface EIAMCollectionViewController () {
     EIAMDataSource *dataSource;
     NSMutableDictionary *_thumbFetchTasks;
     NSMutableDictionary *_trackFetchTasks;
     NSMutableDictionary *_videoFetchTasks;
+    CGSize cellSize;
+    BOOL loading;
+    NSString* _moreURL;
 }
 @end
 
@@ -36,18 +40,69 @@ static NSString * const reuseIdentifier = @"Cell";
     dataSource = [[EIAMDataSource alloc] init];
     dataSource.delegate = self;
 
+    //Collection View
+    [self calCellSize:[UIScreen mainScreen].bounds.size];
+    
     _thumbFetchTasks = [NSMutableDictionary dictionary];
     _trackFetchTasks = [NSMutableDictionary dictionary];
     _videoFetchTasks = [NSMutableDictionary dictionary];
     
     //取得动画列表
-    [dataSource loadPage];
+    loading = YES;
+    [dataSource loadPage:_moreURL];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMore:) name:@"More" object:nil];
+}
+
+-(void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void) loadMore:(NSNotification *) notification {
+    NSLog(@"loadMore");
+    if(!loading && _moreURL.length > 0) {
+        loading = YES;
+        [self.collectionView reloadItemsAtIndexPaths:@[
+                                            [NSIndexPath indexPathForRow:0 inSection:1]
+                                                       ]];
+        
+        [dataSource loadPage:_moreURL];
+    }
+}
+
+
+-(void) calCellSize:(CGSize) screenSize {
+    CGFloat totalWidth = screenSize.width;
+    NSUInteger cellWidth = 145;
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        cellWidth = 250;
+    }
+    CGFloat spacing = cellWidth;
+    
+    while (spacing > 10) {
+        NSUInteger numOfCols = totalWidth / cellWidth;
+        NSUInteger totalSpace = totalWidth - numOfCols * cellWidth;
+        spacing = totalSpace / (numOfCols + 1);
+        if(spacing > 10) {
+            cellWidth += 5;
+        }
+    }
+    
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, spacing, 0, spacing);
+    cellSize = CGSizeMake(cellWidth, (CGFloat)cellWidth * 74 / 102 + 21 + 4 + 40);
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    [self calCellSize:size];
+    [self.collectionView reloadData];
+    [self.view setNeedsLayout];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,8 +112,12 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - <EIAMDataSourceDelegate>
 //动画列表取得完成
--(void) pageLoaded:(BOOL) hasMore withError:(NSError * _Nullable) error {
-    main_queue([self.collectionView reloadData]);
+-(void) pageLoaded:(NSString *) moreURL withError:(NSError * _Nullable) error {
+    loading = NO;
+    _moreURL = moreURL;
+    //main_queue([self.collectionView reloadData]);
+    [self.collectionView reloadSections: [NSIndexSet indexSetWithIndex:0]];
+    [self.collectionView reloadSections: [NSIndexSet indexSetWithIndex:1]];
 }
 
 /*
@@ -73,23 +132,37 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - <UICollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [dataSource.playItems count] + 1;
+    return section == 0 ? [dataSource.playItems count] : 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    EIAMCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.delegate = self;
+    
     //下一页
-    if(indexPath.row == [dataSource.playItems count]) {
-        cell.titleLabel.text = @"";
-        cell.dateLabel.text = @"";
-        cell.thumbImageView.image = [UIImage imageNamed:@"more-button"];
+    if(indexPath.section == 1) {
+        MoreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MoreCell" forIndexPath:indexPath];
+        if(loading) {
+            cell.imageView.animationImages = @[
+                                               [UIImage imageNamed:@"more"],
+                                               [UIImage imageNamed:@"more_loading_1"],
+                                               [UIImage imageNamed:@"more_loading_2"],
+                                               [UIImage imageNamed:@"more_loading_3"]
+                                               ];
+            cell.imageView.animationDuration = 1.2;
+            [cell.imageView startAnimating];
+        } else {
+            [cell.imageView stopAnimating];
+            cell.imageView.animationImages = nil;
+            cell.imageView.image = [UIImage imageNamed:@"more"];
+        }
         return cell;
     }
+    
+    EIAMCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.delegate = self;
     
     //显示一部动画的缩微图
     PlayItem *item = [dataSource.playItems objectAtIndex:indexPath.row];
@@ -100,9 +173,12 @@ static NSString * const reuseIdentifier = @"Cell";
     NSString *fileName = [path stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
     if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
         //缩微图存在
+        cell.thumbImageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.thumbImageView.image = [UIImage imageWithContentsOfFile:fileName];
     } else {
         //缩微图不存在，开始下载
+        cell.thumbImageView.contentMode = UIViewContentModeScaleAspectFit;
+        cell.thumbImageView.image = [UIImage imageNamed:@"gallery"];;
         [self loadThumbnail:item forIndexPath:indexPath];
     }
 
@@ -183,7 +259,22 @@ static NSString * const reuseIdentifier = @"Cell";
     [_thumbFetchTasks setObject:task forKey:indexPath];
 }
 #pragma mark - <UICollectionViewDelegate>
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 1) {
+        return;
+    }
+    if(indexPath.row < [dataSource.playItems count]) {
+        PlayItem *item = [dataSource.playItems objectAtIndex:indexPath.row];
+        NSLog(@"%@", item);
+    }
+}
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 1) {
+        return CGSizeMake([UIScreen mainScreen].bounds.size.width, 80);
+    }
+    return cellSize;
+}
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -212,14 +303,8 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row < [dataSource.playItems count]) {
-        PlayItem *item = [dataSource.playItems objectAtIndex:indexPath.row];
-        NSLog(@"%@", item);
 
-    }
-}
-
+#pragma -
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
     return YES;
 }
@@ -229,6 +314,9 @@ static NSString * const reuseIdentifier = @"Cell";
 //播放动画
 -(void) playTouchedWithItem:(UICollectionViewCell *)cell {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    if(indexPath.section == 1) {
+        return;
+    }
     if([_trackFetchTasks objectForKey:indexPath] || [_videoFetchTasks objectForKey:indexPath]) {
         return;
     }
