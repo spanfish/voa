@@ -7,6 +7,8 @@
 //
 
 #import "SliderViewController.h"
+#import <AVKit/AVKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface SliderViewController ()
 
@@ -17,12 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //    NSURL *videoURL = [NSURL URLWithString:@"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
-    //    AVPlayer *player = [AVPlayer playerWithURL:videoURL];
-    //    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-    //    playerLayer.frame = self.view.bounds;
-    //    [self.view.layer addSublayer:playerLayer];
-    //[player play];
+//    NSURL *videoURL = [NSURL URLWithString:@"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
+//    AVPlayer *player = [AVPlayer playerWithURL:videoURL];
+//    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+//    playerLayer.frame = self.view.bounds;
+//    [self.view.layer addSublayer:playerLayer];
+//    [player play];
 
 }
 

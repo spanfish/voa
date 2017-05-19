@@ -503,14 +503,14 @@
                                     <segue destination="f6t-N3-VZy" kind="custom" identifier="Storage" customClass="SWRevealViewControllerSeguePushController" id="EOK-Qz-2Ck"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="yoq-fl-bWE" style="IBUITableViewCellStyleDefault" id="86m-qz-G1z">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayList" textLabel="yoq-fl-bWE" style="IBUITableViewCellStyleDefault" id="86m-qz-G1z">
                                 <rect key="frame" x="0.0" y="178" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="86m-qz-G1z" id="p5L-cW-ipg">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yoq-fl-bWE">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yoq-fl-bWE">
                                             <rect key="frame" x="15" y="0.0" width="384" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -519,6 +519,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="JSi-zY-DfC" kind="custom" identifier="PlayList" customClass="SWRevealViewControllerSeguePushController" id="Syv-lo-lxt"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -530,6 +533,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXx-gj-fQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1222" y="261"/>
+        </scene>
+        <!--Playlist Table View Controller-->
+        <scene sceneID="qEK-i7-u4t">
+            <objects>
+                <tableViewController id="vrv-6v-rOG" customClass="PlaylistTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="flH-yS-gFv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nCF-oh-kgb">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nCF-oh-kgb" id="ggp-k8-PHi">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vrv-6v-rOG" id="tnC-Qk-0YG"/>
+                            <outlet property="delegate" destination="vrv-6v-rOG" id="RuA-Z4-8IA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="cr9-6K-LDF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gjn-Nt-ojH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3082.608695652174" y="260.86956521739131"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="5DW-Zc-WZW">
@@ -766,6 +798,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yE9-R0-Bpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-378.39999999999998" y="377.36131934032989"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Kb2-bF-AdO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSi-zY-DfC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Tw-So-Pgl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vrv-6v-rOG" kind="relationship" relationship="rootViewController" id="Ghp-CK-8a2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gzz-ZB-4r6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2173.913043478261" y="260.86956521739131"/>
         </scene>
     </scenes>
     <resources>

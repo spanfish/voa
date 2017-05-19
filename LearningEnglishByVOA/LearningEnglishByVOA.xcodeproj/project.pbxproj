@@ -52,6 +52,11 @@
 		9DADDDE41ECED27600C53FB5 /* gallery@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDE01ECED27600C53FB5 /* gallery@3x.png */; };
 		9DADDDE71ECED80C00C53FB5 /* SwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DADDDE61ECED80C00C53FB5 /* SwitchTableViewCell.m */; };
 		9DADDDEA1ECEE7D100C53FB5 /* SliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DADDDE91ECEE7D100C53FB5 /* SliderViewController.m */; };
+		9DADDDEF1ECEF33400C53FB5 /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDEB1ECEF33400C53FB5 /* playlist.png */; };
+		9DADDDF01ECEF33400C53FB5 /* playlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDEC1ECEF33400C53FB5 /* playlist@2x.png */; };
+		9DADDDF11ECEF33400C53FB5 /* playlist@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDED1ECEF33400C53FB5 /* playlist@3x.png */; };
+		9DADDDF21ECEF33400C53FB5 /* video-player.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDEE1ECEF33400C53FB5 /* video-player.svg */; };
+		9DADDDF51ECEF3B700C53FB5 /* PlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DADDDF41ECEF3B700C53FB5 /* PlaylistTableViewController.m */; };
 		BC22018C1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg in Resources */ = {isa = PBXBuildFile; fileRef = BC22018B1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg */; };
 		BC22018F1EC71157000BE79B /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC22018D1EC71157000BE79B /* menu@2x.png */; };
 		BC2201901EC71157000BE79B /* menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC22018E1EC71157000BE79B /* menu@3x.png */; };
@@ -163,6 +168,12 @@
 		9DADDDE61ECED80C00C53FB5 /* SwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchTableViewCell.m; sourceTree = "<group>"; };
 		9DADDDE81ECEE7D100C53FB5 /* SliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderViewController.h; sourceTree = "<group>"; };
 		9DADDDE91ECEE7D100C53FB5 /* SliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderViewController.m; sourceTree = "<group>"; };
+		9DADDDEB1ECEF33400C53FB5 /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist.png; sourceTree = "<group>"; };
+		9DADDDEC1ECEF33400C53FB5 /* playlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist@2x.png"; sourceTree = "<group>"; };
+		9DADDDED1ECEF33400C53FB5 /* playlist@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist@3x.png"; sourceTree = "<group>"; };
+		9DADDDEE1ECEF33400C53FB5 /* video-player.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "video-player.svg"; sourceTree = "<group>"; };
+		9DADDDF31ECEF3B700C53FB5 /* PlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistTableViewController.h; sourceTree = "<group>"; };
+		9DADDDF41ECEF3B700C53FB5 /* PlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewController.m; sourceTree = "<group>"; };
 		BC22018B1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "menu-three-horizontal-lines-symbol.svg"; sourceTree = "<group>"; };
 		BC22018D1EC71157000BE79B /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		BC22018E1EC71157000BE79B /* menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@3x.png"; sourceTree = "<group>"; };
@@ -294,6 +305,10 @@
 		BC5E82E21EBF222A008F0BD7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9DADDDEB1ECEF33400C53FB5 /* playlist.png */,
+				9DADDDEC1ECEF33400C53FB5 /* playlist@2x.png */,
+				9DADDDED1ECEF33400C53FB5 /* playlist@3x.png */,
+				9DADDDEE1ECEF33400C53FB5 /* video-player.svg */,
 				9DADDDDD1ECED27600C53FB5 /* gallery.png */,
 				9DADDDDE1ECED27600C53FB5 /* gallery.svg */,
 				9DADDDDF1ECED27600C53FB5 /* gallery@2x.png */,
@@ -432,6 +447,8 @@
 				9DADDDE61ECED80C00C53FB5 /* SwitchTableViewCell.m */,
 				9DADDDE81ECEE7D100C53FB5 /* SliderViewController.h */,
 				9DADDDE91ECEE7D100C53FB5 /* SliderViewController.m */,
+				9DADDDF31ECEF3B700C53FB5 /* PlaylistTableViewController.h */,
+				9DADDDF41ECEF3B700C53FB5 /* PlaylistTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -537,12 +554,14 @@
 				9DADDDC21ECEC68900C53FB5 /* more@2x.png in Resources */,
 				9DADDDC01ECEC68900C53FB5 /* more.png in Resources */,
 				BC5E82EF1EBF222A008F0BD7 /* Assets.xcassets in Resources */,
+				9DADDDF01ECEF33400C53FB5 /* playlist@2x.png in Resources */,
 				9DADDD8F1ECE7F8300C53FB5 /* settings@2x.png in Resources */,
 				9DADDDBB1ECE95F800C53FB5 /* video-camera@3x.png in Resources */,
 				9DADDDD71ECEC86800C53FB5 /* more_loading_3@3x.png in Resources */,
 				BCBA55901EC4000800E4A728 /* more-button.png in Resources */,
 				9DADDDBA1ECE95F800C53FB5 /* video-camera@2x.png in Resources */,
 				9DADDDD81ECEC86800C53FB5 /* more2.svg in Resources */,
+				9DADDDEF1ECEF33400C53FB5 /* playlist.png in Resources */,
 				BCBA55BE1EC581C300E4A728 /* download-from-cloud@3x.png in Resources */,
 				BCBA55921EC4000800E4A728 /* more-button@3x.png in Resources */,
 				9DADDDE41ECED27600C53FB5 /* gallery@3x.png in Resources */,
@@ -563,8 +582,10 @@
 				9DADDD8C1ECE7F8300C53FB5 /* disk@3x.png in Resources */,
 				9DADDDD61ECEC86800C53FB5 /* more_loading_3@2x.png in Resources */,
 				9DADDDB81ECE95F800C53FB5 /* video-camera.png in Resources */,
+				9DADDDF21ECEF33400C53FB5 /* video-player.svg in Resources */,
 				9DADDD981ECE836800C53FB5 /* minute.png in Resources */,
 				9DADDDC11ECEC68900C53FB5 /* more.svg in Resources */,
+				9DADDDF11ECEF33400C53FB5 /* playlist@3x.png in Resources */,
 				9DADDDD31ECEC86800C53FB5 /* more_loading_2@2x.png in Resources */,
 				9DADDD901ECE7F8300C53FB5 /* settings@3x.png in Resources */,
 				BCBA55A21EC53E7800E4A728 /* AppleIncRootCertificate.cer in Resources */,
@@ -632,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCBA55AE1EC543DF00E4A728 /* RealmDatabase.m in Sources */,
+				9DADDDF51ECEF3B700C53FB5 /* PlaylistTableViewController.m in Sources */,
 				9DADDDE71ECED80C00C53FB5 /* SwitchTableViewCell.m in Sources */,
 				BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */,
 				BCBA55891EC30CD400E4A728 /* EIAMCollectionViewCell.m in Sources */,

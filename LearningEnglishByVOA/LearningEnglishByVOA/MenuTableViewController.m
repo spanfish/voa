@@ -36,7 +36,7 @@ static NSString* IMAGES[] = {@"minute", @"movie"};
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -64,6 +64,12 @@ static NSString* IMAGES[] = {@"minute", @"movie"};
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell" forIndexPath:indexPath];
             cell.imageView.image = [UIImage imageNamed:@"settings"];
             cell.textLabel.text = @"Settings";
+            return cell;
+        } else if(indexPath.section == 3) {
+            //
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlayList" forIndexPath:indexPath];
+            cell.imageView.image = [UIImage imageNamed:@"playlist"];
+            cell.textLabel.text = @"Now Playing";
             return cell;
         }
     }
