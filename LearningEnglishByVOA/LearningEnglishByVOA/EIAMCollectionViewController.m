@@ -27,8 +27,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.title = @"Learn English in a Minute";
     SWRevealViewController *revealViewController = self.revealViewController;
     if(revealViewController ) {
-        //[self.sidebarButton setTarget: self.revealViewController];
-        //[self.sidebarButton setAction: @selector( revealToggle: )];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
         
         //http://www.appcoda.com/ios-programming-sidebar-navigation-menu/
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -48,19 +47,7 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showMenu:)];
-}
-
--(void) showMenu:(id) sender {
-
-    if([[SlideNavigationController sharedInstance] isMenuOpen]) {
-        [[SlideNavigationController sharedInstance] closeMenuWithCompletion:nil];
-    } else {
-        [[SlideNavigationController sharedInstance] openMenu:MenuLeft
-                                              withCompletion:^{
-                                                  
-                                              }];
-    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

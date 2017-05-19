@@ -1,30 +1,23 @@
 //
-//  MenuTableViewController.m
+//  VideoQualityViewController.m
 //  LearningEnglishByVOA
 //
-//  Created by xiangwei wang on 2017/05/11.
-//  Copyright © 2017年 Xiangwei Wang. All rights reserved.
+//  Created by xiangwei wang on 2017/05/19.
+//  Copyright © 2017 Xiangwei Wang. All rights reserved.
 //
 
-#import "MenuTableViewController.h"
+#import "VideoQualityViewController.h"
 
-static NSString* ROWS[] = {@"English in a Minute", @"English @ the Movies"};
-static NSString* IMAGES[] = {@"minute", @"movie"};
-
-@interface MenuTableViewController ()
+@interface VideoQualityViewController ()
 
 @end
 
-@implementation MenuTableViewController
+@implementation VideoQualityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.title = @"Video Quality";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,42 +28,51 @@ static NSString* IMAGES[] = {@"minute", @"movie"};
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section == 0) {
-        return sizeof(ROWS)/sizeof(NSString *);
-    }
     return 1;
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if(indexPath.section == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EIMCell" forIndexPath:indexPath];
-        cell.imageView.image = [UIImage imageNamed:IMAGES[indexPath.row]];
-        cell.textLabel.text = ROWS[indexPath.row];
-        return cell;
-    } else {
-        if(indexPath.section == 1) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StorageCell" forIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"disk"];
-            cell.textLabel.text = @"Storage";
-            return cell;
-        } else if(indexPath.section == 2) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell" forIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"settings"];
-            cell.textLabel.text = @"Settings";
-            return cell;
-        }
-    }
-    
-    return nil;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QualityCell" forIndexPath:indexPath];
+    
+    NSString *currentQuality = [[NSUserDefaults standardUserDefaults] objectForKey:@"VideoQuality"];
+    if(currentQuality == nil) {
+        currentQuality = @"720p";
+    }
+    NSString *quality = nil;
+    if(indexPath.row == 0) {
+        quality = @"270p";
+    } else if(indexPath.row == 1) {
+        quality = @"360p";
+    } else if(indexPath.row == 2) {
+        quality = @"720p";
+    }
+    cell.textLabel.text = quality;
+    if([currentQuality isEqualToString:quality]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    return cell;
+}
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *quality = nil;
+    if(indexPath.row == 0) {
+        quality = @"270p";
+    } else if(indexPath.row == 1) {
+        quality = @"360p";
+    } else if(indexPath.row == 2) {
+        quality = @"720p";
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:quality forKey:@"VideoQuality"];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -102,6 +104,22 @@ static NSString* IMAGES[] = {@"minute", @"movie"};
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
+}
+*/
+
+/*
+#pragma mark - Table view delegate
+
+// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Navigation logic may go here, for example:
+    // Create the next view controller.
+    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    
+    // Pass the selected object to the new view controller.
+    
+    // Push the view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 */
 

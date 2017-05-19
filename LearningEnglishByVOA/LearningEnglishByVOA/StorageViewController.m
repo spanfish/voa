@@ -1,30 +1,34 @@
 //
-//  MenuTableViewController.m
+//  StorageViewController.m
 //  LearningEnglishByVOA
 //
-//  Created by xiangwei wang on 2017/05/11.
-//  Copyright © 2017年 Xiangwei Wang. All rights reserved.
+//  Created by xiangwei wang on 2017/05/19.
+//  Copyright © 2017 Xiangwei Wang. All rights reserved.
 //
 
-#import "MenuTableViewController.h"
+#import "StorageViewController.h"
+#import "SWRevealViewController.h"
+#import "PathUtil.h"
 
-static NSString* ROWS[] = {@"English in a Minute", @"English @ the Movies"};
-static NSString* IMAGES[] = {@"minute", @"movie"};
-
-@interface MenuTableViewController ()
+@interface StorageViewController ()
 
 @end
 
-@implementation MenuTableViewController
+static NSString* ROWS[] = {@"English in a Minute", @"English @ the Movies"};
+
+@implementation StorageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.title = @"Storage";
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if(revealViewController ) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
+
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,41 +39,22 @@ static NSString* IMAGES[] = {@"minute", @"movie"};
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section == 0) {
-        return sizeof(ROWS)/sizeof(NSString *);
-    }
     return 1;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return sizeof(ROWS)/sizeof(NSString *);
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if(indexPath.section == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EIMCell" forIndexPath:indexPath];
-        cell.imageView.image = [UIImage imageNamed:IMAGES[indexPath.row]];
-        cell.textLabel.text = ROWS[indexPath.row];
-        return cell;
-    } else {
-        if(indexPath.section == 1) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StorageCell" forIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"disk"];
-            cell.textLabel.text = @"Storage";
-            return cell;
-        } else if(indexPath.section == 2) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell" forIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"settings"];
-            cell.textLabel.text = @"Settings";
-            return cell;
-        }
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SizeCell" forIndexPath:indexPath];
     
-    return nil;
+    cell.textLabel.text = ROWS[indexPath.row];
+    cell.detailTextLabel.text = @"";
+    
+    return cell;
 }
-
 
 /*
 // Override to support conditional editing of the table view.
