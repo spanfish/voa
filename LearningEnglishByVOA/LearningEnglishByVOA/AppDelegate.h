@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlayItem.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property(nonatomic, strong) NSMutableArray *playList;
 
+-(void) addToPlayList:(PlayItem *) item;
 @end
 

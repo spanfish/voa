@@ -57,6 +57,7 @@
 		9DADDDF11ECEF33400C53FB5 /* playlist@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDED1ECEF33400C53FB5 /* playlist@3x.png */; };
 		9DADDDF21ECEF33400C53FB5 /* video-player.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDEE1ECEF33400C53FB5 /* video-player.svg */; };
 		9DADDDF51ECEF3B700C53FB5 /* PlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DADDDF41ECEF3B700C53FB5 /* PlaylistTableViewController.m */; };
+		9DADDDF71ECEF61700C53FB5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DADDDF61ECEF61700C53FB5 /* AudioToolbox.framework */; };
 		BC22018C1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg in Resources */ = {isa = PBXBuildFile; fileRef = BC22018B1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg */; };
 		BC22018F1EC71157000BE79B /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC22018D1EC71157000BE79B /* menu@2x.png */; };
 		BC2201901EC71157000BE79B /* menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC22018E1EC71157000BE79B /* menu@3x.png */; };
@@ -174,6 +175,7 @@
 		9DADDDEE1ECEF33400C53FB5 /* video-player.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "video-player.svg"; sourceTree = "<group>"; };
 		9DADDDF31ECEF3B700C53FB5 /* PlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistTableViewController.h; sourceTree = "<group>"; };
 		9DADDDF41ECEF3B700C53FB5 /* PlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewController.m; sourceTree = "<group>"; };
+		9DADDDF61ECEF61700C53FB5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BC22018B1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "menu-three-horizontal-lines-symbol.svg"; sourceTree = "<group>"; };
 		BC22018D1EC71157000BE79B /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		BC22018E1EC71157000BE79B /* menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@3x.png"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				BCBA55AA1EC53EB400E4A728 /* StoreKit.framework in Frameworks */,
 				BCBA55991EC404A000E4A728 /* AVFoundation.framework in Frameworks */,
 				BCBA55971EC4041F00E4A728 /* AVKit.framework in Frameworks */,
+				9DADDDF71ECEF61700C53FB5 /* AudioToolbox.framework in Frameworks */,
 				BC74DC241EC03DA1009C4EF1 /* MediaPlayer.framework in Frameworks */,
 				BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */,
 				BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */,
@@ -456,6 +459,7 @@
 		D9B46EAF30DB5DE4CCD328BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DADDDF61ECEF61700C53FB5 /* AudioToolbox.framework */,
 				BCBA55A91EC53EB400E4A728 /* StoreKit.framework */,
 				BCBA55981EC404A000E4A728 /* AVFoundation.framework */,
 				BCBA55961EC4041F00E4A728 /* AVKit.framework */,
@@ -505,6 +509,9 @@
 						DevelopmentTeam = S78RUL88S5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};

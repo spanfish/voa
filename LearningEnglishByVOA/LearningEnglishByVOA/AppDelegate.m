@@ -44,6 +44,8 @@
     [[IAPManager sharedInstance] loadPurchasedProducts];
     
     [RealmDatabase setup];
+    
+    self.playList = [NSMutableArray array];
     return YES;
 }
 
@@ -74,5 +76,11 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
+-(void) addToPlayList:(PlayItem *) item {
+    if(!self.playList) {
+        self.playList = [NSMutableArray array];
+    }
+    
+    [self.playList addObject:item];
+}
 @end
