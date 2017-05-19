@@ -14,7 +14,6 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - iOS-Slide-Menu (1.5)
   - JSONKit (1.4)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
@@ -27,7 +26,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
-  - iOS-Slide-Menu
   - JSONKit
   - Masonry
   - MBProgressHUD
@@ -38,7 +36,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  iOS-Slide-Menu: 40b0cbd8916c42afc755f0869793cd09e7a32102
   JSONKit: 5b69e804ea54d99293eed0fd2ce596c5703fefb0
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -47,6 +44,6 @@ SPEC CHECKSUMS:
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
 
-PODFILE CHECKSUM: fd90e0765e150db568e783b43b9d9af5e3ea3245
+PODFILE CHECKSUM: da3af9b4efaffe2c8da27997b302f4faa14cbd6f
 
 COCOAPODS: 1.0.1

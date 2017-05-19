@@ -11,6 +11,7 @@
 @interface PathUtil : NSObject
 
 +(NSString *) englishInAMinutePath;
++(NSString *) englishInMoviePath;
 +(NSString *) documentDir;
 
 +(NSString *) BASE_URL;

@@ -23,14 +23,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
-    if(![fileManager fileExistsAtPath:englishInAMinitueCacheDir]) {
-        [fileManager createDirectoryAtPath:englishInAMinitueCacheDir
+    NSString *path = [PathUtil englishInAMinutePath];
+    if(![fileManager fileExistsAtPath:path]) {
+        [fileManager createDirectoryAtPath:path
                withIntermediateDirectories:NO
                                 attributes:nil
                                      error:nil];
     }
     
+    path = [PathUtil englishInMoviePath];
+    if(![fileManager fileExistsAtPath:path]) {
+        [fileManager createDirectoryAtPath:path
+               withIntermediateDirectories:NO
+                                attributes:nil
+                                     error:nil];
+    }
 //    MenuTableViewController *leftMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Menu"];
 //    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     

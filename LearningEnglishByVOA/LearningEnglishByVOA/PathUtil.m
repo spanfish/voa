@@ -18,6 +18,13 @@
     return englishInAMinitueCacheDir;
 }
 
++(NSString *) englishInMoviePath {
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *englishInMoviePath = [path stringByAppendingPathComponent:@"englishInMoviePath"];
+    
+    return englishInMoviePath;
+}
+
 +(NSString *) documentDir {
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     return path;

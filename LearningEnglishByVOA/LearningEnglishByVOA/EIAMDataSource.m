@@ -27,6 +27,34 @@
     }
     return self;
 }
+
+-(void) loadInAMinuteTopPage {
+    [[PageUtil sharedInstance] loadPage:[PathUtil BASE_URL]
+                             completion:^(NSString * _Nullable content, NSError * _Nullable error) {
+                                 NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
+                                 NSString *topPage = nil;
+                                 NSError *parseError = nil;
+                                 HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&parseError];
+                                 if(!parseError) {
+                                     HTMLNode *body = [parser body];
+                                     HTMLNode *footNode = [body findChildWithAttribute:@"id" matchingName:@"foot" allowPartial:NO];
+                                     for(HTMLNode *node in [footNode findChildrenOfClass:@"handler"]) {
+                                         if([node.tagName isEqualToString:@"a"]) {
+                                             NSLog(@"allContents:%@", node.allContents);
+                                             if([node.allContents isEqualToString:@"English in a Minute"]) {
+                                                 topPage = [node getAttributeNamed:@"href"];
+                                                 break;
+                                             }
+                                         }
+                                     }
+                                 }
+                                 
+                                 if([self.delegate respondsToSelector:@selector(topPageLoaded:withError:)]) {
+                                     [self.delegate topPageLoaded:topPage withError:error != nil ? error : parseError];
+                                 }
+                             }];
+}
+
 //取得一页动画列表
 -(void) loadPage:(NSString *) moreURL {
     //@"http://learningenglish.voanews.com/z/3619"

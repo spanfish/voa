@@ -18,6 +18,7 @@
     CGSize cellSize;
     BOOL loading;
     NSString* _moreURL;
+    NSString *_topPageURL;
 }
 @end
 
@@ -49,13 +50,23 @@ static NSString * const reuseIdentifier = @"Cell";
     
     //取得动画列表
     loading = YES;
-    [dataSource loadPage:_moreURL];
+    //[dataSource loadPage:_moreURL];
+    _topPageURL = nil;
+    [dataSource loadInAMinuteTopPage];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMore:) name:@"More" object:nil];
 }
 
 -(void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+-(void) topPageLoaded:(NSString *)topPage withError:(NSError *)error {
+    _topPageURL = topPage;
+    if(_topPageURL != nil) {
+        [dataSource loadPage:_topPageURL];
+    }
 }
 
 -(void) loadMore:(NSNotification *) notification {

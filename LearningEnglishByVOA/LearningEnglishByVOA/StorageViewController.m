@@ -10,11 +10,37 @@
 #import "SWRevealViewController.h"
 #import "PathUtil.h"
 
-@interface StorageViewController ()
+@interface Directory : NSObject
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *path;
+@property(nonatomic, assign) unsigned long long totalSize;
+@property(nonatomic, assign) unsigned long long totalfiles;
+@property(nonatomic, assign) BOOL calculating;
 
+-(instancetype) initWithTitle:(NSString *) title path:(NSString *) path;
 @end
 
-static NSString* ROWS[] = {@"English in a Minute", @"English @ the Movies"};
+@implementation Directory
+-(instancetype) initWithTitle:(NSString *) title path:(NSString *) path {
+    self = [super init];
+    if(self) {
+        self.title = title;
+        self.path = path;
+        self.totalSize = 0;
+        self.totalfiles = 0;
+        self.calculating = YES;
+    }
+    return self;
+}
+@end
+
+@interface StorageViewController () {
+    dispatch_queue_t queue;
+    BOOL stop;
+    NSMutableArray *directoryArray;
+}
+
+@end
 
 @implementation StorageViewController
 
@@ -29,6 +55,54 @@ static NSString* ROWS[] = {@"English in a Minute", @"English @ the Movies"};
 
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+    directoryArray = [NSMutableArray arrayWithObjects:
+                      [[Directory alloc] initWithTitle:@"English in a Minute" path:[PathUtil englishInAMinutePath]],
+                      [[Directory alloc] initWithTitle:@"English @ the Movies" path:[PathUtil englishInMoviePath]], nil];
+    queue = dispatch_queue_create("com.xiang.voa.storage", DISPATCH_QUEUE_CONCURRENT);
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self.tableView reloadData];
+    
+    for (Directory *dir in directoryArray) {
+        dir.calculating = YES;
+        dispatch_async(queue, ^{
+            [self calculateSizeOfDirectory: dir];
+        });
+    }
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    stop = YES;
+}
+
+-(void) calculateSizeOfDirectory:(Directory *) directory {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    NSArray *filesArray = [fm subpathsOfDirectoryAtPath:directory.path error:nil];
+    NSEnumerator *filesEnumerator = [filesArray objectEnumerator];
+    NSString *fileName;
+    
+    while (fileName = [filesEnumerator nextObject]) {
+        if(stop) {
+            return;
+        }
+        NSDictionary *fileDictionary = [fm attributesOfItemAtPath:[directory.path stringByAppendingPathComponent:fileName] error:nil];
+        directory.totalSize += [fileDictionary fileSize];
+        directory.totalfiles += 1;
+    }
+    directory.calculating = NO;
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+}
+
+-(void) dealloc {
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,61 +117,32 @@ static NSString* ROWS[] = {@"English in a Minute", @"English @ the Movies"};
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return sizeof(ROWS)/sizeof(NSString *);
+    return [directoryArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SizeCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = ROWS[indexPath.row];
-    cell.detailTextLabel.text = @"";
+    Directory *dir = [directoryArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = dir.title;
+    if(dir.calculating) {
+        cell.detailTextLabel.text = @"Calculating...";
+    } else {
+        NSString *sizeStr = @"0 byte";
+        if(dir.totalSize / 1024 / 1024 / 1024 >= 1) {
+            sizeStr = [NSString stringWithFormat:@"%.2f G", (double)dir.totalSize / 1024 / 1024 / 1024];
+        } else if(dir.totalSize / 1024 / 1024 >= 1) {
+            sizeStr = [NSString stringWithFormat:@"%.2f MB", (double)dir.totalSize / 1024 / 1024];
+        } else if(dir.totalSize / 1024 >= 1) {
+            sizeStr = [NSString stringWithFormat:@"%.2f KB", (double)dir.totalSize / 1024];
+        } else {
+            sizeStr = [NSString stringWithFormat:@"%lld Bytes", dir.totalSize];
+        }
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%lld Files, %@", dir.totalfiles, sizeStr];
+    }
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

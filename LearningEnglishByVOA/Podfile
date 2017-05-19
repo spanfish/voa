@@ -10,7 +10,6 @@ target 'LearningEnglishByVOA' do
   pod 'AFNetworking', '~> 3.0'
   pod 'MBProgressHUD'
   pod 'JSONKit'
-  pod 'iOS-Slide-Menu'
   pod 'SWRevealViewController'
   pod 'Realm'
   pod 'Masonry'

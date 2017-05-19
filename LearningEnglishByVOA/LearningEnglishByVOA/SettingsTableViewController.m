@@ -9,6 +9,7 @@
 #import "SettingsTableViewController.h"
 #import "SWRevealViewController.h"
 #import "VideoQualityViewController.h"
+#import "SwitchTableViewCell.h"
 
 typedef NS_ENUM(NSInteger, SettingType) {
     VIDEO_SETTING,
@@ -16,7 +17,7 @@ typedef NS_ENUM(NSInteger, SettingType) {
     NUM_OF_SECTION
 };
 
-static int ROWS[] = {1, 2};
+static int ROWS[] = {2, 2};
 
 @interface SettingsTableViewController ()
 
@@ -70,11 +71,20 @@ static int ROWS[] = {1, 2};
             }
             cell.detailTextLabel.text = currentQuality;
             return cell;
+        } else if(indexPath.row == 1) {
+            //Download
+            SwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Download" forIndexPath:indexPath];
+            cell.titleLabel.text = @"Auto Download";
+            BOOL autoDownload = [[NSUserDefaults standardUserDefaults] boolForKey:@"autoDownload"];
+            [cell.switchButton setOn:autoDownload];
+            [cell.switchButton removeTarget:self action:@selector(autoDownloadValueChanged:) forControlEvents:UIControlEventValueChanged];
+            [cell.switchButton addTarget:self action:@selector(autoDownloadValueChanged:)  forControlEvents:UIControlEventValueChanged];
+            return cell;
         }
     } else if(indexPath.section == OTHER_SETTING) {
         if(indexPath.row == 0) {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VersionCell" forIndexPath:indexPath];
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
         
@@ -110,6 +120,11 @@ static int ROWS[] = {1, 2};
         UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"QuailityViewController"];
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+
+-(void) autoDownloadValueChanged:(id)sender {
+    UISwitch *switchButton = sender;
+    [[NSUserDefaults standardUserDefaults] setBool:switchButton.isOn forKey:@"autoDownload"];
 }
 /*
 // Override to support conditional editing of the table view.

@@ -50,6 +50,8 @@
 		9DADDDE21ECED27600C53FB5 /* gallery.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDDE1ECED27600C53FB5 /* gallery.svg */; };
 		9DADDDE31ECED27600C53FB5 /* gallery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDDF1ECED27600C53FB5 /* gallery@2x.png */; };
 		9DADDDE41ECED27600C53FB5 /* gallery@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDE01ECED27600C53FB5 /* gallery@3x.png */; };
+		9DADDDE71ECED80C00C53FB5 /* SwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DADDDE61ECED80C00C53FB5 /* SwitchTableViewCell.m */; };
+		9DADDDEA1ECEE7D100C53FB5 /* SliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DADDDE91ECEE7D100C53FB5 /* SliderViewController.m */; };
 		BC22018C1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg in Resources */ = {isa = PBXBuildFile; fileRef = BC22018B1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg */; };
 		BC22018F1EC71157000BE79B /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC22018D1EC71157000BE79B /* menu@2x.png */; };
 		BC2201901EC71157000BE79B /* menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC22018E1EC71157000BE79B /* menu@3x.png */; };
@@ -158,6 +160,10 @@
 		9DADDDDE1ECED27600C53FB5 /* gallery.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = gallery.svg; sourceTree = "<group>"; };
 		9DADDDDF1ECED27600C53FB5 /* gallery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gallery@2x.png"; sourceTree = "<group>"; };
 		9DADDDE01ECED27600C53FB5 /* gallery@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gallery@3x.png"; sourceTree = "<group>"; };
+		9DADDDE51ECED80C00C53FB5 /* SwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchTableViewCell.h; sourceTree = "<group>"; };
+		9DADDDE61ECED80C00C53FB5 /* SwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchTableViewCell.m; sourceTree = "<group>"; };
+		9DADDDE81ECEE7D100C53FB5 /* SliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderViewController.h; sourceTree = "<group>"; };
+		9DADDDE91ECEE7D100C53FB5 /* SliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderViewController.m; sourceTree = "<group>"; };
 		BC22018B1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "menu-three-horizontal-lines-symbol.svg"; sourceTree = "<group>"; };
 		BC22018D1EC71157000BE79B /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		BC22018E1EC71157000BE79B /* menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@3x.png"; sourceTree = "<group>"; };
@@ -427,6 +433,10 @@
 				9DADDDA21ECE8F9300C53FB5 /* StorageViewController.m */,
 				9DADDDDA1ECEC88500C53FB5 /* MoreCollectionViewCell.h */,
 				9DADDDDB1ECEC88500C53FB5 /* MoreCollectionViewCell.m */,
+				9DADDDE51ECED80C00C53FB5 /* SwitchTableViewCell.h */,
+				9DADDDE61ECED80C00C53FB5 /* SwitchTableViewCell.m */,
+				9DADDDE81ECEE7D100C53FB5 /* SliderViewController.h */,
+				9DADDDE91ECEE7D100C53FB5 /* SliderViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -627,6 +637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCBA55AE1EC543DF00E4A728 /* RealmDatabase.m in Sources */,
+				9DADDDE71ECED80C00C53FB5 /* SwitchTableViewCell.m in Sources */,
 				BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */,
 				BCBA55891EC30CD400E4A728 /* EIAMCollectionViewCell.m in Sources */,
 				BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */,
@@ -644,6 +655,7 @@
 				BCBA55A81EC53E8C00E4A728 /* VerifyStoreReceipt.m in Sources */,
 				BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */,
 				9DADDDA31ECE8F9300C53FB5 /* StorageViewController.m in Sources */,
+				9DADDDEA1ECEE7D100C53FB5 /* SliderViewController.m in Sources */,
 				9DADDD931ECE811F00C53FB5 /* SettingsTableViewController.m in Sources */,
 				BC5E82E41EBF222A008F0BD7 /* main.m in Sources */,
 				BCBA55951EC4030100E4A728 /* MenuTableViewController.m in Sources */,

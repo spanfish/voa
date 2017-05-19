@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Reveal View Controller-->
+        <!--Slider View Controller-->
         <scene sceneID="Gxi-IW-flu">
             <objects>
-                <viewController id="ajR-TL-iIa" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController id="ajR-TL-iIa" customClass="SliderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H5A-TS-qFE"/>
                         <viewControllerLayoutGuide type="bottom" id="waQ-Uy-iXp"/>
@@ -397,13 +397,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="WCS-M2-yPS">
-                            <rect key="frame" x="0.0" y="78" width="414" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        </activityIndicatorView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SizeCell" textLabel="wGX-uK-Jex" detailTextLabel="im6-YR-1lZ" style="IBUITableViewCellStyleValue1" id="4xl-Rc-xOu">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SizeCell" textLabel="wGX-uK-Jex" detailTextLabel="im6-YR-1lZ" style="IBUITableViewCellStyleSubtitle" id="4xl-Rc-xOu">
                                 <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4xl-Rc-xOu" id="cCL-vw-zFg">
@@ -411,16 +406,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Storage Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wGX-uK-Jex">
-                                            <rect key="frame" x="15" y="14" width="97" height="21"/>
+                                            <rect key="frame" x="15" y="7" width="97" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="im6-YR-1lZ">
-                                            <rect key="frame" x="355" y="14" width="44" height="21"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="im6-YR-1lZ">
+                                            <rect key="frame" x="15" y="28" width="44" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -553,13 +548,36 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9hq-iF-YRP">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Download" id="9hq-iF-YRP" customClass="SwitchTableViewCell">
                                 <rect key="frame" x="0.0" y="106" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hq-iF-YRP" id="ylk-ww-t1c">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7U-wc-YwA">
+                                            <rect key="frame" x="22" y="0.0" width="305" height="49"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xTu-P0-7zt">
+                                            <rect key="frame" x="347" y="9" width="51" height="31"/>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="xTu-P0-7zt" firstAttribute="centerY" secondItem="ylk-ww-t1c" secondAttribute="centerY" id="7Li-0L-O1n"/>
+                                        <constraint firstItem="P7U-wc-YwA" firstAttribute="centerY" secondItem="ylk-ww-t1c" secondAttribute="centerY" id="OUb-JI-Evb"/>
+                                        <constraint firstItem="P7U-wc-YwA" firstAttribute="height" secondItem="ylk-ww-t1c" secondAttribute="height" id="Upo-1T-191"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xTu-P0-7zt" secondAttribute="trailing" constant="10" id="ahY-4s-BUp"/>
+                                        <constraint firstItem="xTu-P0-7zt" firstAttribute="leading" secondItem="P7U-wc-YwA" secondAttribute="trailing" constant="20" id="guU-u2-GDG"/>
+                                        <constraint firstItem="P7U-wc-YwA" firstAttribute="leading" secondItem="ylk-ww-t1c" secondAttribute="leadingMargin" constant="14" id="qu7-fN-sdg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="switchButton" destination="xTu-P0-7zt" id="FVv-Ix-NqM"/>
+                                    <outlet property="titleLabel" destination="P7U-wc-YwA" id="sie-mp-k9j"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="VideoQualityCell" textLabel="BWs-2R-qtQ" detailTextLabel="aYh-8k-yKv" style="IBUITableViewCellStyleValue1" id="CBj-C6-1WO">
                                 <rect key="frame" x="0.0" y="156" width="414" height="50"/>
@@ -731,10 +749,10 @@
             </objects>
             <point key="canvasLocation" x="1725.5999999999999" y="1128.4857571214393"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Storage-->
         <scene sceneID="p0M-L5-rNs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f6t-N3-VZy" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f6t-N3-VZy" userLabel="Storage" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rlg-18-8Dz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -756,6 +774,6 @@
         <image name="video-camera.png" width="40" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="72c-89-iFu"/>
+        <segue reference="Iwl-RP-Pn0"/>
     </inferredMetricsTieBreakers>
 </document>
