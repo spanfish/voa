@@ -19,6 +19,7 @@
 @property(nonatomic, strong) NSString *videoURL;
 @property(nonatomic, strong) NSString *publishDate;
 @property(nonatomic, strong) NSString *sortedDate;
+@property(nonatomic, assign) NSInteger targetType;
 @property(nonatomic, assign, readonly, getter=hasFetchedTracksURL) BOOL fetchedTracksURL;
 
 @property RLMArray<TrackItem *><TrackItem> *tracks;

@@ -16,4 +16,5 @@
 //English In A Minute
 @interface EIAMCollectionViewController : UICollectionViewController<EIAMDataSourceDelegate, EIAMCollectionViewCellDelegate, UICollectionViewDelegateFlowLayout>
 
+@property(nonatomic, assign) TargetType targetType;
 @end

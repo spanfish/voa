@@ -15,15 +15,17 @@
 #import "Common.h"
 
 @interface EIAMDataSource() {
+    TargetType _targetType;
 }
 @end
 
 @implementation EIAMDataSource
 
--(instancetype) init {
+-(instancetype) initWithTargetType:(TargetType) type {
     self = [super init];
     if(self) {
-        _playItems = [[PlayItem allObjects] sortedResultsUsingKeyPath:@"sortedDate" ascending:NO];
+        _targetType = type;
+        _playItems = [[PlayItem objectsWhere:[NSString stringWithFormat:@"targetType=%ld", _targetType]] sortedResultsUsingKeyPath:@"sortedDate" ascending:NO];
     }
     return self;
 }
@@ -55,6 +57,32 @@
                              }];
 }
 
+-(void) loadMovieTopPage {
+    [[PageUtil sharedInstance] loadPage:[PathUtil BASE_URL]
+                             completion:^(NSString * _Nullable content, NSError * _Nullable error) {
+                                 NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
+                                 NSString *topPage = nil;
+                                 NSError *parseError = nil;
+                                 HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&parseError];
+                                 if(!parseError) {
+                                     HTMLNode *body = [parser body];
+                                     HTMLNode *footNode = [body findChildWithAttribute:@"id" matchingName:@"foot" allowPartial:NO];
+                                     for(HTMLNode *node in [footNode findChildrenOfClass:@"handler"]) {
+                                         if([node.tagName isEqualToString:@"a"]) {
+                                             NSLog(@"allContents:%@", node.allContents);
+                                             if([node.allContents isEqualToString:@"English @ the Movies"]) {
+                                                 topPage = [node getAttributeNamed:@"href"];
+                                                 break;
+                                             }
+                                         }
+                                     }
+                                 }
+                                 
+                                 if([self.delegate respondsToSelector:@selector(topPageLoaded:withError:)]) {
+                                     [self.delegate topPageLoaded:topPage withError:error != nil ? error : parseError];
+                                 }
+                             }];
+}
 //取得一页动画列表
 -(void) loadPage:(NSString *) moreURL {
     //@"http://learningenglish.voanews.com/z/3619"
@@ -113,10 +141,14 @@
                 
                 if(titleNode) {
                     playItem.videoTitle = [titleNode contents];
-                    if([playItem.videoTitle hasPrefix:@"English in a Minute: "]) {
+                    if(_targetType == TARGET_MINUTE && [playItem.videoTitle hasPrefix:@"English in a Minute: "]) {
                         playItem.videoTitle = [playItem.videoTitle substringFromIndex:[@"English in a Minute: " length]];
+                    } else if(_targetType == TARGET_MOVIE && [playItem.videoTitle hasPrefix:@"English @ the Movies: "]) {
+                        playItem.videoTitle = [playItem.videoTitle substringFromIndex:[@"English @ the Movies: " length]];
                     }
                 }
+                
+                playItem.targetType = _targetType;
                 [self notifyUI:playItem];
             }
         }//end of for
@@ -138,29 +170,31 @@
             if([tmp count] == 2) {
                 NSInteger day = [[tmp objectAtIndex:1] integerValue];
                 NSString * month = 0;
-                if([@"Jan" isEqualToString:[tmp objectAtIndex:0]]) {
+                NSString *monthStr = [[tmp objectAtIndex:0] uppercaseString];
+                
+                if([monthStr hasPrefix:@"JAN"]) {
                     month = @"01";
-                } else if([@"Feb" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"FEB"]) {
                     month = @"02";
-                } else if([@"Mar" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"MAR"]) {
                     month = @"03";
-                } else if([@"Apr" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"APR"]) {
                     month = @"04";
-                } else if([@"May" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"MAY"]) {
                     month = @"05";
-                } else if([@"Jun" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"JUN"]) {
                     month = @"06";
-                } else if([@"Jul" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"JUL"]) {
                     month = @"07";
-                } else if([@"Aug" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"AUG"]) {
                     month = @"08";
-                } else if([@"Sep" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"SEP"]) {
                     month = @"09";
-                } else if([@"Oct" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"OCT"]) {
                     month = @"10";
-                } else if([@"Nov" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"NOV"]) {
                     month = @"11";
-                } else if([@"Dec" isEqualToString:[tmp objectAtIndex:0]]) {
+                } else if([monthStr hasPrefix:@"DEC"]) {
                     month = @"12";
                 }
                 

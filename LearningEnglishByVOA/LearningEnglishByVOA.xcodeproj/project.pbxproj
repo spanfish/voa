@@ -79,7 +79,6 @@
 		BCBA55951EC4030100E4A728 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55941EC4030100E4A728 /* MenuTableViewController.m */; };
 		BCBA55971EC4041F00E4A728 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBA55961EC4041F00E4A728 /* AVKit.framework */; };
 		BCBA55991EC404A000E4A728 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBA55981EC404A000E4A728 /* AVFoundation.framework */; };
-		BCBA559C1EC4057E00E4A728 /* SlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA559B1EC4057E00E4A728 /* SlideViewController.m */; };
 		BCBA559F1EC539FD00E4A728 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA559E1EC539FD00E4A728 /* PlayerViewController.m */; };
 		BCBA55A21EC53E7800E4A728 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = BCBA55A11EC53E7800E4A728 /* AppleIncRootCertificate.cer */; };
 		BCBA55A71EC53E8C00E4A728 /* IAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBA55A41EC53E8C00E4A728 /* IAPManager.m */; };
@@ -204,8 +203,6 @@
 		BCBA55941EC4030100E4A728 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
 		BCBA55961EC4041F00E4A728 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		BCBA55981EC404A000E4A728 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		BCBA559A1EC4057E00E4A728 /* SlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideViewController.h; sourceTree = "<group>"; };
-		BCBA559B1EC4057E00E4A728 /* SlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideViewController.m; sourceTree = "<group>"; };
 		BCBA559D1EC539FD00E4A728 /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		BCBA559E1EC539FD00E4A728 /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		BCBA55A11EC53E7800E4A728 /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
@@ -396,8 +393,6 @@
 				BCC318EE1EC349EB0035DA2F /* PathUtil.h */,
 				BCC318EF1EC349EB0035DA2F /* PathUtil.m */,
 				BCBA558A1EC3ED2F00E4A728 /* Common.h */,
-				BCBA559A1EC4057E00E4A728 /* SlideViewController.h */,
-				BCBA559B1EC4057E00E4A728 /* SlideViewController.m */,
 				BCBA55AC1EC543DF00E4A728 /* RealmDatabase.h */,
 				BCBA55AD1EC543DF00E4A728 /* RealmDatabase.m */,
 			);
@@ -650,7 +645,6 @@
 				9DADDD9F1ECE8A5D00C53FB5 /* VideoQualityViewController.m in Sources */,
 				9DADDDDC1ECEC88500C53FB5 /* MoreCollectionViewCell.m in Sources */,
 				BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */,
-				BCBA559C1EC4057E00E4A728 /* SlideViewController.m in Sources */,
 				BC8A478A1EC9916B00AD5E95 /* RMDownloadIndicator.m in Sources */,
 				BCBA55A81EC53E8C00E4A728 /* VerifyStoreReceipt.m in Sources */,
 				BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */,

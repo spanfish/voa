@@ -25,4 +25,7 @@
 @property(nonatomic, strong) RLMResults<PlayItem *> *playItems;
 -(void) loadPage:(NSString *) moreURL;
 -(void) loadInAMinuteTopPage;
+-(void) loadMovieTopPage;
+
+-(instancetype) initWithTargetType:(TargetType) type;
 @end

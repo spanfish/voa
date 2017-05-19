@@ -7,6 +7,7 @@
 //
 
 #import "MenuTableViewController.h"
+#import "EIAMCollectionViewController.h"
 
 static NSString* ROWS[] = {@"English in a Minute", @"English @ the Movies"};
 static NSString* IMAGES[] = {@"minute", @"movie"};
@@ -105,14 +106,26 @@ static NSString* IMAGES[] = {@"minute", @"movie"};
 }
 */
 
-/*
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"didSelectRowAtIndexPath");
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSLog(@"segue.identifier:%@", segue.identifier);
+    if([segue.identifier isEqualToString:@"EnglishInAMinute"]) {
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        UINavigationController *nvc = (UINavigationController *) segue.destinationViewController;
+        EIAMCollectionViewController *vc = (EIAMCollectionViewController*) [nvc.viewControllers firstObject];
+        if(indexPath.row == 0) {
+            vc.targetType = TARGET_MINUTE;
+        } else if(indexPath.row == 1) {
+            vc.targetType = TARGET_MOVIE;
+        }
+    }
 }
-*/
+
 
 @end

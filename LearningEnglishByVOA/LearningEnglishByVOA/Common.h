@@ -26,4 +26,9 @@ dispatch_async(dispatch_get_main_queue(), ^{\
 } else {\
     (x);\
 }
+
+typedef NS_ENUM(NSInteger, TargetType) {
+    TARGET_MINUTE,
+    TARGET_MOVIE
+};
 #endif /* Common_h */

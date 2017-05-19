@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "PathUtil.h"
-#import <iOS_Slide_Menu/SlideNavigationController.h>
 #import "MenuTableViewController.h"
 #import "IAPManager.h"
 #import "RealmDatabase.h"

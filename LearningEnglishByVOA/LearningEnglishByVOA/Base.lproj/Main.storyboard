@@ -460,7 +460,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="HK8-fd-iKc" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="72c-89-iFu"/>
+                                    <segue destination="HK8-fd-iKc" kind="custom" identifier="EnglishInAMinute" customClass="SWRevealViewControllerSeguePushController" id="72c-89-iFu"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" textLabel="eUx-dr-M7m" style="IBUITableViewCellStyleDefault" id="22K-Yq-JOj">
@@ -480,7 +480,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="g0p-1R-jXM" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="2hX-JM-5wt"/>
+                                    <segue destination="g0p-1R-jXM" kind="custom" identifier="Settings" customClass="SWRevealViewControllerSeguePushController" id="2hX-JM-5wt"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StorageCell" textLabel="clx-Kz-94T" style="IBUITableViewCellStyleDefault" id="Nk6-Jg-wBB">
@@ -500,7 +500,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="f6t-N3-VZy" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="EOK-Qz-2Ck"/>
+                                    <segue destination="f6t-N3-VZy" kind="custom" identifier="Storage" customClass="SWRevealViewControllerSeguePushController" id="EOK-Qz-2Ck"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="yoq-fl-bWE" style="IBUITableViewCellStyleDefault" id="86m-qz-G1z">
@@ -529,7 +529,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXx-gj-fQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800.8" y="361.16941529235385"/>
+            <point key="canvasLocation" x="1222" y="261"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="5DW-Zc-WZW">
@@ -774,6 +774,6 @@
         <image name="video-camera.png" width="40" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Iwl-RP-Pn0"/>
+        <segue reference="72c-89-iFu"/>
     </inferredMetricsTieBreakers>
 </document>

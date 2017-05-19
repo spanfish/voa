@@ -29,7 +29,11 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Learn English in a Minute";
+    if(self.targetType == TARGET_MINUTE) {
+        self.title = @"English In A Minute";
+    } else if(self.targetType == TARGET_MOVIE) {
+        self.title = @"English @ the Movies";
+    }
     SWRevealViewController *revealViewController = self.revealViewController;
     if(revealViewController ) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
@@ -38,7 +42,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    dataSource = [[EIAMDataSource alloc] init];
+    dataSource = [[EIAMDataSource alloc] initWithTargetType:self.targetType];
     dataSource.delegate = self;
 
     //Collection View
@@ -52,7 +56,13 @@ static NSString * const reuseIdentifier = @"Cell";
     loading = YES;
     //[dataSource loadPage:_moreURL];
     _topPageURL = nil;
-    [dataSource loadInAMinuteTopPage];
+    
+    if(self.targetType == TARGET_MINUTE) {
+        [dataSource loadInAMinuteTopPage];
+    } else if(self.targetType == TARGET_MOVIE) {
+        [dataSource loadMovieTopPage];
+    }
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMore:) name:@"More" object:nil];
 }
