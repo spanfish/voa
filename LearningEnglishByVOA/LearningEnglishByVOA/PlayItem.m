@@ -113,11 +113,10 @@
                              }];
 }
 
--(NSURLSessionDownloadTask*) fetchThumbnailWithCompletion:(CompletionBlock)completion {
-    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+-(NSURLSessionDownloadTask*) fetchThumbnailToPath:(NSString *) path withCompletion:(CompletionBlock)completion {
     NSString *fileName = [self.thumbURL lastPathComponent];
     return [[ImageUtil sharedInstance] fetchImage:self.thumbURL
-                                    toFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName]
+                                    toFile:[path stringByAppendingPathComponent:fileName]
                                   progress:nil
                                 completion:^(NSData * _Nullable content, NSError * _Nullable error) {completion(nil, error);
                                   }];

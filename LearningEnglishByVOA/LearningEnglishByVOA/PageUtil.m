@@ -77,6 +77,7 @@
     self = [super init];
     if(self) {
         _sessionManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        [[_sessionManager operationQueue] setMaxConcurrentOperationCount:3];
         
         AFHTTPResponseSerializer *serializer = [AFHTTPResponseSerializer serializer];
         [serializer setAcceptableContentTypes:[NSSet setWithObjects:@"video/mp4", @"video/mpeg", nil]];
@@ -98,9 +99,13 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:videoURL]];
     NSURLSessionDownloadTask *downloadTask = [_sessionManager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         //NSLog(@"totalUnitCount:%lld, completedUnitCount:%lld", downloadProgress.totalUnitCount, downloadProgress.completedUnitCount);
-        if(progress) {
-            main_queue(progress(downloadProgress.totalUnitCount, downloadProgress.completedUnitCount));
-        }
+//        if(progress) {
+//            main_queue(progress(downloadProgress.totalUnitCount, downloadProgress.completedUnitCount));
+//        }
+        NSDictionary *userInfo = @{@"totalUnitCount": @(downloadProgress.totalUnitCount),
+                                   @"completedUnitCount" : @(downloadProgress.completedUnitCount),
+                                   @"videoURL": videoURL};
+        main_queue([[NSNotificationCenter defaultCenter] postNotificationName:@"VideoDownloadProgressed" object:nil userInfo: userInfo]);
     } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         NSLog(@"targetPath:%@", targetPath);
         return [NSURL fileURLWithPath:filePath];
@@ -108,8 +113,12 @@
         if(complete) {
             complete(nil, error);
         }
+        main_queue([[NSNotificationCenter defaultCenter] postNotificationName:@"VideoDownloadCompleted"
+                                                                       object:nil
+                                                                     userInfo:@{@"videoURL": videoURL}]);
     }];
     [downloadTask resume];
+    
     return downloadTask;
 }
 @end

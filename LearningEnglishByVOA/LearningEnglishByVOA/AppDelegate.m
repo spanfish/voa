@@ -12,7 +12,9 @@
 #import "IAPManager.h"
 #import "RealmDatabase.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () {
+    NSMutableDictionary *_downloadDict;
+}
 
 @end
 
@@ -20,6 +22,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    _downloadDict = [NSMutableDictionary dictionary];
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSString *path = [PathUtil englishInAMinutePath];
@@ -49,6 +54,24 @@
     return YES;
 }
 
+-(void) addDownloadTask:(NSURLSessionDownloadTask*) task forKey:(NSString *) key {
+    [_downloadDict setObject:task forKey:key];
+}
+
+-(void) removeDownloadTaskForKey:(NSString *) key {
+    [_downloadDict removeObjectForKey:key];
+}
+
+-(NSUInteger) numberOfDownloadTask {
+    return [_downloadDict count];
+}
+
+-(BOOL) containsDownloadTaskForKey:(NSString *) key {
+    if(key == nil) {
+        return NO;
+    }
+    return [_downloadDict objectForKey:key] != nil;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -82,5 +105,9 @@
     }
     
     [self.playList addObject:item];
+}
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    return UIInterfaceOrientationMaskPortrait;
 }
 @end

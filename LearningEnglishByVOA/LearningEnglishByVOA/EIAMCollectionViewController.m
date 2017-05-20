@@ -9,12 +9,12 @@
 #import "EIAMCollectionViewController.h"
 #import "SWRevealViewController.h"
 #import "MoreCollectionViewCell.h"
+#import "AppDelegate.h"
 
 @interface EIAMCollectionViewController () {
     EIAMDataSource *dataSource;
     NSMutableDictionary *_thumbFetchTasks;
     NSMutableDictionary *_trackFetchTasks;
-    NSMutableDictionary *_videoFetchTasks;
     CGSize cellSize;
     BOOL loading;
     NSString* _moreURL;
@@ -28,6 +28,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //self.extendedLayoutIncludesOpaqueBars = NO;
     
     if(self.targetType == TARGET_MINUTE) {
         self.title = @"English In A Minute";
@@ -50,7 +52,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     _thumbFetchTasks = [NSMutableDictionary dictionary];
     _trackFetchTasks = [NSMutableDictionary dictionary];
-    _videoFetchTasks = [NSMutableDictionary dictionary];
     
     //取得动画列表
     loading = YES;
@@ -63,7 +64,8 @@ static NSString * const reuseIdentifier = @"Cell";
         [dataSource loadMovieTopPage];
     }
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadCompleted:) name:@"VideoDownloadCompleted" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadProgressed:) name:@"VideoDownloadProgressed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMore:) name:@"More" object:nil];
 }
 
@@ -118,8 +120,8 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
     [self calCellSize:size];
-    [self.collectionView reloadData];
-    [self.view setNeedsLayout];
+    //[self.collectionView reloadData];
+    //[self.view setNeedsLayout];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -150,6 +152,23 @@ static NSString * const reuseIdentifier = @"Cell";
     // Pass the selected object to the new view controller.
 }
 */
+
+-(TrackItem *) trackToPlayForPlayItem:(PlayItem *) playItem {
+    NSString *currentQuality = [[NSUserDefaults standardUserDefaults] objectForKey:@"VideoQuality"];
+    if(currentQuality == nil) {
+        currentQuality = @"720P";
+    }
+
+    TrackItem *trackToPlay = [playItem.tracks lastObject];
+    for(TrackItem *track in playItem.tracks) {
+        if([currentQuality isEqualToString: [track.dataInfo uppercaseString]]) {
+            trackToPlay = track;
+            break;
+        }
+    }
+    
+    return trackToPlay;
+}
 
 #pragma mark - <UICollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -190,7 +209,12 @@ static NSString * const reuseIdentifier = @"Cell";
     cell.titleLabel.text = item.videoTitle;
     cell.dateLabel.text = item.publishDate;
 
-    NSString *path = [PathUtil englishInAMinutePath];
+    NSString *path = nil;
+    if(self.targetType == TARGET_MOVIE) {
+        path = [PathUtil englishInMoviePath];
+    } else {
+        path = [PathUtil englishInAMinutePath];
+    }
     NSString *fileName = [path stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
     if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
         //缩微图存在
@@ -219,6 +243,7 @@ static NSString * const reuseIdentifier = @"Cell";
         }
     }
     
+    cell.playButton.hidden = !videoExist;
     if(videoExist) {
         cell.sizeLabel.hidden = NO;
         cell.downloadButton.hidden = YES;
@@ -236,12 +261,15 @@ static NSString * const reuseIdentifier = @"Cell";
         [cell.downloadIndicator setFillColor:[UIColor lightGrayColor]];//[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
          [cell.downloadIndicator setStrokeColor:[UIColor lightGrayColor]];//[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
         [cell.downloadIndicator setClosedIndicatorBackgroundStrokeColor:[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
-        cell.downloadIndicator.radiusPercent = 0.45;
+        //cell.downloadIndicator.radiusPercent = 0.45;
         [cell.downloadIndicator loadIndicator];
         
         cell.sizeLabel.hidden = YES;
         
-        if([_trackFetchTasks objectForKey:indexPath] || [_videoFetchTasks objectForKey:indexPath]) {
+        AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+        TrackItem *track = [self trackToPlayForPlayItem:item];
+        if([_trackFetchTasks objectForKey:item.videoURL] != nil ||
+           [appDelegate containsDownloadTaskForKey:track.dataSrc]) {
             cell.downloadIndicator.hidden = NO;
             cell.downloadButton.hidden = YES;
         } else {
@@ -255,81 +283,37 @@ static NSString * const reuseIdentifier = @"Cell";
 
 //下载动画的缩微图
 -(void) loadThumbnail:(PlayItem *) item forIndexPath:(NSIndexPath *) indexPath {
-    if([_thumbFetchTasks objectForKey:indexPath]) {
+    if([_thumbFetchTasks objectForKey:item.thumbURL]) {
         NSLog(@"loadThumbnail in progress");
         return;
     }
     
-    NSLog(@"loadThumbnail for row:%ld", (long)indexPath.row);
-    NSTimeInterval s = [NSDate timeIntervalSinceReferenceDate];
-    NSLog(@"image fetched start:%f", s);
-    NSURLSessionDownloadTask *task = [item fetchThumbnailWithCompletion:^(id  _Nullable content, NSError * _Nullable error) {
+    NSString *thumbPath = nil;
+    if(self.targetType == TARGET_MOVIE) {
+        thumbPath = [PathUtil englishInMoviePath];
+    } else {
+        thumbPath = [PathUtil englishInAMinutePath];
+    }
+    
+    NSURLSessionDownloadTask *task = [item fetchThumbnailToPath:thumbPath withCompletion:^(id  _Nullable content, NSError * _Nullable error) {
         NSAssert([[NSThread currentThread] isMainThread], @"not in main thread");
-        [_thumbFetchTasks removeObjectForKey:indexPath];
-        NSLog(@"image fetched end:%f", [NSDate timeIntervalSinceReferenceDate] - s);
-
-        NSString *thumbPath = [PathUtil englishInAMinutePath];
+        [_thumbFetchTasks removeObjectForKey:item.thumbURL];
+        
         NSString *fileName = [thumbPath stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
         if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
-            //cell.thumbImageView.image = [UIImage imageWithContentsOfFile:fileName];
-            //[cell setNeedsDisplay];
             [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
         }
     }];
     
-    [_thumbFetchTasks setObject:task forKey:indexPath];
+    [_thumbFetchTasks setObject:task forKey:item.thumbURL];
 }
 #pragma mark - <UICollectionViewDelegate>
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section == 1) {
-        return;
-    }
-    if(indexPath.row < [dataSource.playItems count]) {
-        PlayItem *item = [dataSource.playItems objectAtIndex:indexPath.row];
-        NSLog(@"%@", item);
-    }
-}
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 1) {
         return CGSizeMake([UIScreen mainScreen].bounds.size.width, 80);
     }
     return cellSize;
 }
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
-
-#pragma -
-- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
-    return YES;
-}
-
 
 #pragma mark - EIAMCollectionViewCellDelegate
 //播放动画
@@ -338,11 +322,14 @@ static NSString * const reuseIdentifier = @"Cell";
     if(indexPath.section == 1) {
         return;
     }
-    if([_trackFetchTasks objectForKey:indexPath] || [_videoFetchTasks objectForKey:indexPath]) {
-        return;
+
+    NSString *path = nil;
+    if(self.targetType == TARGET_MOVIE) {
+        path = [PathUtil englishInMoviePath];
+    } else {
+        path = [PathUtil englishInAMinutePath];
     }
     
-    NSString *path = [PathUtil englishInAMinutePath];
     PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
     TrackItem *playTrack = nil;
     
@@ -359,71 +346,169 @@ static NSString * const reuseIdentifier = @"Cell";
             break;
         }
     }
+    
     if(playTrack != nil) {
-        //找到动画文件,直接播放
-        NSLog(@"play video");
+        //找到动画文件
+        return;
     } else {
         //未找到动画文件
         NSLog(@"未找到动画文件");
+        AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+        if([_trackFetchTasks objectForKey:playItem.videoURL] || [appDelegate containsDownloadTaskForKey:playTrack.dataSrc]) {
+            return;
+        }
         
         //Track列表已经取得了吗
+        
         if([playItem.tracks count] == 0) {
             //download tracks
             NSLog(@"未找到Track列表");
             [self downloadTrackURLsWithItem:playItem forIndexPath:indexPath];
         } else {
             //download video for the track
-
+            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
             playTrack = [playItem.tracks lastObject];
-            //[dataSource downloadTrack:playTrack];
+            [self downloadTrack:playTrack];
         }
     }
 }
+
 //下载动画
 -(void) downloadTouchedWithItem:(UICollectionViewCell *)cell {
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    if(indexPath.section == 1) {
+        return;
+    }
+    
+    NSString *path = nil;
+    if(self.targetType == TARGET_MOVIE) {
+        path = [PathUtil englishInMoviePath];
+    } else {
+        path = [PathUtil englishInAMinutePath];
+    }
+    PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
+    TrackItem *playTrack = nil;
+    
+    //从动画列表的最后（分辨率最高）开始找，如果找到动画文件，就直接播放
+    for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
+        TrackItem *track = [playItem.tracks objectAtIndex:i];
+        NSLog(@"track:%@\ndataInfo:%@\ndataSrc:%@",
+              track.dataType,
+              track.dataInfo,
+              track.dataSrc);
+        NSString *fileName = [track.dataSrc lastPathComponent];
+        if([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:fileName] isDirectory:NULL]) {
+            playTrack = track;
+            break;
+        }
+    }
 
+    if(playTrack != nil) {
+        //找到动画文件
+        return;
+    } else {
+        //未找到动画文件
+        NSLog(@"未找到动画文件");
+        AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+        if([_trackFetchTasks objectForKey:playItem.videoURL] || [appDelegate containsDownloadTaskForKey:playTrack.dataSrc]) {
+            return;
+        }
+        
+        //Track列表已经取得了吗
+        
+        if([playItem.tracks count] == 0) {
+            //download tracks
+            NSLog(@"未找到Track列表");
+            [self downloadTrackURLsWithItem:playItem forIndexPath:indexPath];
+        } else {
+            //download video for the track
+            //
+            playTrack = [playItem.tracks lastObject];
+            [self downloadTrack:playTrack];
+            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+        }
+    }
 }
 //取得各个分辨率动画的URL
 -(void) downloadTrackURLsWithItem:(PlayItem *)playItem forIndexPath:(NSIndexPath*) indexPath{
     if([playItem.tracks count] == 0) {
         NSLog(@"下载Track列表");
-        if([_trackFetchTasks objectForKey:indexPath]) {
-            return;
-        }
-        
-        NSTimeInterval s = [NSDate timeIntervalSinceReferenceDate];
-        NSLog(@"tracks url fetched start:%f", s);
         NSURLSessionDataTask *task = [playItem fetchTracksURLwithComplete:^(id  _Nullable content, NSError * _Nullable error) {
             NSLog(@"下载Track列表完成");
-            NSLog(@"tracks url fetched start:%f", [NSDate timeIntervalSinceReferenceDate] - s);
             
-            [_trackFetchTasks removeObjectForKey:indexPath];
+            [_trackFetchTasks removeObjectForKey:playItem.videoURL];
             if(error == nil) {
-                TrackItem *playTrack = [playItem.tracks lastObject];
+                TrackItem *playTrack = [self trackToPlayForPlayItem:playItem];
                 NSLog(@"下载mp4");
-                NSTimeInterval s = [NSDate timeIntervalSinceReferenceDate];
-                NSLog(@"mp4 fetched start:%f", s);
-                NSURLSessionDownloadTask *videoTask = [playTrack fetchTrackWithProgress:^(int64_t totalBytes, int64_t downloadedBytes) {
-                    NSAssert([[NSThread currentThread] isMainThread], @"not in main thread");
-                    EIAMCollectionViewCell *cell = (EIAMCollectionViewCell *) [self.collectionView cellForItemAtIndexPath:indexPath];
-                    [cell.downloadIndicator updateWithTotalBytes:totalBytes downloadedBytes:downloadedBytes];
-                    //[cell setNeedsDisplay];
-                } complete:^(NSData * _Nullable content, NSError * _Nullable error) {
-                    NSLog(@"*****************************下载mp4完成*****************************");
-                    NSLog(@"mp4 fetched start:%f", [NSDate timeIntervalSinceReferenceDate] - s);
-                    
-                    [_videoFetchTasks removeObjectForKey:indexPath];
-                    [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-                }];
-                [_videoFetchTasks setObject:videoTask forKey:indexPath];
-                [videoTask resume];
+                [self downloadTrack:playTrack];
             } else {
                 [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
             }
         }];
-        [_trackFetchTasks setObject:task forKey:indexPath];
+        [_trackFetchTasks setObject:task forKey:playItem.videoURL];
         [task resume];
     }
     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+}
+
+-(void) downloadTrack:(TrackItem *) playTrack {
+    NSString *path = nil;
+    if(self.targetType == TARGET_MOVIE) {
+        path = [PathUtil englishInMoviePath];
+    } else {
+       path = [PathUtil englishInAMinutePath]; 
+    }
+    NSURLSessionDownloadTask *videoTask = [playTrack fetchTrackToPath:path withProgress:nil complete:nil];
+    
+    AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    [appDelegate addDownloadTask:videoTask forKey:playTrack.dataSrc];
+    [videoTask resume];
+}
+
+-(void) videoDownloadCompleted:(NSNotification *) notification {
+    NSAssert([NSThread isMainThread], @"not in main thread");
+    NSString *url = [[notification userInfo] objectForKey:@"videoURL"];
+    AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    [appDelegate removeDownloadTaskForKey:url];
+    
+    for (NSIndexPath *indexPath in self.collectionView.indexPathsForVisibleItems) {
+        PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
+        
+        for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
+            TrackItem *track = [playItem.tracks objectAtIndex:i];
+            
+            if([track.dataSrc isEqualToString:url]) {
+                NSLog(@"videoDownloadCompleted:%ld", indexPath.row);
+                [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                break;
+            }
+        }
+    }
+}
+
+-(void) videoDownloadProgressed:(NSNotification *) notification {
+    NSAssert([NSThread isMainThread], @"not in main thread");
+    NSString *url = [[notification userInfo] objectForKey:@"videoURL"];
+    int64_t totalBytes = [[[notification userInfo] objectForKey:@"totalUnitCount"] longLongValue];
+    int64_t downloadedBytes = [[[notification userInfo] objectForKey:@"completedUnitCount"] longLongValue];
+    
+    for (NSIndexPath *indexPath in self.collectionView.indexPathsForVisibleItems) {
+        if(indexPath.section != 0) {
+            continue;
+        }
+        PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
+        
+        for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
+            TrackItem *track = [playItem.tracks objectAtIndex:i];
+
+            if([track.dataSrc isEqualToString:url]) {
+                NSLog(@"videoDownloadProgressed:%ld", indexPath.row);
+                EIAMCollectionViewCell *cell = (EIAMCollectionViewCell *) [self.collectionView cellForItemAtIndexPath:indexPath];
+                [cell.downloadIndicator updateWithTotalBytes:totalBytes downloadedBytes:downloadedBytes];
+                //[cell.downloadIndicator setNeedsDisplay];
+                break;
+            }
+        }
+    }
 }
 @end

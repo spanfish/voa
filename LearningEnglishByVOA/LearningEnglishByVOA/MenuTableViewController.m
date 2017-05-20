@@ -9,6 +9,8 @@
 #import "MenuTableViewController.h"
 #import "EIAMCollectionViewController.h"
 
+#import "AppDelegate.h"
+
 static NSString* ROWS[] = {@"English in a Minute", @"English @ the Movies"};
 static NSString* IMAGES[] = {@"minute", @"movie"};
 
@@ -27,16 +29,24 @@ static NSString* IMAGES[] = {@"minute", @"movie"};
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL) shouldAutorotate {
+    return NO;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -70,6 +80,29 @@ static NSString* IMAGES[] = {@"minute", @"movie"};
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlayList" forIndexPath:indexPath];
             cell.imageView.image = [UIImage imageNamed:@"playlist"];
             cell.textLabel.text = @"Now Playing";
+            return cell;
+        } else if(indexPath.section == 4) {
+            //
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Download" forIndexPath:indexPath];
+            //cell.imageView.image = [UIImage imageNamed:@"playlist"];
+            
+            AppDelegate *appDelegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+            cell.textLabel.text = @"Downloading";
+            if([appDelegate numberOfDownloadTask] > 0) {
+                cell.imageView.image = [UIImage imageNamed:@"download"];
+//                cell.imageView.animationImages = @[
+//                                                   [UIImage imageNamed:@"more"],
+//                                                   [UIImage imageNamed:@"more_loading_1"],
+//                                                   [UIImage imageNamed:@"more_loading_2"],
+//                                                   [UIImage imageNamed:@"more_loading_3"]
+//                                                   ];
+//                cell.imageView.animationDuration = 1.2;
+//                [cell.imageView startAnimating];
+            } else {
+                //[cell.imageView stopAnimating];
+                //cell.imageView.animationImages = nil;
+                cell.imageView.image = [UIImage imageNamed:@"download"];
+            }
             return cell;
         }
     }

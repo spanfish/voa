@@ -20,7 +20,7 @@
 
 @property(nonatomic, assign, readonly, getter=hasDownloaded) BOOL downloaded;
 
--(NSURLSessionDownloadTask *) fetchTrackWithProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion;
+-(NSURLSessionDownloadTask *) fetchTrackToPath:(NSString *) path withProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion;
 @end
 
 RLM_ARRAY_TYPE(TrackItem)

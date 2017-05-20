@@ -39,7 +39,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>iOS-Slide-Menu.xcscheme</key>
+		<key>SWRevealViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,32 +47,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>037895283C3EAC876D4B9CF5EBA6B758</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>41FA54D12162DAD51D02FC58A2CD5034</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B4B206D3623CAB5E0BB6DBB670644C1</key>
+		<key>687EE0AE94F14343A6AA06BACA05449C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C6D96069231DE352E38353B9CCB369C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8F1163B0992C4FAAE9E611C19A772E2D</key>
+		<key>880E05EACB24CF47AEA54A47F2CE65BF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B303605E91A570115FF135945682CBE4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C13D9D4CCF06BDB30043FE3AD73AD77E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -83,6 +78,11 @@
 			<true/>
 		</dict>
 		<key>D52144DE9D7255DE912490FF5A806573</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F15BF388E2E9564DE250939A406F152C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

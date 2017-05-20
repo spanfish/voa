@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AFNetworking/AFNetworking.h>
 #import "PlayItem.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -14,6 +15,11 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property(nonatomic, strong) NSMutableArray *playList;
+
+-(void) addDownloadTask:(NSURLSessionDownloadTask*) task forKey:(NSString *) key;
+-(void) removeDownloadTaskForKey:(NSString *) key;
+-(BOOL) containsDownloadTaskForKey:(NSString *) key;
+-(NSUInteger) numberOfDownloadTask;
 
 -(void) addToPlayList:(PlayItem *) item;
 @end

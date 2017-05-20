@@ -25,5 +25,5 @@
 @property RLMArray<TrackItem *><TrackItem> *tracks;
 
 -(NSURLSessionDataTask *) fetchTracksURLwithComplete:(CompletionBlock) completion;
--(NSURLSessionDownloadTask*) fetchThumbnailWithCompletion:(CompletionBlock) completion;
+-(NSURLSessionDownloadTask*) fetchThumbnailToPath:(NSString *) path withCompletion:(CompletionBlock) completion;
 @end

@@ -98,6 +98,18 @@
 		BCC243011EBF41B000B947BE /* ObjectiveCHMTLParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243001EBF41B000B947BE /* ObjectiveCHMTLParser.framework */; };
 		BCC243031EBF47E400B947BE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC243021EBF47E400B947BE /* libxml2.tbd */; };
 		BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC318EF1EC349EB0035DA2F /* PathUtil.m */; };
+		BCF3ED391ED0417A00BE47D2 /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED351ED0417A00BE47D2 /* download.png */; };
+		BCF3ED3A1ED0417A00BE47D2 /* download.svg in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED361ED0417A00BE47D2 /* download.svg */; };
+		BCF3ED3B1ED0417A00BE47D2 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED371ED0417A00BE47D2 /* download@2x.png */; };
+		BCF3ED3C1ED0417A00BE47D2 /* download@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED381ED0417A00BE47D2 /* download@3x.png */; };
+		BCF3ED411ED042B100BE47D2 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED3D1ED042B000BE47D2 /* play.png */; };
+		BCF3ED421ED042B100BE47D2 /* play.svg in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED3E1ED042B100BE47D2 /* play.svg */; };
+		BCF3ED431ED042B100BE47D2 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED3F1ED042B100BE47D2 /* play@2x.png */; };
+		BCF3ED441ED042B100BE47D2 /* play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED401ED042B100BE47D2 /* play@3x.png */; };
+		BCF3ED471ED0614900BE47D2 /* maximum.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED451ED0614900BE47D2 /* maximum.png */; };
+		BCF3ED481ED0614900BE47D2 /* minimum.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3ED461ED0614900BE47D2 /* minimum.png */; };
+		BCF3ED4B1ED0724000BE47D2 /* StorageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3ED4A1ED0724000BE47D2 /* StorageTableViewCell.m */; };
+		BCF3ED4E1ED074A900BE47D2 /* NSLayoutConstraint+Multiplier.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3ED4D1ED074A900BE47D2 /* NSLayoutConstraint+Multiplier.m */; };
 		C35F9332C01B8B8FE69AC4F2 /* Pods_LearningEnglishByVOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15698505A83F3F1DA1CADBB8 /* Pods_LearningEnglishByVOA.framework */; };
 /* End PBXBuildFile section */
 
@@ -235,6 +247,20 @@
 		BCC243021EBF47E400B947BE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		BCC318EE1EC349EB0035DA2F /* PathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtil.h; sourceTree = "<group>"; };
 		BCC318EF1EC349EB0035DA2F /* PathUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtil.m; sourceTree = "<group>"; };
+		BCF3ED351ED0417A00BE47D2 /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download.png; sourceTree = "<group>"; };
+		BCF3ED361ED0417A00BE47D2 /* download.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = download.svg; sourceTree = "<group>"; };
+		BCF3ED371ED0417A00BE47D2 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
+		BCF3ED381ED0417A00BE47D2 /* download@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@3x.png"; sourceTree = "<group>"; };
+		BCF3ED3D1ED042B000BE47D2 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		BCF3ED3E1ED042B100BE47D2 /* play.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = play.svg; sourceTree = "<group>"; };
+		BCF3ED3F1ED042B100BE47D2 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		BCF3ED401ED042B100BE47D2 /* play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@3x.png"; sourceTree = "<group>"; };
+		BCF3ED451ED0614900BE47D2 /* maximum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maximum.png; sourceTree = "<group>"; };
+		BCF3ED461ED0614900BE47D2 /* minimum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minimum.png; sourceTree = "<group>"; };
+		BCF3ED491ED0724000BE47D2 /* StorageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageTableViewCell.h; sourceTree = "<group>"; };
+		BCF3ED4A1ED0724000BE47D2 /* StorageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageTableViewCell.m; sourceTree = "<group>"; };
+		BCF3ED4C1ED074A900BE47D2 /* NSLayoutConstraint+Multiplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+Multiplier.h"; sourceTree = "<group>"; };
+		BCF3ED4D1ED074A900BE47D2 /* NSLayoutConstraint+Multiplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+Multiplier.m"; sourceTree = "<group>"; };
 		DEA2762D01E5F7E43177DDDB /* Pods-LearningEnglishByVOA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningEnglishByVOA.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningEnglishByVOA/Pods-LearningEnglishByVOA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,6 +334,16 @@
 		BC5E82E21EBF222A008F0BD7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BCF3ED451ED0614900BE47D2 /* maximum.png */,
+				BCF3ED461ED0614900BE47D2 /* minimum.png */,
+				BCF3ED3D1ED042B000BE47D2 /* play.png */,
+				BCF3ED3E1ED042B100BE47D2 /* play.svg */,
+				BCF3ED3F1ED042B100BE47D2 /* play@2x.png */,
+				BCF3ED401ED042B100BE47D2 /* play@3x.png */,
+				BCF3ED351ED0417A00BE47D2 /* download.png */,
+				BCF3ED361ED0417A00BE47D2 /* download.svg */,
+				BCF3ED371ED0417A00BE47D2 /* download@2x.png */,
+				BCF3ED381ED0417A00BE47D2 /* download@3x.png */,
 				9DADDDEB1ECEF33400C53FB5 /* playlist.png */,
 				9DADDDEC1ECEF33400C53FB5 /* playlist@2x.png */,
 				9DADDDED1ECEF33400C53FB5 /* playlist@3x.png */,
@@ -413,6 +449,8 @@
 				BCBA558A1EC3ED2F00E4A728 /* Common.h */,
 				BCBA55AC1EC543DF00E4A728 /* RealmDatabase.h */,
 				BCBA55AD1EC543DF00E4A728 /* RealmDatabase.m */,
+				BCF3ED4C1ED074A900BE47D2 /* NSLayoutConstraint+Multiplier.h */,
+				BCF3ED4D1ED074A900BE47D2 /* NSLayoutConstraint+Multiplier.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -452,6 +490,8 @@
 				9DADDDE91ECEE7D100C53FB5 /* SliderViewController.m */,
 				9DADDDF31ECEF3B700C53FB5 /* PlaylistTableViewController.h */,
 				9DADDDF41ECEF3B700C53FB5 /* PlaylistTableViewController.m */,
+				BCF3ED491ED0724000BE47D2 /* StorageTableViewCell.h */,
+				BCF3ED4A1ED0724000BE47D2 /* StorageTableViewCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -544,21 +584,25 @@
 			files = (
 				9DADDDAA1ECE932800C53FB5 /* movie@2x.png in Resources */,
 				9DADDD991ECE836800C53FB5 /* minute.svg in Resources */,
+				BCF3ED421ED042B100BE47D2 /* play.svg in Resources */,
 				BC5E82F21EBF222A008F0BD7 /* LaunchScreen.storyboard in Resources */,
 				BCBA55911EC4000800E4A728 /* more-button@2x.png in Resources */,
 				9DADDDD51ECEC86800C53FB5 /* more_loading_3.png in Resources */,
 				9DADDD8E1ECE7F8300C53FB5 /* settings.svg in Resources */,
 				BC22018C1EC71102000BE79B /* menu-three-horizontal-lines-symbol.svg in Resources */,
+				BCF3ED431ED042B100BE47D2 /* play@2x.png in Resources */,
 				9DADDDE21ECED27600C53FB5 /* gallery.svg in Resources */,
 				BC22018F1EC71157000BE79B /* menu@2x.png in Resources */,
 				9DADDD891ECE7F8300C53FB5 /* disk.png in Resources */,
 				9DADDD8D1ECE7F8300C53FB5 /* settings.png in Resources */,
+				BCF3ED391ED0417A00BE47D2 /* download.png in Resources */,
 				9DADDDB91ECE95F800C53FB5 /* video-camera.svg in Resources */,
 				9DADDDAB1ECE932800C53FB5 /* movie@3x.png in Resources */,
 				9DADDDE31ECED27600C53FB5 /* gallery@2x.png in Resources */,
 				BC2201921EC7115E000BE79B /* menu.png in Resources */,
 				9DADDDC31ECEC68900C53FB5 /* more@3x.png in Resources */,
 				9DADDDC21ECEC68900C53FB5 /* more@2x.png in Resources */,
+				BCF3ED471ED0614900BE47D2 /* maximum.png in Resources */,
 				9DADDDC01ECEC68900C53FB5 /* more.png in Resources */,
 				BC5E82EF1EBF222A008F0BD7 /* Assets.xcassets in Resources */,
 				9DADDDF01ECEF33400C53FB5 /* playlist@2x.png in Resources */,
@@ -571,13 +615,17 @@
 				9DADDDEF1ECEF33400C53FB5 /* playlist.png in Resources */,
 				BCBA55BE1EC581C300E4A728 /* download-from-cloud@3x.png in Resources */,
 				BCBA55921EC4000800E4A728 /* more-button@3x.png in Resources */,
+				BCF3ED3B1ED0417A00BE47D2 /* download@2x.png in Resources */,
+				BCF3ED3C1ED0417A00BE47D2 /* download@3x.png in Resources */,
 				9DADDDE41ECED27600C53FB5 /* gallery@3x.png in Resources */,
+				BCF3ED481ED0614900BE47D2 /* minimum.png in Resources */,
 				9DADDDD21ECEC86800C53FB5 /* more_loading_2.png in Resources */,
 				9DADDDD91ECEC86800C53FB5 /* more3.svg in Resources */,
 				9DADDD8A1ECE7F8300C53FB5 /* disk.svg in Resources */,
 				BCBA558C1EC3FF5700E4A728 /* more-with-three-dots-button.svg in Resources */,
 				9DADDD9A1ECE836800C53FB5 /* minute@2x.png in Resources */,
 				9DADDDE11ECED27600C53FB5 /* gallery.png in Resources */,
+				BCF3ED441ED042B100BE47D2 /* play@3x.png in Resources */,
 				9DADDDD41ECEC86800C53FB5 /* more_loading_2@3x.png in Resources */,
 				BCBA55BC1EC581C300E4A728 /* download-from-cloud.png in Resources */,
 				9DADDDD01ECEC86800C53FB5 /* more_loading_1@2x.png in Resources */,
@@ -588,9 +636,11 @@
 				9DADDDA81ECE932800C53FB5 /* movie.png in Resources */,
 				9DADDD8C1ECE7F8300C53FB5 /* disk@3x.png in Resources */,
 				9DADDDD61ECEC86800C53FB5 /* more_loading_3@2x.png in Resources */,
+				BCF3ED411ED042B100BE47D2 /* play.png in Resources */,
 				9DADDDB81ECE95F800C53FB5 /* video-camera.png in Resources */,
 				9DADDDF21ECEF33400C53FB5 /* video-player.svg in Resources */,
 				9DADDD981ECE836800C53FB5 /* minute.png in Resources */,
+				BCF3ED3A1ED0417A00BE47D2 /* download.svg in Resources */,
 				9DADDDC11ECEC68900C53FB5 /* more.svg in Resources */,
 				9DADDDF11ECEF33400C53FB5 /* playlist@3x.png in Resources */,
 				9DADDDD31ECEC86800C53FB5 /* more_loading_2@2x.png in Resources */,
@@ -634,7 +684,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E91CA833F143403C9D255EA7 /* [CP] Copy Pods Resources */ = {
@@ -663,6 +713,7 @@
 				9DADDDF51ECEF3B700C53FB5 /* PlaylistTableViewController.m in Sources */,
 				9DADDDE71ECED80C00C53FB5 /* SwitchTableViewCell.m in Sources */,
 				BC5E82EA1EBF222A008F0BD7 /* ViewController.m in Sources */,
+				BCF3ED4B1ED0724000BE47D2 /* StorageTableViewCell.m in Sources */,
 				BCBA55891EC30CD400E4A728 /* EIAMCollectionViewCell.m in Sources */,
 				BC5E82E71EBF222A008F0BD7 /* AppDelegate.m in Sources */,
 				BCBA55841EC2F2F600E4A728 /* EIAMDataSource.m in Sources */,
@@ -674,6 +725,7 @@
 				9DADDD9F1ECE8A5D00C53FB5 /* VideoQualityViewController.m in Sources */,
 				9DADDDDC1ECEC88500C53FB5 /* MoreCollectionViewCell.m in Sources */,
 				BCBA55811EC2EFE800E4A728 /* PageUtil.m in Sources */,
+				BCF3ED4E1ED074A900BE47D2 /* NSLayoutConstraint+Multiplier.m in Sources */,
 				BC8A478A1EC9916B00AD5E95 /* RMDownloadIndicator.m in Sources */,
 				BCBA55A81EC53E8C00E4A728 /* VerifyStoreReceipt.m in Sources */,
 				BCC318F01EC349EB0035DA2F /* PathUtil.m in Sources */,

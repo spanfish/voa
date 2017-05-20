@@ -35,18 +35,18 @@
     return NO;
 }
 
--(NSURLSessionDownloadTask *) fetchTrackWithProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion {
-    NSString *englishInAMinitueCacheDir = [PathUtil englishInAMinutePath];
+-(NSURLSessionDownloadTask *) fetchTrackToPath:(NSString *) path withProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion {
+    
     NSString *fileName = [self.dataSrc lastPathComponent];
     return [[VideoUtil sharedInstance] fetchVideo:self.dataSrc
-                                     toFile:[englishInAMinitueCacheDir stringByAppendingPathComponent:fileName]
+                                     toFile:[path stringByAppendingPathComponent:fileName]
                                    progress:^(int64_t totalBytes, int64_t downloadedBytes) {
                                        if(progress) {
                                            main_queue(progress(totalBytes, downloadedBytes));
                                        }
                                    }
                                  completion:^(NSData * _Nullable content, NSError * _Nullable error) {
-                                     completion(nil, error);
+                                     if(completion) completion(nil, error);
                                  }];
     
 }

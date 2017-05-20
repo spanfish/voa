@@ -22,6 +22,7 @@
 @property(nonatomic, weak) IBOutlet UILabel *dateLabel;
 @property(nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property(nonatomic, weak) IBOutlet UILabel *sizeLabel;
+@property(nonatomic, weak) IBOutlet UIButton *playButton;
 @property(nonatomic, weak) IBOutlet UIButton *downloadButton;
 @property(nonatomic, weak) IBOutlet RMDownloadIndicator *downloadIndicator;
 @property(nonatomic, weak) id<EIAMCollectionViewCellDelegate> delegate;

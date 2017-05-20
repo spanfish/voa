@@ -42,4 +42,7 @@
     NSLog(@"segue.identifier:%@", segue.identifier);
 }
 
+-(UIInterfaceOrientationMask) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
 @end

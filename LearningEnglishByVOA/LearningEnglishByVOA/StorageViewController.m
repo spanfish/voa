@@ -9,7 +9,8 @@
 #import "StorageViewController.h"
 #import "SWRevealViewController.h"
 #import "PathUtil.h"
-
+#import "StorageTableViewCell.h"
+#import "NSLayoutConstraint+Multiplier.h"
 @interface Directory : NSObject
 @property(nonatomic, strong) NSString *title;
 @property(nonatomic, strong) NSString *path;
@@ -35,7 +36,7 @@
 @end
 
 @interface StorageViewController () {
-    dispatch_queue_t queue;
+    //dispatch_queue_t queue;
     BOOL stop;
     NSMutableArray *directoryArray;
 }
@@ -58,7 +59,6 @@
     directoryArray = [NSMutableArray arrayWithObjects:
                       [[Directory alloc] initWithTitle:@"English in a Minute" path:[PathUtil englishInAMinutePath]],
                       [[Directory alloc] initWithTitle:@"English @ the Movies" path:[PathUtil englishInMoviePath]], nil];
-    queue = dispatch_queue_create("com.xiang.voa.storage", DISPATCH_QUEUE_CONCURRENT);
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -68,7 +68,7 @@
     
     for (Directory *dir in directoryArray) {
         dir.calculating = YES;
-        dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self calculateSizeOfDirectory: dir];
         });
     }
@@ -80,7 +80,11 @@
 }
 
 -(void) calculateSizeOfDirectory:(Directory *) directory {
+    NSLog(@"directory.path:%@", directory.path);
     NSFileManager *fm = [NSFileManager defaultManager];
+    
+    NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:directory.path error: nil];
+    NSLog(@"attributesOfFileSystemForPath:%@, %@", directory.path, dictionary);
     
     NSArray *filesArray = [fm subpathsOfDirectoryAtPath:directory.path error:nil];
     NSEnumerator *filesEnumerator = [filesArray objectEnumerator];
@@ -91,13 +95,33 @@
             return;
         }
         NSDictionary *fileDictionary = [fm attributesOfItemAtPath:[directory.path stringByAppendingPathComponent:fileName] error:nil];
+        NSLog(@"fileName:%@", fileDictionary);
         directory.totalSize += [fileDictionary fileSize];
         directory.totalfiles += 1;
     }
     directory.calculating = NO;
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
+        [self.tableView reloadRowsAtIndexPaths:@[
+                [NSIndexPath indexPathForRow:0 inSection:0],
+                [NSIndexPath indexPathForRow:1 inSection:0],
+                                                 ] withRowAnimation:UITableViewRowAnimationNone];
+        
+        StorageTableViewCell *cell = (StorageTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        
+        long long freeSize = [[dictionary objectForKey:NSFileSystemFreeSize] longLongValue];
+        long long systemSize = [[dictionary objectForKey:NSFileSystemSize] longLongValue];
+        if(freeSize/1024.0/1024/1024 > 1) {
+            cell.freeLabel.text = [NSString stringWithFormat:@"%.2f GB free", freeSize/1024.0/1024/1024];
+        } else if(freeSize/1024.0/1024 > 1) {
+            cell.freeLabel.text = [NSString stringWithFormat:@"%.2f MB free", freeSize/1024.0/1024];
+        } else if(freeSize/1024.0 > 1) {
+            cell.freeLabel.text = [NSString stringWithFormat:@"%.2f KB free", freeSize/1024.0];
+        } else {
+            cell.freeLabel.text = [NSString stringWithFormat:@"%lld Bytes free", freeSize];
+        }
+
+        [cell.widthRatioConstraint updateMultiplier:(CGFloat)freeSize/(systemSize-freeSize)];
     });
 }
 
@@ -117,11 +141,26 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [directoryArray count];
+    return [directoryArray count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if(indexPath.row == [directoryArray count]) {
+        //TotalCell
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TotalCell" forIndexPath:indexPath];
+        UISlider *slider = [cell viewWithTag:1];
+        if(slider) {
+            UIImage* minTrack = [UIImage imageNamed:@"minimum"];
+            minTrack = [minTrack resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+            [slider setMinimumTrackImage:minTrack forState:UIControlStateNormal];
+            
+            UIImage* maxTrack = [UIImage imageNamed:@"maximum"];
+            maxTrack = [maxTrack resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+            [slider setMaximumTrackImage:maxTrack forState:UIControlStateNormal];
+        }
+        return cell;
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SizeCell" forIndexPath:indexPath];
     
     Directory *dir = [directoryArray objectAtIndex:indexPath.row];

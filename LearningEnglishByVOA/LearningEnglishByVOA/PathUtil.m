@@ -20,7 +20,7 @@
 
 +(NSString *) englishInMoviePath {
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *englishInMoviePath = [path stringByAppendingPathComponent:@"englishInMoviePath"];
+    NSString *englishInMoviePath = [path stringByAppendingPathComponent:@"englishInMovie"];
     
     return englishInMoviePath;
 }
