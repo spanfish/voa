@@ -349,6 +349,11 @@ static NSString * const reuseIdentifier = @"Cell";
     
     if(playTrack != nil) {
         //找到动画文件
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Play"
+                                                            object:nil
+                                                          userInfo:@{
+                                                                     @"playItem" : playItem,
+                                                                     @"path": path}];
         return;
     } else {
         //未找到动画文件

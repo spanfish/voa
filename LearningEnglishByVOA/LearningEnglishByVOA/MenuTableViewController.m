@@ -11,8 +11,22 @@
 
 #import "AppDelegate.h"
 
-static NSString* ROWS[] = {@"English in a Minute", @"English @ the Movies"};
-static NSString* IMAGES[] = {@"minute", @"movie"};
+static NSString* ROWS[] = {
+                        @"English in a Minute",
+                        @"English @ the Movies",
+                        @"Everyday Grammar TV",
+                        @"Learning English TV",
+                        @"Let's Learn English",
+                        @"News Words",
+                        @"People In America"};
+static NSString* IMAGES[] = {
+                        @"minute",
+                        @"movie",
+                        @"grammar",
+                        @"television",
+                        @"learnEnglish",
+                        @"newWords",
+                        @"people"};
 
 @interface MenuTableViewController ()
 

@@ -7,11 +7,12 @@
 //
 
 #import "PlayerViewController.h"
-#import <AVFoundation/AVFoundation.h>
+
 
 @interface PlayerViewController () {
-    AVPlayerLayer *_playerLayer;
-    AVPlayer *_player;
+    //AVPlayerLayer *_playerLayer;
+    //AVPlayer *_player;
+    //AVPlayerItem *_playerItem;
 }
 
 @end
@@ -21,16 +22,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURL *videoURL = [NSURL URLWithString:@"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
-    _player = [AVPlayer playerWithURL:videoURL];
-    _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
-    _playerLayer.frame = self.view.bounds;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playVideo:)
+                                                 name:@"Play"
+                                               object:nil];
+    //NSURL *videoURL = [NSURL URLWithString:@"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
+    //_player = [AVPlayer playerWithURL:videoURL];
+    //_playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+    //_playerLayer.frame = self.view.bounds;
     //[self.view.layer addSublayer:_playerLayer];
     //[_player play];
 }
 
+-(void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void) viewDidLayoutSubviews {
-    _playerLayer.frame = self.view.bounds;
+   // _playerLayer.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,6 +47,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) playVideo:(NSNotification *) notification {
+    //PlayItem *playItem = [[notification userInfo] objectForKey:@"playItem"];
+    
+    //NSURL *url = nil;
+    // Create asset to be played
+    //asset = [AVAsset assetWithURL:url];
+    //NSArray *assetKeys = @[@"playable", @"hasProtectedContent"];
+    
+    // Create a new AVPlayerItem with the asset and an
+    // array of asset keys to be automatically loaded
+    //AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset
+    //                                  automaticallyLoadedAssetKeys:assetKeys];
+
+}
 /*
 #pragma mark - Navigation
 

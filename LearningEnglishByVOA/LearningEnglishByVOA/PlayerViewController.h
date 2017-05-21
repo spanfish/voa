@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AVKit/AVKit.h>
 
-@interface PlayerViewController : UIViewController
+#import "PlayItem.h"
+
+@interface PlayerViewController : AVPlayerViewController
 
 @end
