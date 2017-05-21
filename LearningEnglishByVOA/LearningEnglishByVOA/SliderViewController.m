@@ -29,22 +29,35 @@
     
     [self addChildViewController:_playerController];
     [_playerController didMoveToParentViewController:self];
-    
+ 
     [self.view addSubview:_playerController.view];
     _playerController.view.hidden = YES;
+    
+    UIView *view = [[UIView alloc] init];
+    [_playerController.view addSubview:view];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(view.superview);//.with.insets(padding);
+    }];
+    
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+    recognizer.numberOfTapsRequired = 2;
+    [view addGestureRecognizer:recognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playVideo:)
                                                  name:@"Play"
                                                object:nil];
-    
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-    recognizer.numberOfTapsRequired = 2;
-    [self.view addGestureRecognizer:recognizer];
+
 }
 
 -(void) tapped:(UITapGestureRecognizer *) recognizer {
     NSLog(@"tapped");
+    
+    [_playerController.view mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width);
+        make.height.mas_equalTo([UIScreen mainScreen].bounds.size.height);
+        make.center.equalTo(self.view);
+    }];
 }
 -(void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -113,7 +126,7 @@
         _playerController.player = _player;
         [_player play];
         _playerController.view.hidden = NO;
-        _playerController.showsPlaybackControls = NO;
+        //_playerController.showsPlaybackControls = NO;
         [_playerController.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.equalTo(self.view).multipliedBy(0.5);
             make.height.equalTo(_playerController.view.mas_width).multipliedBy(trackDimensions.height/trackDimensions.width);
