@@ -62,6 +62,16 @@ static NSString * const reuseIdentifier = @"Cell";
         [dataSource loadInAMinuteTopPage];
     } else if(self.targetType == TARGET_MOVIE) {
         [dataSource loadMovieTopPage];
+    } else if(self.targetType == 2) {
+        [dataSource loadGrammarTopPage];
+    } else if(self.targetType == 3) {
+        [dataSource loadEnglishTVTopPage];
+    } else if(self.targetType == 4) {
+        [dataSource loadLearnEnglishTopPage];
+    } else if(self.targetType == 5) {
+        [dataSource loadNewWordsTopPage];
+    } else if(self.targetType == 6) {
+        [dataSource loadPeopleTopPage];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadCompleted:) name:@"VideoDownloadCompleted" object:nil];

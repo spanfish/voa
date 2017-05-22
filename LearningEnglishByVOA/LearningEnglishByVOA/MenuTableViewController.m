@@ -176,6 +176,16 @@ static NSString* IMAGES[] = {
             vc.targetType = TARGET_MINUTE;
         } else if(indexPath.row == 1) {
             vc.targetType = TARGET_MOVIE;
+        } else if(indexPath.row == 2) {
+            vc.targetType = TARGET_GRAMMAR;
+        } else if(indexPath.row == 3) {
+            vc.targetType = TARGET_ENGLISH_TV;
+        } else if(indexPath.row == 4) {
+            vc.targetType = TARGET_LEARN_ENGLISH;
+        } else if(indexPath.row == 5) {
+            vc.targetType = TARGET_NEW_WORDS;
+        } else if(indexPath.row == 6) {
+            vc.targetType = TARGET_PEOPLE;
         }
     }
 }

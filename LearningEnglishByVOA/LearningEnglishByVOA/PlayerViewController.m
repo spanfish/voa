@@ -10,9 +10,9 @@
 
 
 @interface PlayerViewController () {
-    //AVPlayerLayer *_playerLayer;
-    //AVPlayer *_player;
-    //AVPlayerItem *_playerItem;
+//    AVPlayerLayer *_playerLayer;
+//    AVPlayer *_player;
+//    AVPlayerItem *_playerItem;
 }
 
 @end

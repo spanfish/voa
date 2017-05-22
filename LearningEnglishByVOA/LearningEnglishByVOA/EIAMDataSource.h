@@ -26,6 +26,11 @@
 -(void) loadPage:(NSString *) moreURL;
 -(void) loadInAMinuteTopPage;
 -(void) loadMovieTopPage;
+-(void) loadGrammarTopPage;
+-(void) loadEnglishTVTopPage;
+-(void) loadLearnEnglishTopPage;
+-(void) loadNewWordsTopPage;
+-(void) loadPeopleTopPage;
 
 -(instancetype) initWithTargetType:(TargetType) type;
 @end

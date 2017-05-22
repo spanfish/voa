@@ -11,9 +11,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import "PlayItem.h"
 #import <Masonry/Masonry.h>
+#import "VideoPlayerViewController.h"
 
 @interface SliderViewController () {
-    AVPlayerViewController *_playerController;
+    VideoPlayerViewController *_playerController;
     AVPlayerLayer *_playerLayer;
     AVPlayer *_player;
     AVPlayerItem *_playerItem;
@@ -25,23 +26,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _playerController = [[AVPlayerViewController alloc] init];
+    _playerController = [[VideoPlayerViewController alloc] init];
     
+    [self.view addSubview:_playerController.view];
     [self addChildViewController:_playerController];
     [_playerController didMoveToParentViewController:self];
- 
-    [self.view addSubview:_playerController.view];
-    _playerController.view.hidden = YES;
     
-    UIView *view = [[UIView alloc] init];
-    [_playerController.view addSubview:view];
-    [view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(view.superview);//.with.insets(padding);
+    [_playerController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+         make.edges.equalTo(self.view);
     }];
     
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-    recognizer.numberOfTapsRequired = 2;
-    [view addGestureRecognizer:recognizer];
+    //_playerController.view.hidden = YES;
+    
+//    UIView *view = [[UIView alloc] init];
+//    [_playerController.view addSubview:view];
+//    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(view.superview);
+//    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playVideo:)
@@ -50,15 +51,15 @@
 
 }
 
--(void) tapped:(UITapGestureRecognizer *) recognizer {
-    NSLog(@"tapped");
-    
-    [_playerController.view mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width);
-        make.height.mas_equalTo([UIScreen mainScreen].bounds.size.height);
-        make.center.equalTo(self.view);
-    }];
-}
+//-(void) tapped:(UITapGestureRecognizer *) recognizer {
+//    NSLog(@"tapped");
+
+//    [_playerController.view mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width);
+//        make.height.mas_equalTo([UIScreen mainScreen].bounds.size.height);
+//        make.center.equalTo(self.view);
+//    }];
+//}
 -(void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -123,8 +124,8 @@
         } else {
             [_player replaceCurrentItemWithPlayerItem:_playerItem];
         }
-        _playerController.player = _player;
-        [_player play];
+//        _playerController.player = _player;
+//        [_player play];
         _playerController.view.hidden = NO;
         //_playerController.showsPlaybackControls = NO;
         [_playerController.view mas_makeConstraints:^(MASConstraintMaker *make) {

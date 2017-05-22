@@ -29,6 +29,11 @@ dispatch_async(dispatch_get_main_queue(), ^{\
 
 typedef NS_ENUM(NSInteger, TargetType) {
     TARGET_MINUTE,
-    TARGET_MOVIE
+    TARGET_MOVIE,
+    TARGET_GRAMMAR,
+    TARGET_ENGLISH_TV,
+    TARGET_LEARN_ENGLISH,
+    TARGET_NEW_WORDS,
+    TARGET_PEOPLE
 };
 #endif /* Common_h */

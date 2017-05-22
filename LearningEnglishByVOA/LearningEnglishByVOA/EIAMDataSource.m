@@ -83,10 +83,145 @@
                                  }
                              }];
 }
+
+-(void) loadGrammarTopPage {
+    [[PageUtil sharedInstance] loadPage:[PathUtil BASE_URL]
+                             completion:^(NSString * _Nullable content, NSError * _Nullable error) {
+                                 NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
+                                 NSString *topPage = nil;
+                                 NSError *parseError = nil;
+                                 HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&parseError];
+                                 if(!parseError) {
+                                     HTMLNode *body = [parser body];
+                                     HTMLNode *footNode = [body findChildWithAttribute:@"id" matchingName:@"foot" allowPartial:NO];
+                                     for(HTMLNode *node in [footNode findChildrenOfClass:@"handler"]) {
+                                         if([node.tagName isEqualToString:@"a"]) {
+                                             NSLog(@"allContents:%@", node.allContents);
+                                             if([node.allContents isEqualToString:@"Everyday Grammar TV"]) {
+                                                 topPage = [node getAttributeNamed:@"href"];
+                                                 break;
+                                             }
+                                         }
+                                     }
+                                 }
+                                 
+                                 if([self.delegate respondsToSelector:@selector(topPageLoaded:withError:)]) {
+                                     [self.delegate topPageLoaded:topPage withError:error != nil ? error : parseError];
+                                 }
+                             }];
+}
+
+-(void) loadEnglishTVTopPage {
+    [[PageUtil sharedInstance] loadPage:[PathUtil BASE_URL]
+                             completion:^(NSString * _Nullable content, NSError * _Nullable error) {
+                                 NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
+                                 NSString *topPage = nil;
+                                 NSError *parseError = nil;
+                                 HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&parseError];
+                                 if(!parseError) {
+                                     HTMLNode *body = [parser body];
+                                     HTMLNode *footNode = [body findChildWithAttribute:@"id" matchingName:@"foot" allowPartial:NO];
+                                     for(HTMLNode *node in [footNode findChildrenOfClass:@"handler"]) {
+                                         if([node.tagName isEqualToString:@"a"]) {
+                                             NSLog(@"allContents:%@", node.allContents);
+                                             if([node.allContents isEqualToString:@"Learning English TV"]) {
+                                                 topPage = [node getAttributeNamed:@"href"];
+                                                 break;
+                                             }
+                                         }
+                                     }
+                                 }
+                                 
+                                 if([self.delegate respondsToSelector:@selector(topPageLoaded:withError:)]) {
+                                     [self.delegate topPageLoaded:topPage withError:error != nil ? error : parseError];
+                                 }
+                             }];
+}
+
+-(void) loadLearnEnglishTopPage {
+    [[PageUtil sharedInstance] loadPage:[PathUtil BASE_URL]
+                             completion:^(NSString * _Nullable content, NSError * _Nullable error) {
+                                 NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
+                                 NSString *topPage = nil;
+                                 NSError *parseError = nil;
+                                 HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&parseError];
+                                 if(!parseError) {
+                                     HTMLNode *body = [parser body];
+                                     HTMLNode *footNode = [body findChildWithAttribute:@"id" matchingName:@"foot" allowPartial:NO];
+                                     for(HTMLNode *node in [footNode findChildrenOfClass:@"handler"]) {
+                                         if([node.tagName isEqualToString:@"a"]) {
+                                             NSLog(@"allContents:%@", node.allContents);
+                                             if([node.allContents isEqualToString:@"Let's Learn English"]) {
+                                                 topPage = [node getAttributeNamed:@"href"];
+                                                 break;
+                                             }
+                                         }
+                                     }
+                                 }
+                                 
+                                 if([self.delegate respondsToSelector:@selector(topPageLoaded:withError:)]) {
+                                     [self.delegate topPageLoaded:topPage withError:error != nil ? error : parseError];
+                                 }
+                             }];
+}
+
+-(void) loadNewWordsTopPage {
+    [[PageUtil sharedInstance] loadPage:[PathUtil BASE_URL]
+                             completion:^(NSString * _Nullable content, NSError * _Nullable error) {
+                                 NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
+                                 NSString *topPage = nil;
+                                 NSError *parseError = nil;
+                                 HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&parseError];
+                                 if(!parseError) {
+                                     HTMLNode *body = [parser body];
+                                     HTMLNode *footNode = [body findChildWithAttribute:@"id" matchingName:@"foot" allowPartial:NO];
+                                     for(HTMLNode *node in [footNode findChildrenOfClass:@"handler"]) {
+                                         if([node.tagName isEqualToString:@"a"]) {
+                                             NSLog(@"allContents:%@", node.allContents);
+                                             if([node.allContents isEqualToString:@"News Words"]) {
+                                                 topPage = [node getAttributeNamed:@"href"];
+                                                 break;
+                                             }
+                                         }
+                                     }
+                                 }
+                                 
+                                 if([self.delegate respondsToSelector:@selector(topPageLoaded:withError:)]) {
+                                     [self.delegate topPageLoaded:topPage withError:error != nil ? error : parseError];
+                                 }
+                             }];
+}
+
+-(void) loadPeopleTopPage {
+    [[PageUtil sharedInstance] loadPage:[PathUtil BASE_URL]
+                             completion:^(NSString * _Nullable content, NSError * _Nullable error) {
+                                 NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
+                                 NSString *topPage = nil;
+                                 NSError *parseError = nil;
+                                 HTMLParser *parser = [[HTMLParser alloc] initWithString:content error:&parseError];
+                                 if(!parseError) {
+                                     HTMLNode *body = [parser body];
+                                     HTMLNode *footNode = [body findChildWithAttribute:@"id" matchingName:@"foot" allowPartial:NO];
+                                     for(HTMLNode *node in [footNode findChildrenOfClass:@"handler"]) {
+                                         if([node.tagName isEqualToString:@"a"]) {
+                                             NSLog(@"allContents:%@", node.allContents);
+                                             if([node.allContents isEqualToString:@"People in America"]) {
+                                                 topPage = [node getAttributeNamed:@"href"];
+                                                 break;
+                                             }
+                                         }
+                                     }
+                                 }
+                                 
+                                 if([self.delegate respondsToSelector:@selector(topPageLoaded:withError:)]) {
+                                     [self.delegate topPageLoaded:topPage withError:error != nil ? error : parseError];
+                                 }
+                             }];
+}
+
 //取得一页动画列表
 -(void) loadPage:(NSString *) moreURL {
-    //@"http://learningenglish.voanews.com/z/3619"
-    [[PageUtil sharedInstance] loadPage:[PathUtil urlAppendToBase: moreURL.length > 0 ? moreURL : @"/z/3619"]
+    [[PageUtil sharedInstance] loadPage:[PathUtil urlAppendToBase: moreURL]
                              completion:^(NSString * _Nullable content, NSError * _Nullable error) {
                                  NSAssert([[NSThread currentThread] isMainThread], @"Not main thread");
                                  [self parsePage:content];
@@ -104,6 +239,9 @@
     }
     HTMLNode *body = [parser body];
     HTMLNode *itemsNode = [body findChildWithAttribute:@"id" matchingName:@"items" allowPartial:NO];
+    if(itemsNode == nil) {
+        itemsNode = [body findChildWithAttribute:@"id" matchingName:@"articleItems" allowPartial:NO];
+    }
     if(itemsNode) {
         NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"_w[0-9]{2,5}_" options:0 error:&error];
         
