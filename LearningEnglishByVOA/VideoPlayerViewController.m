@@ -122,4 +122,12 @@
                      }];
     
 }
+
+-(IBAction)sliderValueChanged:(id)sender {
+    CGFloat seekTime = self.slider.value;
+    CMTimeScale timeScale = self.player.currentItem.asset.duration.timescale;
+    [self.player pause];
+    [self.player seekToTime:CMTimeMakeWithSeconds(seekTime, timeScale) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+    [self.player play];
+}
 @end
