@@ -80,6 +80,7 @@
 		9DADDDF21ECEF33400C53FB5 /* video-player.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9DADDDEE1ECEF33400C53FB5 /* video-player.svg */; };
 		9DADDDF51ECEF3B700C53FB5 /* PlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DADDDF41ECEF3B700C53FB5 /* PlaylistTableViewController.m */; };
 		9DADDDF71ECEF61700C53FB5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DADDDF61ECEF61700C53FB5 /* AudioToolbox.framework */; };
+		BC15CDB11ED317300009776C /* PlayerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = BC15CDB01ED317300009776C /* PlayerSlider.m */; };
 		BC1F7DA31ED1CF1300B43CC1 /* grammar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1F7D8F1ED1CF1300B43CC1 /* grammar.png */; };
 		BC1F7DA41ED1CF1300B43CC1 /* grammar.svg in Resources */ = {isa = PBXBuildFile; fileRef = BC1F7D901ED1CF1300B43CC1 /* grammar.svg */; };
 		BC1F7DA51ED1CF1300B43CC1 /* grammar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1F7D911ED1CF1300B43CC1 /* grammar@2x.png */; };
@@ -253,6 +254,8 @@
 		9DADDDF31ECEF3B700C53FB5 /* PlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistTableViewController.h; sourceTree = "<group>"; };
 		9DADDDF41ECEF3B700C53FB5 /* PlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewController.m; sourceTree = "<group>"; };
 		9DADDDF61ECEF61700C53FB5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		BC15CDAF1ED317300009776C /* PlayerSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSlider.h; sourceTree = "<group>"; };
+		BC15CDB01ED317300009776C /* PlayerSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSlider.m; sourceTree = "<group>"; };
 		BC1F7D8F1ED1CF1300B43CC1 /* grammar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grammar.png; sourceTree = "<group>"; };
 		BC1F7D901ED1CF1300B43CC1 /* grammar.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = grammar.svg; sourceTree = "<group>"; };
 		BC1F7D911ED1CF1300B43CC1 /* grammar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grammar@2x.png"; sourceTree = "<group>"; };
@@ -579,6 +582,8 @@
 				BCBA55AD1EC543DF00E4A728 /* RealmDatabase.m */,
 				BCF3ED4C1ED074A900BE47D2 /* NSLayoutConstraint+Multiplier.h */,
 				BCF3ED4D1ED074A900BE47D2 /* NSLayoutConstraint+Multiplier.m */,
+				BC15CDAF1ED317300009776C /* PlayerSlider.h */,
+				BC15CDB01ED317300009776C /* PlayerSlider.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -903,6 +908,7 @@
 				9DADDDEA1ECEE7D100C53FB5 /* SliderViewController.m in Sources */,
 				9DADDD931ECE811F00C53FB5 /* SettingsTableViewController.m in Sources */,
 				BC5E82E41EBF222A008F0BD7 /* main.m in Sources */,
+				BC15CDB11ED317300009776C /* PlayerSlider.m in Sources */,
 				BCBA55951EC4030100E4A728 /* MenuTableViewController.m in Sources */,
 				BC8A47891EC9916B00AD5E95 /* RMDisplayLabel.m in Sources */,
 			);

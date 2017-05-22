@@ -13,4 +13,6 @@
 
 @interface VideoPlayerViewController : UIViewController
 @property(nonatomic, weak) IBOutlet UISlider *slider;
+
+-(void) play:(NSString *) videoPath;
 @end

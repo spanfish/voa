@@ -33,16 +33,12 @@
     [_playerController didMoveToParentViewController:self];
     
     [_playerController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.edges.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+        //make.top.equalTo(self.view);
+        make.height.mas_equalTo(70);
     }];
-    
-    //_playerController.view.hidden = YES;
-    
-//    UIView *view = [[UIView alloc] init];
-//    [_playerController.view addSubview:view];
-//    [view mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(view.superview);
-//    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playVideo:)
@@ -101,40 +97,7 @@
     
     if(videoFile != nil) {
         //找到动画文件
-        AVAssetTrack *videoTrack = nil;
-        AVURLAsset *asset = [AVURLAsset assetWithURL:[NSURL fileURLWithPath:videoFile]];
-        NSArray *videoTracks = [asset tracksWithMediaType:AVMediaTypeVideo];
-        CMFormatDescriptionRef formatDescription = NULL;
-        NSArray *formatDescriptions = [videoTrack formatDescriptions];
-        
-        if ([formatDescriptions count] > 0)
-            formatDescription = (__bridge CMFormatDescriptionRef)[formatDescriptions objectAtIndex:0];
-        if ([videoTracks count] > 0)
-            videoTrack = [videoTracks objectAtIndex:0];
-        
-        CGSize trackDimensions = {
-            .width = 0.0,
-            .height = 0.0,
-        };
-        trackDimensions = [videoTrack naturalSize];
-        
-        _playerItem = [AVPlayerItem playerItemWithAsset:asset];
-        if(!_player) {
-            _player = [AVPlayer playerWithPlayerItem:_playerItem];
-        } else {
-            [_player replaceCurrentItemWithPlayerItem:_playerItem];
-        }
-//        _playerController.player = _player;
-//        [_player play];
-        _playerController.view.hidden = NO;
-        //_playerController.showsPlaybackControls = NO;
-        [_playerController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(self.view).multipliedBy(0.5);
-            make.height.equalTo(_playerController.view.mas_width).multipliedBy(trackDimensions.height/trackDimensions.width);
-            make.bottom.equalTo(self.view);
-            make.right.equalTo(self.view);
-        }];
-        //_playerController.view.frame = CGRectMake(0, 0, trackDimensions.width, trackDimensions.height);
+        [_playerController play:videoFile];
     } else {
         NSAssert(NO, @"video file not found");
     }
