@@ -10,7 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoPlayerViewController">
             <connections>
+                <outlet property="closeButton" destination="OY0-WA-LdA" id="O3i-Wy-R6p"/>
+                <outlet property="exitFullscreenButton" destination="kED-Cq-hul" id="CcD-Xd-7Q3"/>
+                <outlet property="fullscreenButton" destination="pL2-Ri-A9L" id="2hL-nX-ay0"/>
+                <outlet property="placeHolderView" destination="2Zr-LM-8K3" id="rJc-aH-Rdd"/>
+                <outlet property="playButton" destination="gFS-ny-yXr" id="Zuk-NX-oPg"/>
+                <outlet property="playTimeLabel" destination="gsA-YB-5EG" id="1hT-aP-Ayi"/>
+                <outlet property="remainTimeLabel" destination="sT0-Ud-1Bh" id="CsU-mx-rGI"/>
                 <outlet property="slider" destination="Xfj-kn-YHO" id="2G8-6c-LVx"/>
+                <outlet property="stopButton" destination="5v6-oS-VBX" id="6Ka-uO-z0W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,46 +27,129 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-ny-yXr" userLabel="Play button">
-                    <rect key="frame" x="172" y="318" width="30" height="30"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Zr-LM-8K3">
+                    <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-ny-yXr" userLabel="Play button">
+                            <rect key="frame" x="172.5" y="318.5" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="8sg-Db-ckt"/>
+                                <constraint firstAttribute="width" constant="30" id="KAT-6S-wKG"/>
+                            </constraints>
+                            <state key="normal" image="play-button.png"/>
+                            <connections>
+                                <action selector="playButtonToched:" destination="-1" eventType="touchUpInside" id="7en-EV-JfM"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5v6-oS-VBX" userLabel="Pause button">
+                            <rect key="frame" x="172.5" y="318.5" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="JXf-eV-fxP"/>
+                                <constraint firstAttribute="width" constant="30" id="JbL-CJ-atD"/>
+                            </constraints>
+                            <state key="normal" image="pause-button.png"/>
+                            <connections>
+                                <action selector="pauseButtonToched:" destination="-1" eventType="touchUpInside" id="rYT-Mr-sAW"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pL2-Ri-A9L" userLabel="Full screen button">
+                            <rect key="frame" x="335" y="10" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="ENu-lp-7k8"/>
+                                <constraint firstAttribute="height" constant="30" id="WjR-yJ-XOe"/>
+                            </constraints>
+                            <state key="normal" image="full-screen-button.png"/>
+                            <connections>
+                                <action selector="fullscreenTouched:" destination="-1" eventType="touchUpInside" id="MdQ-oU-s04"/>
+                            </connections>
+                        </button>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfj-kn-YHO" customClass="PlayerSlider">
+                            <rect key="frame" x="40" y="637" width="295" height="31"/>
+                            <connections>
+                                <action selector="sliderValueChanged:" destination="-1" eventType="valueChanged" id="nUQ-Y5-b3v"/>
+                                <action selector="touchDown:" destination="-1" eventType="touchDown" id="IoX-rc-9mI"/>
+                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="Rj1-5J-ITJ"/>
+                                <action selector="touchUp:" destination="-1" eventType="touchUpOutside" id="uhS-K2-rEr"/>
+                                <action selector="touchUp:" destination="-1" eventType="touchCancel" id="x4A-1j-KcQ"/>
+                            </connections>
+                        </slider>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kED-Cq-hul">
+                            <rect key="frame" x="335" y="10" width="30" height="30"/>
+                            <state key="normal" title="Button" image="shrink-screen-button.png"/>
+                            <connections>
+                                <action selector="exitFullscreenTouched:" destination="-1" eventType="touchUpInside" id="B1K-4b-mYF"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsA-YB-5EG">
+                            <rect key="frame" x="2" y="651" width="36" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="Hqc-Bq-sG2"/>
+                                <constraint firstAttribute="width" constant="36" id="aED-8r-HiT"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sT0-Ud-1Bh">
+                            <rect key="frame" x="337" y="651.5" width="36" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OY0-WA-LdA">
+                            <rect key="frame" x="10" y="13" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="5by-de-rHL"/>
+                                <constraint firstAttribute="height" constant="25" id="r7C-WT-GBJ"/>
+                            </constraints>
+                            <state key="normal" image="close-button.png"/>
+                            <connections>
+                                <action selector="closeButtonToched:" destination="-1" eventType="touchUpInside" id="4jB-ac-eyG"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="8sg-Db-ckt"/>
-                        <constraint firstAttribute="width" constant="30" id="KAT-6S-wKG"/>
+                        <constraint firstItem="gsA-YB-5EG" firstAttribute="bottom" secondItem="Xfj-kn-YHO" secondAttribute="bottom" id="0Vs-YL-bA4"/>
+                        <constraint firstItem="pL2-Ri-A9L" firstAttribute="top" secondItem="2Zr-LM-8K3" secondAttribute="top" constant="10" id="0yA-hj-cli"/>
+                        <constraint firstItem="kED-Cq-hul" firstAttribute="width" secondItem="pL2-Ri-A9L" secondAttribute="width" id="1gC-aK-1Fq"/>
+                        <constraint firstItem="5v6-oS-VBX" firstAttribute="centerX" secondItem="gFS-ny-yXr" secondAttribute="centerX" id="3or-lq-rfd"/>
+                        <constraint firstItem="kED-Cq-hul" firstAttribute="centerY" secondItem="pL2-Ri-A9L" secondAttribute="centerY" id="A8u-mE-gfS"/>
+                        <constraint firstAttribute="trailing" secondItem="sT0-Ud-1Bh" secondAttribute="trailing" constant="2" id="AOQ-uV-T6G"/>
+                        <constraint firstItem="kED-Cq-hul" firstAttribute="height" secondItem="pL2-Ri-A9L" secondAttribute="height" id="AvO-3m-CrZ"/>
+                        <constraint firstItem="Xfj-kn-YHO" firstAttribute="leading" secondItem="gsA-YB-5EG" secondAttribute="trailing" constant="4" id="BhR-l3-NwA"/>
+                        <constraint firstItem="OY0-WA-LdA" firstAttribute="centerY" secondItem="pL2-Ri-A9L" secondAttribute="centerY" id="Crn-zZ-wE3"/>
+                        <constraint firstItem="Xfj-kn-YHO" firstAttribute="centerX" secondItem="2Zr-LM-8K3" secondAttribute="centerX" id="D7p-v2-BmO"/>
+                        <constraint firstItem="sT0-Ud-1Bh" firstAttribute="leading" secondItem="Xfj-kn-YHO" secondAttribute="trailing" constant="4" id="DGr-IX-1F2"/>
+                        <constraint firstItem="kED-Cq-hul" firstAttribute="centerX" secondItem="pL2-Ri-A9L" secondAttribute="centerX" id="ELu-by-F2H"/>
+                        <constraint firstItem="OY0-WA-LdA" firstAttribute="leading" secondItem="2Zr-LM-8K3" secondAttribute="leading" constant="10" id="F4b-Rf-4Eq"/>
+                        <constraint firstItem="sT0-Ud-1Bh" firstAttribute="height" secondItem="gsA-YB-5EG" secondAttribute="height" id="KeG-Z0-ed9"/>
+                        <constraint firstItem="gFS-ny-yXr" firstAttribute="centerX" secondItem="2Zr-LM-8K3" secondAttribute="centerX" id="Wz3-Ta-a4X"/>
+                        <constraint firstItem="gsA-YB-5EG" firstAttribute="leading" secondItem="2Zr-LM-8K3" secondAttribute="leading" constant="2" id="ZGR-ac-Cbj"/>
+                        <constraint firstItem="5v6-oS-VBX" firstAttribute="centerY" secondItem="gFS-ny-yXr" secondAttribute="centerY" id="cmO-Qc-3W5"/>
+                        <constraint firstAttribute="bottom" secondItem="Xfj-kn-YHO" secondAttribute="bottom" id="flc-KL-dpa"/>
+                        <constraint firstItem="gFS-ny-yXr" firstAttribute="centerY" secondItem="2Zr-LM-8K3" secondAttribute="centerY" id="gmQ-fV-imh"/>
+                        <constraint firstAttribute="trailing" secondItem="pL2-Ri-A9L" secondAttribute="trailing" constant="10" id="psK-uZ-UkD"/>
+                        <constraint firstItem="sT0-Ud-1Bh" firstAttribute="centerY" secondItem="gsA-YB-5EG" secondAttribute="centerY" id="r0o-ha-0Jt"/>
+                        <constraint firstItem="sT0-Ud-1Bh" firstAttribute="width" secondItem="gsA-YB-5EG" secondAttribute="width" id="uJf-Pe-KeP"/>
                     </constraints>
-                    <state key="normal" image="play-button.png"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pL2-Ri-A9L" userLabel="Full screen button">
-                    <rect key="frame" x="172.5" y="318.5" width="30" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="30" id="ENu-lp-7k8"/>
-                        <constraint firstAttribute="height" constant="30" id="WjR-yJ-XOe"/>
-                    </constraints>
-                    <state key="normal" image="full-screen-button.png"/>
-                </button>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfj-kn-YHO" customClass="PlayerSlider">
-                    <rect key="frame" x="-2" y="637" width="379" height="31"/>
-                    <connections>
-                        <action selector="sliderValueChanged:" destination="-1" eventType="valueChanged" id="nUQ-Y5-b3v"/>
-                    </connections>
-                </slider>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Xfj-kn-YHO" secondAttribute="bottom" id="359-uW-8c3"/>
-                <constraint firstItem="gFS-ny-yXr" firstAttribute="centerY" secondItem="pL2-Ri-A9L" secondAttribute="centerY" id="5S1-t6-de9"/>
-                <constraint firstItem="gFS-ny-yXr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="78m-r3-aei"/>
-                <constraint firstItem="pL2-Ri-A9L" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8xB-P5-9Ld"/>
-                <constraint firstItem="Xfj-kn-YHO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ags-U0-sVB"/>
-                <constraint firstItem="pL2-Ri-A9L" firstAttribute="height" secondItem="gFS-ny-yXr" secondAttribute="height" id="LOd-cd-1sA"/>
-                <constraint firstItem="Xfj-kn-YHO" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="SJn-S2-Jhe"/>
-                <constraint firstItem="pL2-Ri-A9L" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="tiW-F5-S19"/>
-                <constraint firstItem="pL2-Ri-A9L" firstAttribute="width" secondItem="gFS-ny-yXr" secondAttribute="width" id="zbh-p0-GoE"/>
+                <constraint firstItem="2Zr-LM-8K3" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="6ly-44-Eee"/>
+                <constraint firstItem="2Zr-LM-8K3" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Iy1-9O-eAm"/>
+                <constraint firstItem="2Zr-LM-8K3" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="YKT-l8-Wrn"/>
+                <constraint firstItem="2Zr-LM-8K3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gxX-Nl-29A"/>
             </constraints>
             <point key="canvasLocation" x="-152.5" y="-11.5"/>
         </view>
     </objects>
     <resources>
+        <image name="close-button.png" width="35" height="35"/>
         <image name="full-screen-button.png" width="35" height="35"/>
+        <image name="pause-button.png" width="23" height="35"/>
         <image name="play-button.png" width="26" height="35"/>
+        <image name="shrink-screen-button.png" width="35" height="35"/>
     </resources>
 </document>

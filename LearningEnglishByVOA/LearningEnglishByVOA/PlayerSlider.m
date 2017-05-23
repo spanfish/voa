@@ -13,6 +13,6 @@
 
 - (CGRect)trackRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height/2);
+    return CGRectMake(bounds.origin.x, bounds.size.height - 16, bounds.size.width, 16);
 }
 @end

@@ -11,8 +11,13 @@
 #import <AVFoundation/AVFoundation.h>
 #import "PlayItem.h"
 
+@protocol VideoPlayerViewControllerDelegate <NSObject>
+
+
+@end
+
 @interface VideoPlayerViewController : UIViewController
-@property(nonatomic, weak) IBOutlet UISlider *slider;
 
 -(void) play:(NSString *) videoPath;
+@property(nonatomic, weak) id<VideoPlayerViewControllerDelegate> delegate;
 @end

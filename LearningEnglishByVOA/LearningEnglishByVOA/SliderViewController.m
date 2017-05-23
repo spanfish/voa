@@ -15,9 +15,6 @@
 
 @interface SliderViewController () {
     VideoPlayerViewController *_playerController;
-    AVPlayerLayer *_playerLayer;
-    AVPlayer *_player;
-    AVPlayerItem *_playerItem;
 }
 @end
 
@@ -31,14 +28,15 @@
     [self.view addSubview:_playerController.view];
     [self addChildViewController:_playerController];
     [_playerController didMoveToParentViewController:self];
-    
+
     [_playerController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.bottom.equalTo(self.view);
-        //make.top.equalTo(self.view);
-        make.height.mas_equalTo(70);
+        make.left.equalTo(_playerController.view.superview);
+        make.right.equalTo(_playerController.view.superview);
+        make.bottom.equalTo(_playerController.view.superview);
+        make.top.equalTo(_playerController.view.superview);
     }];
+
+    _playerController.view.hidden = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playVideo:)
@@ -47,15 +45,6 @@
 
 }
 
-//-(void) tapped:(UITapGestureRecognizer *) recognizer {
-//    NSLog(@"tapped");
-
-//    [_playerController.view mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width);
-//        make.height.mas_equalTo([UIScreen mainScreen].bounds.size.height);
-//        make.center.equalTo(self.view);
-//    }];
-//}
 -(void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -98,19 +87,10 @@
     if(videoFile != nil) {
         //找到动画文件
         [_playerController play:videoFile];
+        _playerController.view.hidden = NO;
     } else {
         NSAssert(NO, @"video file not found");
     }
-    
-    //NSURL *url = nil;
-    // Create asset to be played
-    //asset = [AVAsset assetWithURL:url];
-    //NSArray *assetKeys = @[@"playable", @"hasProtectedContent"];
-    
-    // Create a new AVPlayerItem with the asset and an
-    // array of asset keys to be automatically loaded
-    //AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset
-    //                                  automaticallyLoadedAssetKeys:assetKeys];
     
 }
 
