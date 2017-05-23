@@ -8,10 +8,12 @@
 
 #import "VideoPlayerViewController.h"
 #import <Masonry/Masonry.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface VideoPlayerViewController () {
     BOOL _touchBegan;
     CGSize _trackDimensions;
+    BOOL _fullscreen;
 }
 @property(nonatomic, weak) IBOutlet UIView *placeHolderView;
 @property(nonatomic, weak) IBOutlet UISlider *slider;
@@ -25,6 +27,7 @@
 @property(nonatomic, weak) IBOutlet UILabel *playTimeLabel;
 @property(nonatomic, weak) IBOutlet UILabel *remainTimeLabel;
 
+@property(nonatomic, strong) AVPlayerItem *playerItem;
 @property(nonatomic, strong) AVPlayerLayer *playerLayer;
 @property(nonatomic, strong) AVPlayer *player;
 
@@ -45,6 +48,152 @@
     self.stopButton.hidden = YES;
     
     [self performSelector:@selector(hideControls) withObject:nil afterDelay:3.0];
+    
+    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+    [self.view addGestureRecognizer:recognizer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerEnded:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+}
+
+-(void) applicationWillResignActive:(NSNotification *) notification {
+    NSArray *tracks = [_playerItem tracks];
+    for (AVPlayerItemTrack *playerItemTrack in tracks)
+    {
+        // find video tracks
+        if ([playerItemTrack.assetTrack hasMediaCharacteristic:AVMediaCharacteristicVisual])
+        {
+            playerItemTrack.enabled = NO; // disable the track
+        }
+    }
+    
+    [[MPRemoteCommandCenter sharedCommandCenter].playCommand addTarget:self action:@selector(startPlay:)];
+    [MPRemoteCommandCenter sharedCommandCenter].playCommand.enabled = YES;
+    
+    [[MPRemoteCommandCenter sharedCommandCenter].pauseCommand addTarget:self action:@selector(pause:)];
+    [MPRemoteCommandCenter sharedCommandCenter].pauseCommand.enabled = YES;
+    
+    [[MPRemoteCommandCenter sharedCommandCenter].stopCommand addTarget:self action:@selector(stop:)];
+    [MPRemoteCommandCenter sharedCommandCenter].stopCommand.enabled = YES;
+    
+    [[MPRemoteCommandCenter sharedCommandCenter].togglePlayPauseCommand addTarget:self action:@selector(toogle:)];
+    [MPRemoteCommandCenter sharedCommandCenter].togglePlayPauseCommand.enabled = YES;
+    
+    [[MPRemoteCommandCenter sharedCommandCenter].nextTrackCommand addTarget:self action:@selector(next:)];
+    [MPRemoteCommandCenter sharedCommandCenter].nextTrackCommand.enabled = YES;
+    
+    [[MPRemoteCommandCenter sharedCommandCenter].previousTrackCommand addTarget:self action:@selector(previous:)];
+    [MPRemoteCommandCenter sharedCommandCenter].previousTrackCommand.enabled = YES;
+}
+
+#pragma mark - MPRemoteCommandCenter
+-(void) startPlay:(id) sender {
+    if(self.playerItem) {
+        [self.player play];
+    }
+}
+
+-(void) pause:(id) sender {
+    [self.player pause];
+}
+
+-(void) stop:(id) sender {
+    [self.player pause];
+}
+
+-(void) toogle:(id) sender {
+    if(!self.playerItem) {
+        return;
+    }
+    if(self.player.rate == 0) {
+        [self.player play];
+    } else {
+        [self.player pause];
+    }
+}
+
+-(void) next:(id) sender {
+
+}
+
+-(void) previous:(id) sender {
+
+}
+#pragma mark -
+-(void) applicationWillEnterForeground:(NSNotification *) notification {
+    NSArray *tracks = [_playerItem tracks];
+    for (AVPlayerItemTrack *playerItemTrack in tracks)
+    {
+        // find video tracks
+        if ([playerItemTrack.assetTrack hasMediaCharacteristic:AVMediaCharacteristicVisual])
+        {
+            playerItemTrack.enabled = YES; // enable the track
+        }
+    }
+    
+    [MPRemoteCommandCenter sharedCommandCenter].playCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].pauseCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].stopCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].togglePlayPauseCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].nextTrackCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].previousTrackCommand.enabled = NO;
+}
+
+-(void) playerEnded:(NSNotification *) notification {
+    NSLog(@"playerEnded");
+    self.playerItem = nil;
+}
+
+-(void) panGesture:(UIPanGestureRecognizer *)recognizer {
+    NSLog(@"panGesture");
+    if(_fullscreen) {
+        return;
+    }
+    
+    CGPoint translation = [recognizer translationInView:self.view];
+    CGFloat transX = ABS(translation.x);
+    CGFloat transY = ABS(translation.y);
+    if(transX < transY) {
+        //move up down
+        
+        CGPoint velocity = [recognizer velocityInView:self.view];
+        NSLog(@"velocity:%@", NSStringFromCGPoint(velocity));
+        if(ABS(velocity.y) < 600) {
+            return;
+        }
+        if(velocity.y > 0) {
+            //down
+            [self.view mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.view.superview);
+                make.right.equalTo(self.view.superview);
+                make.bottom.equalTo(self.view.superview);
+                make.height.equalTo(self.view.superview.mas_width).multipliedBy(_trackDimensions.height/_trackDimensions.width);
+            }];
+            
+            [self.view layoutIfNeeded];
+        } else {
+            //up
+            [self.view mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.view.superview);
+                make.right.equalTo(self.view.superview);
+                make.top.equalTo(self.view.superview);
+                make.height.equalTo(self.view.superview.mas_width).multipliedBy(_trackDimensions.height/_trackDimensions.width);
+            }];
+            
+            [self.view layoutIfNeeded];
+        }
+    }
 }
 
 -(void) hideControls {
@@ -70,6 +219,8 @@
     _slider.minimumValue = 0;
     _slider.maximumValue = duration;
     [self updatePlauAndPauseButton: 0];
+    self.exitFullscreenButton.hidden = YES;
+    self.fullscreenButton.hidden = NO;
     
     NSArray *videoTracks = [asset tracksWithMediaType:AVMediaTypeVideo];
     CMFormatDescriptionRef formatDescription = NULL;
@@ -106,7 +257,7 @@
     } else {
         [_player replaceCurrentItemWithPlayerItem:playerItem];
     }
-    
+    self.playerItem = playerItem;
     [_player play];
     
     [self.view mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -186,6 +337,8 @@
     
     self.exitFullscreenButton.hidden = NO;
     self.fullscreenButton.hidden = YES;
+    _fullscreen = YES;
+    [self showControls];
 }
 
 -(IBAction)exitFullscreenTouched:(id)sender {
@@ -202,6 +355,8 @@
     
     self.exitFullscreenButton.hidden = YES;
     self.fullscreenButton.hidden = NO;
+    _fullscreen = NO;
+    [self showControls];
 }
 
 -(IBAction)sliderValueChanged:(id)sender {
@@ -210,14 +365,20 @@
     [self.player pause];
     [self.player seekToTime:CMTimeMakeWithSeconds(seekTime, timeScale) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
     [self.player play];
+    
+    [self showControls];
 }
 
 -(IBAction)playButtonToched:(id)sender {
     [_player play];
+    
+    [self showControls];
 }
 
 -(IBAction)pauseButtonToched:(id)sender {
     [_player pause];
+    
+    [self showControls];
 }
 
 -(IBAction)closeButtonToched:(id)sender {
@@ -225,15 +386,39 @@
     self.view.hidden = YES;
 }
 
+-(IBAction)rewindButtonToched:(id)sender {
+    CGFloat seekTime = CMTimeGetSeconds(self.player.currentItem.currentTime) - 3;
+    seekTime = MAX(0, seekTime);
+    
+    CMTimeScale timeScale = self.player.currentItem.asset.duration.timescale;
+    [self.player pause];
+    [self.player seekToTime:CMTimeMakeWithSeconds(seekTime, timeScale) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+    [self.player play];
+    
+    [self showControls];
+}
 
--(IBAction)touchDown:(id)sender {
+-(IBAction)forwardButtonToched:(id)sender {
+    CGFloat seekTime = CMTimeGetSeconds(self.player.currentItem.currentTime) + 3;
+    CGFloat totalTime = CMTimeGetSeconds(self.player.currentItem.duration);
+    seekTime = MIN(totalTime, seekTime);
+    
+    CMTimeScale timeScale = self.player.currentItem.asset.duration.timescale;
+    [self.player pause];
+    [self.player seekToTime:CMTimeMakeWithSeconds(seekTime, timeScale) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+    [self.player play];
+    
+    [self showControls];
+}
+
+-(IBAction)sliderTouchDown:(id)sender {
     _touchBegan = YES;
     NSLog(@"touchDown");
     
     [VideoPlayerViewController cancelPreviousPerformRequestsWithTarget:self];
 }
 
--(IBAction)touchUp:(id)sender {
+-(IBAction)sliderTouchUp:(id)sender {
     _touchBegan = NO;
     NSLog(@"touchUp");
     

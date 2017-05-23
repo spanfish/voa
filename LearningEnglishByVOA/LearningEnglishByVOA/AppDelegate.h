@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <AFNetworking/AFNetworking.h>
 #import "PlayItem.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, AVAudioSessionDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

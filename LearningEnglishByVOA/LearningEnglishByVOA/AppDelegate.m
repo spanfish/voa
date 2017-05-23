@@ -42,15 +42,21 @@
                                 attributes:nil
                                      error:nil];
     }
-//    MenuTableViewController *leftMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Menu"];
-//    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     
     //call intensionaly to insure there is a instance of IAPManager
-    [[IAPManager sharedInstance] loadPurchasedProducts];
+    //[[IAPManager sharedInstance] loadPurchasedProducts];
     
     [RealmDatabase setup];
     
     self.playList = [NSMutableArray array];
+    
+    // Allow the app sound to continue to play when the screen is locked.
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    NSError *setCategoryError = nil;
+    BOOL success = [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
+    NSError *activationError = nil;
+    success = [audioSession setActive:YES error:&activationError];
+    if (!success) { /* handle the error condition */ }
     return YES;
 }
 
@@ -80,8 +86,7 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    //Disabling the video tracks in the player item
 }
 
 

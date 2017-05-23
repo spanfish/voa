@@ -12,11 +12,13 @@
             <connections>
                 <outlet property="closeButton" destination="OY0-WA-LdA" id="O3i-Wy-R6p"/>
                 <outlet property="exitFullscreenButton" destination="kED-Cq-hul" id="CcD-Xd-7Q3"/>
+                <outlet property="forwardButton" destination="1mh-IW-K4q" id="fzD-sZ-ooF"/>
                 <outlet property="fullscreenButton" destination="pL2-Ri-A9L" id="2hL-nX-ay0"/>
                 <outlet property="placeHolderView" destination="2Zr-LM-8K3" id="rJc-aH-Rdd"/>
                 <outlet property="playButton" destination="gFS-ny-yXr" id="Zuk-NX-oPg"/>
                 <outlet property="playTimeLabel" destination="gsA-YB-5EG" id="1hT-aP-Ayi"/>
                 <outlet property="remainTimeLabel" destination="sT0-Ud-1Bh" id="CsU-mx-rGI"/>
+                <outlet property="rewindButton" destination="fvb-Ie-ezZ" id="sBc-Zr-bkl"/>
                 <outlet property="slider" destination="Xfj-kn-YHO" id="2G8-6c-LVx"/>
                 <outlet property="stopButton" destination="5v6-oS-VBX" id="6Ka-uO-z0W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -66,11 +68,11 @@
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfj-kn-YHO" customClass="PlayerSlider">
                             <rect key="frame" x="40" y="637" width="295" height="31"/>
                             <connections>
+                                <action selector="sliderTouchDown:" destination="-1" eventType="touchDown" id="8it-Hw-A88"/>
+                                <action selector="sliderTouchUp:" destination="-1" eventType="touchUpOutside" id="7JX-Xi-pEP"/>
+                                <action selector="sliderTouchUp:" destination="-1" eventType="touchCancel" id="ich-hZ-o4X"/>
+                                <action selector="sliderTouchUp:" destination="-1" eventType="touchUpInside" id="mA9-rX-sTh"/>
                                 <action selector="sliderValueChanged:" destination="-1" eventType="valueChanged" id="nUQ-Y5-b3v"/>
-                                <action selector="touchDown:" destination="-1" eventType="touchDown" id="IoX-rc-9mI"/>
-                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="Rj1-5J-ITJ"/>
-                                <action selector="touchUp:" destination="-1" eventType="touchUpOutside" id="uhS-K2-rEr"/>
-                                <action selector="touchUp:" destination="-1" eventType="touchCancel" id="x4A-1j-KcQ"/>
                             </connections>
                         </slider>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kED-Cq-hul">
@@ -107,6 +109,28 @@
                                 <action selector="closeButtonToched:" destination="-1" eventType="touchUpInside" id="4jB-ac-eyG"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mh-IW-K4q">
+                            <rect key="frame" x="302.5" y="318.5" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="M6B-7d-3sn"/>
+                                <constraint firstAttribute="width" constant="30" id="NFB-KP-kic"/>
+                            </constraints>
+                            <state key="normal" image="forward-time.png"/>
+                            <connections>
+                                <action selector="forwardButtonToched:" destination="-1" eventType="touchUpInside" id="Dy9-q9-5NK"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvb-Ie-ezZ">
+                            <rect key="frame" x="42.5" y="318.5" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="F9E-sJ-7Bz"/>
+                                <constraint firstAttribute="width" constant="30" id="xv8-Xf-I5D"/>
+                            </constraints>
+                            <state key="normal" image="rewind-time.png"/>
+                            <connections>
+                                <action selector="rewindButtonToched:" destination="-1" eventType="touchUpInside" id="Hdb-GS-LFn"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -115,7 +139,9 @@
                         <constraint firstItem="kED-Cq-hul" firstAttribute="width" secondItem="pL2-Ri-A9L" secondAttribute="width" id="1gC-aK-1Fq"/>
                         <constraint firstItem="5v6-oS-VBX" firstAttribute="centerX" secondItem="gFS-ny-yXr" secondAttribute="centerX" id="3or-lq-rfd"/>
                         <constraint firstItem="kED-Cq-hul" firstAttribute="centerY" secondItem="pL2-Ri-A9L" secondAttribute="centerY" id="A8u-mE-gfS"/>
+                        <constraint firstItem="fvb-Ie-ezZ" firstAttribute="trailing" secondItem="gFS-ny-yXr" secondAttribute="leading" constant="-100" id="AKh-80-x74"/>
                         <constraint firstAttribute="trailing" secondItem="sT0-Ud-1Bh" secondAttribute="trailing" constant="2" id="AOQ-uV-T6G"/>
+                        <constraint firstItem="1mh-IW-K4q" firstAttribute="leading" secondItem="gFS-ny-yXr" secondAttribute="trailing" constant="100" id="Aij-iR-LjT"/>
                         <constraint firstItem="kED-Cq-hul" firstAttribute="height" secondItem="pL2-Ri-A9L" secondAttribute="height" id="AvO-3m-CrZ"/>
                         <constraint firstItem="Xfj-kn-YHO" firstAttribute="leading" secondItem="gsA-YB-5EG" secondAttribute="trailing" constant="4" id="BhR-l3-NwA"/>
                         <constraint firstItem="OY0-WA-LdA" firstAttribute="centerY" secondItem="pL2-Ri-A9L" secondAttribute="centerY" id="Crn-zZ-wE3"/>
@@ -126,7 +152,9 @@
                         <constraint firstItem="sT0-Ud-1Bh" firstAttribute="height" secondItem="gsA-YB-5EG" secondAttribute="height" id="KeG-Z0-ed9"/>
                         <constraint firstItem="gFS-ny-yXr" firstAttribute="centerX" secondItem="2Zr-LM-8K3" secondAttribute="centerX" id="Wz3-Ta-a4X"/>
                         <constraint firstItem="gsA-YB-5EG" firstAttribute="leading" secondItem="2Zr-LM-8K3" secondAttribute="leading" constant="2" id="ZGR-ac-Cbj"/>
+                        <constraint firstItem="fvb-Ie-ezZ" firstAttribute="centerY" secondItem="gFS-ny-yXr" secondAttribute="centerY" id="aLO-kz-UhU"/>
                         <constraint firstItem="5v6-oS-VBX" firstAttribute="centerY" secondItem="gFS-ny-yXr" secondAttribute="centerY" id="cmO-Qc-3W5"/>
+                        <constraint firstItem="1mh-IW-K4q" firstAttribute="centerY" secondItem="gFS-ny-yXr" secondAttribute="centerY" id="exg-lY-Uz0"/>
                         <constraint firstAttribute="bottom" secondItem="Xfj-kn-YHO" secondAttribute="bottom" id="flc-KL-dpa"/>
                         <constraint firstItem="gFS-ny-yXr" firstAttribute="centerY" secondItem="2Zr-LM-8K3" secondAttribute="centerY" id="gmQ-fV-imh"/>
                         <constraint firstAttribute="trailing" secondItem="pL2-Ri-A9L" secondAttribute="trailing" constant="10" id="psK-uZ-UkD"/>
@@ -147,9 +175,11 @@
     </objects>
     <resources>
         <image name="close-button.png" width="35" height="35"/>
+        <image name="forward-time.png" width="35" height="35"/>
         <image name="full-screen-button.png" width="35" height="35"/>
         <image name="pause-button.png" width="23" height="35"/>
         <image name="play-button.png" width="26" height="35"/>
+        <image name="rewind-time.png" width="35" height="35"/>
         <image name="shrink-screen-button.png" width="35" height="35"/>
     </resources>
 </document>
