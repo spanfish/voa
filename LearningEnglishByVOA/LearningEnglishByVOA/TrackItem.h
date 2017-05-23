@@ -10,6 +10,7 @@
 #import "Common.h"
 #import <Realm/Realm.h>
 
+@class PlayItem;
 @interface TrackItem : RLMObject<NSURLConnectionDelegate> {
 //    DataDownloadProgressBlock _progress;
 //    CompletionBlock _completion;
@@ -18,7 +19,7 @@
 @property(nonatomic, strong) NSString *dataInfo;//270p,360p,720p
 @property(nonatomic, strong) NSString *dataSrc;//URL
 
--(NSURLSessionDownloadTask *) fetchTrackToPath:(NSString *) path withProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion;
+-(NSURLSessionDownloadTask *) fetchPlayItem:(PlayItem*) playItem trackToPath:(NSString *) path withProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion;
 @end
 
 RLM_ARRAY_TYPE(TrackItem)

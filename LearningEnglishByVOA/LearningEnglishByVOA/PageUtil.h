@@ -43,8 +43,9 @@
 
 +(instancetype _Nonnull) sharedInstance;
 
--(NSURLSessionDownloadTask *) fetchVideo:(NSString *_Nonnull) videoURL
-            toFile:(NSString * _Nonnull) filePath
-          progress:(DataDownloadProgressBlock) progress
-        completion:(DataCompletionBlock)block;
+-(NSURLSessionDownloadTask *) fetchVideoURL:(NSString *_Nonnull) videoURL
+                                      title:(NSString *) videoTitle
+                                     toFile:(NSString * _Nonnull) filePath
+                                   progress:(DataDownloadProgressBlock) progress
+                                 completion:(DataCompletionBlock)block;
 @end

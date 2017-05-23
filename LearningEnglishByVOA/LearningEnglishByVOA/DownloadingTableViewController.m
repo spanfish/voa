@@ -40,8 +40,8 @@
         [downloadArray addObject:[dict objectForKey:key]];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadCompleted:) name:@"VideoDownloadCompleted" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadProgressed:) name:@"VideoDownloadProgressed" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadCompleted:) name:@"DownloadCompleted" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadProgressed:) name:@"DownloadProgressed" object:nil];
 }
 
 -(void) dealloc {
@@ -68,9 +68,23 @@
     DownloadingTableViewCell *cell = (DownloadingTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    //PlayItem *playItem = [downloadArray objectAtIndex:indexPath.row];
+    PlayItem *playItem = [downloadArray objectAtIndex:indexPath.row];
     [cell.widthRatioConstraint updateMultiplier: 7.0/3];
-    //cell.titleLabel.text = playItem.videoTitle;
+    cell.titleLabel.text = playItem.videoTitle;
+    
+    cell.slider.maximumValue = 1;
+    cell.slider.minimumValue = 0;
+    cell.slider.value = 0;
+    
+//    NSString *path = [PathUtil pathForType:self.targetType];
+    
+//    NSString *fileName = [path stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
+    if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
+        //缩微图存在
+        cell.thumbnailImageView.contentMode = UIViewContentModeScaleAspectFill;
+        cell.thumbnailImageView.image = [UIImage imageWithContentsOfFile:fileName];
+    }
+    
     return cell;
 }
 
@@ -122,31 +136,33 @@
 
 -(void) videoDownloadCompleted:(NSNotification *) notification {
     NSAssert([NSThread isMainThread], @"not in main thread");
-//    NSString *url = [[notification userInfo] objectForKey:@"videoURL"];
-//    AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
-//    [appDelegate removeDownloadTaskForKey:url];
-//    
-//    for (NSIndexPath *indexPath in self.collectionView.indexPathsForVisibleItems) {
-//        PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
-//        
-//        for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
-//            TrackItem *track = [playItem.tracks objectAtIndex:i];
-//            
-//            if([track.dataSrc isEqualToString:url]) {
-//                NSLog(@"videoDownloadCompleted:%ld", indexPath.row);
-//                [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-//                break;
-//            }
-//        }
-//    }
+    NSString *videoTitle = [[notification userInfo] objectForKey:@"videoTitle"];
+    
+    for (NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows) {
+        PlayItem *playItem = [downloadArray objectAtIndex:indexPath.row];
+        if([playItem.videoTitle isEqualToString:videoTitle]) {
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            break;
+        }
+    }
 }
 
 -(void) videoDownloadProgressed:(NSNotification *) notification {
     NSAssert([NSThread isMainThread], @"not in main thread");
-//    NSString *url = [[notification userInfo] objectForKey:@"videoURL"];
-//    int64_t totalBytes = [[[notification userInfo] objectForKey:@"totalUnitCount"] longLongValue];
-//    int64_t downloadedBytes = [[[notification userInfo] objectForKey:@"completedUnitCount"] longLongValue];
-//    
+    //NSString *videoURL = [[notification userInfo] objectForKey:@"videoURL"];
+    NSString *videoTitle = [[notification userInfo] objectForKey:@"videoTitle"];
+    int64_t totalBytes = [[[notification userInfo] objectForKey:@"totalUnitCount"] longLongValue];
+    int64_t downloadedBytes = [[[notification userInfo] objectForKey:@"completedUnitCount"] longLongValue];
+    
+    for (NSIndexPath *indexPath in self.tableView.indexPathsForVisibleRows) {
+        PlayItem *playItem = [downloadArray objectAtIndex:indexPath.row];
+        if([playItem.videoTitle isEqualToString:videoTitle]) {
+            DownloadingTableViewCell *cell = (DownloadingTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+            cell.slider.value = (float)downloadedBytes/totalBytes;
+            break;
+        }
+    }
+//
 //    for (NSIndexPath *indexPath in self.collectionView.indexPathsForVisibleItems) {
 //        if(indexPath.section != 0) {
 //            continue;
@@ -172,7 +188,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    [self.slider setThumbImage:[[UIImage imageNamed:@"Transparency10"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
+    [self.slider setMinimumTrackImage:[[UIImage imageNamed:@"slider-left"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

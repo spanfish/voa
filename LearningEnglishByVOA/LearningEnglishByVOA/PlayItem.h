@@ -21,6 +21,7 @@
 @property(nonatomic, strong) NSString *sortedDate;
 @property(nonatomic, assign) NSInteger targetType;
 @property(nonatomic, assign, readonly, getter=hasFetchedTracksURL) BOOL fetchedTracksURL;
+@property(nonatomic, weak) NSURLSessionTask *task;
 
 @property RLMArray<TrackItem *><TrackItem> *tracks;
 

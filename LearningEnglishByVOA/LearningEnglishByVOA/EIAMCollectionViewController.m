@@ -84,8 +84,8 @@ static NSString * const reuseIdentifier = @"Cell";
         [dataSource loadPeopleTopPage];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadCompleted:) name:@"VideoDownloadCompleted" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadProgressed:) name:@"VideoDownloadProgressed" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadCompleted:) name:@"DownloadCompleted" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadProgressed:) name:@"DownloadProgressed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMore:) name:@"More" object:nil];
 }
 
@@ -497,7 +497,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void) downloadTrack:(TrackItem *) playTrack forPlayItem:(PlayItem *) playItem {
     NSString *path = [PathUtil pathForType:self.targetType];
-    NSURLSessionDownloadTask *videoTask = [playTrack fetchTrackToPath:path withProgress:nil complete:nil];
+    NSURLSessionDownloadTask *videoTask = [playTrack fetchPlayItem:playItem
+                                                       trackToPath:path
+                                                      withProgress:nil
+                                                          complete:nil];
 
     AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     [appDelegate addDownloadTask:videoTask forPlayItem:playItem];
@@ -506,10 +509,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void) videoDownloadCompleted:(NSNotification *) notification {
     NSAssert([NSThread isMainThread], @"not in main thread");
-    NSString *url = [[notification userInfo] objectForKey:@"videoURL"];
-    AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
-    [appDelegate removeDownloadTaskForKey:url];
-    
+    NSString *url = [[notification userInfo] objectForKey:@"videoTitle"];    
     for (NSIndexPath *indexPath in self.collectionView.indexPathsForVisibleItems) {
         PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
         

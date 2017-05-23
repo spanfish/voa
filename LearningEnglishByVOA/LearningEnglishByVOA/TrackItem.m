@@ -12,6 +12,7 @@
 #import <ObjectiveCHMTLParser/HTMLNode.h>
 #import <ObjectiveCHMTLParser/HTMLParser.h>
 #import <JSONKit/JSONKit.h>
+#import "PlayItem.h"
 
 @implementation TrackItem
 + (NSString *)primaryKey {
@@ -35,20 +36,23 @@
 //    return NO;
 //}
 
--(NSURLSessionDownloadTask *) fetchTrackToPath:(NSString *) path withProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion {
+-(NSURLSessionDownloadTask *) fetchPlayItem:(PlayItem*) playItem
+                                trackToPath:(NSString *) path
+                               withProgress:(DataDownloadProgressBlock) progress
+                                   complete:(DataCompletionBlock) completion {
     
     NSString *fileName = [self.dataSrc lastPathComponent];
-    return [[VideoUtil sharedInstance] fetchVideo:self.dataSrc
-                                     toFile:[path stringByAppendingPathComponent:fileName]
-                                   progress:^(int64_t totalBytes, int64_t downloadedBytes) {
-                                       if(progress) {
-                                           main_queue(progress(totalBytes, downloadedBytes));
-                                       }
-                                   }
-                                 completion:^(NSData * _Nullable content, NSError * _Nullable error) {
-                                     if(completion) completion(nil, error);
-                                 }];
-    
+    return [[VideoUtil sharedInstance] fetchVideoURL:self.dataSrc
+                                               title:playItem.videoTitle
+                                              toFile:[path stringByAppendingPathComponent:fileName]
+                                            progress:^(int64_t totalBytes, int64_t downloadedBytes) {
+                                                if(progress) {
+                                                    main_queue(progress(totalBytes, downloadedBytes));
+                                                }
+                                            }
+                                          completion:^(NSData * _Nullable content, NSError * _Nullable error) {
+                                              if(completion) completion(nil, error);
+                                          }];
 }
 
 -(NSString *) description {

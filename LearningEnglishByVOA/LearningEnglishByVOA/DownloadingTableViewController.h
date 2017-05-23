@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSLayoutConstraint+Multiplier.h"
 
 @interface DownloadingTableViewController : UITableViewController
 
@@ -15,5 +16,9 @@
 
 @interface DownloadingTableViewCell : UITableViewCell
 @property(nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property(nonatomic, weak) IBOutlet NSLayoutConstraint *widthRatioConstraint;
+@property(nonatomic, strong) IBOutlet NSLayoutConstraint *widthRatioConstraint;
+@property(nonatomic, weak) IBOutlet UIView *leftLabel;
+@property(nonatomic, weak) IBOutlet UIView *rightLabel;
+@property(nonatomic, weak) IBOutlet UISlider *slider;
+@property(nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 @end

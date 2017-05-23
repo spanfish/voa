@@ -31,7 +31,7 @@
 }
 
 + (NSArray *)ignoredProperties {
-    return @[@"fetchedTracksURL"];
+    return @[@"fetchedTracksURL", @"task"];
 }
 
 /*

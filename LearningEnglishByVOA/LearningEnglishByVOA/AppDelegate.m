@@ -51,6 +51,9 @@
     NSError *activationError = nil;
     success = [audioSession setActive:YES error:&activationError];
     if (!success) { /* handle the error condition */ }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadCompleted:) name:@"VideoDownloadCompleted" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadProgressed:) name:@"VideoDownloadProgressed" object:nil];
     return YES;
 }
 
@@ -59,6 +62,10 @@
 }
 
 -(void) removeDownloadTaskForKey:(NSString *) key {
+    PlayItem *playItem = [_downloadDict objectForKey:key];
+    if(playItem) {
+        playItem.task = nil;
+    }
     [_downloadDict removeObjectForKey:key];
 }
 
@@ -66,7 +73,8 @@
     if(task == nil) {
         return;
     }
-    [_downloadDict setObject:task forKey:playItem.videoTitle];
+    playItem.task = task;
+    [_downloadDict setObject:playItem forKey:playItem.videoTitle];
 }
 
 -(void) removeDownloadTaskForPlayItem:(PlayItem *) playItem {
@@ -133,5 +141,22 @@
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+-(void) videoDownloadCompleted:(NSNotification *) notification {
+    NSAssert([NSThread isMainThread], @"not in main thread");
+    NSString *url = [[notification userInfo] objectForKey:@"videoTitle"];
+    [self removeDownloadTaskForKey:url];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DownloadCompleted"
+                                                        object:nil
+                                                      userInfo:[notification userInfo]];
+}
+
+-(void) videoDownloadProgressed:(NSNotification *) notification {
+    NSAssert([NSThread isMainThread], @"not in main thread");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DownloadProgressed"
+                                                        object:nil
+                                                      userInfo:[notification userInfo]];
 }
 @end

@@ -87,11 +87,11 @@
     }
     return self;
 }
-
--(NSURLSessionDownloadTask *) fetchVideo:(NSString *_Nonnull) videoURL
-            toFile:(NSString * _Nonnull) filePath
-          progress:(DataDownloadProgressBlock) progress
-        completion:(DataCompletionBlock) complete {
+-(NSURLSessionDownloadTask *) fetchVideoURL:(NSString *_Nonnull) videoURL
+                                      title:(NSString *) videoTitle
+                                     toFile:(NSString * _Nonnull) filePath
+                                   progress:(DataDownloadProgressBlock) progress
+                                 completion:(DataCompletionBlock) complete  {
     NSLog(@"fetchVideo: %@", videoURL);
     NSLog(@"path: %@", filePath);
     NSLog(@"=========================");
@@ -104,7 +104,8 @@
 //        }
         NSDictionary *userInfo = @{@"totalUnitCount": @(downloadProgress.totalUnitCount),
                                    @"completedUnitCount" : @(downloadProgress.completedUnitCount),
-                                   @"videoURL": videoURL};
+                                   @"videoURL": videoURL,
+                                   @"videoTitle": videoTitle};
         main_queue([[NSNotificationCenter defaultCenter] postNotificationName:@"VideoDownloadProgressed" object:nil userInfo: userInfo]);
     } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         NSLog(@"targetPath:%@", targetPath);
@@ -115,7 +116,7 @@
         }
         main_queue([[NSNotificationCenter defaultCenter] postNotificationName:@"VideoDownloadCompleted"
                                                                        object:nil
-                                                                     userInfo:@{@"videoURL": videoURL}]);
+                                                                     userInfo:@{@"videoTitle": videoTitle}]);
     }];
     [downloadTask resume];
     
