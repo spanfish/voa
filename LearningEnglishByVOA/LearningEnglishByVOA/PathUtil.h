@@ -12,7 +12,7 @@
 @interface PathUtil : NSObject
 
 +(NSString *) pathForType:(TargetType) targetType;
-
++(NSString *) pathForThumb;
 +(NSString *) documentDir;
 
 +(NSString *) BASE_URL;

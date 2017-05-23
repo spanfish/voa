@@ -10,6 +10,7 @@
 #import <SWRevealViewController/SWRevealViewController.h>
 #import "AppDelegate.h"
 #import "NSLayoutConstraint+Multiplier.h"
+#import "PathUtil.h"
 
 @interface DownloadingTableViewController () {
     NSMutableArray *downloadArray;
@@ -69,22 +70,40 @@
     
     // Configure the cell...
     PlayItem *playItem = [downloadArray objectAtIndex:indexPath.row];
-    [cell.widthRatioConstraint updateMultiplier: 7.0/3];
+
     cell.titleLabel.text = playItem.videoTitle;
     
-    cell.slider.maximumValue = 1;
-    cell.slider.minimumValue = 0;
-    cell.slider.value = 0;
     
-//    NSString *path = [PathUtil pathForType:self.targetType];
     
-//    NSString *fileName = [path stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
+    cell.thumbnailImageView.contentMode = UIViewContentModeScaleAspectFill;
+
+    NSString *thumbPath = [PathUtil pathForThumb];
+    NSString *fileName = [thumbPath stringByAppendingPathComponent: [playItem.thumbURL lastPathComponent]];
     if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
         //缩微图存在
-        cell.thumbnailImageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.thumbnailImageView.image = [UIImage imageWithContentsOfFile:fileName];
+    } else {
+        cell.thumbnailImageView.image = nil;
     }
     
+    NSString *path = [PathUtil pathForType:playItem.targetType];
+    BOOL videoExist = NO;
+    for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
+        TrackItem *track = [playItem.tracks objectAtIndex:i];
+        NSString *filePath = [path stringByAppendingPathComponent:[track.dataSrc lastPathComponent]];
+        if([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+            videoExist = YES;
+            break;
+        }
+    }
+    cell.slider.maximumValue = 1;
+    cell.slider.minimumValue = 0;
+    
+    if(videoExist) {
+        cell.slider.value = 1;
+    } else {
+        cell.slider.value = 0;
+    }
     return cell;
 }
 

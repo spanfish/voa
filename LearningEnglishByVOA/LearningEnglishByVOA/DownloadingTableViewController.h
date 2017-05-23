@@ -16,9 +16,6 @@
 
 @interface DownloadingTableViewCell : UITableViewCell
 @property(nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property(nonatomic, strong) IBOutlet NSLayoutConstraint *widthRatioConstraint;
-@property(nonatomic, weak) IBOutlet UIView *leftLabel;
-@property(nonatomic, weak) IBOutlet UIView *rightLabel;
 @property(nonatomic, weak) IBOutlet UISlider *slider;
 @property(nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 @end

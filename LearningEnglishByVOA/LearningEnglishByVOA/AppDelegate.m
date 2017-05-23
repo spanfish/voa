@@ -27,6 +27,13 @@
     _downloadDict = [NSMutableDictionary dictionary];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *path = [PathUtil pathForThumb];
+    if(![fileManager fileExistsAtPath:path]) {
+        [fileManager createDirectoryAtPath:path
+               withIntermediateDirectories:NO
+                                attributes:nil
+                                     error:nil];
+    }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         for(NSUInteger i = 0; i < TARGET_NUMS; i++) {

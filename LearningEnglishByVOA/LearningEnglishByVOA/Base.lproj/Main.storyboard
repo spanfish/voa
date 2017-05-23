@@ -537,19 +537,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SRL-zF-QhG">
-                                            <rect key="frame" x="8" y="8" width="101" height="73"/>
+                                            <rect key="frame" x="8" y="8" width="102" height="74"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="SRL-zF-QhG" secondAttribute="height" multiplier="102:74" id="YcW-KU-x2O"/>
+                                                <constraint firstAttribute="height" constant="74" id="4yd-Iy-DYY"/>
+                                                <constraint firstAttribute="width" constant="102" id="NAb-ap-k9T"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbr-tD-JgH">
-                                            <rect key="frame" x="114" y="8" width="282" height="21"/>
+                                            <rect key="frame" x="125" y="8" width="271" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="JUH-2B-ZfV" customClass="PlayerSlider">
-                                            <rect key="frame" x="112" y="35" width="286" height="31"/>
+                                            <rect key="frame" x="123" y="35" width="275" height="31"/>
                                         </slider>
                                     </subviews>
                                     <constraints>
@@ -557,15 +558,15 @@
                                         <constraint firstItem="SRL-zF-QhG" firstAttribute="top" secondItem="bf9-Nz-HX8" secondAttribute="topMargin" id="7he-fa-kQh"/>
                                         <constraint firstItem="dbr-tD-JgH" firstAttribute="top" secondItem="SRL-zF-QhG" secondAttribute="top" id="DGc-Pu-xtP"/>
                                         <constraint firstItem="SRL-zF-QhG" firstAttribute="leading" secondItem="bf9-Nz-HX8" secondAttribute="leadingMargin" id="F8g-sn-rd2"/>
-                                        <constraint firstItem="JUH-2B-ZfV" firstAttribute="leading" secondItem="SRL-zF-QhG" secondAttribute="trailing" constant="5" id="ab5-CL-I2W"/>
+                                        <constraint firstItem="JUH-2B-ZfV" firstAttribute="leading" secondItem="SRL-zF-QhG" secondAttribute="trailing" constant="15" id="ab5-CL-I2W"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="dbr-tD-JgH" secondAttribute="trailing" constant="10" id="cwV-nr-aAx"/>
-                                        <constraint firstItem="dbr-tD-JgH" firstAttribute="leading" secondItem="SRL-zF-QhG" secondAttribute="trailing" constant="5" id="dSQ-2w-1zc"/>
-                                        <constraint firstItem="SRL-zF-QhG" firstAttribute="height" secondItem="bf9-Nz-HX8" secondAttribute="height" id="ed5-45-JXG"/>
+                                        <constraint firstItem="dbr-tD-JgH" firstAttribute="leading" secondItem="SRL-zF-QhG" secondAttribute="trailing" constant="15" id="dSQ-2w-1zc"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="JUH-2B-ZfV" secondAttribute="bottom" id="ump-RD-9Kw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="slider" destination="JUH-2B-ZfV" id="d73-cR-nLj"/>
+                                    <outlet property="thumbnailImageView" destination="SRL-zF-QhG" id="DH4-Js-dm1"/>
                                     <outlet property="titleLabel" destination="dbr-tD-JgH" id="k7T-ro-TtU"/>
                                 </connections>
                             </tableViewCell>

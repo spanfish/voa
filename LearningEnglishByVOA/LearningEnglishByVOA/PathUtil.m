@@ -10,6 +10,13 @@
 #import "Common.h"
 
 @implementation PathUtil
++(NSString *) pathForThumb {
+    NSString *folder = @"Thumb";
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    path = [path stringByAppendingPathComponent:folder];
+    
+    return path;
+}
 
 +(NSString *) pathForType:(TargetType) targetType {
     NSString *folder = nil;

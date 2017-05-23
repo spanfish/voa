@@ -229,9 +229,9 @@ static NSString * const reuseIdentifier = @"Cell";
     cell.titleLabel.text = item.videoTitle;
     cell.dateLabel.text = item.publishDate;
 
-    NSString *path = [PathUtil pathForType:self.targetType];
+    NSString *thumbpath = [PathUtil pathForThumb];
 
-    NSString *fileName = [path stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
+    NSString *fileName = [thumbpath stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
     if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
         //缩微图存在
         cell.thumbImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -245,6 +245,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
     BOOL videoExist = NO;
     unsigned long long fileSize = 0;
+    NSString *path = [PathUtil pathForType:self.targetType];
     for(NSInteger i = [item.tracks count] - 1; i >= 0; i--) {
         TrackItem *track = [item.tracks objectAtIndex:i];
         NSString *filePath = [path stringByAppendingPathComponent:[track.dataSrc lastPathComponent]];
@@ -304,7 +305,7 @@ static NSString * const reuseIdentifier = @"Cell";
         return;
     }
     
-    NSString *thumbPath = [PathUtil pathForType:self.targetType];
+    NSString *thumbPath = [PathUtil pathForThumb];
     
     NSURLSessionDownloadTask *task = [item fetchThumbnailToPath:thumbPath withCompletion:^(id  _Nullable content, NSError * _Nullable error) {
         NSAssert([[NSThread currentThread] isMainThread], @"not in main thread");
