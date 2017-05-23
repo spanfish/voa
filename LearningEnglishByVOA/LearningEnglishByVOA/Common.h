@@ -34,6 +34,16 @@ typedef NS_ENUM(NSInteger, TargetType) {
     TARGET_ENGLISH_TV,
     TARGET_LEARN_ENGLISH,
     TARGET_NEW_WORDS,
-    TARGET_PEOPLE
+    TARGET_PEOPLE,
+    TARGET_NUMS
 };
+
+static NSString* VIDEOS[] = {
+    @"English in a Minute",
+    @"English @ the Movies",
+    @"Everyday Grammar TV",
+    @"Learning English TV",
+    @"Let's Learn English",
+    @"News Words",
+    @"People In America"};
 #endif /* Common_h */

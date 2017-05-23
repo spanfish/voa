@@ -26,14 +26,14 @@
     return @[@"downloaded"];
 }
 
--(BOOL) hasDownloaded {
-    NSString *path = [PathUtil englishInAMinutePath];
-    NSString *fileName = [self.dataSrc lastPathComponent];
-    if([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:fileName]]) {
-        return YES;
-    }
-    return NO;
-}
+//-(BOOL) hasDownloaded {
+//    NSString *path = [PathUtil englishInAMinutePath];
+//    NSString *fileName = [self.dataSrc lastPathComponent];
+//    if([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:fileName]]) {
+//        return YES;
+//    }
+//    return NO;
+//}
 
 -(NSURLSessionDownloadTask *) fetchTrackToPath:(NSString *) path withProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion {
     

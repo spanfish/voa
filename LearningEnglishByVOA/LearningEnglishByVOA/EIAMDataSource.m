@@ -283,6 +283,10 @@
                         playItem.videoTitle = [playItem.videoTitle substringFromIndex:[@"English in a Minute: " length]];
                     } else if(_targetType == TARGET_MOVIE && [playItem.videoTitle hasPrefix:@"English @ the Movies: "]) {
                         playItem.videoTitle = [playItem.videoTitle substringFromIndex:[@"English @ the Movies: " length]];
+                    } else if(_targetType == TARGET_NEW_WORDS && [playItem.videoTitle hasPrefix:@"News Words: "]) {
+                        playItem.videoTitle = [playItem.videoTitle substringFromIndex:[@"News Words: " length]];
+                    } else if(_targetType == TARGET_GRAMMAR && [playItem.videoTitle hasPrefix:@"Everyday Grammar: "]) {
+                        playItem.videoTitle = [playItem.videoTitle substringFromIndex:[@"Everyday Grammar: " length]];
                     }
                 }
                 

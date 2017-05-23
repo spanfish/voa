@@ -56,9 +56,13 @@
 
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-    directoryArray = [NSMutableArray arrayWithObjects:
-                      [[Directory alloc] initWithTitle:@"English in a Minute" path:[PathUtil englishInAMinutePath]],
-                      [[Directory alloc] initWithTitle:@"English @ the Movies" path:[PathUtil englishInMoviePath]], nil];
+    
+    directoryArray = [NSMutableArray array];
+    for(NSUInteger i = 0; i < TARGET_NUMS; i++) {
+        NSString *path = [PathUtil pathForType:i];
+        
+        [directoryArray addObject: [[Directory alloc] initWithTitle:VIDEOS[i] path:path]];
+    }
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -102,17 +106,15 @@
     directory.calculating = NO;
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadRowsAtIndexPaths:@[
-                [NSIndexPath indexPathForRow:0 inSection:0],
-                [NSIndexPath indexPathForRow:1 inSection:0],
-                                                 ] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadData];
         
-        StorageTableViewCell *cell = (StorageTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        StorageTableViewCell *cell = (StorageTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[directoryArray count] inSection:0]];
         
         long long freeSize = [[dictionary objectForKey:NSFileSystemFreeSize] longLongValue];
         long long systemSize = [[dictionary objectForKey:NSFileSystemSize] longLongValue];
         if(freeSize/1024.0/1024/1024 > 1) {
-            cell.freeLabel.text = [NSString stringWithFormat:@"%.2f GB free", freeSize/1024.0/1024/1024];
+            float size = ((float) freeSize)/1024/1024/1024;
+            cell.freeLabel.text = [NSString stringWithFormat:@"%.2f GB free", size];
         } else if(freeSize/1024.0/1024 > 1) {
             cell.freeLabel.text = [NSString stringWithFormat:@"%.2f MB free", freeSize/1024.0/1024];
         } else if(freeSize/1024.0 > 1) {

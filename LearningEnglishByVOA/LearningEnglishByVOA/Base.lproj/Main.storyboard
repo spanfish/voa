@@ -8,6 +8,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -117,6 +118,17 @@
                                                 <constraint firstAttribute="width" constant="32" id="K37-tR-zkz"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gc-Dk-Y8z" userLabel="Add to playlist">
+                                            <rect key="frame" x="166" y="8" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="jH7-9A-toY"/>
+                                                <constraint firstAttribute="height" constant="30" id="y41-Yg-VeL"/>
+                                            </constraints>
+                                            <state key="normal" image="add-to-queue-button.png"/>
+                                            <connections>
+                                                <action selector="addToPlaylistTouched:" destination="vqR-nM-wWG" eventType="touchUpInside" id="nqE-9y-0ef"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
@@ -124,6 +136,7 @@
                                     <constraint firstItem="wtI-6P-bBB" firstAttribute="leading" secondItem="vqR-nM-wWG" secondAttribute="leadingMargin" id="26Y-g1-mcQ"/>
                                     <constraint firstItem="ntE-Hx-Po7" firstAttribute="top" secondItem="wtI-6P-bBB" secondAttribute="bottom" id="4c6-w5-dva"/>
                                     <constraint firstItem="ntE-Hx-Po7" firstAttribute="centerX" secondItem="nBs-z4-71M" secondAttribute="centerX" id="7b0-UI-7C6"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="4gc-Dk-Y8z" secondAttribute="trailing" id="B0i-aY-WGI"/>
                                     <constraint firstItem="wtI-6P-bBB" firstAttribute="width" secondItem="vqR-nM-wWG" secondAttribute="width" id="Dhq-S0-LgN"/>
                                     <constraint firstItem="Q2E-AN-pyX" firstAttribute="leading" secondItem="wtI-6P-bBB" secondAttribute="leading" id="Dxt-du-Uv9"/>
                                     <constraint firstItem="wtI-6P-bBB" firstAttribute="top" secondItem="vqR-nM-wWG" secondAttribute="topMargin" id="G61-ix-1jv"/>
@@ -132,6 +145,7 @@
                                     <constraint firstItem="pMq-Ph-WxD" firstAttribute="leading" secondItem="Q2E-AN-pyX" secondAttribute="leading" id="ORR-Uw-cXd"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="nBs-z4-71M" secondAttribute="trailing" id="VCo-oG-RGt"/>
                                     <constraint firstItem="pMq-Ph-WxD" firstAttribute="width" secondItem="vqR-nM-wWG" secondAttribute="width" id="YRM-pE-bhN"/>
+                                    <constraint firstItem="4gc-Dk-Y8z" firstAttribute="top" secondItem="vqR-nM-wWG" secondAttribute="topMargin" id="cTB-j5-Hw2"/>
                                     <constraint firstItem="3iH-id-1kG" firstAttribute="centerX" secondItem="wtI-6P-bBB" secondAttribute="centerX" id="crm-Gx-h56"/>
                                     <constraint firstItem="3iH-id-1kG" firstAttribute="centerY" secondItem="wtI-6P-bBB" secondAttribute="centerY" id="eA5-Sm-9ZM"/>
                                     <constraint firstItem="5tx-X9-3GL" firstAttribute="leading" secondItem="Q2E-AN-pyX" secondAttribute="trailing" id="rSo-XZ-fJX"/>
@@ -140,6 +154,7 @@
                                     <constraint firstItem="nBs-z4-71M" firstAttribute="centerY" secondItem="Q2E-AN-pyX" secondAttribute="centerY" id="yW4-Ea-KSS"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="addPlaylistButton" destination="4gc-Dk-Y8z" id="M42-NS-wu8"/>
                                     <outlet property="dateLabel" destination="Q2E-AN-pyX" id="66A-Zh-I5W"/>
                                     <outlet property="downloadButton" destination="nBs-z4-71M" id="zl2-VC-zuv"/>
                                     <outlet property="downloadIndicator" destination="ntE-Hx-Po7" id="IKu-BY-geU"/>
@@ -381,7 +396,18 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="4DH-nr-o6V">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="aDE-xW-yuL"/>
-                        <barButtonItem key="rightBarButtonItem" image="suffle.png" id="ABO-MM-aZY"/>
+                        <rightBarButtonItems>
+                            <barButtonItem image="suffle.png" id="ABO-MM-aZY">
+                                <connections>
+                                    <action selector="suffleTouched:" destination="01W-Aw-0D0" id="C5q-Zl-j3w"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="w0x-Kf-OQ1">
+                                <connections>
+                                    <action selector="editTouched:" destination="01W-Aw-0D0" id="1pd-je-XAs"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="rVq-Kx-mRu" id="CM4-6P-2Rt"/>
@@ -896,6 +922,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add-to-queue-button.png" width="35" height="35"/>
         <image name="download-from-cloud.png" width="32" height="32"/>
         <image name="more.png" width="60" height="60"/>
         <image name="play.png" width="44" height="44"/>

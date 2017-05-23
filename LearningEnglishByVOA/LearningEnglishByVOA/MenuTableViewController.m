@@ -10,15 +10,6 @@
 #import "EIAMCollectionViewController.h"
 
 #import "AppDelegate.h"
-
-static NSString* ROWS[] = {
-                        @"English in a Minute",
-                        @"English @ the Movies",
-                        @"Everyday Grammar TV",
-                        @"Learning English TV",
-                        @"Let's Learn English",
-                        @"News Words",
-                        @"People In America"};
 static NSString* IMAGES[] = {
                         @"minute",
                         @"movie",
@@ -65,7 +56,7 @@ static NSString* IMAGES[] = {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section == 0) {
-        return sizeof(ROWS)/sizeof(NSString *);
+        return sizeof(VIDEOS)/sizeof(NSString *);
     }
     return 1;
 }
@@ -76,7 +67,7 @@ static NSString* IMAGES[] = {
     if(indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EIMCell" forIndexPath:indexPath];
         cell.imageView.image = [UIImage imageNamed:IMAGES[indexPath.row]];
-        cell.textLabel.text = ROWS[indexPath.row];
+        cell.textLabel.text = VIDEOS[indexPath.row];
         return cell;
     } else {
         if(indexPath.section == 1) {
@@ -89,13 +80,13 @@ static NSString* IMAGES[] = {
             cell.imageView.image = [UIImage imageNamed:@"settings"];
             cell.textLabel.text = @"Settings";
             return cell;
+//        } else if(indexPath.section == 3) {
+//            //
+//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlayList" forIndexPath:indexPath];
+//            cell.imageView.image = [UIImage imageNamed:@"playlist"];
+//            cell.textLabel.text = @"Now Playing";
+//            return cell;
         } else if(indexPath.section == 3) {
-            //
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlayList" forIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"playlist"];
-            cell.textLabel.text = @"Now Playing";
-            return cell;
-        } else if(indexPath.section == 4) {
             //
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Download" forIndexPath:indexPath];
             //cell.imageView.image = [UIImage imageNamed:@"playlist"];
@@ -159,9 +150,9 @@ static NSString* IMAGES[] = {
 }
 */
 
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"didSelectRowAtIndexPath");
-}
+//-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"didSelectRowAtIndexPath");
+//}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -172,21 +163,22 @@ static NSString* IMAGES[] = {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         UINavigationController *nvc = (UINavigationController *) segue.destinationViewController;
         EIAMCollectionViewController *vc = (EIAMCollectionViewController*) [nvc.viewControllers firstObject];
-        if(indexPath.row == 0) {
-            vc.targetType = TARGET_MINUTE;
-        } else if(indexPath.row == 1) {
-            vc.targetType = TARGET_MOVIE;
-        } else if(indexPath.row == 2) {
-            vc.targetType = TARGET_GRAMMAR;
-        } else if(indexPath.row == 3) {
-            vc.targetType = TARGET_ENGLISH_TV;
-        } else if(indexPath.row == 4) {
-            vc.targetType = TARGET_LEARN_ENGLISH;
-        } else if(indexPath.row == 5) {
-            vc.targetType = TARGET_NEW_WORDS;
-        } else if(indexPath.row == 6) {
-            vc.targetType = TARGET_PEOPLE;
-        }
+        vc.targetType = indexPath.row;
+//        if(indexPath.row == 0) {
+//            vc.targetType = TARGET_MINUTE;
+//        } else if(indexPath.row == 1) {
+//            vc.targetType = TARGET_MOVIE;
+//        } else if(indexPath.row == 2) {
+//            vc.targetType = TARGET_GRAMMAR;
+//        } else if(indexPath.row == 3) {
+//            vc.targetType = TARGET_ENGLISH_TV;
+//        } else if(indexPath.row == 4) {
+//            vc.targetType = TARGET_LEARN_ENGLISH;
+//        } else if(indexPath.row == 5) {
+//            vc.targetType = TARGET_NEW_WORDS;
+//        } else if(indexPath.row == 6) {
+//            vc.targetType = TARGET_PEOPLE;
+//        }
     }
 }
 

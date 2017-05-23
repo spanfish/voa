@@ -18,8 +18,6 @@
 @property(nonatomic, strong) NSString *dataInfo;//270p,360p,720p
 @property(nonatomic, strong) NSString *dataSrc;//URL
 
-@property(nonatomic, assign, readonly, getter=hasDownloaded) BOOL downloaded;
-
 -(NSURLSessionDownloadTask *) fetchTrackToPath:(NSString *) path withProgress:(DataDownloadProgressBlock) progress complete:(DataCompletionBlock) completion;
 @end
 

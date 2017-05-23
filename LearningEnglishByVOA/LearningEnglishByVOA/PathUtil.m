@@ -7,22 +7,41 @@
 //
 
 #import "PathUtil.h"
+#import "Common.h"
 
 @implementation PathUtil
 
-+(NSString *) englishInAMinutePath {
-    //NSString *path = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
++(NSString *) pathForType:(TargetType) targetType {
+    NSString *folder = nil;
+    switch (targetType) {
+        case TARGET_MINUTE:
+            folder = @"englishInAMinitue";
+            break;
+        case TARGET_MOVIE:
+            folder = @"englishInMovie";
+            break;
+        case TARGET_GRAMMAR:
+            folder = @"grammar";
+            break;
+        case TARGET_ENGLISH_TV:
+            folder = @"TV";
+            break;
+        case TARGET_LEARN_ENGLISH:
+            folder = @"learnEnglish";
+            break;
+        case TARGET_NEW_WORDS:
+            folder = @"newWords";
+            break;
+        case TARGET_PEOPLE:
+            folder = @"people";
+            break;
+        default:
+            break;
+    }
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *englishInAMinitueCacheDir = [path stringByAppendingPathComponent:@"englishInAMinitues"];
+    path = [path stringByAppendingPathComponent:folder];
     
-    return englishInAMinitueCacheDir;
-}
-
-+(NSString *) englishInMoviePath {
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *englishInMoviePath = [path stringByAppendingPathComponent:@"englishInMovie"];
-    
-    return englishInMoviePath;
+    return path;
 }
 
 +(NSString *) documentDir {

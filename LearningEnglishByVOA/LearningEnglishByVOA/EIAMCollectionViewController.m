@@ -35,12 +35,22 @@ static NSString * const reuseIdentifier = @"Cell";
         self.title = @"English In A Minute";
     } else if(self.targetType == TARGET_MOVIE) {
         self.title = @"English @ the Movies";
+    } else if(self.targetType == TARGET_GRAMMAR) {
+        self.title = @"Everyday Grammar TV";
+    } else if(self.targetType == TARGET_ENGLISH_TV) {
+        self.title = @"Learning English TV";
+    } else if(self.targetType == TARGET_LEARN_ENGLISH) {
+        self.title = @"Let's Learn English";
+    } else if(self.targetType == TARGET_NEW_WORDS) {
+        self.title = @"News Words";
+    } else if(self.targetType == TARGET_PEOPLE) {
+       self.title = @"People In America";
     }
+
     SWRevealViewController *revealViewController = self.revealViewController;
     if(revealViewController ) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
         
-        //http://www.appcoda.com/ios-programming-sidebar-navigation-menu/
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
@@ -219,12 +229,8 @@ static NSString * const reuseIdentifier = @"Cell";
     cell.titleLabel.text = item.videoTitle;
     cell.dateLabel.text = item.publishDate;
 
-    NSString *path = nil;
-    if(self.targetType == TARGET_MOVIE) {
-        path = [PathUtil englishInMoviePath];
-    } else {
-        path = [PathUtil englishInAMinutePath];
-    }
+    NSString *path = [PathUtil pathForType:self.targetType];
+
     NSString *fileName = [path stringByAppendingPathComponent: [item.thumbURL lastPathComponent]];
     if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
         //缩微图存在
@@ -254,6 +260,7 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     
     cell.playButton.hidden = !videoExist;
+    cell.addPlaylistButton.hidden = !videoExist;
     if(videoExist) {
         cell.sizeLabel.hidden = NO;
         cell.downloadButton.hidden = YES;
@@ -298,12 +305,7 @@ static NSString * const reuseIdentifier = @"Cell";
         return;
     }
     
-    NSString *thumbPath = nil;
-    if(self.targetType == TARGET_MOVIE) {
-        thumbPath = [PathUtil englishInMoviePath];
-    } else {
-        thumbPath = [PathUtil englishInAMinutePath];
-    }
+    NSString *thumbPath = [PathUtil pathForType:self.targetType];
     
     NSURLSessionDownloadTask *task = [item fetchThumbnailToPath:thumbPath withCompletion:^(id  _Nullable content, NSError * _Nullable error) {
         NSAssert([[NSThread currentThread] isMainThread], @"not in main thread");
@@ -326,6 +328,38 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark - EIAMCollectionViewCellDelegate
+-(void) addPlaylistTouchedWithItem:(UICollectionViewCell *)cell {
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    if(indexPath.section == 1) {
+        return;
+    }
+    
+    NSString *path = [PathUtil pathForType:self.targetType];
+    
+    PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
+    TrackItem *playTrack = nil;
+    
+    //从动画列表的最后（分辨率最高）开始找，如果找到动画文件，就直接播放
+    for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
+        TrackItem *track = [playItem.tracks objectAtIndex:i];
+        NSLog(@"track:%@\ndataInfo:%@\ndataSrc:%@",
+              track.dataType,
+              track.dataInfo,
+              track.dataSrc);
+        NSString *fileName = [track.dataSrc lastPathComponent];
+        if([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:fileName] isDirectory:NULL]) {
+            playTrack = track;
+            break;
+        }
+    }
+    
+    if(playTrack != nil) {
+        //找到动画文件
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [delegate addToPlayList:playItem];
+        return;
+    }
+}
 //播放动画
 -(void) playTouchedWithItem:(UICollectionViewCell *)cell {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
@@ -333,12 +367,7 @@ static NSString * const reuseIdentifier = @"Cell";
         return;
     }
 
-    NSString *path = nil;
-    if(self.targetType == TARGET_MOVIE) {
-        path = [PathUtil englishInMoviePath];
-    } else {
-        path = [PathUtil englishInAMinutePath];
-    }
+    NSString *path = [PathUtil pathForType:self.targetType];
     
     PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
     TrackItem *playTrack = nil;
@@ -395,12 +424,8 @@ static NSString * const reuseIdentifier = @"Cell";
         return;
     }
     
-    NSString *path = nil;
-    if(self.targetType == TARGET_MOVIE) {
-        path = [PathUtil englishInMoviePath];
-    } else {
-        path = [PathUtil englishInAMinutePath];
-    }
+    NSString *path = [PathUtil pathForType:self.targetType];
+
     PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
     TrackItem *playTrack = nil;
     
@@ -467,12 +492,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void) downloadTrack:(TrackItem *) playTrack {
-    NSString *path = nil;
-    if(self.targetType == TARGET_MOVIE) {
-        path = [PathUtil englishInMoviePath];
-    } else {
-       path = [PathUtil englishInAMinutePath]; 
-    }
+    NSString *path = [PathUtil pathForType:self.targetType];
     NSURLSessionDownloadTask *videoTask = [playTrack fetchTrackToPath:path withProgress:nil complete:nil];
     
     AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
@@ -526,4 +546,13 @@ static NSString * const reuseIdentifier = @"Cell";
         }
     }
 }
+
+-(IBAction)editTouched:(id)sender {
+    
+}
+
+-(IBAction)suffleTouched:(id)sender {
+    
+}
+
 @end

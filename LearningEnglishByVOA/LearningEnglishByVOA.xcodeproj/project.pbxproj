@@ -104,6 +104,10 @@
 		9DB24FCD1ED404CF00B69820 /* suffle.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FC91ED404CF00B69820 /* suffle.svg */; };
 		9DB24FCE1ED404CF00B69820 /* suffle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FCA1ED404CF00B69820 /* suffle@2x.png */; };
 		9DB24FCF1ED404CF00B69820 /* suffle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FCB1ED404CF00B69820 /* suffle@3x.png */; };
+		9DB24FD41ED40CEE00B69820 /* add-to-queue-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FD01ED40CEE00B69820 /* add-to-queue-button.png */; };
+		9DB24FD51ED40CEE00B69820 /* add-to-queue-button.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FD11ED40CEE00B69820 /* add-to-queue-button.svg */; };
+		9DB24FD61ED40CEE00B69820 /* add-to-queue-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FD21ED40CEE00B69820 /* add-to-queue-button@2x.png */; };
+		9DB24FD71ED40CEE00B69820 /* add-to-queue-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FD31ED40CEE00B69820 /* add-to-queue-button@3x.png */; };
 		BC15CDB11ED317300009776C /* PlayerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = BC15CDB01ED317300009776C /* PlayerSlider.m */; };
 		BC1F7DA31ED1CF1300B43CC1 /* grammar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1F7D8F1ED1CF1300B43CC1 /* grammar.png */; };
 		BC1F7DA41ED1CF1300B43CC1 /* grammar.svg in Resources */ = {isa = PBXBuildFile; fileRef = BC1F7D901ED1CF1300B43CC1 /* grammar.svg */; };
@@ -302,6 +306,10 @@
 		9DB24FC91ED404CF00B69820 /* suffle.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = suffle.svg; sourceTree = "<group>"; };
 		9DB24FCA1ED404CF00B69820 /* suffle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "suffle@2x.png"; sourceTree = "<group>"; };
 		9DB24FCB1ED404CF00B69820 /* suffle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "suffle@3x.png"; sourceTree = "<group>"; };
+		9DB24FD01ED40CEE00B69820 /* add-to-queue-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-to-queue-button.png"; sourceTree = "<group>"; };
+		9DB24FD11ED40CEE00B69820 /* add-to-queue-button.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "add-to-queue-button.svg"; sourceTree = "<group>"; };
+		9DB24FD21ED40CEE00B69820 /* add-to-queue-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-to-queue-button@2x.png"; sourceTree = "<group>"; };
+		9DB24FD31ED40CEE00B69820 /* add-to-queue-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-to-queue-button@3x.png"; sourceTree = "<group>"; };
 		BC15CDAF1ED317300009776C /* PlayerSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSlider.h; sourceTree = "<group>"; };
 		BC15CDB01ED317300009776C /* PlayerSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSlider.m; sourceTree = "<group>"; };
 		BC1F7D8F1ED1CF1300B43CC1 /* grammar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grammar.png; sourceTree = "<group>"; };
@@ -473,6 +481,10 @@
 		BC5E82E21EBF222A008F0BD7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9DB24FD01ED40CEE00B69820 /* add-to-queue-button.png */,
+				9DB24FD11ED40CEE00B69820 /* add-to-queue-button.svg */,
+				9DB24FD21ED40CEE00B69820 /* add-to-queue-button@2x.png */,
+				9DB24FD31ED40CEE00B69820 /* add-to-queue-button@3x.png */,
 				9DB24FC81ED404CF00B69820 /* suffle.png */,
 				9DB24FC91ED404CF00B69820 /* suffle.svg */,
 				9DB24FCA1ED404CF00B69820 /* suffle@2x.png */,
@@ -844,6 +856,7 @@
 				9DADDDC01ECEC68900C53FB5 /* more.png in Resources */,
 				9DB24FB71ED3E3ED00B69820 /* pause-button@3x.png in Resources */,
 				9D8BF12E1ED2731A008A30B3 /* play-button.svg in Resources */,
+				9DB24FD51ED40CEE00B69820 /* add-to-queue-button.svg in Resources */,
 				BC1F7DA41ED1CF1300B43CC1 /* grammar.svg in Resources */,
 				BC5E82EF1EBF222A008F0BD7 /* Assets.xcassets in Resources */,
 				9DADDDF01ECEF33400C53FB5 /* playlist@2x.png in Resources */,
@@ -882,6 +895,7 @@
 				9D8BF1341ED2731A008A30B3 /* stop-button@3x.png in Resources */,
 				BC1F7DB51ED1CF1300B43CC1 /* television@2x.png in Resources */,
 				9DADDDE11ECED27600C53FB5 /* gallery.png in Resources */,
+				9DB24FD71ED40CEE00B69820 /* add-to-queue-button@3x.png in Resources */,
 				BCF3ED441ED042B100BE47D2 /* play@3x.png in Resources */,
 				9DB24FCF1ED404CF00B69820 /* suffle@3x.png in Resources */,
 				9DADDDD41ECEC86800C53FB5 /* more_loading_2@3x.png in Resources */,
@@ -898,6 +912,7 @@
 				9DADDDD61ECEC86800C53FB5 /* more_loading_3@2x.png in Resources */,
 				9D8BF1471ED27CE4008A30B3 /* slider-left@2x.png in Resources */,
 				BCF3ED411ED042B100BE47D2 /* play.png in Resources */,
+				9DB24FD41ED40CEE00B69820 /* add-to-queue-button.png in Resources */,
 				9DADDDB81ECE95F800C53FB5 /* video-camera.png in Resources */,
 				BC1F7DAA1ED1CF1300B43CC1 /* learnEnglish@3x.png in Resources */,
 				9DB24FC31ED3F22B00B69820 /* forward-time@3x.png in Resources */,
@@ -916,6 +931,7 @@
 				BCBA55A21EC53E7800E4A728 /* AppleIncRootCertificate.cer in Resources */,
 				9DB24FC41ED3F22B00B69820 /* rewind-time.png in Resources */,
 				9DB24FC21ED3F22B00B69820 /* forward-time@2x.png in Resources */,
+				9DB24FD61ED40CEE00B69820 /* add-to-queue-button@2x.png in Resources */,
 				9DADDDD11ECEC86800C53FB5 /* more_loading_1@3x.png in Resources */,
 				BC5E82ED1EBF222A008F0BD7 /* Main.storyboard in Resources */,
 				9DADDD8B1ECE7F8300C53FB5 /* disk@2x.png in Resources */,

@@ -152,7 +152,7 @@
 
 -(void) playerEnded:(NSNotification *) notification {
     NSLog(@"playerEnded");
-    self.playerItem = nil;
+    //self.playerItem = nil;
 }
 
 -(void) panGesture:(UIPanGestureRecognizer *)recognizer {
@@ -272,6 +272,7 @@
     _playerLayer.frame = self.view.bounds;
     self.view.hidden = NO;
     [_playerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    [self showControls];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -424,5 +425,4 @@
     
     [self performSelector:@selector(hideControls) withObject:nil afterDelay:3.0];
 }
-
 @end

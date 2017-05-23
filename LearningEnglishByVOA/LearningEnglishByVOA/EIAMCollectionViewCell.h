@@ -14,6 +14,7 @@
 
 -(void) downloadTouchedWithItem:(UICollectionViewCell *)cell;
 -(void) playTouchedWithItem:(UICollectionViewCell *)cell;
+-(void) addPlaylistTouchedWithItem:(UICollectionViewCell *)cell;
 @end
 
 @interface EIAMCollectionViewCell : UICollectionViewCell<UIGestureRecognizerDelegate>
@@ -24,6 +25,7 @@
 @property(nonatomic, weak) IBOutlet UILabel *sizeLabel;
 @property(nonatomic, weak) IBOutlet UIButton *playButton;
 @property(nonatomic, weak) IBOutlet UIButton *downloadButton;
+@property(nonatomic, weak) IBOutlet UIButton *addPlaylistButton;
 @property(nonatomic, weak) IBOutlet RMDownloadIndicator *downloadIndicator;
 @property(nonatomic, weak) id<EIAMCollectionViewCellDelegate> delegate;
 //@property(nonatomic, strong) PlayItem *playItem;

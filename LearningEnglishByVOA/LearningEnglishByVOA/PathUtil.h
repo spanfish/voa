@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Common.h"
 
 @interface PathUtil : NSObject
 
-+(NSString *) englishInAMinutePath;
-+(NSString *) englishInMoviePath;
++(NSString *) pathForType:(TargetType) targetType;
+
 +(NSString *) documentDir;
 
 +(NSString *) BASE_URL;

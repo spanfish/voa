@@ -11,6 +11,7 @@
 #import "MenuTableViewController.h"
 #import "IAPManager.h"
 #import "RealmDatabase.h"
+#import "Common.h"
 
 @interface AppDelegate () {
     NSMutableDictionary *_downloadDict;
@@ -27,24 +28,17 @@
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSString *path = [PathUtil englishInAMinutePath];
-    if(![fileManager fileExistsAtPath:path]) {
-        [fileManager createDirectoryAtPath:path
-               withIntermediateDirectories:NO
-                                attributes:nil
-                                     error:nil];
-    }
-    
-    path = [PathUtil englishInMoviePath];
-    if(![fileManager fileExistsAtPath:path]) {
-        [fileManager createDirectoryAtPath:path
-               withIntermediateDirectories:NO
-                                attributes:nil
-                                     error:nil];
-    }
-    
-    //call intensionaly to insure there is a instance of IAPManager
-    //[[IAPManager sharedInstance] loadPurchasedProducts];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        for(NSUInteger i = 0; i < TARGET_NUMS; i++) {
+            NSString *path = [PathUtil pathForType:i];
+            if(![fileManager fileExistsAtPath:path]) {
+                [fileManager createDirectoryAtPath:path
+                       withIntermediateDirectories:NO
+                                        attributes:nil
+                                             error:nil];
+            }
+        }
+    });
     
     [RealmDatabase setup];
     
@@ -109,6 +103,13 @@
         self.playList = [NSMutableArray array];
     }
     
+    for (PlayItem *playItem in self.playList) {
+        if([playItem.videoTitle isEqualToString:item.videoTitle]) {
+            [self.playList removeObject:playItem];
+            break;
+        }
+    }
+
     [self.playList addObject:item];
 }
 
