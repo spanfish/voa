@@ -108,6 +108,7 @@
 		9DB24FD51ED40CEE00B69820 /* add-to-queue-button.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FD11ED40CEE00B69820 /* add-to-queue-button.svg */; };
 		9DB24FD61ED40CEE00B69820 /* add-to-queue-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FD21ED40CEE00B69820 /* add-to-queue-button@2x.png */; };
 		9DB24FD71ED40CEE00B69820 /* add-to-queue-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FD31ED40CEE00B69820 /* add-to-queue-button@3x.png */; };
+		9DB24FDA1ED41B7E00B69820 /* DownloadingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB24FD91ED41B7E00B69820 /* DownloadingTableViewController.m */; };
 		BC15CDB11ED317300009776C /* PlayerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = BC15CDB01ED317300009776C /* PlayerSlider.m */; };
 		BC1F7DA31ED1CF1300B43CC1 /* grammar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1F7D8F1ED1CF1300B43CC1 /* grammar.png */; };
 		BC1F7DA41ED1CF1300B43CC1 /* grammar.svg in Resources */ = {isa = PBXBuildFile; fileRef = BC1F7D901ED1CF1300B43CC1 /* grammar.svg */; };
@@ -310,6 +311,8 @@
 		9DB24FD11ED40CEE00B69820 /* add-to-queue-button.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "add-to-queue-button.svg"; sourceTree = "<group>"; };
 		9DB24FD21ED40CEE00B69820 /* add-to-queue-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-to-queue-button@2x.png"; sourceTree = "<group>"; };
 		9DB24FD31ED40CEE00B69820 /* add-to-queue-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-to-queue-button@3x.png"; sourceTree = "<group>"; };
+		9DB24FD81ED41B7E00B69820 /* DownloadingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadingTableViewController.h; sourceTree = "<group>"; };
+		9DB24FD91ED41B7E00B69820 /* DownloadingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadingTableViewController.m; sourceTree = "<group>"; };
 		BC15CDAF1ED317300009776C /* PlayerSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSlider.h; sourceTree = "<group>"; };
 		BC15CDB01ED317300009776C /* PlayerSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSlider.m; sourceTree = "<group>"; };
 		BC1F7D8F1ED1CF1300B43CC1 /* grammar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grammar.png; sourceTree = "<group>"; };
@@ -709,6 +712,8 @@
 				9DADDDF41ECEF3B700C53FB5 /* PlaylistTableViewController.m */,
 				BCF3ED491ED0724000BE47D2 /* StorageTableViewCell.h */,
 				BCF3ED4A1ED0724000BE47D2 /* StorageTableViewCell.m */,
+				9DB24FD81ED41B7E00B69820 /* DownloadingTableViewController.h */,
+				9DB24FD91ED41B7E00B69820 /* DownloadingTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1008,6 +1013,7 @@
 				BC74DC1F1EC03C45009C4EF1 /* PlayItem.m in Sources */,
 				BCBA559F1EC539FD00E4A728 /* PlayerViewController.m in Sources */,
 				BC74DC221EC03CB7009C4EF1 /* TrackItem.m in Sources */,
+				9DB24FDA1ED41B7E00B69820 /* DownloadingTableViewController.m in Sources */,
 				BCBA557D1EC2EE7700E4A728 /* EIAMCollectionViewController.m in Sources */,
 				9DADDD9F1ECE8A5D00C53FB5 /* VideoQualityViewController.m in Sources */,
 				9DADDDDC1ECEC88500C53FB5 /* MoreCollectionViewCell.m in Sources */,

@@ -284,9 +284,8 @@ static NSString * const reuseIdentifier = @"Cell";
         cell.sizeLabel.hidden = YES;
         
         AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
-        TrackItem *track = [self trackToPlayForPlayItem:item];
-        if([_trackFetchTasks objectForKey:item.videoURL] != nil ||
-           [appDelegate containsDownloadTaskForKey:track.dataSrc]) {
+        //TrackItem *track = [self trackToPlayForPlayItem:item];
+        if([appDelegate containsDownloadTaskForPlayItem:item]) {
             cell.downloadIndicator.hidden = NO;
             cell.downloadButton.hidden = YES;
         } else {
@@ -398,10 +397,12 @@ static NSString * const reuseIdentifier = @"Cell";
         //未找到动画文件
         NSLog(@"未找到动画文件");
         AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
-        if([_trackFetchTasks objectForKey:playItem.videoURL] || [appDelegate containsDownloadTaskForKey:playTrack.dataSrc]) {
+//        if([_trackFetchTasks objectForKey:playItem.videoURL] || [appDelegate containsDownloadTaskForKey:playTrack.dataSrc]) {
+//            return;
+//        }
+        if([appDelegate containsDownloadTaskForPlayItem:playItem]) {
             return;
         }
-        
         //Track列表已经取得了吗
         
         if([playItem.tracks count] == 0) {
@@ -412,7 +413,7 @@ static NSString * const reuseIdentifier = @"Cell";
             //download video for the track
             [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
             playTrack = [playItem.tracks lastObject];
-            [self downloadTrack:playTrack];
+            [self downloadTrack:playTrack forPlayItem:playItem];
         }
     }
 }
@@ -450,12 +451,13 @@ static NSString * const reuseIdentifier = @"Cell";
         //未找到动画文件
         NSLog(@"未找到动画文件");
         AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
-        if([_trackFetchTasks objectForKey:playItem.videoURL] || [appDelegate containsDownloadTaskForKey:playTrack.dataSrc]) {
+//        if([_trackFetchTasks objectForKey:playItem.videoURL] || [appDelegate containsDownloadTaskForKey:playTrack.dataSrc]) {
+//            return;
+//        }
+        if([appDelegate containsDownloadTaskForPlayItem:playItem]) {
             return;
         }
-        
         //Track列表已经取得了吗
-        
         if([playItem.tracks count] == 0) {
             //download tracks
             NSLog(@"未找到Track列表");
@@ -464,7 +466,7 @@ static NSString * const reuseIdentifier = @"Cell";
             //download video for the track
             //
             playTrack = [playItem.tracks lastObject];
-            [self downloadTrack:playTrack];
+            [self downloadTrack:playTrack forPlayItem:playItem];
             [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
         }
     }
@@ -473,30 +475,32 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void) downloadTrackURLsWithItem:(PlayItem *)playItem forIndexPath:(NSIndexPath*) indexPath{
     if([playItem.tracks count] == 0) {
         NSLog(@"下载Track列表");
+        AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
         NSURLSessionDataTask *task = [playItem fetchTracksURLwithComplete:^(id  _Nullable content, NSError * _Nullable error) {
             NSLog(@"下载Track列表完成");
             
-            [_trackFetchTasks removeObjectForKey:playItem.videoURL];
+            //[_trackFetchTasks removeObjectForKey:playItem.videoURL];
             if(error == nil) {
                 TrackItem *playTrack = [self trackToPlayForPlayItem:playItem];
                 NSLog(@"下载mp4");
-                [self downloadTrack:playTrack];
+                [self downloadTrack:playTrack forPlayItem:playItem];
             } else {
                 [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
             }
         }];
-        [_trackFetchTasks setObject:task forKey:playItem.videoURL];
+        [appDelegate addDownloadTask:task forPlayItem:playItem];
+        //[_trackFetchTasks setObject:task forKey:playItem.videoURL];
         [task resume];
     }
     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
--(void) downloadTrack:(TrackItem *) playTrack {
+-(void) downloadTrack:(TrackItem *) playTrack forPlayItem:(PlayItem *) playItem {
     NSString *path = [PathUtil pathForType:self.targetType];
     NSURLSessionDownloadTask *videoTask = [playTrack fetchTrackToPath:path withProgress:nil complete:nil];
-    
+
     AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
-    [appDelegate addDownloadTask:videoTask forKey:playTrack.dataSrc];
+    [appDelegate addDownloadTask:videoTask forPlayItem:playItem];
     [videoTask resume];
 }
 

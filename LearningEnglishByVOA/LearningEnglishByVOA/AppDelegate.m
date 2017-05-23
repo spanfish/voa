@@ -14,7 +14,7 @@
 #import "Common.h"
 
 @interface AppDelegate () {
-    NSMutableDictionary *_downloadDict;
+    
 }
 
 @end
@@ -60,6 +60,24 @@
 
 -(void) removeDownloadTaskForKey:(NSString *) key {
     [_downloadDict removeObjectForKey:key];
+}
+
+-(void) addDownloadTask:(NSURLSessionTask*) task forPlayItem:(PlayItem *) playItem {
+    if(task == nil) {
+        return;
+    }
+    [_downloadDict setObject:task forKey:playItem.videoTitle];
+}
+
+-(void) removeDownloadTaskForPlayItem:(PlayItem *) playItem {
+    [_downloadDict removeObjectForKey:playItem.videoTitle];
+}
+
+-(BOOL) containsDownloadTaskForPlayItem:(PlayItem *) playItem {
+    if(playItem == nil) {
+        return NO;
+    }
+    return [_downloadDict objectForKey:playItem.videoTitle] != nil;
 }
 
 -(NSUInteger) numberOfDownloadTask {

@@ -17,10 +17,17 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property(nonatomic, strong) NSMutableArray *playList;
+@property(nonatomic, strong) NSMutableDictionary *downloadDict;
 
 -(void) addDownloadTask:(NSURLSessionDownloadTask*) task forKey:(NSString *) key;
 -(void) removeDownloadTaskForKey:(NSString *) key;
 -(BOOL) containsDownloadTaskForKey:(NSString *) key;
+
+-(void) addDownloadTask:(NSURLSessionTask*) task forPlayItem:(PlayItem *) playItem;
+-(void) removeDownloadTaskForPlayItem:(PlayItem *) playItem;
+-(BOOL) containsDownloadTaskForPlayItem:(PlayItem *) playItem;
+
+
 -(NSUInteger) numberOfDownloadTask;
 
 -(void) addToPlayList:(PlayItem *) item;
