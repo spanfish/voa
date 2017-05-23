@@ -536,7 +536,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="73.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SRL-zF-QhG">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SRL-zF-QhG">
                                             <rect key="frame" x="8" y="8" width="102" height="74"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="74" id="4yd-Iy-DYY"/>
