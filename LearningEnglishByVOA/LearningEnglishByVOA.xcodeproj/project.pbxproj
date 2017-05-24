@@ -109,6 +109,9 @@
 		9DB24FD61ED40CEE00B69820 /* add-to-queue-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FD21ED40CEE00B69820 /* add-to-queue-button@2x.png */; };
 		9DB24FD71ED40CEE00B69820 /* add-to-queue-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FD31ED40CEE00B69820 /* add-to-queue-button@3x.png */; };
 		9DB24FDA1ED41B7E00B69820 /* DownloadingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB24FD91ED41B7E00B69820 /* DownloadingTableViewController.m */; };
+		9DB24FDF1ED5115300B69820 /* slider-maximum.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FDC1ED5115300B69820 /* slider-maximum.png */; };
+		9DB24FE01ED5115300B69820 /* slider-maximum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FDD1ED5115300B69820 /* slider-maximum@2x.png */; };
+		9DB24FE11ED5115300B69820 /* slider-maximum@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FDE1ED5115300B69820 /* slider-maximum@3x.png */; };
 		BC15CDB11ED317300009776C /* PlayerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = BC15CDB01ED317300009776C /* PlayerSlider.m */; };
 		BC1DE6951ED4802400E259E0 /* Transparency10.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1DE6941ED4802400E259E0 /* Transparency10.png */; };
 		BC1F7DA31ED1CF1300B43CC1 /* grammar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1F7D8F1ED1CF1300B43CC1 /* grammar.png */; };
@@ -314,6 +317,9 @@
 		9DB24FD31ED40CEE00B69820 /* add-to-queue-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-to-queue-button@3x.png"; sourceTree = "<group>"; };
 		9DB24FD81ED41B7E00B69820 /* DownloadingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadingTableViewController.h; sourceTree = "<group>"; };
 		9DB24FD91ED41B7E00B69820 /* DownloadingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadingTableViewController.m; sourceTree = "<group>"; };
+		9DB24FDC1ED5115300B69820 /* slider-maximum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-maximum.png"; sourceTree = "<group>"; };
+		9DB24FDD1ED5115300B69820 /* slider-maximum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-maximum@2x.png"; sourceTree = "<group>"; };
+		9DB24FDE1ED5115300B69820 /* slider-maximum@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-maximum@3x.png"; sourceTree = "<group>"; };
 		BC15CDAF1ED317300009776C /* PlayerSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSlider.h; sourceTree = "<group>"; };
 		BC15CDB01ED317300009776C /* PlayerSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSlider.m; sourceTree = "<group>"; };
 		BC1DE6941ED4802400E259E0 /* Transparency10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transparency10.png; sourceTree = "<group>"; };
@@ -523,6 +529,9 @@
 				9D8BF1421ED27CE4008A30B3 /* slider-thumb.svg */,
 				9D8BF1431ED27CE4008A30B3 /* slider-thumb@2x.png */,
 				9D8BF1441ED27CE4008A30B3 /* slider-thumb@3x.png */,
+				9DB24FDC1ED5115300B69820 /* slider-maximum.png */,
+				9DB24FDD1ED5115300B69820 /* slider-maximum@2x.png */,
+				9DB24FDE1ED5115300B69820 /* slider-maximum@3x.png */,
 				9D8BF11D1ED2731A008A30B3 /* full-screen-button.png */,
 				9D8BF11E1ED2731A008A30B3 /* full-screen-button.svg */,
 				9D8BF11F1ED2731A008A30B3 /* full-screen-button@2x.png */,
@@ -814,6 +823,7 @@
 				9D8BF14C1ED27CE4008A30B3 /* slider-thumb@3x.png in Resources */,
 				9DB24FC61ED3F22B00B69820 /* rewind-time@2x.png in Resources */,
 				9D8BF12D1ED2731A008A30B3 /* play-button.png in Resources */,
+				9DB24FE01ED5115300B69820 /* slider-maximum@2x.png in Resources */,
 				9DB24FB01ED3E3ED00B69820 /* close-button.png in Resources */,
 				BCF3ED421ED042B100BE47D2 /* play.svg in Resources */,
 				BC5E82F21EBF222A008F0BD7 /* LaunchScreen.storyboard in Resources */,
@@ -905,6 +915,7 @@
 				9DADDDE11ECED27600C53FB5 /* gallery.png in Resources */,
 				9DB24FD71ED40CEE00B69820 /* add-to-queue-button@3x.png in Resources */,
 				BCF3ED441ED042B100BE47D2 /* play@3x.png in Resources */,
+				9DB24FE11ED5115300B69820 /* slider-maximum@3x.png in Resources */,
 				9DB24FCF1ED404CF00B69820 /* suffle@3x.png in Resources */,
 				BC1DE6951ED4802400E259E0 /* Transparency10.png in Resources */,
 				9DADDDD41ECEC86800C53FB5 /* more_loading_2@3x.png in Resources */,
@@ -930,6 +941,7 @@
 				BCF3ED3A1ED0417A00BE47D2 /* download.svg in Resources */,
 				9DADDDC11ECEC68900C53FB5 /* more.svg in Resources */,
 				9DB24FB41ED3E3ED00B69820 /* pause-button.png in Resources */,
+				9DB24FDF1ED5115300B69820 /* slider-maximum.png in Resources */,
 				9DB24FC51ED3F22B00B69820 /* rewind-time.svg in Resources */,
 				BC1F7DAE1ED1CF1300B43CC1 /* newWords@3x.png in Resources */,
 				9DB24FC71ED3F22B00B69820 /* rewind-time@3x.png in Resources */,

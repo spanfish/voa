@@ -261,7 +261,8 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     
     cell.playButton.hidden = !videoExist;
-    cell.addPlaylistButton.hidden = !videoExist;
+    //cell.addPlaylistButton.hidden = !videoExist;
+    cell.addPlaylistButton.hidden = YES;
     if(videoExist) {
         cell.sizeLabel.hidden = NO;
         cell.downloadButton.hidden = YES;

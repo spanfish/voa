@@ -38,46 +38,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.slider setThumbImage:[UIImage imageNamed:@"slider-thumb"] forState:UIControlStateNormal];
-    [self.slider setMinimumTrackImage:[[UIImage imageNamed:@"slider-left"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
-
-    self.exitFullscreenButton.hidden = YES;
-    self.fullscreenButton.hidden = NO;
-    self.playButton.hidden = YES;
-    self.stopButton.hidden = YES;
-    
-    [self performSelector:@selector(hideControls) withObject:nil afterDelay:3.0];
-    
-    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-    [self.view addGestureRecognizer:recognizer];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playerEnded:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationWillResignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationWillEnterForeground:)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
-}
-
--(void) applicationWillResignActive:(NSNotification *) notification {
-    NSArray *tracks = [_playerItem tracks];
-    for (AVPlayerItemTrack *playerItemTrack in tracks)
-    {
-        // find video tracks
-        if ([playerItemTrack.assetTrack hasMediaCharacteristic:AVMediaCharacteristicVisual])
-        {
-            playerItemTrack.enabled = NO; // disable the track
-        }
-    }
-    
     [[MPRemoteCommandCenter sharedCommandCenter].playCommand addTarget:self action:@selector(startPlay:)];
     [MPRemoteCommandCenter sharedCommandCenter].playCommand.enabled = YES;
     
@@ -95,13 +55,67 @@
     
     [[MPRemoteCommandCenter sharedCommandCenter].previousTrackCommand addTarget:self action:@selector(previous:)];
     [MPRemoteCommandCenter sharedCommandCenter].previousTrackCommand.enabled = YES;
+    
+    [self.slider setThumbImage:[UIImage imageNamed:@"slider-thumb"] forState:UIControlStateNormal];
+    [self.slider setMinimumTrackImage:[[UIImage imageNamed:@"slider-left"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
+    [self.slider setMaximumTrackImage:[[UIImage imageNamed:@"slider-maximum"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
+    self.exitFullscreenButton.hidden = YES;
+    self.fullscreenButton.hidden = NO;
+    self.playButton.hidden = YES;
+    self.stopButton.hidden = YES;
+    
+    [self performSelector:@selector(hideControls) withObject:nil afterDelay:3.0];
+    
+    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+    recognizer.cancelsTouchesInView = YES;
+    [self.view addGestureRecognizer:recognizer];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
+    tapRecognizer.cancelsTouchesInView = YES;
+    tapRecognizer.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:tapRecognizer];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerEnded:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+}
+
+-(void) dealloc {
+    [MPRemoteCommandCenter sharedCommandCenter].playCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].pauseCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].stopCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].togglePlayPauseCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].nextTrackCommand.enabled = NO;
+    [MPRemoteCommandCenter sharedCommandCenter].previousTrackCommand.enabled = NO;
+}
+
+-(void) applicationWillResignActive:(NSNotification *) notification {
+    NSArray *tracks = [_playerItem tracks];
+    for (AVPlayerItemTrack *playerItemTrack in tracks)
+    {
+        // find video tracks
+        if ([playerItemTrack.assetTrack hasMediaCharacteristic:AVMediaCharacteristicVisual])
+        {
+            playerItemTrack.enabled = NO; // disable the track
+        }
+    }
+    
+    
 }
 
 #pragma mark - MPRemoteCommandCenter
 -(void) startPlay:(id) sender {
-    if(self.playerItem) {
-        [self.player play];
-    }
+    [self.player play];
 }
 
 -(void) pause:(id) sender {
@@ -113,9 +127,6 @@
 }
 
 -(void) toogle:(id) sender {
-    if(!self.playerItem) {
-        return;
-    }
     if(self.player.rate == 0) {
         [self.player play];
     } else {
@@ -124,11 +135,11 @@
 }
 
 -(void) next:(id) sender {
-
+    NSLog(@"next");
 }
 
 -(void) previous:(id) sender {
-
+    NSLog(@"previous");
 }
 #pragma mark -
 -(void) applicationWillEnterForeground:(NSNotification *) notification {
@@ -141,32 +152,41 @@
             playerItemTrack.enabled = YES; // enable the track
         }
     }
-    
-    [MPRemoteCommandCenter sharedCommandCenter].playCommand.enabled = NO;
-    [MPRemoteCommandCenter sharedCommandCenter].pauseCommand.enabled = NO;
-    [MPRemoteCommandCenter sharedCommandCenter].stopCommand.enabled = NO;
-    [MPRemoteCommandCenter sharedCommandCenter].togglePlayPauseCommand.enabled = NO;
-    [MPRemoteCommandCenter sharedCommandCenter].nextTrackCommand.enabled = NO;
-    [MPRemoteCommandCenter sharedCommandCenter].previousTrackCommand.enabled = NO;
 }
 
 -(void) playerEnded:(NSNotification *) notification {
     NSLog(@"playerEnded");
-    //self.playerItem = nil;
+    [self closeButtonToched:nil];
+}
+
+-(void) tapGesture:(UITapGestureRecognizer *)recognizer {
+    CGPoint locationInSlider = [recognizer locationInView:self.slider];
+    if(CGRectContainsPoint(self.slider.frame, locationInSlider)) {
+        return;
+    }
+    if(_fullscreen) {
+        [self exitFullscreenTouched:nil];
+    } else {
+        [self fullscreenTouched:nil];
+    }
 }
 
 -(void) panGesture:(UIPanGestureRecognizer *)recognizer {
-    NSLog(@"panGesture");
-    if(_fullscreen) {
+    NSLog(@"panGesture:%@", NSStringFromCGPoint([recognizer locationInView:self.slider]));
+    CGPoint locationInSlider = [recognizer locationInView:self.slider];
+    if(CGRectContainsPoint(self.slider.frame, locationInSlider)) {
         return;
     }
+    [VideoPlayerViewController cancelPreviousPerformRequestsWithTarget:self selector:@selector(showControls) object:nil];
     
     CGPoint translation = [recognizer translationInView:self.view];
     CGFloat transX = ABS(translation.x);
     CGFloat transY = ABS(translation.y);
     if(transX < transY) {
+        if(_fullscreen) {
+            return;
+        }
         //move up down
-        
         CGPoint velocity = [recognizer velocityInView:self.view];
         NSLog(@"velocity:%@", NSStringFromCGPoint(velocity));
         if(ABS(velocity.y) < 600) {
@@ -192,6 +212,21 @@
             }];
             
             [self.view layoutIfNeeded];
+        }
+    } else {
+        //move left and right
+        CGPoint velocity = [recognizer velocityInView:self.view];
+        NSLog(@"velocity:%@", NSStringFromCGPoint(velocity));
+        if(ABS(velocity.x) < 600) {
+            return;
+        }
+        
+        if(velocity.x > 0) {
+            //right
+            [self forwardButtonToched: nil];
+        } else {
+            //left
+            [self rewindButtonToched: nil];
         }
     }
 }
@@ -314,7 +349,13 @@
 
 -(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"touchesBegan");
-    [self showControls];
+    UITouch *touch = [touches anyObject];
+
+    CGPoint locationInSlider = [touch locationInView:self.slider];
+    if(CGRectContainsPoint(self.slider.frame, locationInSlider)) {
+        return;
+    }
+    [self performSelector:@selector(showControls) withObject:nil afterDelay:0.3];
 }
 
 -(void) showControls {
@@ -322,6 +363,7 @@
     [VideoPlayerViewController cancelPreviousPerformRequestsWithTarget:self];
     [self performSelector:@selector(hideControls) withObject:nil afterDelay:3.0];
 }
+
 #pragma mark -
 -(IBAction)fullscreenTouched:(id)sender {
     CGSize winSize = [UIScreen mainScreen].bounds.size;
@@ -336,10 +378,15 @@
     _playerLayer.frame = CGRectMake(0, 0, winSize.height, winSize.width);
     self.view.transform = CGAffineTransformMakeRotation(M_PI_2);
     
-    self.exitFullscreenButton.hidden = NO;
-    self.fullscreenButton.hidden = YES;
+    
     _fullscreen = YES;
-    [self showControls];
+    
+    if(sender) {
+        self.exitFullscreenButton.hidden = NO;
+        self.fullscreenButton.hidden = YES;
+        
+        [self showControls];
+    }
 }
 
 -(IBAction)exitFullscreenTouched:(id)sender {
@@ -354,10 +401,14 @@
     self.view.transform = CGAffineTransformIdentity;
     _playerLayer.frame = self.view.bounds;
     
-    self.exitFullscreenButton.hidden = YES;
-    self.fullscreenButton.hidden = NO;
+    
     _fullscreen = NO;
-    [self showControls];
+    if(sender) {
+        self.exitFullscreenButton.hidden = YES;
+        self.fullscreenButton.hidden = NO;
+        
+        [self showControls];
+    }
 }
 
 -(IBAction)sliderValueChanged:(id)sender {
@@ -368,6 +419,7 @@
     [self.player play];
     
     [self showControls];
+        
 }
 
 -(IBAction)playButtonToched:(id)sender {
@@ -385,6 +437,7 @@
 -(IBAction)closeButtonToched:(id)sender {
     [_player pause];
     self.view.hidden = YES;
+    [self exitFullscreenTouched:nil];
 }
 
 -(IBAction)rewindButtonToched:(id)sender {
@@ -396,7 +449,9 @@
     [self.player seekToTime:CMTimeMakeWithSeconds(seekTime, timeScale) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
     [self.player play];
     
-    [self showControls];
+    if(sender) {
+        [self showControls];
+    }
 }
 
 -(IBAction)forwardButtonToched:(id)sender {
@@ -409,7 +464,9 @@
     [self.player seekToTime:CMTimeMakeWithSeconds(seekTime, timeScale) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
     [self.player play];
     
-    [self showControls];
+    if(sender) {
+        [self showControls];
+    }
 }
 
 -(IBAction)sliderTouchDown:(id)sender {

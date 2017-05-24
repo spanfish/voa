@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, SettingType) {
     NUM_OF_SECTION
 };
 
-static int ROWS[] = {2, 2};
+static int ROWS[] = {1, 2};
 
 @interface SettingsTableViewController ()
 
