@@ -114,9 +114,10 @@
         if(complete) {
             complete(nil, error);
         }
+        NSDictionary *userInfo = @{@"videoTitle": videoTitle, @"filePath": filePath};
         main_queue([[NSNotificationCenter defaultCenter] postNotificationName:@"VideoDownloadCompleted"
                                                                        object:nil
-                                                                     userInfo:@{@"videoTitle": videoTitle}]);
+                                                                     userInfo:userInfo]);
     }];
     [downloadTask resume];
     

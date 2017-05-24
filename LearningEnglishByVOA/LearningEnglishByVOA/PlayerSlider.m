@@ -9,10 +9,8 @@
 #import "PlayerSlider.h"
 
 @implementation PlayerSlider
-
-
 - (CGRect)trackRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(0, bounds.size.height - 16, bounds.size.width, 16);
+    return CGRectMake(0, (bounds.size.height - 16)/2, bounds.size.width, 16);
 }
 @end

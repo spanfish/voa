@@ -66,8 +66,9 @@
                             </connections>
                         </button>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfj-kn-YHO" customClass="PlayerSlider">
-                            <rect key="frame" x="40" y="637" width="295" height="31"/>
+                            <rect key="frame" x="40" y="627" width="295" height="31"/>
                             <connections>
+                                <action selector="sliderTouchDown:" destination="-1" eventType="touchDownRepeat" id="50C-dJ-hDC"/>
                                 <action selector="sliderTouchDown:" destination="-1" eventType="touchDown" id="8it-Hw-A88"/>
                                 <action selector="sliderTouchUp:" destination="-1" eventType="touchUpOutside" id="7JX-Xi-pEP"/>
                                 <action selector="sliderTouchUp:" destination="-1" eventType="touchCancel" id="ich-hZ-o4X"/>
@@ -83,7 +84,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsA-YB-5EG">
-                            <rect key="frame" x="2" y="651" width="36" height="16"/>
+                            <rect key="frame" x="2" y="641" width="36" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="16" id="Hqc-Bq-sG2"/>
                                 <constraint firstAttribute="width" constant="36" id="aED-8r-HiT"/>
@@ -93,7 +94,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sT0-Ud-1Bh">
-                            <rect key="frame" x="337" y="651.5" width="36" height="16"/>
+                            <rect key="frame" x="337" y="641.5" width="36" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -155,7 +156,7 @@
                         <constraint firstItem="fvb-Ie-ezZ" firstAttribute="centerY" secondItem="gFS-ny-yXr" secondAttribute="centerY" id="aLO-kz-UhU"/>
                         <constraint firstItem="5v6-oS-VBX" firstAttribute="centerY" secondItem="gFS-ny-yXr" secondAttribute="centerY" id="cmO-Qc-3W5"/>
                         <constraint firstItem="1mh-IW-K4q" firstAttribute="centerY" secondItem="gFS-ny-yXr" secondAttribute="centerY" id="exg-lY-Uz0"/>
-                        <constraint firstAttribute="bottom" secondItem="Xfj-kn-YHO" secondAttribute="bottom" id="flc-KL-dpa"/>
+                        <constraint firstAttribute="bottom" secondItem="Xfj-kn-YHO" secondAttribute="bottom" constant="10" id="flc-KL-dpa"/>
                         <constraint firstItem="gFS-ny-yXr" firstAttribute="centerY" secondItem="2Zr-LM-8K3" secondAttribute="centerY" id="gmQ-fV-imh"/>
                         <constraint firstAttribute="trailing" secondItem="pL2-Ri-A9L" secondAttribute="trailing" constant="10" id="psK-uZ-UkD"/>
                         <constraint firstItem="sT0-Ud-1Bh" firstAttribute="centerY" secondItem="gsA-YB-5EG" secondAttribute="centerY" id="r0o-ha-0Jt"/>

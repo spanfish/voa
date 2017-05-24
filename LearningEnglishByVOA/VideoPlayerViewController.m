@@ -9,14 +9,20 @@
 #import "VideoPlayerViewController.h"
 #import <Masonry/Masonry.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "PlayerSlider.h"
+#include <stdlib.h>
+#import "PathUtil.h"
 
 @interface VideoPlayerViewController () {
     BOOL _touchBegan;
     CGSize _trackDimensions;
     BOOL _fullscreen;
+    
+    RLMResults<PlayItem *> *playItems;
+    TargetType _targetType;
 }
 @property(nonatomic, weak) IBOutlet UIView *placeHolderView;
-@property(nonatomic, weak) IBOutlet UISlider *slider;
+@property(nonatomic, weak) IBOutlet PlayerSlider *slider;
 @property(nonatomic, weak) IBOutlet UIButton *playButton;
 @property(nonatomic, weak) IBOutlet UIButton *stopButton;
 @property(nonatomic, weak) IBOutlet UIButton *closeButton;
@@ -67,11 +73,11 @@
     [self performSelector:@selector(hideControls) withObject:nil afterDelay:3.0];
     
     UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-    recognizer.cancelsTouchesInView = YES;
+//    recognizer.cancelsTouchesInView = YES;
     [self.view addGestureRecognizer:recognizer];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
-    tapRecognizer.cancelsTouchesInView = YES;
+//    tapRecognizer.cancelsTouchesInView = YES;
     tapRecognizer.numberOfTapsRequired = 2;
     [self.view addGestureRecognizer:tapRecognizer];
 
@@ -87,6 +93,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(applicationWillEnterForeground:)
                                                  name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playSuffle:)
+                                                 name:@"Suffle"
                                                object:nil];
 }
 
@@ -156,11 +166,15 @@
 
 -(void) playerEnded:(NSNotification *) notification {
     NSLog(@"playerEnded");
-    [self closeButtonToched:nil];
+    if(playItems == nil) {
+        [self closeButtonToched:nil];
+    } else {
+        [self randomPlay];
+    }
 }
 
 -(void) tapGesture:(UITapGestureRecognizer *)recognizer {
-    CGPoint locationInSlider = [recognizer locationInView:self.slider];
+    CGPoint locationInSlider = [recognizer locationInView:self.placeHolderView];
     if(CGRectContainsPoint(self.slider.frame, locationInSlider)) {
         return;
     }
@@ -172,8 +186,8 @@
 }
 
 -(void) panGesture:(UIPanGestureRecognizer *)recognizer {
-    NSLog(@"panGesture:%@", NSStringFromCGPoint([recognizer locationInView:self.slider]));
-    CGPoint locationInSlider = [recognizer locationInView:self.slider];
+    NSLog(@"panGesture:%@", NSStringFromCGPoint([recognizer locationInView:self.placeHolderView]));
+    CGPoint locationInSlider = [recognizer locationInView:self.placeHolderView];
     if(CGRectContainsPoint(self.slider.frame, locationInSlider)) {
         return;
     }
@@ -232,6 +246,9 @@
 }
 
 -(void) hideControls {
+    if(self.touchBegan) {
+        return;
+    }
     [UIView animateWithDuration:1 animations:^{
         self.placeHolderView.alpha = 0;
     } completion:^(BOOL finished) {
@@ -245,6 +262,11 @@
 }
 
 -(void) play:(NSString *) videoPath {
+    playItems = nil;
+    [self playFile:videoPath];
+}
+
+-(void) playFile:(NSString *) videoPath {
     self.playTimeLabel.text = self.remainTimeLabel.text = @"00:00";
     AVAssetTrack *videoTrack = nil;
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:videoPath]
@@ -267,7 +289,7 @@
         videoTrack = [videoTracks objectAtIndex:0];
     
     _trackDimensions = [videoTrack naturalSize];
-
+    
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
     if(!_player) {
         _player = [AVPlayer playerWithPlayerItem:playerItem];
@@ -351,7 +373,7 @@
     NSLog(@"touchesBegan");
     UITouch *touch = [touches anyObject];
 
-    CGPoint locationInSlider = [touch locationInView:self.slider];
+    CGPoint locationInSlider = [touch locationInView:self.placeHolderView];
     if(CGRectContainsPoint(self.slider.frame, locationInSlider)) {
         return;
     }
@@ -411,16 +433,6 @@
     }
 }
 
--(IBAction)sliderValueChanged:(id)sender {
-    CGFloat seekTime = self.slider.value;
-    CMTimeScale timeScale = self.player.currentItem.asset.duration.timescale;
-    [self.player pause];
-    [self.player seekToTime:CMTimeMakeWithSeconds(seekTime, timeScale) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
-    [self.player play];
-    
-    [self showControls];
-        
-}
 
 -(IBAction)playButtonToched:(id)sender {
     [_player play];
@@ -469,6 +481,18 @@
     }
 }
 
+#pragma mark - UISlider
+-(IBAction)sliderValueChanged:(id)sender {
+    CGFloat seekTime = self.slider.value;
+    CMTimeScale timeScale = self.player.currentItem.asset.duration.timescale;
+    [self.player pause];
+    [self.player seekToTime:CMTimeMakeWithSeconds(seekTime, timeScale) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+    [self.player play];
+    
+    [self showControls];
+    
+}
+
 -(IBAction)sliderTouchDown:(id)sender {
     _touchBegan = YES;
     NSLog(@"touchDown");
@@ -481,5 +505,41 @@
     NSLog(@"touchUp");
     
     [self performSelector:@selector(hideControls) withObject:nil afterDelay:3.0];
+}
+
+#pragma mark -
+-(void) playSuffle:(NSNotification *) notification {
+    _targetType = [[[notification userInfo] objectForKey:@"targetType"] integerValue];
+    playItems = [[PlayItem objectsWhere:[NSString stringWithFormat:@"targetType = %ld and deleted != 1 and videoDownloaded = 1", (long)_targetType]] sortedResultsUsingKeyPath:@"sortedDate" ascending:NO];
+    [self randomPlay];
+}
+
+-(void) randomPlay {
+    NSUInteger i = [playItems count];
+    if(i > 0) {
+        
+        i = arc4random_uniform((uint32_t) i);
+        
+        PlayItem *playItem = [playItems objectAtIndex:i];
+        
+        NSString *path = [PathUtil pathForType:_targetType];
+    
+        NSString *videoFile = nil;
+        //从动画列表的最后（分辨率最高）开始找，如果找到动画文件，就直接播放
+        for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
+            TrackItem *track = [playItem.tracks objectAtIndex:i];
+            NSString *fileName = [track.dataSrc lastPathComponent];
+            if([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:fileName] isDirectory:NULL]) {
+                //playTrack = track;
+                videoFile = [path stringByAppendingPathComponent:fileName];
+                break;
+            }
+        }
+        
+        if(videoFile != nil) {
+            //找到动画文件
+            [self playFile:videoFile];
+        }
+    }
 }
 @end

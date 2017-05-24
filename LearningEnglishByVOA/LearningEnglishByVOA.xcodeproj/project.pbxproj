@@ -112,6 +112,14 @@
 		9DB24FDF1ED5115300B69820 /* slider-maximum.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FDC1ED5115300B69820 /* slider-maximum.png */; };
 		9DB24FE01ED5115300B69820 /* slider-maximum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FDD1ED5115300B69820 /* slider-maximum@2x.png */; };
 		9DB24FE11ED5115300B69820 /* slider-maximum@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FDE1ED5115300B69820 /* slider-maximum@3x.png */; };
+		9DB24FE61ED5245D00B69820 /* dustbin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FE21ED5245D00B69820 /* dustbin.png */; };
+		9DB24FE71ED5245D00B69820 /* dustbin.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FE31ED5245D00B69820 /* dustbin.svg */; };
+		9DB24FE81ED5245D00B69820 /* dustbin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FE41ED5245D00B69820 /* dustbin@2x.png */; };
+		9DB24FE91ED5245D00B69820 /* dustbin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FE51ED5245D00B69820 /* dustbin@3x.png */; };
+		9DB24FEE1ED5252F00B69820 /* delete-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FEA1ED5252F00B69820 /* delete-button.png */; };
+		9DB24FEF1ED5252F00B69820 /* delete-button.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FEB1ED5252F00B69820 /* delete-button.svg */; };
+		9DB24FF01ED5252F00B69820 /* delete-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FEC1ED5252F00B69820 /* delete-button@2x.png */; };
+		9DB24FF11ED5252F00B69820 /* delete-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB24FED1ED5252F00B69820 /* delete-button@3x.png */; };
 		BC15CDB11ED317300009776C /* PlayerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = BC15CDB01ED317300009776C /* PlayerSlider.m */; };
 		BC1DE6951ED4802400E259E0 /* Transparency10.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1DE6941ED4802400E259E0 /* Transparency10.png */; };
 		BC1F7DA31ED1CF1300B43CC1 /* grammar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1F7D8F1ED1CF1300B43CC1 /* grammar.png */; };
@@ -320,6 +328,14 @@
 		9DB24FDC1ED5115300B69820 /* slider-maximum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-maximum.png"; sourceTree = "<group>"; };
 		9DB24FDD1ED5115300B69820 /* slider-maximum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-maximum@2x.png"; sourceTree = "<group>"; };
 		9DB24FDE1ED5115300B69820 /* slider-maximum@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-maximum@3x.png"; sourceTree = "<group>"; };
+		9DB24FE21ED5245D00B69820 /* dustbin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dustbin.png; sourceTree = "<group>"; };
+		9DB24FE31ED5245D00B69820 /* dustbin.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = dustbin.svg; sourceTree = "<group>"; };
+		9DB24FE41ED5245D00B69820 /* dustbin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dustbin@2x.png"; sourceTree = "<group>"; };
+		9DB24FE51ED5245D00B69820 /* dustbin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dustbin@3x.png"; sourceTree = "<group>"; };
+		9DB24FEA1ED5252F00B69820 /* delete-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-button.png"; sourceTree = "<group>"; };
+		9DB24FEB1ED5252F00B69820 /* delete-button.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "delete-button.svg"; sourceTree = "<group>"; };
+		9DB24FEC1ED5252F00B69820 /* delete-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-button@2x.png"; sourceTree = "<group>"; };
+		9DB24FED1ED5252F00B69820 /* delete-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-button@3x.png"; sourceTree = "<group>"; };
 		BC15CDAF1ED317300009776C /* PlayerSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSlider.h; sourceTree = "<group>"; };
 		BC15CDB01ED317300009776C /* PlayerSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSlider.m; sourceTree = "<group>"; };
 		BC1DE6941ED4802400E259E0 /* Transparency10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transparency10.png; sourceTree = "<group>"; };
@@ -492,6 +508,14 @@
 		BC5E82E21EBF222A008F0BD7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9DB24FEA1ED5252F00B69820 /* delete-button.png */,
+				9DB24FEB1ED5252F00B69820 /* delete-button.svg */,
+				9DB24FEC1ED5252F00B69820 /* delete-button@2x.png */,
+				9DB24FED1ED5252F00B69820 /* delete-button@3x.png */,
+				9DB24FE21ED5245D00B69820 /* dustbin.png */,
+				9DB24FE31ED5245D00B69820 /* dustbin.svg */,
+				9DB24FE41ED5245D00B69820 /* dustbin@2x.png */,
+				9DB24FE51ED5245D00B69820 /* dustbin@3x.png */,
 				BC1DE6941ED4802400E259E0 /* Transparency10.png */,
 				9DB24FD01ED40CEE00B69820 /* add-to-queue-button.png */,
 				9DB24FD11ED40CEE00B69820 /* add-to-queue-button.svg */,
@@ -824,6 +848,7 @@
 				9DB24FC61ED3F22B00B69820 /* rewind-time@2x.png in Resources */,
 				9D8BF12D1ED2731A008A30B3 /* play-button.png in Resources */,
 				9DB24FE01ED5115300B69820 /* slider-maximum@2x.png in Resources */,
+				9DB24FF01ED5252F00B69820 /* delete-button@2x.png in Resources */,
 				9DB24FB01ED3E3ED00B69820 /* close-button.png in Resources */,
 				BCF3ED421ED042B100BE47D2 /* play.svg in Resources */,
 				BC5E82F21EBF222A008F0BD7 /* LaunchScreen.storyboard in Resources */,
@@ -876,12 +901,15 @@
 				9D8BF12E1ED2731A008A30B3 /* play-button.svg in Resources */,
 				9DB24FD51ED40CEE00B69820 /* add-to-queue-button.svg in Resources */,
 				BC1F7DA41ED1CF1300B43CC1 /* grammar.svg in Resources */,
+				9DB24FE61ED5245D00B69820 /* dustbin.png in Resources */,
 				BC5E82EF1EBF222A008F0BD7 /* Assets.xcassets in Resources */,
 				9DADDDF01ECEF33400C53FB5 /* playlist@2x.png in Resources */,
 				9DADDD8F1ECE7F8300C53FB5 /* settings@2x.png in Resources */,
 				9DADDDBB1ECE95F800C53FB5 /* video-camera@3x.png in Resources */,
 				9DADDDD71ECEC86800C53FB5 /* more_loading_3@3x.png in Resources */,
+				9DB24FE71ED5245D00B69820 /* dustbin.svg in Resources */,
 				BCBA55901EC4000800E4A728 /* more-button.png in Resources */,
+				9DB24FE81ED5245D00B69820 /* dustbin@2x.png in Resources */,
 				9DB24FA61ED3DED900B69820 /* shrink-screen-button@2x.png in Resources */,
 				9D8BF1321ED2731A008A30B3 /* stop-button.svg in Resources */,
 				9DADDDBA1ECE95F800C53FB5 /* video-camera@2x.png in Resources */,
@@ -898,6 +926,7 @@
 				9D8BF1451ED27CE4008A30B3 /* slider-left.png in Resources */,
 				9D8BF14B1ED27CE4008A30B3 /* slider-thumb@2x.png in Resources */,
 				9DADDDE41ECED27600C53FB5 /* gallery@3x.png in Resources */,
+				9DB24FEE1ED5252F00B69820 /* delete-button.png in Resources */,
 				9DB24FB31ED3E3ED00B69820 /* close-button@3x.png in Resources */,
 				BCF3ED481ED0614900BE47D2 /* minimum.png in Resources */,
 				9D8BF12C1ED2731A008A30B3 /* full-screen-button@3x.png in Resources */,
@@ -908,6 +937,7 @@
 				BC1F7DA81ED1CF1300B43CC1 /* learnEnglish.svg in Resources */,
 				9DADDD8A1ECE7F8300C53FB5 /* disk.svg in Resources */,
 				9D8BF1481ED27CE4008A30B3 /* slider-left@3x.png in Resources */,
+				9DB24FE91ED5245D00B69820 /* dustbin@3x.png in Resources */,
 				BCBA558C1EC3FF5700E4A728 /* more-with-three-dots-button.svg in Resources */,
 				9DADDD9A1ECE836800C53FB5 /* minute@2x.png in Resources */,
 				9D8BF1341ED2731A008A30B3 /* stop-button@3x.png in Resources */,
@@ -920,6 +950,7 @@
 				BC1DE6951ED4802400E259E0 /* Transparency10.png in Resources */,
 				9DADDDD41ECEC86800C53FB5 /* more_loading_2@3x.png in Resources */,
 				BC1F7DB41ED1CF1300B43CC1 /* television.svg in Resources */,
+				9DB24FF11ED5252F00B69820 /* delete-button@3x.png in Resources */,
 				BCBA55BC1EC581C300E4A728 /* download-from-cloud.png in Resources */,
 				9DB24FA41ED3DED900B69820 /* shrink-screen-button.png in Resources */,
 				9DADDDD01ECEC86800C53FB5 /* more_loading_1@2x.png in Resources */,
@@ -946,6 +977,7 @@
 				BC1F7DAE1ED1CF1300B43CC1 /* newWords@3x.png in Resources */,
 				9DB24FC71ED3F22B00B69820 /* rewind-time@3x.png in Resources */,
 				BC1F7DA61ED1CF1300B43CC1 /* grammar@3x.png in Resources */,
+				9DB24FEF1ED5252F00B69820 /* delete-button.svg in Resources */,
 				9DADDDF11ECEF33400C53FB5 /* playlist@3x.png in Resources */,
 				9DADDDD31ECEC86800C53FB5 /* more_loading_2@2x.png in Resources */,
 				9DADDD901ECE7F8300C53FB5 /* settings@3x.png in Resources */,

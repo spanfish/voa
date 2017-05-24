@@ -19,6 +19,7 @@
     BOOL loading;
     NSString* _moreURL;
     NSString *_topPageURL;
+    BOOL _editMode;
 }
 @end
 
@@ -28,7 +29,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _editMode = NO;
     //self.extendedLayoutIncludesOpaqueBars = NO;
     
     if(self.targetType == TARGET_MINUTE) {
@@ -87,6 +88,21 @@ static NSString * const reuseIdentifier = @"Cell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadCompleted:) name:@"DownloadCompleted" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDownloadProgressed:) name:@"DownloadProgressed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMore:) name:@"More" object:nil];
+    
+    [self setupBarButton];
+}
+
+
+-(void) setupBarButton {
+    UIBarButtonItem *edit = nil;
+    if(_editMode) {
+        edit = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(editTouched:)];
+        self.navigationItem.rightBarButtonItems = @[edit];
+    } else {
+        edit = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editTouched:)];
+        UIBarButtonItem *suffle = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"suffle"] style:UIBarButtonItemStylePlain target:self action:@selector(suffleTouched:)];
+        self.navigationItem.rightBarButtonItems = @[suffle, edit];
+    }
 }
 
 -(void) dealloc {
@@ -115,6 +131,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 -(void) calCellSize:(CGSize) screenSize {
+    //screenSize.width -= 4;
     CGFloat totalWidth = screenSize.width;
     NSUInteger cellWidth = 145;
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -132,6 +149,8 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     
     self.collectionView.contentInset = UIEdgeInsetsMake(0, spacing, 0, spacing);
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*) self.collectionViewLayout;
+    layout.sectionInset = UIEdgeInsetsZero;
     cellSize = CGSizeMake(cellWidth, (CGFloat)cellWidth * 74 / 102 + 21 + 4 + 40);
 }
 
@@ -140,8 +159,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
     [self calCellSize:size];
-    //[self.collectionView reloadData];
-    //[self.view setNeedsLayout];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -260,9 +277,6 @@ static NSString * const reuseIdentifier = @"Cell";
         }
     }
     
-    cell.playButton.hidden = !videoExist;
-    //cell.addPlaylistButton.hidden = !videoExist;
-    cell.addPlaylistButton.hidden = YES;
     if(videoExist) {
         cell.sizeLabel.hidden = NO;
         cell.downloadButton.hidden = YES;
@@ -276,6 +290,7 @@ static NSString * const reuseIdentifier = @"Cell";
             cell.sizeLabel.text = [NSString stringWithFormat:@"%lld B", fileSize];
         }
     } else {
+
         [cell.downloadIndicator setBackgroundColor:[UIColor whiteColor]];
         [cell.downloadIndicator setFillColor:[UIColor lightGrayColor]];//[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
          [cell.downloadIndicator setStrokeColor:[UIColor lightGrayColor]];//[UIColor colorWithRed:16./255 green:119./255 blue:234./255 alpha:1.0f]];
@@ -295,7 +310,19 @@ static NSString * const reuseIdentifier = @"Cell";
             cell.downloadButton.hidden = NO;
         }
     }
-
+    
+    if(_editMode) {
+        cell.playButton.hidden = YES;
+        cell.downloadButton.hidden = YES;
+        cell.downloadButton.hidden = YES;
+        cell.downloadIndicator.hidden = YES;
+        cell.deleteButton.hidden = NO;
+    } else {
+        cell.playButton.hidden = !videoExist;
+        cell.deleteButton.hidden = YES;
+    }
+    
+    
     return cell;
 }
 
@@ -329,7 +356,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark - EIAMCollectionViewCellDelegate
--(void) addPlaylistTouchedWithItem:(UICollectionViewCell *)cell {
+-(void) deleteTouchedWithItem:(UICollectionViewCell *)cell {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
     if(indexPath.section == 1) {
         return;
@@ -338,7 +365,13 @@ static NSString * const reuseIdentifier = @"Cell";
     NSString *path = [PathUtil pathForType:self.targetType];
     
     PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
-    TrackItem *playTrack = nil;
+    
+    NSString *thumbpath = [PathUtil pathForThumb];
+    NSString *fileName = [thumbpath stringByAppendingPathComponent: [playItem.thumbURL lastPathComponent]];
+    if([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
+        //缩微图存在
+        [[NSFileManager defaultManager] removeItemAtPath:[path stringByAppendingPathComponent:fileName] error:nil];
+    }
     
     //从动画列表的最后（分辨率最高）开始找，如果找到动画文件，就直接播放
     for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
@@ -349,17 +382,16 @@ static NSString * const reuseIdentifier = @"Cell";
               track.dataSrc);
         NSString *fileName = [track.dataSrc lastPathComponent];
         if([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:fileName] isDirectory:NULL]) {
-            playTrack = track;
-            break;
+            [[NSFileManager defaultManager] removeItemAtPath:[path stringByAppendingPathComponent:fileName] error:nil];
         }
     }
     
-    if(playTrack != nil) {
-        //找到动画文件
-        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [delegate addToPlayList:playItem];
-        return;
-    }
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    playItem.deleted = 1;
+    [[RLMRealm defaultRealm] addOrUpdateObject:playItem];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+    
+    [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
 }
 //播放动画
 -(void) playTouchedWithItem:(UICollectionViewCell *)cell {
@@ -511,19 +543,19 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void) videoDownloadCompleted:(NSNotification *) notification {
     NSAssert([NSThread isMainThread], @"not in main thread");
-    NSString *url = [[notification userInfo] objectForKey:@"videoTitle"];    
+    NSString *videoTitle = [[notification userInfo] objectForKey:@"videoTitle"];
     for (NSIndexPath *indexPath in self.collectionView.indexPathsForVisibleItems) {
         PlayItem *playItem = [dataSource.playItems objectAtIndex:indexPath.row];
-        
-        for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
-            TrackItem *track = [playItem.tracks objectAtIndex:i];
-            
-            if([track.dataSrc isEqualToString:url]) {
-                NSLog(@"videoDownloadCompleted:%ld", indexPath.row);
-                [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-                break;
-            }
+        if([playItem.videoTitle isEqualToString:videoTitle]) {
+            NSLog(@"videoDownloadCompleted:%ld", indexPath.row);
+            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            break;
         }
+//        for(NSInteger i = [playItem.tracks count] - 1; i >= 0; i--) {
+//            TrackItem *track = [playItem.tracks objectAtIndex:i];
+//            
+//            
+//        }
     }
 }
 
@@ -554,11 +586,15 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(IBAction)editTouched:(id)sender {
-    
+    _editMode = !_editMode;
+    [self setupBarButton];
+    [self.collectionView reloadData];
 }
 
 -(IBAction)suffleTouched:(id)sender {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Suffle" object:nil userInfo:@{
+                                                                                        @"targetType":@(self.targetType)
+                                                                                               }];
 }
 
 @end

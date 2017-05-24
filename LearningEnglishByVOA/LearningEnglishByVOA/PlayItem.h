@@ -20,6 +20,8 @@
 @property(nonatomic, strong) NSString *publishDate;
 @property(nonatomic, strong) NSString *sortedDate;
 @property(nonatomic, assign) NSInteger targetType;
+@property(nonatomic, assign) NSInteger deleted;
+@property(nonatomic, assign) NSInteger videoDownloaded;
 @property(nonatomic, assign, readonly, getter=hasFetchedTracksURL) BOOL fetchedTracksURL;
 @property(nonatomic, weak) NSURLSessionTask *task;
 

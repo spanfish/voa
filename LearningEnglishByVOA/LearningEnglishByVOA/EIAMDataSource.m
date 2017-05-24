@@ -25,7 +25,7 @@
     self = [super init];
     if(self) {
         _targetType = type;
-        _playItems = [[PlayItem objectsWhere:[NSString stringWithFormat:@"targetType=%ld", _targetType]] sortedResultsUsingKeyPath:@"sortedDate" ascending:NO];
+        _playItems = [[PlayItem objectsWhere:[NSString stringWithFormat:@"targetType = %ld and deleted != 1", _targetType]] sortedResultsUsingKeyPath:@"sortedDate" ascending:NO];
     }
     return self;
 }

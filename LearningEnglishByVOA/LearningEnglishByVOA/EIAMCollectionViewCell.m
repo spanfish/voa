@@ -18,7 +18,7 @@
     [self.delegate downloadTouchedWithItem: self];
 }
 
--(IBAction)addToPlaylistTouched:(id)sender {
-    [self.delegate addPlaylistTouchedWithItem:self];
+-(IBAction)deleteButtonTouched:(id)sender {
+    [self.delegate deleteTouchedWithItem:self];
 }
 @end

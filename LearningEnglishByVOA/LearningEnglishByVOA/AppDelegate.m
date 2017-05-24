@@ -152,8 +152,18 @@
 
 -(void) videoDownloadCompleted:(NSNotification *) notification {
     NSAssert([NSThread isMainThread], @"not in main thread");
-    NSString *url = [[notification userInfo] objectForKey:@"videoTitle"];
-    [self removeDownloadTaskForKey:url];
+    NSString *videoTitle = [[notification userInfo] objectForKey:@"videoTitle"];
+    NSURL *filePath = [[notification userInfo] objectForKey:@"filePath"];
+    PlayItem *playItem = [_downloadDict objectForKey:videoTitle];
+    if(playItem) {
+        if([[NSFileManager defaultManager] fileExistsAtPath:[filePath path]]) {
+            [[RLMRealm defaultRealm] beginWriteTransaction];
+            playItem.videoDownloaded = 1;
+            [[RLMRealm defaultRealm] addOrUpdateObject:playItem];
+            [[RLMRealm defaultRealm] commitWriteTransaction];
+        }
+    }
+    [self removeDownloadTaskForKey:videoTitle];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DownloadCompleted"
                                                         object:nil

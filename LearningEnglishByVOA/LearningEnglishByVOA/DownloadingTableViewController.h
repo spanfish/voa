@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NSLayoutConstraint+Multiplier.h"
+#import "PlayerSlider.h"
 
 @interface DownloadingTableViewController : UITableViewController
 
@@ -16,6 +17,6 @@
 
 @interface DownloadingTableViewCell : UITableViewCell
 @property(nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property(nonatomic, weak) IBOutlet UISlider *slider;
+@property(nonatomic, weak) IBOutlet PlayerSlider *slider;
 @property(nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 @end
